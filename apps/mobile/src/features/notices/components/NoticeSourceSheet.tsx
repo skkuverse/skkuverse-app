@@ -1,10 +1,12 @@
-import { forwardRef, useMemo } from 'react';
-import { View } from 'react-native';
+import { forwardRef, useCallback, useEffect, useMemo, useRef } from 'react';
+import { View, type LayoutChangeEvent } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import type { BottomSheetScrollViewMethods } from '@gorhom/bottom-sheet';
 import { ArrowSquareOutIcon } from 'phosphor-react-native';
 import { useT, SdsRadius, SdsSpacing } from '@skkuverse/shared';
 import { Pressable, Sheet, Txt, type SheetRef, useSemanticColors, createThemedStyles } from '@skkuverse/sds';
 import { NoticeMarkdownView } from '../NoticeMarkdownView';
+import { toQuoteFocus, type NoticeQuoteFocus } from '../notice-screen.rules';
 
 interface Props {
   markdown: string | null;
@@ -12,7 +14,13 @@ interface Props {
   onCopyText?: (text: string) => void;
   onOpenOriginal?: () => void;
   onClose: () => void;
+  quote?: string | null;
+  /** WHY: a new id on every line tap, so a second tap on the same line scrolls back to it. */
+  quoteTapId?: number;
 }
+
+// WHY: a few lines above the quoted one stay in view, so it reads in its context.
+const QUOTE_LEAD = SdsSpacing.x16;
 
 /**
  * WHY: the one action is a fixed footer, where the reader is after the last line; BottomSheetFooter moves
@@ -20,13 +28,27 @@ interface Props {
  */
 export const NoticeSourceSheet = forwardRef<SheetRef, Props>(
   function NoticeSourceSheet(
-    { markdown, sourceUrl, onCopyText, onOpenOriginal, onClose },
+    { markdown, sourceUrl, onCopyText, onOpenOriginal, onClose, quote = null, quoteTapId = 0 },
     ref,
   ) {
     const styles = useStyles();
     const color = useSemanticColors();
     const { t } = useT();
     const insets = useSafeAreaInsets();
+    const focus = useMemo(() => toQuoteFocus(markdown, quote), [markdown, quote]);
+    const scrollRef = useRef<BottomSheetScrollViewMethods>(null);
+    const highlight = useRef<{ focus: NoticeQuoteFocus; y: number } | null>(null);
+    const scrollToQuote = useCallback(
+      (y: number) => scrollRef.current?.scrollTo({ y: Math.max(0, y - QUOTE_LEAD), animated: true }),
+      [],
+    );
+    const onHighlightLayout = (event: LayoutChangeEvent) => {
+      highlight.current = { focus, y: event.nativeEvent.layout.y };
+      scrollToQuote(event.nativeEvent.layout.y);
+    };
+    useEffect(() => {
+      if (highlight.current?.focus === focus) scrollToQuote(highlight.current.y);
+    }, [quoteTapId, focus, scrollToQuote]);
 
     const footer = useMemo(
       () => (
@@ -80,16 +102,35 @@ export const NoticeSourceSheet = forwardRef<SheetRef, Props>(
         footer={footer}
       >
         <Sheet.ScrollView
+          ref={scrollRef}
           contentContainerStyle={[
             styles.content,
             { paddingBottom: FOOTER_HEIGHT + Math.max(insets.bottom, 12) },
           ]}
         >
-          <NoticeMarkdownView
-            markdown={markdown}
-            sourceUrl={sourceUrl}
-            onCopyText={onCopyText}
-          />
+          {focus.kind === 'found' ? (
+            <>
+              <NoticeMarkdownView markdown={focus.before} sourceUrl={sourceUrl} onCopyText={onCopyText} />
+              <View style={styles.highlight} onLayout={onHighlightLayout}>
+                <NoticeMarkdownView markdown={focus.line} sourceUrl={sourceUrl} onCopyText={onCopyText} />
+              </View>
+              <NoticeMarkdownView markdown={focus.after} sourceUrl={sourceUrl} onCopyText={onCopyText} />
+            </>
+          ) : (
+            <>
+              {focus.kind === 'pinned' ? (
+                <View style={[styles.highlight, styles.pinned]} onLayout={onHighlightLayout}>
+                  <Txt typography="t5" color="neutral">
+                    {focus.quote}
+                  </Txt>
+                  <Txt typography="t3" color="neutralSubtle">
+                    {t('notices.screen.quoteNotFound')}
+                  </Txt>
+                </View>
+              ) : null}
+              <NoticeMarkdownView markdown={markdown} sourceUrl={sourceUrl} onCopyText={onCopyText} />
+            </>
+          )}
         </Sheet.ScrollView>
       </Sheet>
     );
@@ -121,5 +162,16 @@ const useStyles = createThemedStyles(({ color }) => ({
   },
   closeButton: {
     overflow: 'hidden',
+  },
+  highlight: {
+    marginHorizontal: -SdsSpacing.x1_5,
+    paddingHorizontal: SdsSpacing.x1_5,
+    borderRadius: SdsRadius.r2,
+    backgroundColor: color.bg.warningWeak,
+  },
+  pinned: {
+    gap: SdsSpacing.x1,
+    paddingVertical: SdsSpacing.x3,
+    marginBottom: SdsSpacing.x4,
   },
 }));

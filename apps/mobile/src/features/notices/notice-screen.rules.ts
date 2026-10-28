@@ -52,3 +52,48 @@ export function toActionUrls(screen: NoticeScreen): string[] {
   const actions = screen.action ? [...lineActions, screen.action.action] : lineActions;
   return actions.flatMap((action) => (action.kind === 'link' ? [action.url] : []));
 }
+
+export type NoticeQuoteFocus =
+  | { kind: 'none' }
+  | { kind: 'found'; before: string; line: string; after: string }
+  | { kind: 'pinned'; quote: string };
+
+const FENCE = /^\s{0,3}(```|~~~)/;
+const TABLE_ROW = /^\s*\|/;
+const CONTINUATION = /^(?: {2,}|\t)(?![-*+] |\d+[.)] )\S/;
+const SETEXT_UNDERLINE = /^\s{0,3}(?:=+|-+)\s*$/;
+
+/** WHY: the quote is the source sentence as the server read it, so emphasis, escapes and full-width forms are not part of it. */
+function toComparable(text: string): string {
+  return text
+    .normalize('NFKC')
+    .replace(/\\(.)/g, '$1')
+    .replace(/\*\*|__|~~/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
+ * EVIDENCE: a crawled body is a few paragraphs of hard-broken lines (skku-main 140957 holds 50 hard breaks in 5 paragraphs), so a
+ * paragraph would light up dozens of lines; the focus is one source line, and a line that cannot stand alone is skipped.
+ */
+export function toQuoteFocus(markdown: string | null, quote: string | null): NoticeQuoteFocus {
+  if (quote === null) return { kind: 'none' };
+  const target = toComparable(quote);
+  if (target === '') return { kind: 'none' };
+  if (markdown === null) return { kind: 'pinned', quote };
+  const lines = markdown.split('\n');
+  let isInFence = false;
+  for (const [index, line] of lines.entries()) {
+    if (FENCE.test(line)) {
+      isInFence = !isInFence;
+      continue;
+    }
+    const next = lines[index + 1] ?? '';
+    if (isInFence || TABLE_ROW.test(line) || CONTINUATION.test(next) || SETEXT_UNDERLINE.test(next)) continue;
+    if (toComparable(line).includes(target)) {
+      return { kind: 'found', before: lines.slice(0, index).join('\n'), line, after: lines.slice(index + 1).join('\n') };
+    }
+  }
+  return { kind: 'pinned', quote };
+}

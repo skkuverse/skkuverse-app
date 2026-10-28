@@ -159,6 +159,8 @@ export function NoticeDetailScreen({ sourceId, articleNo, source }: Props) {
       <NoticeSourceSheet
         ref={sourceSheetRef}
         markdown={vm.sourceMarkdown}
+        quote={vm.sheetQuote.quote}
+        quoteTapId={vm.sheetQuote.tapId}
         sourceUrl={vm.sourceUrl}
         onCopyText={vm.onCopy}
         onOpenOriginal={vm.openOriginal}

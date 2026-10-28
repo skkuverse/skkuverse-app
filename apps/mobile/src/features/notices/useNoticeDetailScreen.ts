@@ -43,6 +43,7 @@ export function useNoticeDetailScreen({ sourceId, articleNo, source, reviewIcon 
   const { data, isLoading, isError, error, refetch } = useNoticeDetail(sourceId, articleNo);
   const { data: tabsConfig } = useNoticeTabs();
   const [toastText, setToastText] = useState<string | null>(null);
+  const [sheetQuote, setSheetQuote] = useState<{ quote: string | null; tapId: number }>({ quote: null, tapId: 0 });
   const [isRemoving, setIsRemoving] = useState(false);
 
   const review = useReviewPrompt({
@@ -129,6 +130,12 @@ export function useNoticeDetailScreen({ sourceId, articleNo, source, reviewIcon 
         item_id: `${current.sourceId}/${current.articleNo}`,
       });
     }
+    setSheetQuote((previous) => ({ quote: null, tapId: previous.tapId + 1 }));
+    sourceSheetRef.current?.present?.();
+  }, []);
+
+  const openQuote = useCallback((quote: string | null) => {
+    setSheetQuote((previous) => ({ quote, tapId: previous.tapId + 1 }));
     sourceSheetRef.current?.present?.();
   }, []);
 
@@ -136,12 +143,7 @@ export function useNoticeDetailScreen({ sourceId, articleNo, source, reviewIcon 
     sourceSheetRef.current?.dismiss?.();
   }, []);
 
-  const screenActions = useNoticeScreenActions({
-    sourceId,
-    articleNo,
-    onCopy,
-    openQuote: () => sourceSheetRef.current?.present?.(),
-  });
+  const screenActions = useNoticeScreenActions({ sourceId, articleNo, onCopy, openQuote });
 
   // WHY: the external browser, not the in-app shell: this opens from inside the source sheet, and a
   // router.push from there lands behind the sheet, so nothing seems to happen.
@@ -235,6 +237,7 @@ export function useNoticeDetailScreen({ sourceId, articleNo, source, reviewIcon 
     isRemoving,
     contentRefs,
     sourceMarkdown: data?.contentMarkdown ?? null,
+    sheetQuote,
     sourceUrl,
     sourceSheetRef,
     toastText,
