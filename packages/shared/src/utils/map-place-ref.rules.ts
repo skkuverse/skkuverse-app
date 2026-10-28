@@ -6,6 +6,8 @@ export interface MapPlaceRef {
   /** WHY: null for a bare id, which resolves as an event place. */
   kind: PlaceKind | null;
   placeId: string;
+  /** WHY: a caller that knows the room, not a parsed link; the grammar has no room, so a link never carries one. */
+  highlightSpaceCd?: string;
 }
 
 // WHY: both anchors are what stop `../../etc` from passing as a place id.

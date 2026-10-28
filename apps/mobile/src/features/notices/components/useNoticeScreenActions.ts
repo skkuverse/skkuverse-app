@@ -20,8 +20,8 @@ export function useNoticeScreenActions({ sourceId, articleNo, onCopy, openQuote 
     (action: NoticeAction) => {
       const handoff = toActionHandoff(action, Platform.OS === 'ios' ? 'ios' : 'android');
       if (handoff.via === 'map') {
-        // WHY: `handoff.space` is not passed on, since the map's place link carries no space; pass it once it does.
-        openMapPlace(handoff.place, 'notice', {
+        const place = handoff.space === null ? handoff.place : { ...handoff.place, highlightSpaceCd: handoff.space };
+        openMapPlace(place, 'notice', {
           href: '/notices/[sourceId]/[articleNo]',
           params: { sourceId, articleNo: String(articleNo) },
         });
