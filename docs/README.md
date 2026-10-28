@@ -15,7 +15,7 @@ audience: internal
 
 ## 1. Folders (Diátaxis)
 
-Documents are filed under the four [Diátaxis](https://diataxis.fr/) categories plus three internal ones. **The category follows the reader's need, not the subject matter**, and a document serves one need: when a procedure and its background start sharing a page, split them and link the halves. Knowledge local to one package belongs in that workspace's `README.md` or a document inside it, such as `packages/sds/SDS.md`; this folder is for knowledge that crosses package boundaries.
+Documents are filed under the four [Diátaxis](https://diataxis.fr/) categories plus three internal ones. **The category follows the reader's need, not the subject matter**, and a document serves one need: when a procedure and its background start sharing a page, split them and link the halves. Knowledge local to one package belongs in that workspace's `README.md` or a document inside it, such as `packages/sds/SDS.md`. This folder is for knowledge that crosses package boundaries.
 
 | Folder | Need | Contents |
 | --- | --- | --- |
@@ -25,7 +25,7 @@ Documents are filed under the four [Diátaxis](https://diataxis.fr/) categories 
 | `explanation/` | Understanding | Why something is shaped this way, and the native mechanism behind it |
 | `decisions/` | — | ADRs, `NNNN-kebab-title.md` |
 | `internal/` | — | Postmortems and debugging records, `YYYY-MM-topic.md` |
-| `plans/` | — | Work plans, mutable and draft by nature, until they ship |
+| `plans/` | — | Work plans, mutable and draft by nature, until their work is done |
 
 ## 2. Frontmatter and skeleton
 

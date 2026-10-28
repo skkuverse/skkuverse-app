@@ -29,7 +29,7 @@ the work happens upstream, and a maintainer completes the release outside this r
    (`apps/mobile/src/bootstrap/notifications/notification-channels.rules.ts`), and create a new
    channel id in `CHANNELS` in `notifications.service.ts` beside it. The comments at both hold the
    Android quirks. This table picks the channel only for the banner the app draws in the
-   foreground. A notification FCM draws takes its channel from the push, so a maintainer ships the
+   foreground. A notification FCM draws takes its channel from the push, so a maintainer deploys the
    same mapping on the sending side in the same release.
 
 ## Naming the tab id
