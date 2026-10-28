@@ -1,0 +1,36 @@
+{
+  "name": "skkuverse",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "scripts": {
+    "android": "yarn workspace mobile android",
+    "ios": "yarn workspace mobile ios",
+    "lint": "expo lint --max-warnings 0 || { s=$?; [ $s -ne 2 ] || echo 'lint: ESLint exited 2. If it reported suppressions left that no longer occur, run `yarn lint:prune` and commit the smaller eslint-suppressions.json.' >&2; exit $s; }; node scripts/eslint/disable-guard.mjs && node scripts/check-suppressions-ratchet.mjs && yarn lint:md",
+    "lint:md": "markdownlint-cli2",
+    "lint:prune": "test ! -f eslint-suppressions.json && echo 'lint:prune: no eslint-suppressions.json, nothing to prune' || eslint --no-cache --prune-suppressions",
+    "sds:exceptions": "node scripts/sds-report.mjs --exceptions",
+    "sds:report": "node scripts/sds-report.mjs",
+    "typecheck": "node scripts/check-patches.mjs && tsc --noEmit -p apps/mobile && tsc --noEmit -p packages/shared && tsc --noEmit -p packages/sds && tsc --noEmit -p packages/bridge",
+    "test": "yarn workspace @skkuverse/shared test && yarn workspace @skkuverse/sds test && yarn workspace mobile test && yarn test:repo",
+    "test:repo": "node --test 'scripts/**/*.test.mjs'",
+    "test:comments": "node scripts/architecture/comments.mjs --check",
+    "test:gate": "node scripts/test-gate.mjs",
+    "postinstall": "patch-package"
+  },
+  "dependencies": {
+    "expo": "~57.0.30",
+    "patch-package": "^8.0.1",
+    "react": "19.2.3",
+    "react-native": "0.86.3"
+  },
+  "devDependencies": {
+    "@phosphor-icons/core": "^2.1.1",
+    "@resvg/resvg-js": "^2.6.2",
+    "markdownlint-cli2": "^0.23.1"
+  }
+}

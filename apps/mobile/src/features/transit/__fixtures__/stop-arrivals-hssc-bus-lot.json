@@ -1,0 +1,197 @@
+{
+  "_about": "Synthetic, reshaped by ADR 0019 before any consumer: GET /bus/stops/hssc-bus-lot/arrivals at 14:10 KST on Tuesday 2026-10-20, Accept-Language ko, over the stores of __tests__/nest/bus/bus-stop-arrivals.routes.test.ts (a shuttle stop that aliases 종로07's pole 01618, so it lists the 인자셔틀's timetable entries and a 종로07 live entry); untrimmed. Each live entry's action (board, alight at a drop-off-only HSSC stop) is added by hand after towards, as the server serves it since 2026-10-23. Each live entry's direction (right after towards) is added by hand, as the server serves it since 2026-10-23 (ADR 0019, D16). Reshaped by hand 2026-10-25 to ADR 0022's call, as the server serves it since (server dev 8f3c67c2): each arrival takes isLastRun in place of isLastBus and gains runId, headsign, isFirstRun and isExpress, their values copied from the server's own reshaped fixture of the same name, in the call's key order; each vehicle loses isLastBus. No other value changed.",
+  "data": {
+    "stop": {
+      "id": "hssc-bus-lot",
+      "name": "학생회관 버스 주차장",
+      "detail": "600주년기념관 맞은편",
+      "coords": {
+        "lat": 37.587367,
+        "lng": 126.993643
+      },
+      "photoUrl": "https://media.skkuverse.com/bus/stops/hssc-bus-lot/original-b431e3b1.jpg",
+      "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=oCt8OYgXgYopNL-f4h4MAw&vrpanopan=-24&vrpanotilt=0&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=oCt8OYgXgYopNL-f4h4MAw&pan=-24&tilt=0&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3DoCt8OYgXgYopNL-f4h4MAw%26heading%3D-24%26tilt%3D0%26fov%3D80&app=Y&appmarket=N",
+      "arsIds": [
+        "01618"
+      ]
+    },
+    "routes": [
+      {
+        "kind": "timetable",
+        "groupId": "campus",
+        "label": "인사캠 → 자과캠",
+        "serviceId": "campus-inja",
+        "routeType": "regular",
+        "action": "board",
+        "operation": "running",
+        "vehicles": [],
+        "arrivals": [
+          {
+            "status": "scheduled",
+            "expectedArrivalAt": null,
+            "expectedDepartureAt": null,
+            "scheduledArrivalAt": null,
+            "scheduledDepartureAt": "2026-10-20T14:30:00+09:00",
+            "basis": "timetable",
+            "stopsAway": null,
+            "runId": "campus-inja|regular|2026-10-20|14:30",
+            "vehicleId": null,
+            "headsign": "인사캠 → 자과캠",
+            "isFirstRun": false,
+            "isLastRun": false,
+            "isExpress": null,
+            "providerText": null,
+            "runDepartureAt": "2026-10-20T14:30:00+09:00"
+          },
+          {
+            "status": "scheduled",
+            "expectedArrivalAt": null,
+            "expectedDepartureAt": null,
+            "scheduledArrivalAt": null,
+            "scheduledDepartureAt": "2026-10-20T15:00:00+09:00",
+            "basis": "timetable",
+            "stopsAway": null,
+            "runId": "campus-inja|regular|2026-10-20|15:00",
+            "vehicleId": null,
+            "headsign": "인사캠 → 자과캠",
+            "isFirstRun": false,
+            "isLastRun": false,
+            "isExpress": null,
+            "providerText": null,
+            "runDepartureAt": "2026-10-20T15:00:00+09:00"
+          },
+          {
+            "status": "scheduled",
+            "expectedArrivalAt": null,
+            "expectedDepartureAt": null,
+            "scheduledArrivalAt": null,
+            "scheduledDepartureAt": "2026-10-20T15:30:00+09:00",
+            "basis": "timetable",
+            "stopsAway": null,
+            "runId": "campus-inja|regular|2026-10-20|15:30",
+            "vehicleId": null,
+            "headsign": "인사캠 → 자과캠",
+            "isFirstRun": false,
+            "isLastRun": false,
+            "isExpress": null,
+            "providerText": null,
+            "runDepartureAt": "2026-10-20T15:30:00+09:00"
+          }
+        ]
+      },
+      {
+        "kind": "timetable",
+        "groupId": "campus",
+        "label": "인사캠 → 자과캠",
+        "serviceId": "campus-inja",
+        "routeType": "hakbu",
+        "action": "board",
+        "operation": "running",
+        "vehicles": [],
+        "arrivals": [
+          {
+            "status": "scheduled",
+            "expectedArrivalAt": null,
+            "expectedDepartureAt": null,
+            "scheduledArrivalAt": null,
+            "scheduledDepartureAt": "2026-10-23T13:00:00+09:00",
+            "basis": "timetable",
+            "stopsAway": null,
+            "runId": "campus-inja|hakbu|2026-10-23|13:00",
+            "vehicleId": null,
+            "headsign": "인사캠 → 자과캠",
+            "isFirstRun": true,
+            "isLastRun": true,
+            "isExpress": null,
+            "providerText": null,
+            "runDepartureAt": "2026-10-23T13:00:00+09:00"
+          },
+          {
+            "status": "scheduled",
+            "expectedArrivalAt": null,
+            "expectedDepartureAt": null,
+            "scheduledArrivalAt": null,
+            "scheduledDepartureAt": "2026-10-30T13:00:00+09:00",
+            "basis": "timetable",
+            "stopsAway": null,
+            "runId": "campus-inja|hakbu|2026-10-30|13:00",
+            "vehicleId": null,
+            "headsign": "인사캠 → 자과캠",
+            "isFirstRun": true,
+            "isLastRun": true,
+            "isExpress": null,
+            "providerText": null,
+            "runDepartureAt": "2026-10-30T13:00:00+09:00"
+          }
+        ]
+      },
+      {
+        "kind": "live",
+        "groupId": "jongro07",
+        "label": "종로 07",
+        "stationIndex": 1,
+        "towards": "비천당",
+        "direction": {
+          "id": "100900043",
+          "label": "이화사거리 방면"
+        },
+        "action": "board",
+        "stationsVersion": "0346768f2b776f45",
+        "updatedAt": "2026-10-20T14:09:55+09:00",
+        "operation": "running",
+        "vehicles": [
+          {
+            "id": "100000201",
+            "plateNumber": "서울74사2701",
+            "occupancy": {
+              "level": "relaxed",
+              "passengerCount": 9
+            },
+            "isLowFloor": true,
+            "position": {
+              "stationIndex": 0,
+              "status": "inTransit",
+              "progress": 0.5,
+              "sectionMeters": 300,
+              "coords": {
+                "lat": 37.587,
+                "lng": 126.998
+              },
+              "nextStationAt": "2026-10-20T14:11:40+09:00",
+              "positionAt": "2026-10-20T14:09:30+09:00",
+              "checkedAt": "2026-10-20T14:09:55+09:00"
+            },
+            "trajectory": [
+              {
+                "at": "2026-10-20T14:09:30+09:00",
+                "s": 0.5
+              },
+              {
+                "at": "2026-10-20T14:11:40+09:00",
+                "s": 1
+              }
+            ]
+          }
+        ],
+        "arrivals": [
+          {
+            "status": "enRoute",
+            "expectedArrivalAt": "2026-10-20T14:11:40+09:00",
+            "expectedDepartureAt": null,
+            "scheduledArrivalAt": null,
+            "scheduledDepartureAt": null,
+            "basis": "provider",
+            "stopsAway": 1,
+            "runId": null,
+            "vehicleId": "100000201",
+            "headsign": "이화사거리 방면",
+            "isFirstRun": null,
+            "isLastRun": false,
+            "isExpress": null,
+            "providerText": "2분후[1번째 전]"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,1126 @@
+{
+  "_about": "ADR 0010 PoC fixture, the week of 2026-10-19. Items from the 2026-10-25 study (umbrella ADR 0010 Context): B2 copies of the university-wide boards in skku_notices_dev.notices, read-only, places resolved by skkuverse-server src/building/place/ against production skkumap, copies and re-posts merged. One item is one notice on one campus; kind is the study's title regex; restriction, benefit and the sign-up windows are the stored summaries; imageUrl carries over from the v2 mock. Notices posted after `now` are left out. Not the final wire.",
+  "now": "2026-10-19T09:00:00+09:00",
+  "items": [
+    {
+      "id": "6a9f732b018a90c1d8ce2990:hssc",
+      "sourceId": "skku-main",
+      "articleNo": 139709,
+      "campus": "hssc",
+      "kind": "event",
+      "title": "유학대학 80주년 기념 특별 강연 안내(9/11(금)~10/23(금))",
+      "shortTitle": "유학대학 80주년 특별 강연",
+      "postedOn": "2026-10-01",
+      "restriction": null,
+      "benefit": null,
+      "signUp": {
+        "status": "none",
+        "windows": []
+      },
+      "sessions": [
+        {
+          "name": "특별 회고 강연",
+          "kind": "attend",
+          "startAt": "2026-09-11T00:00:00+09:00",
+          "endAt": "2026-10-24T00:00:00+09:00",
+          "timeKnown": false,
+          "places": [
+            {
+              "skkuId": 10,
+              "buildingName": "퇴계인문관",
+              "room": "첨단e+강의실(31409)"
+            }
+          ]
+        }
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": "6ab36ae1b6accc5de8072e24:hssc",
+      "sourceId": "skku-main",
+      "articleNo": 140164,
+      "campus": "hssc",
+      "kind": "event",
+      "title": "[인공지능혁신융합대학사업단] 2026년 10월 전문가 특강 안내",
+      "shortTitle": "AI 시대 인문학 특강",
+      "postedOn": "2026-10-07",
+      "restriction": "디지털인문학입문 수강생",
+      "benefit": null,
+      "signUp": {
+        "status": "undated",
+        "windows": []
+      },
+      "sessions": [
+        {
+          "name": "전문가 특강",
+          "kind": "attend",
+          "startAt": "2026-10-16T10:30:00+09:00",
+          "endAt": "2026-10-16T12:00:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 11,
+              "buildingName": "다산경제관",
+              "room": null
+            }
+          ]
+        }
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": "6ab0c0d9b6accc5de8047a5c:hssc",
+      "sourceId": "skku-main",
+      "articleNo": 140079,
+      "campus": "hssc",
+      "kind": "job",
+      "title": "[교수학습혁신센터] 2026 AI in Higher Education Conference 아르바이트 모집",
+      "shortTitle": "AI in Higher Education",
+      "postedOn": "2026-09-21",
+      "restriction": null,
+      "benefit": "총 108,000원",
+      "signUp": {
+        "status": "dated",
+        "windows": [
+          {
+            "startAt": "2026-09-21T00:00:00+09:00",
+            "endAt": "2026-09-30T14:00:00+09:00"
+          }
+        ]
+      },
+      "sessions": [
+        {
+          "name": "사전 OT",
+          "kind": "attend",
+          "startAt": "2026-10-16T14:00:00+09:00",
+          "endAt": "2026-10-16T15:00:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 12,
+              "buildingName": "경영관",
+              "room": "Live Virtual Studio"
+            }
+          ]
+        }
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": "6abd07d2b0c27d3990bc2a37:hssc",
+      "sourceId": "skku-main",
+      "articleNo": 140251,
+      "campus": "hssc",
+      "kind": "event",
+      "title": "[재안내] 사회과학대학 제40회 수선포럼 개최 안내: 2026.10.21.(수) 11:30~13:00",
+      "shortTitle": "수선포럼",
+      "postedOn": "2026-10-07",
+      "restriction": null,
+      "benefit": null,
+      "signUp": {
+        "status": "none",
+        "windows": []
+      },
+      "sessions": [
+        {
+          "name": "수선포럼",
+          "kind": "attend",
+          "startAt": "2026-10-21T11:30:00+09:00",
+          "endAt": "2026-10-21T13:00:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 13,
+              "buildingName": "수선관",
+              "room": "사회과학연구원 컨퍼런스 룸"
+            }
+          ]
+        }
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": "6ac738699cb01d9a98d86e68:hssc",
+      "sourceId": "skku-main",
+      "articleNo": 140459,
+      "campus": "hssc",
+      "kind": "event",
+      "title": "[교수학습혁신센터] 제2회 AI in Higher Education 컨퍼런스 참여 안내",
+      "shortTitle": "AI in Higher Education",
+      "postedOn": "2026-10-08",
+      "restriction": null,
+      "benefit": "참가확인증 발급",
+      "signUp": {
+        "status": "undated",
+        "windows": []
+      },
+      "sessions": [
+        {
+          "name": "제2회 AI in Higher Education",
+          "kind": "attend",
+          "startAt": "2026-10-23T13:00:00+09:00",
+          "endAt": "2026-10-23T17:00:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 2,
+              "buildingName": "600주년기념관",
+              "room": "조병두국제홀(국제회의장)"
+            }
+          ]
+        }
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": "6ad080fa9cb01d9a98f1fcd0:hssc",
+      "sourceId": "skku-main",
+      "articleNo": 140602,
+      "campus": "hssc",
+      "kind": "event",
+      "title": "[학생인재개발팀] 2026학년도 2학기 국가고시 및 전문자격증 설명회 참가 신청",
+      "shortTitle": "국가고시·전문자격증 설명회",
+      "postedOn": "2026-10-15",
+      "restriction": null,
+      "benefit": "국가고시 길라잡이 책자·기념품",
+      "signUp": {
+        "status": "dated",
+        "windows": [
+          {
+            "startAt": null,
+            "endAt": "2026-10-26T00:00:00+09:00"
+          }
+        ]
+      },
+      "sessions": [
+        {
+          "name": "공인회계사시험 설명회",
+          "kind": "attend",
+          "startAt": "2026-10-28T15:00:00+09:00",
+          "endAt": "2026-10-28T16:30:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 12,
+              "buildingName": "경영관",
+              "room": "계단강의실(33B101)"
+            }
+          ]
+        },
+        {
+          "name": "행정고시·외교관후보자선발시험 설명회",
+          "kind": "attend",
+          "startAt": "2026-11-04T15:00:00+09:00",
+          "endAt": "2026-11-04T17:10:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 12,
+              "buildingName": "경영관",
+              "room": "계단강의실(33B101)"
+            }
+          ]
+        }
+      ],
+      "imageUrl": "https://www.skku.edu/_attach/image/2026/10/aropGBoXHHiLAWLOflCI.jpg"
+    },
+    {
+      "id": "6ac73f729cb01d9a98d86fe1:hssc",
+      "sourceId": "skku-main",
+      "articleNo": 140461,
+      "campus": "hssc",
+      "kind": "event",
+      "title": "[학생인재개발팀/대학일자리플러스센터] 2026 하반기 한국무역보험공사와 함께하는 무역금융 특강",
+      "shortTitle": "무역금융 특강",
+      "postedOn": "2026-10-08",
+      "restriction": null,
+      "benefit": "추첨 경품",
+      "signUp": {
+        "status": "undated",
+        "windows": []
+      },
+      "sessions": [
+        {
+          "name": "무역금융 특강",
+          "kind": "attend",
+          "startAt": "2026-10-29T15:00:00+09:00",
+          "endAt": "2026-10-29T17:00:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 12,
+              "buildingName": "경영관",
+              "room": "계단강의실(33B101)"
+            }
+          ]
+        }
+      ],
+      "imageUrl": "https://www.skku.edu/_attach/image/2026/10/ipQqpHecUfEfJqNvSGHB.jpg"
+    },
+    {
+      "id": "6acdddf99cb01d9a98e6c3c8:hssc",
+      "sourceId": "skku-main",
+      "articleNo": 140544,
+      "campus": "hssc",
+      "kind": "event",
+      "title": "2026년 졸업앨범 추가 촬영 안내",
+      "shortTitle": "졸업앨범 추가 촬영",
+      "postedOn": "2026-10-14",
+      "restriction": "졸업예정자",
+      "benefit": null,
+      "signUp": {
+        "status": "dated",
+        "windows": [
+          {
+            "startAt": "2026-10-12T00:00:00+09:00",
+            "endAt": "2026-10-28T14:00:00+09:00"
+          }
+        ]
+      },
+      "sessions": [
+        {
+          "name": "졸업앨범 촬영",
+          "kind": "attend",
+          "startAt": "2026-11-02T00:00:00+09:00",
+          "endAt": "2026-11-03T00:00:00+09:00",
+          "timeKnown": false,
+          "places": [
+            {
+              "skkuId": 12,
+              "buildingName": "경영관",
+              "room": "소극장"
+            }
+          ]
+        }
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": "6acc705a9cb01d9a98e334cc:hssc",
+      "sourceId": "skku-main",
+      "articleNo": 140500,
+      "campus": "hssc",
+      "kind": "call",
+      "title": "(성균인성교육센터) 2026-2 성균인의 자기이해 <인성함양 실천 특별프로그램 [성균]> 참가자 모집",
+      "shortTitle": "성균인의 자기이해 특별프로그램",
+      "postedOn": "2026-10-19",
+      "restriction": null,
+      "benefit": "창의품 2시간 부여",
+      "signUp": {
+        "status": "undated",
+        "windows": []
+      },
+      "sessions": [
+        {
+          "name": "성균인의 자기이해 특별프로그램",
+          "kind": "attend",
+          "startAt": "2026-11-02T15:00:00+09:00",
+          "endAt": "2026-11-02T17:00:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 9,
+              "buildingName": "국제관",
+              "room": "강의실"
+            },
+            {
+              "skkuId": 2,
+              "buildingName": "600주년기념관",
+              "room": null
+            },
+            {
+              "skkuId": 72,
+              "buildingName": "명륜당",
+              "room": null
+            }
+          ]
+        },
+        {
+          "name": "성균인의 자기이해 특별프로그램",
+          "kind": "attend",
+          "startAt": "2026-11-09T15:00:00+09:00",
+          "endAt": "2026-11-09T17:00:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 9,
+              "buildingName": "국제관",
+              "room": "강의실"
+            },
+            {
+              "skkuId": 2,
+              "buildingName": "600주년기념관",
+              "room": null
+            },
+            {
+              "skkuId": 72,
+              "buildingName": "명륜당",
+              "room": null
+            }
+          ]
+        },
+        {
+          "name": "성균인의 자기이해 특별프로그램",
+          "kind": "attend",
+          "startAt": "2026-11-16T15:00:00+09:00",
+          "endAt": "2026-11-16T17:00:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 9,
+              "buildingName": "국제관",
+              "room": "강의실"
+            },
+            {
+              "skkuId": 2,
+              "buildingName": "600주년기념관",
+              "room": null
+            },
+            {
+              "skkuId": 72,
+              "buildingName": "명륜당",
+              "room": null
+            }
+          ]
+        },
+        {
+          "name": "성균인의 자기이해 특별프로그램",
+          "kind": "attend",
+          "startAt": "2026-11-23T15:00:00+09:00",
+          "endAt": "2026-11-23T17:00:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 9,
+              "buildingName": "국제관",
+              "room": "강의실"
+            },
+            {
+              "skkuId": 2,
+              "buildingName": "600주년기념관",
+              "room": null
+            },
+            {
+              "skkuId": 72,
+              "buildingName": "명륜당",
+              "room": null
+            }
+          ]
+        }
+      ],
+      "imageUrl": "https://www.skku.edu/_attach/image/2026/10/kTpGBJHRtrVscfqUaFoe.jpg"
+    },
+    {
+      "id": "6ad5b1e19cb01d9a9805c32c:hssc",
+      "sourceId": "skku-main",
+      "articleNo": 140651,
+      "campus": "hssc",
+      "kind": "event",
+      "title": "Prof. Michael Naef (Durham) 신경경제학(Neuroeconomics) 특강 (11/3)",
+      "shortTitle": "신경경제학 특강",
+      "postedOn": "2026-10-19",
+      "restriction": null,
+      "benefit": null,
+      "signUp": {
+        "status": "none",
+        "windows": []
+      },
+      "sessions": [
+        {
+          "name": "특별강연",
+          "kind": "attend",
+          "startAt": "2026-11-03T10:30:00+09:00",
+          "endAt": "2026-11-03T11:45:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 9,
+              "buildingName": "국제관",
+              "room": "첨단강의실"
+            }
+          ]
+        }
+      ],
+      "imageUrl": "https://www.skku.edu/_attach/image/2026/10/NsbqOmkVlEpOPvMYwsfp.png"
+    },
+    {
+      "id": "6abcba79b0c27d3990bb657d:hssc",
+      "sourceId": "skku-main",
+      "articleNo": 140237,
+      "campus": "hssc",
+      "kind": "event",
+      "title": "[학생인재개발팀/대학일자리플러스센터] 삼양그룹 임원 설명회",
+      "shortTitle": "삼양그룹 임원 설명회",
+      "postedOn": "2026-09-30",
+      "restriction": null,
+      "benefit": "에어팟 추첨",
+      "signUp": {
+        "status": "undated",
+        "windows": []
+      },
+      "sessions": [
+        {
+          "name": "삼양그룹 임원 설명회",
+          "kind": "attend",
+          "startAt": "2026-11-03T16:30:00+09:00",
+          "endAt": "2026-11-03T18:00:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 12,
+              "buildingName": "경영관",
+              "room": "계단강의실(33B101)"
+            }
+          ]
+        }
+      ],
+      "imageUrl": "https://www.skku.edu/_attach/image/2026/09/GkxGLwSFrsAIZBjPFPgN.png"
+    },
+    {
+      "id": "6ac4b188b0c27d3990cdb77b:hssc",
+      "sourceId": "skku-main",
+      "articleNo": 140379,
+      "campus": "hssc",
+      "kind": "event",
+      "title": "2026 하반기 졸업선배 릴레이 특강(10,11월): 삼성전자, 우리카드",
+      "shortTitle": "졸업선배 릴레이 특강",
+      "postedOn": "2026-10-06",
+      "restriction": null,
+      "benefit": "창의품 인증 가능 비교과 이수시간",
+      "signUp": {
+        "status": "undated",
+        "windows": []
+      },
+      "sessions": [
+        {
+          "name": "우리카드 현직 동문 특강",
+          "kind": "attend",
+          "startAt": "2026-11-03T19:00:00+09:00",
+          "endAt": "2026-11-03T20:00:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 12,
+              "buildingName": "경영관",
+              "room": "계단강의실(33B101)"
+            }
+          ]
+        }
+      ],
+      "imageUrl": "https://www.skku.edu/_attach/image/2026/10/lHcMrweMbzTdKhMzWvrB.png"
+    },
+    {
+      "id": "6ac4794ab0c27d3990cd68b6:hssc",
+      "sourceId": "skku-main",
+      "articleNo": 140355,
+      "campus": "hssc",
+      "kind": "event",
+      "title": "제40회 학생성공스토리 특강: 규제정책과 정치의 효능(박용진 선배, 사회학과 90)",
+      "shortTitle": "규제정책과 정치의 효능",
+      "postedOn": "2026-10-06",
+      "restriction": null,
+      "benefit": "박용진 선배 특강 및 커피챗",
+      "signUp": {
+        "status": "dated",
+        "windows": [
+          {
+            "startAt": null,
+            "endAt": "2026-11-03T09:00:00+09:00"
+          }
+        ]
+      },
+      "sessions": [
+        {
+          "name": "제40회 학생성공스토리 특강",
+          "kind": "attend",
+          "startAt": "2026-11-04T14:00:00+09:00",
+          "endAt": "2026-11-04T15:30:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 9,
+              "buildingName": "국제관",
+              "room": "SKKU Global R&E Lounge"
+            }
+          ]
+        }
+      ],
+      "imageUrl": "https://www.skku.edu/_attach/image/2026/10/ODGpHRBEhOETDpBfcnru.jpg"
+    },
+    {
+      "id": "6abdc5aab0c27d3990be66f7:nsc",
+      "sourceId": "skku-main",
+      "articleNo": 140263,
+      "campus": "nsc",
+      "kind": "event",
+      "title": "[약학대학 BK21] 2026 SKKU Global Drug Discovery Symposium 개최 안내",
+      "shortTitle": "SKKU Global Drug",
+      "postedOn": "2026-10-02",
+      "restriction": null,
+      "benefit": null,
+      "signUp": {
+        "status": "none",
+        "windows": []
+      },
+      "sessions": [
+        {
+          "name": "2026 SKKU Global Drug Discovery Symposium",
+          "kind": "attend",
+          "startAt": "2026-10-16T13:00:00+09:00",
+          "endAt": "2026-10-17T00:00:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 29,
+              "buildingName": "약학관",
+              "room": "첨단강의실"
+            }
+          ]
+        }
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": "6ac4b188b0c27d3990cdb77b:nsc",
+      "sourceId": "skku-main",
+      "articleNo": 140379,
+      "campus": "nsc",
+      "kind": "event",
+      "title": "2026 하반기 졸업선배 릴레이 특강(10,11월): 삼성전자, 우리카드",
+      "shortTitle": "졸업선배 릴레이 특강",
+      "postedOn": "2026-10-06",
+      "restriction": null,
+      "benefit": "창의품 인증 가능 비교과 이수시간",
+      "signUp": {
+        "status": "undated",
+        "windows": []
+      },
+      "sessions": [
+        {
+          "name": "삼성전자 현직 동문 특강",
+          "kind": "attend",
+          "startAt": "2026-10-26T18:30:00+09:00",
+          "endAt": "2026-10-26T20:00:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 24,
+              "buildingName": "제2과학관32동",
+              "room": "송천강의실"
+            }
+          ]
+        }
+      ],
+      "imageUrl": "https://www.skku.edu/_attach/image/2026/10/lHcMrweMbzTdKhMzWvrB.png"
+    },
+    {
+      "id": "6abb53e3b0c27d3990b41317:nsc",
+      "sourceId": "skku-main",
+      "articleNo": 140200,
+      "campus": "nsc",
+      "kind": "call",
+      "title": "[KUSF 두드림] 스포츠단 검도부 재능 기부 프로그램 참여자 모집 (창의품 16시간 지급)",
+      "shortTitle": "검도 재능 기부 프로그램",
+      "postedOn": "2026-09-29",
+      "restriction": null,
+      "benefit": "창의품 16시간",
+      "signUp": {
+        "status": "undated",
+        "windows": []
+      },
+      "sessions": [
+        {
+          "name": "검도 프로그램",
+          "kind": "attend",
+          "startAt": "2026-10-27T00:00:00+09:00",
+          "endAt": "2026-10-28T00:00:00+09:00",
+          "timeKnown": false,
+          "places": [
+            {
+              "skkuId": 17,
+              "buildingName": "수성관",
+              "room": null
+            }
+          ]
+        },
+        {
+          "name": "검도 프로그램",
+          "kind": "attend",
+          "startAt": "2026-10-29T00:00:00+09:00",
+          "endAt": "2026-10-30T00:00:00+09:00",
+          "timeKnown": false,
+          "places": [
+            {
+              "skkuId": 17,
+              "buildingName": "수성관",
+              "room": null
+            }
+          ]
+        },
+        {
+          "name": "검도 프로그램",
+          "kind": "attend",
+          "startAt": "2026-11-03T00:00:00+09:00",
+          "endAt": "2026-11-04T00:00:00+09:00",
+          "timeKnown": false,
+          "places": [
+            {
+              "skkuId": 17,
+              "buildingName": "수성관",
+              "room": null
+            }
+          ]
+        },
+        {
+          "name": "검도 프로그램",
+          "kind": "attend",
+          "startAt": "2026-11-05T00:00:00+09:00",
+          "endAt": "2026-11-06T00:00:00+09:00",
+          "timeKnown": false,
+          "places": [
+            {
+              "skkuId": 17,
+              "buildingName": "수성관",
+              "room": null
+            }
+          ]
+        },
+        {
+          "name": "검도 프로그램",
+          "kind": "attend",
+          "startAt": "2026-11-17T00:00:00+09:00",
+          "endAt": "2026-11-18T00:00:00+09:00",
+          "timeKnown": false,
+          "places": [
+            {
+              "skkuId": 17,
+              "buildingName": "수성관",
+              "room": null
+            }
+          ]
+        },
+        {
+          "name": "검도 프로그램",
+          "kind": "attend",
+          "startAt": "2026-11-19T00:00:00+09:00",
+          "endAt": "2026-11-20T00:00:00+09:00",
+          "timeKnown": false,
+          "places": [
+            {
+              "skkuId": 17,
+              "buildingName": "수성관",
+              "room": null
+            }
+          ]
+        },
+        {
+          "name": "검도 프로그램",
+          "kind": "attend",
+          "startAt": "2026-11-24T00:00:00+09:00",
+          "endAt": "2026-11-25T00:00:00+09:00",
+          "timeKnown": false,
+          "places": [
+            {
+              "skkuId": 17,
+              "buildingName": "수성관",
+              "room": null
+            }
+          ]
+        },
+        {
+          "name": "검도 프로그램",
+          "kind": "attend",
+          "startAt": "2026-11-26T00:00:00+09:00",
+          "endAt": "2026-11-27T00:00:00+09:00",
+          "timeKnown": false,
+          "places": [
+            {
+              "skkuId": 17,
+              "buildingName": "수성관",
+              "room": null
+            }
+          ]
+        }
+      ],
+      "imageUrl": "https://www.skku.edu/_attach/image/2026/09/YmdSnKDEgguSnCQfoKrG.jpg"
+    },
+    {
+      "id": "6ac5d8da9cb01d9a98d580be:nsc",
+      "sourceId": "skku-main",
+      "articleNo": 140402,
+      "campus": "nsc",
+      "kind": "call",
+      "title": "[KUSF 두드림] 스포츠단 농구부 재능 기부 프로그램 참여자 모집 (창의품 10시간 지급)",
+      "shortTitle": "농구 재능 기부 프로그램",
+      "postedOn": "2026-10-07",
+      "restriction": null,
+      "benefit": "창의품 10시간",
+      "signUp": {
+        "status": "undated",
+        "windows": []
+      },
+      "sessions": [
+        {
+          "name": "SKKU MOVEMENT 농구 프로그램",
+          "kind": "attend",
+          "startAt": "2026-10-27T00:00:00+09:00",
+          "endAt": "2026-12-04T00:00:00+09:00",
+          "timeKnown": false,
+          "places": [
+            {
+              "skkuId": 50,
+              "buildingName": "체육관",
+              "room": null
+            }
+          ]
+        },
+        {
+          "name": "SKKU MOVEMENT 농구 프로그램",
+          "kind": "attend",
+          "startAt": "2026-10-27T00:00:00+09:00",
+          "endAt": "2026-10-28T00:00:00+09:00",
+          "timeKnown": false,
+          "places": [
+            {
+              "skkuId": 50,
+              "buildingName": "체육관",
+              "room": null
+            }
+          ]
+        },
+        {
+          "name": "SKKU MOVEMENT 농구 프로그램",
+          "kind": "attend",
+          "startAt": "2026-11-17T00:00:00+09:00",
+          "endAt": "2026-11-18T00:00:00+09:00",
+          "timeKnown": false,
+          "places": [
+            {
+              "skkuId": 50,
+              "buildingName": "체육관",
+              "room": null
+            }
+          ]
+        },
+        {
+          "name": "SKKU MOVEMENT 농구 프로그램",
+          "kind": "attend",
+          "startAt": "2026-11-19T00:00:00+09:00",
+          "endAt": "2026-11-20T00:00:00+09:00",
+          "timeKnown": false,
+          "places": [
+            {
+              "skkuId": 50,
+              "buildingName": "체육관",
+              "room": null
+            }
+          ]
+        },
+        {
+          "name": "SKKU MOVEMENT 농구 프로그램",
+          "kind": "attend",
+          "startAt": "2026-12-01T00:00:00+09:00",
+          "endAt": "2026-12-02T00:00:00+09:00",
+          "timeKnown": false,
+          "places": [
+            {
+              "skkuId": 50,
+              "buildingName": "체육관",
+              "room": null
+            }
+          ]
+        },
+        {
+          "name": "SKKU MOVEMENT 농구 프로그램",
+          "kind": "attend",
+          "startAt": "2026-12-03T00:00:00+09:00",
+          "endAt": "2026-12-04T00:00:00+09:00",
+          "timeKnown": false,
+          "places": [
+            {
+              "skkuId": 50,
+              "buildingName": "체육관",
+              "room": null
+            }
+          ]
+        }
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": "6acdddf99cb01d9a98e6c3c8:nsc",
+      "sourceId": "skku-main",
+      "articleNo": 140544,
+      "campus": "nsc",
+      "kind": "event",
+      "title": "2026년 졸업앨범 추가 촬영 안내",
+      "shortTitle": "졸업앨범 추가 촬영",
+      "postedOn": "2026-10-14",
+      "restriction": "졸업예정자",
+      "benefit": null,
+      "signUp": {
+        "status": "dated",
+        "windows": [
+          {
+            "startAt": "2026-10-12T00:00:00+09:00",
+            "endAt": "2026-10-28T14:00:00+09:00"
+          }
+        ]
+      },
+      "sessions": [
+        {
+          "name": "졸업앨범 촬영",
+          "kind": "attend",
+          "startAt": "2026-10-29T00:00:00+09:00",
+          "endAt": "2026-10-30T00:00:00+09:00",
+          "timeKnown": false,
+          "places": [
+            {
+              "skkuId": 15,
+              "buildingName": "학생회관",
+              "room": "소강당"
+            }
+          ]
+        }
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": "6ac73f719cb01d9a98d86fe0:nsc",
+      "sourceId": "skku-main",
+      "articleNo": 140460,
+      "campus": "nsc",
+      "kind": "call",
+      "title": "[대학혁신과공유센터] 인텐시브 워크숍 <바이브코딩으로 게임 만들기(with NC AI)> 참가 모집",
+      "shortTitle": "바이브코딩으로 게임 만들기",
+      "postedOn": "2026-10-08",
+      "restriction": null,
+      "benefit": "최대 120만원 상금",
+      "signUp": {
+        "status": "dated",
+        "windows": [
+          {
+            "startAt": "2026-10-08T00:00:00+09:00",
+            "endAt": "2026-10-22T10:00:00+09:00"
+          }
+        ]
+      },
+      "sessions": [
+        {
+          "name": "오리엔테이션 및 계정 세팅",
+          "kind": "attend",
+          "startAt": "2026-10-30T13:00:00+09:00",
+          "endAt": "2026-10-30T17:00:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 27,
+              "buildingName": "삼성학술정보관",
+              "room": "응용AI융합학부강의실2"
+            }
+          ]
+        }
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": "6aac9b21b6accc5de8013e7d:nsc",
+      "sourceId": "skku-main",
+      "articleNo": 140037,
+      "campus": "nsc",
+      "kind": "event",
+      "title": "[학생성공센터]제39회 학생성공스토리 특강: \"창업을 배우고 도전을 만나다\"",
+      "shortTitle": "학생성공스토리 특강",
+      "postedOn": "2026-10-06",
+      "restriction": null,
+      "benefit": "연사와 커피챗 참여",
+      "signUp": {
+        "status": "dated",
+        "windows": [
+          {
+            "startAt": "2026-09-21T00:00:00+09:00",
+            "endAt": "2026-10-29T00:00:00+09:00"
+          }
+        ]
+      },
+      "sessions": [
+        {
+          "name": "제39회 학생성공스토리 특강",
+          "kind": "attend",
+          "startAt": "2026-10-30T14:00:00+09:00",
+          "endAt": "2026-10-30T16:00:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 22,
+              "buildingName": "제2공학관27동",
+              "room": "Live Virtual Studio"
+            }
+          ]
+        }
+      ],
+      "imageUrl": "https://www.skku.edu/_attach/image/2026/09/jfjbdDMZRMKSuvtOwfPd.jpg"
+    },
+    {
+      "id": "6ac592899cb01d9a98d50acd:nsc",
+      "sourceId": "skku-main",
+      "articleNo": 140385,
+      "campus": "nsc",
+      "kind": "event",
+      "title": "[세미나] 양자정보연구지원센터 2026 제4회 양자정보세미나 개최 안내",
+      "shortTitle": "양자정보세미나",
+      "postedOn": "2026-10-07",
+      "restriction": null,
+      "benefit": null,
+      "signUp": {
+        "status": "dated",
+        "windows": [
+          {
+            "startAt": null,
+            "endAt": "2026-10-29T00:00:00+09:00"
+          }
+        ]
+      },
+      "sessions": [
+        {
+          "name": "제4회 양자정보세미나",
+          "kind": "attend",
+          "startAt": "2026-10-30T14:00:00+09:00",
+          "endAt": "2026-10-31T00:00:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 26,
+              "buildingName": "반도체관",
+              "room": "첨단강의실"
+            }
+          ]
+        }
+      ],
+      "imageUrl": "https://www.skku.edu/_attach/image/2026/10/MmMwVOhcLebGFCzRMwQh.png"
+    },
+    {
+      "id": "6ac5dfe19cb01d9a98d58365:nsc",
+      "sourceId": "skku-main",
+      "articleNo": 140407,
+      "campus": "nsc",
+      "kind": "event",
+      "title": "스웨덴 왕립과학한림원 원장 특별 강연 안내 (10/30(금) 14:00)",
+      "shortTitle": "스벤 리딘 원장 특별 강연",
+      "postedOn": "2026-10-07",
+      "restriction": null,
+      "benefit": null,
+      "signUp": {
+        "status": "undated",
+        "windows": []
+      },
+      "sessions": [
+        {
+          "name": "특별 강연",
+          "kind": "attend",
+          "startAt": "2026-10-30T14:00:00+09:00",
+          "endAt": "2026-10-30T15:45:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 27,
+              "buildingName": "삼성학술정보관",
+              "room": "오디토리움"
+            }
+          ]
+        }
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": "6ad080fa9cb01d9a98f1fcd0:nsc",
+      "sourceId": "skku-main",
+      "articleNo": 140602,
+      "campus": "nsc",
+      "kind": "event",
+      "title": "[학생인재개발팀] 2026학년도 2학기 국가고시 및 전문자격증 설명회 참가 신청",
+      "shortTitle": "국가고시·전문자격증 설명회",
+      "postedOn": "2026-10-15",
+      "restriction": null,
+      "benefit": "국가고시 길라잡이 책자·기념품",
+      "signUp": {
+        "status": "dated",
+        "windows": [
+          {
+            "startAt": null,
+            "endAt": "2026-10-26T00:00:00+09:00"
+          }
+        ]
+      },
+      "sessions": [
+        {
+          "name": "변리사시험 설명회",
+          "kind": "attend",
+          "startAt": "2026-10-30T15:00:00+09:00",
+          "endAt": "2026-10-30T16:30:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 21,
+              "buildingName": "제2공학관26동",
+              "room": "원격화상강의실"
+            }
+          ]
+        },
+        {
+          "name": "기술고시 설명회",
+          "kind": "attend",
+          "startAt": "2026-11-06T13:30:00+09:00",
+          "endAt": "2026-11-06T15:30:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 21,
+              "buildingName": "제2공학관26동",
+              "room": "원격화상강의실"
+            }
+          ]
+        }
+      ],
+      "imageUrl": "https://www.skku.edu/_attach/image/2026/10/aropGBoXHHiLAWLOflCI.jpg"
+    },
+    {
+      "id": "6ad08f0b9cb01d9a98f2028c:nsc",
+      "sourceId": "skku-main",
+      "articleNo": 140605,
+      "campus": "nsc",
+      "kind": "call",
+      "title": "[공학교육혁신센터] 2026 공학페스티벌 서포터즈「E² 메이트」모집 안내(~10/22(목)까지)",
+      "shortTitle": "공학페스티벌 서포터즈",
+      "postedOn": "2026-10-15",
+      "restriction": "공학계열",
+      "benefit": "활동수료증·활동비",
+      "signUp": {
+        "status": "dated",
+        "windows": [
+          {
+            "startAt": "2026-10-12T00:00:00+09:00",
+            "endAt": "2026-10-23T00:00:00+09:00"
+          }
+        ]
+      },
+      "sessions": [
+        {
+          "name": "창의적 종합설계 경진대회(예선)",
+          "kind": "attend",
+          "startAt": "2026-11-02T13:00:00+09:00",
+          "endAt": "2026-11-02T17:00:00+09:00",
+          "timeKnown": true,
+          "places": [
+            {
+              "skkuId": 87,
+              "buildingName": "CNS센터",
+              "room": "Global Lounge"
+            }
+          ]
+        }
+      ],
+      "imageUrl": null
+    }
+  ]
+}

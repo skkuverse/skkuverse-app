@@ -1,0 +1,157 @@
+diff --git a/node_modules/@hot-updater/react-native/android/src/main/java/com/hotupdater/BundleFileStorageService.kt b/node_modules/@hot-updater/react-native/android/src/main/java/com/hotupdater/BundleFileStorageService.kt
+index d7c7162..401989c 100644
+--- a/node_modules/@hot-updater/react-native/android/src/main/java/com/hotupdater/BundleFileStorageService.kt
++++ b/node_modules/@hot-updater/react-native/android/src/main/java/com/hotupdater/BundleFileStorageService.kt
+@@ -151,6 +151,14 @@ interface BundleStorageService {
+ 
+     suspend fun commitReleaseSelection(selection: PersistedSelection): Boolean = false
+ 
++    /**
++     * PATCH(skkuverse): records that a launch of a verification-pending bundle has
++     * reached UI, so the next process rolls the bundle back if this one dies before
++     * first content. HotUpdaterImpl calls it on the first activity start, replacing
++     * the write that prepareLaunch used to make.
++     */
++    fun markLaunchStarted(launchedBundleId: String?) {}
++
+     /**
+      * Marks the current launch as successful after the first content appeared.
+      */
+@@ -1380,6 +1388,25 @@ class BundleFileStorageService(
+         return true
+     }
+ 
++    override fun markLaunchStarted(launchedBundleId: String?) {
++        // Unlike prepareLaunch, this runs while JS may be staging a newer bundle, and
++        // that save holds releaseStateLock. Without the lock the copy read here could
++        // overwrite the staged metadata.
++        synchronized(releaseStateLock) {
++            val metadata = loadMetadataOrNull() ?: return
++            // A no-op once first content verified the bundle, or once a newer bundle was
++            // staged: this process did not launch that one.
++            if (!metadata.verificationPending ||
++                metadata.launchInProgress ||
++                metadata.stagingBundleId == null ||
++                metadata.stagingBundleId != launchedBundleId
++            ) {
++                return
++            }
++            saveMetadata(metadata.copy(launchInProgress = true))
++        }
++    }
++
+     override fun markLaunchCompleted(currentBundleId: String?) {
+         val metadata = loadMetadataOrNull() ?: return
+         val stagingBundleId = metadata.stagingBundleId ?: return
+@@ -1489,11 +1516,10 @@ class BundleFileStorageService(
+         hasPreparedLaunch = true
+ 
+         val selection = selectLaunch()
+-        if (selection.shouldRollbackOnCrash) {
+-            loadMetadataOrNull()?.let { metadata ->
+-                saveMetadata(metadata.copy(launchInProgress = true))
+-            }
+-        }
++        // PATCH(skkuverse): launchInProgress is no longer written here. A headless launch
++        // (HeadlessJsTaskService) gets here without a surface, never reaches
++        // CONTENT_APPEARED, and the next process would roll back a healthy bundle.
++        // HotUpdaterImpl writes it on the first activity start (markLaunchStarted).
+         Log.d(
+             TAG,
+             "prepareLaunch: bundleId=${selection.launchedBundleId} shouldRollback=${selection.shouldRollbackOnCrash} url=${selection.bundleUrl}",
+diff --git a/node_modules/@hot-updater/react-native/android/src/main/java/com/hotupdater/HotUpdaterImpl.kt b/node_modules/@hot-updater/react-native/android/src/main/java/com/hotupdater/HotUpdaterImpl.kt
+index db212a5..70e720e 100644
+--- a/node_modules/@hot-updater/react-native/android/src/main/java/com/hotupdater/HotUpdaterImpl.kt
++++ b/node_modules/@hot-updater/react-native/android/src/main/java/com/hotupdater/HotUpdaterImpl.kt
+@@ -1,8 +1,11 @@
+ package com.hotupdater
+ 
++import android.app.Activity
+ import android.app.ActivityOptions
++import android.app.Application
+ import android.content.Context
+ import android.content.Intent
++import android.os.Bundle
+ import android.os.Process
+ import android.util.Log
+ import kotlinx.coroutines.Dispatchers
+@@ -22,6 +25,9 @@ class HotUpdaterImpl {
+     private val keyValueStorage: KeyValueStorageService
+     private var currentLaunchSelection: LaunchSelection? = null
+ 
++    // PATCH(skkuverse): the pending first-activity hook, see markLaunchStartedOnFirstActivity.
++    private var launchStartedCallbacks: Application.ActivityLifecycleCallbacks? = null
++
+     /**
+      * Primary constructor with dependency injection (for testing)
+      */
+@@ -517,6 +523,7 @@ class HotUpdaterImpl {
+ 
+         val pendingRecovery = recoveryManager.consumePendingCrashRecovery()
+         val selection = bundleStorage.prepareLaunch(pendingRecovery)
++        markLaunchStartedOnFirstActivity(selection)
+         recoveryManager.startMonitoring(
+             bundleId = selection.launchedBundleId,
+             shouldRollback = selection.shouldRollbackOnCrash,
+@@ -530,4 +537,61 @@ class HotUpdaterImpl {
+         currentLaunchSelection = selection
+         return selection
+     }
++
++    /**
++     * PATCH(skkuverse): writes launchInProgress on the first activity start of this
++     * process instead of in prepareLaunch.
++     *
++     * Only CONTENT_APPEARED clears that flag. When the app is dead, an FCM background
++     * message starts HeadlessJsTaskService, which loads the bundle with no surface, so
++     * content never appears; the next process read the leftover flag as a failed launch
++     * and rolled back a healthy bundle. A UI launch builds the ReactHost lazily in
++     * MainActivity.onCreate, so this hook is in place before that activity's onStart.
++     * Crashes are unaffected: they roll back through the crash marker, not this flag.
++     * An in-process reload marks on the next activity start rather than at once; JS
++     * HotUpdater.reload() restarts the process by default, so it rarely takes that path.
++     */
++    private fun markLaunchStartedOnFirstActivity(selection: LaunchSelection) {
++        val application = context as? Application
++        // A reload re-prepares the launch; the previous bundle's hook no longer applies.
++        launchStartedCallbacks?.let { application?.unregisterActivityLifecycleCallbacks(it) }
++        launchStartedCallbacks = null
++        if (!selection.shouldRollbackOnCrash) return
++
++        val launchedBundleId = selection.launchedBundleId
++        if (application == null) {
++            bundleStorage.markLaunchStarted(launchedBundleId)
++            return
++        }
++
++        val callbacks =
++            object : Application.ActivityLifecycleCallbacks {
++                override fun onActivityStarted(activity: Activity) {
++                    application.unregisterActivityLifecycleCallbacks(this)
++                    if (launchStartedCallbacks === this) launchStartedCallbacks = null
++                    // A no-op if CONTENT_APPEARED already verified the bundle.
++                    bundleStorage.markLaunchStarted(launchedBundleId)
++                }
++
++                override fun onActivityCreated(
++                    activity: Activity,
++                    savedInstanceState: Bundle?,
++                ) {}
++
++                override fun onActivityResumed(activity: Activity) {}
++
++                override fun onActivityPaused(activity: Activity) {}
++
++                override fun onActivityStopped(activity: Activity) {}
++
++                override fun onActivitySaveInstanceState(
++                    activity: Activity,
++                    outState: Bundle,
++                ) {}
++
++                override fun onActivityDestroyed(activity: Activity) {}
++            }
++        launchStartedCallbacks = callbacks
++        application.registerActivityLifecycleCallbacks(callbacks)
++    }
+ }

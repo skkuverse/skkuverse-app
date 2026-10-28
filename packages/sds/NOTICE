@@ -1,0 +1,17 @@
+Skku Design System (packages/sds)
+
+The code in this directory is ported from @toss/tds-react-native,
+version 2.0.2, and was changed by the skkuverse-app project. The changes
+are:
+
+  - Tokens and APIs were renamed after SEED Design (daangn/seed-design).
+  - Animation moved from @react-spring/native to react-native-reanimated.
+  - The color palette was re-derived onto SEED's steps.
+  - Colors moved to semantic roles (packages/shared/src/tokens/).
+
+SDS.md describes these changes in more detail.
+
+The code is used under the Apache License, Version 2.0, which Toss
+applied to @toss/tds-react-native from version 2.0.5. Versions up to 2.0.4
+were published under the GNU General Public License, version 3. The root
+NOTICE file gives the history.

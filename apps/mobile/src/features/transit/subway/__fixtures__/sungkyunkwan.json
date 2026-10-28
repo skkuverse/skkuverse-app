@@ -1,0 +1,92 @@
+{
+  "_about": "Copied 2026-10-25 from skkuverse-server dev 8f3c67c2 contracts/produced/fixtures/subway-arrivals.subwayStationArrivals/sungkyunkwan.json, untrimmed. Its own note: GET /subway/stations/KR-1-P153/arrivals captured from a local development run (SUBWAY=on, _dev databases, push suppressed) 2026-10-17 11:39 KST, Accept-Language ko; trimmed to one train per direction; reshaped the same day, no value changed, into the per-station wire (GET /subway/stations/sungkyunkwan/arrivals, its one line entry carrying the line display data from the registry); converted 2026-10-18 for the line-marker wire, no other value changed: each line's `badge` replaced by its registry `marker` ({ text in the request language, color }); extended 2026-10-23 for the station coords, no other value changed: the station's coords from revision 1 of subway-station-coords; extended 2026-10-24 for the first-train flag, no other value changed: each train's isFirstTrain, false, as none was its service day's first train. Reshaped by hand 2026-10-25 to ADR 0022's call (D2, D3), as the server serves it since: each train became the call plus its trainNo, in the call's key order, arrivalAt its expectedArrivalAt (scheduledArrivalAt for a scheduled train), source its basis (live provider, estimated estimate, scheduled timetable), destination its headsign, express isExpress, isFirstTrain isFirstRun; runId <line>/<service date>/<trainNo>; vehicleId, providerText, expectedDepartureAt and, not captured, the scheduled pair and isLastRun null; stopsAway kept, no position having been captured, and status read from it (0 arriving, more enRoute); every instant, generatedAt included, at +09:00 to the second. Renamed 2026-10-25 (owner decision): 성균관대's platform id KR-1-0153 became its KRIC code KR-1-P153 wherever it appears; no other value changed.",
+  "data": {
+    "station": {
+      "id": "sungkyunkwan",
+      "name": "성균관대",
+      "coords": {
+        "lat": 37.300349,
+        "lng": 126.97075
+      }
+    },
+    "lines": [
+      {
+        "line": {
+          "code": "1",
+          "name": "1호선",
+          "color": "0052A4",
+          "marker": {
+            "text": "1",
+            "color": "0052A4"
+          }
+        },
+        "platformId": "KR-1-P153",
+        "generatedAt": "2026-10-17T11:39:07+09:00",
+        "directions": [
+          {
+            "direction": "up",
+            "name": "서울 방면",
+            "previousStation": {
+              "id": "KR-1-P154",
+              "name": "화서"
+            },
+            "nextStation": {
+              "id": "KR-1-P152",
+              "name": "의왕"
+            },
+            "trains": [
+              {
+                "status": "enRoute",
+                "expectedArrivalAt": "2026-10-17T11:44:37+09:00",
+                "expectedDepartureAt": null,
+                "scheduledArrivalAt": null,
+                "scheduledDepartureAt": null,
+                "basis": "estimate",
+                "stopsAway": 2,
+                "runId": "1/2026-10-17/0444",
+                "vehicleId": null,
+                "headsign": "광운대",
+                "isFirstRun": false,
+                "isLastRun": null,
+                "isExpress": false,
+                "providerText": null,
+                "trainNo": "0444"
+              }
+            ]
+          },
+          {
+            "direction": "down",
+            "name": "천안·서동탄 방면",
+            "previousStation": {
+              "id": "KR-1-P152",
+              "name": "의왕"
+            },
+            "nextStation": {
+              "id": "KR-1-P154",
+              "name": "화서"
+            },
+            "trains": [
+              {
+                "status": "arriving",
+                "expectedArrivalAt": "2026-10-17T11:38:38+09:00",
+                "expectedDepartureAt": null,
+                "scheduledArrivalAt": null,
+                "scheduledDepartureAt": null,
+                "basis": "estimate",
+                "stopsAway": 0,
+                "runId": "1/2026-10-17/1915",
+                "vehicleId": null,
+                "headsign": "천안",
+                "isFirstRun": false,
+                "isLastRun": null,
+                "isExpress": true,
+                "providerText": null,
+                "trainNo": "1915"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

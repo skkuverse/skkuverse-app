@@ -1,0 +1,226 @@
+{
+  "measures": {
+    "measured": {
+      "containerHeight": 874,
+      "controlsBottom": 171,
+      "floatInset": 0
+    },
+    "measuredGlass": {
+      "containerHeight": 874,
+      "controlsBottom": 171,
+      "floatInset": 8
+    },
+    "controlsUnmeasured": {
+      "containerHeight": 874,
+      "controlsBottom": 0,
+      "floatInset": 8
+    },
+    "unmeasured": {
+      "containerHeight": 0,
+      "controlsBottom": 0,
+      "floatInset": 0
+    }
+  },
+  "cases": [
+    {
+      "root": "campus",
+      "measure": "measured",
+      "body": null,
+      "position": {
+        "kind": "expandable",
+        "detents": [
+          "small",
+          "medium",
+          "large"
+        ],
+        "initial": "small",
+        "heights": {
+          "small": "24%",
+          "medium": "42%"
+        }
+      },
+      "floatingInset": 0,
+      "restingInset": {
+        "small": 209.76,
+        "medium": 367.08,
+        "large": 0
+      },
+      "locateAnchorTop": 506.92
+    },
+    {
+      "root": "campus",
+      "measure": "measured",
+      "body": "list",
+      "position": {
+        "kind": "expandable",
+        "detents": [
+          "small",
+          "medium",
+          "large"
+        ],
+        "initial": "small",
+        "heights": {
+          "small": "24%",
+          "medium": "42%"
+        }
+      },
+      "floatingInset": 0,
+      "restingInset": {
+        "small": 209.76,
+        "medium": 367.08,
+        "large": 0
+      },
+      "locateAnchorTop": 506.92
+    },
+    {
+      "root": "campus",
+      "measure": "measuredGlass",
+      "body": null,
+      "position": {
+        "kind": "expandable",
+        "detents": [
+          "small",
+          "medium",
+          "large"
+        ],
+        "initial": "small",
+        "heights": {
+          "small": "24%",
+          "medium": "42%"
+        }
+      },
+      "floatingInset": 0,
+      "restingInset": {
+        "small": 209.76,
+        "medium": 367.08,
+        "large": 0
+      },
+      "locateAnchorTop": 506.92
+    },
+    {
+      "root": "campus",
+      "measure": "measuredGlass",
+      "body": "list",
+      "position": {
+        "kind": "expandable",
+        "detents": [
+          "small",
+          "medium",
+          "large"
+        ],
+        "initial": "small",
+        "heights": {
+          "small": "24%",
+          "medium": "42%"
+        }
+      },
+      "floatingInset": 0,
+      "restingInset": {
+        "small": 209.76,
+        "medium": 367.08,
+        "large": 0
+      },
+      "locateAnchorTop": 506.92
+    },
+    {
+      "root": "campus",
+      "measure": "controlsUnmeasured",
+      "body": null,
+      "position": {
+        "kind": "expandable",
+        "detents": [
+          "small",
+          "medium",
+          "large"
+        ],
+        "initial": "small",
+        "heights": {
+          "small": "24%",
+          "medium": "42%"
+        }
+      },
+      "floatingInset": 0,
+      "restingInset": {
+        "small": 209.76,
+        "medium": 367.08,
+        "large": 0
+      },
+      "locateAnchorTop": 506.92
+    },
+    {
+      "root": "campus",
+      "measure": "controlsUnmeasured",
+      "body": "list",
+      "position": {
+        "kind": "expandable",
+        "detents": [
+          "small",
+          "medium",
+          "large"
+        ],
+        "initial": "small",
+        "heights": {
+          "small": "24%",
+          "medium": "42%"
+        }
+      },
+      "floatingInset": 0,
+      "restingInset": {
+        "small": 209.76,
+        "medium": 367.08,
+        "large": 0
+      },
+      "locateAnchorTop": 506.92
+    },
+    {
+      "root": "campus",
+      "measure": "unmeasured",
+      "body": null,
+      "position": {
+        "kind": "expandable",
+        "detents": [
+          "small",
+          "medium",
+          "large"
+        ],
+        "initial": "small",
+        "heights": {
+          "small": "24%",
+          "medium": "42%"
+        }
+      },
+      "floatingInset": 0,
+      "restingInset": {
+        "small": 0,
+        "medium": 0,
+        "large": 0
+      },
+      "locateAnchorTop": 0
+    },
+    {
+      "root": "campus",
+      "measure": "unmeasured",
+      "body": "list",
+      "position": {
+        "kind": "expandable",
+        "detents": [
+          "small",
+          "medium",
+          "large"
+        ],
+        "initial": "small",
+        "heights": {
+          "small": "24%",
+          "medium": "42%"
+        }
+      },
+      "floatingInset": 0,
+      "restingInset": {
+        "small": 0,
+        "medium": 0,
+        "large": 0
+      },
+      "locateAnchorTop": 0
+    }
+  ]
+}

@@ -1,0 +1,6420 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`bus config > campus-en 1`] = `
+{
+  "card": {
+    "busTypeText": "SKKU",
+    "iconType": "shuttle",
+    "themeColor": "003626",
+  },
+  "id": "campus",
+  "label": "INJA Shuttle",
+  "screen": {
+    "defaultServiceId": "campus-inja",
+    "features": [
+      {
+        "type": "info",
+        "url": "https://webview.skkuverse.com/bus/campus/info",
+      },
+    ],
+    "routeBadges": [
+      {
+        "color": "003626",
+        "id": "regular",
+        "label": "Regular",
+      },
+      {
+        "color": "1565C0",
+        "id": "hakbu",
+        "label": "Undergraduate",
+      },
+    ],
+    "serviceSelector": "segmented",
+    "services": [
+      {
+        "endpoint": "/bus/schedule/data/campus-inja/smart",
+        "label": "HSSC → NSC",
+        "serviceId": "campus-inja",
+        "stopSequences": {
+          "hakbu": [
+            {
+              "action": "board",
+              "label": "Student Union bus parking lot",
+              "note": "Board · Student Union",
+              "stopId": "hssc-bus-lot",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "N Center",
+              "note": "Get off · N Center",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+            {
+              "action": "alight",
+              "label": "CNS Center",
+              "note": "Get off · CNS Center",
+              "stopId": "nsc-cns",
+              "timing": "estimated",
+            },
+          ],
+          "regular": [
+            {
+              "action": "board",
+              "label": "Student Union bus parking lot",
+              "note": "Board · HSSC",
+              "stopId": "hssc-bus-lot",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "N Center",
+              "note": "Get off · N Center",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+            {
+              "action": "alight",
+              "label": "Welfare Hall",
+              "note": "Get off · Welfare Hall",
+              "stopId": "nsc-welfare",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+      {
+        "endpoint": "/bus/schedule/data/campus-jain/smart",
+        "label": "NSC → HSSC",
+        "serviceId": "campus-jain",
+        "stopSequences": {
+          "hakbu": [
+            {
+              "action": "board",
+              "label": "N Center",
+              "note": "Board · N Center",
+              "stopId": "nsc-n-center",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "Student Union bus parking lot",
+              "note": "Get off · Student Union",
+              "stopId": "hssc-bus-lot",
+              "timing": "estimated",
+            },
+          ],
+          "regular": [
+            {
+              "action": "board",
+              "label": "Across from N Center",
+              "note": "Board · NSC",
+              "stopId": "nsc-opposite",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "600th Anniversary Hall",
+              "note": "Get off · HSSC",
+              "stopId": "hssc-600th",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+    ],
+    "stops": [
+      {
+        "coords": {
+          "lat": 37.587367,
+          "lng": 126.993643,
+        },
+        "detail": "Across from the 600th Anniversary Hall",
+        "id": "hssc-bus-lot",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "Student Union bus parking lot",
+      },
+      {
+        "coords": {
+          "lat": 37.292298,
+          "lng": 126.975057,
+        },
+        "detail": "On the N Center side of the road",
+        "id": "nsc-n-center",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "N Center",
+      },
+      {
+        "coords": {
+          "lat": 37.293999,
+          "lng": 126.973183,
+        },
+        "detail": "Near the Student Union",
+        "id": "nsc-welfare",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "Welfare Hall",
+      },
+      {
+        "coords": {
+          "lat": 37.294388,
+          "lng": 126.977671,
+        },
+        "detail": "At the crosswalk by the CNS Center main entrance",
+        "id": "nsc-cns",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "CNS Center",
+      },
+      {
+        "coords": {
+          "lat": 37.292536,
+          "lng": 126.975077,
+        },
+        "detail": "Global Plaza side, at the BUS STOP mark on the curb",
+        "id": "nsc-opposite",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "Across from N Center",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/nsc-opposite/original-3406c12b.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=1pS33oeIOFDwuxlq1Prstg&vrpanopan=84&vrpanotilt=12&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=1pS33oeIOFDwuxlq1Prstg&pan=84&tilt=12&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3D1pS33oeIOFDwuxlq1Prstg%26heading%3D84%26tilt%3D12%26fov%3D80&app=Y&appmarket=N",
+      },
+      {
+        "coords": {
+          "lat": 37.587258,
+          "lng": 126.993904,
+        },
+        "detail": "Across the road from the Student Union bus parking lot",
+        "id": "hssc-600th",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "600th Anniversary Hall",
+      },
+    ],
+  },
+  "screenType": "schedule",
+  "visibility": {
+    "type": "always",
+  },
+}
+`;
+
+exports[`bus config > campus-ko 1`] = `
+{
+  "card": {
+    "busTypeText": "성대",
+    "iconType": "shuttle",
+    "themeColor": "003626",
+  },
+  "id": "campus",
+  "label": "인자셔틀",
+  "screen": {
+    "defaultServiceId": "campus-inja",
+    "features": [
+      {
+        "type": "info",
+        "url": "https://webview.skkuverse.com/bus/campus/info",
+      },
+    ],
+    "routeBadges": [
+      {
+        "color": "003626",
+        "id": "regular",
+        "label": "일반",
+      },
+      {
+        "color": "1565C0",
+        "id": "hakbu",
+        "label": "학부대학",
+      },
+    ],
+    "serviceSelector": "segmented",
+    "services": [
+      {
+        "endpoint": "/bus/schedule/data/campus-inja/smart",
+        "label": "인사캠 → 자과캠",
+        "serviceId": "campus-inja",
+        "stopSequences": {
+          "hakbu": [
+            {
+              "action": "board",
+              "label": "학생회관 버스 주차장",
+              "note": "학생회관 탑승",
+              "stopId": "hssc-bus-lot",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "N센터 앞",
+              "note": "N센터 앞 하차",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+            {
+              "action": "alight",
+              "label": "CNS센터 앞",
+              "note": "CNS센터 하차",
+              "stopId": "nsc-cns",
+              "timing": "estimated",
+            },
+          ],
+          "regular": [
+            {
+              "action": "board",
+              "label": "학생회관 버스 주차장",
+              "note": "인사캠 탑승",
+              "stopId": "hssc-bus-lot",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "N센터 앞",
+              "note": "N센터 앞 하차",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+            {
+              "action": "alight",
+              "label": "복지회관 앞",
+              "note": "복지회관 하차",
+              "stopId": "nsc-welfare",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+      {
+        "endpoint": "/bus/schedule/data/campus-jain/smart",
+        "label": "자과캠 → 인사캠",
+        "serviceId": "campus-jain",
+        "stopSequences": {
+          "hakbu": [
+            {
+              "action": "board",
+              "label": "N센터 앞",
+              "note": "N센터 앞 탑승",
+              "stopId": "nsc-n-center",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "학생회관 버스 주차장",
+              "note": "학생회관 하차",
+              "stopId": "hssc-bus-lot",
+              "timing": "estimated",
+            },
+          ],
+          "regular": [
+            {
+              "action": "board",
+              "label": "N센터 건너편",
+              "note": "자과캠 탑승",
+              "stopId": "nsc-opposite",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "600주년기념관 앞",
+              "note": "인사캠 하차",
+              "stopId": "hssc-600th",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+    ],
+    "stops": [
+      {
+        "coords": {
+          "lat": 37.587367,
+          "lng": 126.993643,
+        },
+        "detail": "600주년기념관 맞은편",
+        "id": "hssc-bus-lot",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "학생회관 버스 주차장",
+      },
+      {
+        "coords": {
+          "lat": 37.292298,
+          "lng": 126.975057,
+        },
+        "detail": "N센터 쪽 인도",
+        "id": "nsc-n-center",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "N센터 앞",
+      },
+      {
+        "coords": {
+          "lat": 37.293999,
+          "lng": 126.973183,
+        },
+        "detail": "학생회관 인근",
+        "id": "nsc-welfare",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "복지회관 앞",
+      },
+      {
+        "coords": {
+          "lat": 37.294388,
+          "lng": 126.977671,
+        },
+        "detail": "CNS센터 정문 앞 횡단보도",
+        "id": "nsc-cns",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "CNS센터 앞",
+      },
+      {
+        "coords": {
+          "lat": 37.292536,
+          "lng": 126.975077,
+        },
+        "detail": "글로벌광장 쪽, 연석의 BUS STOP 표시",
+        "id": "nsc-opposite",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "N센터 건너편",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/nsc-opposite/original-3406c12b.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=1pS33oeIOFDwuxlq1Prstg&vrpanopan=84&vrpanotilt=12&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=1pS33oeIOFDwuxlq1Prstg&pan=84&tilt=12&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3D1pS33oeIOFDwuxlq1Prstg%26heading%3D84%26tilt%3D12%26fov%3D80&app=Y&appmarket=N",
+      },
+      {
+        "coords": {
+          "lat": 37.587258,
+          "lng": 126.993904,
+        },
+        "detail": "학생회관 버스 주차장 건너편",
+        "id": "hssc-600th",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "600주년기념관 앞",
+      },
+    ],
+  },
+  "screenType": "schedule",
+  "visibility": {
+    "type": "always",
+  },
+}
+`;
+
+exports[`bus config > campus-v1-ko 1`] = `
+{
+  "card": {
+    "busTypeText": "성대",
+    "iconType": "shuttle",
+    "themeColor": "003626",
+  },
+  "id": "campus",
+  "label": "인자셔틀",
+  "screen": {
+    "defaultServiceId": "campus-inja",
+    "features": [
+      {
+        "type": "info",
+        "url": "https://webview.skkuverse.com/bus/campus/info",
+      },
+    ],
+    "routeBadges": [
+      {
+        "color": "003626",
+        "id": "regular",
+        "label": "일반",
+      },
+      {
+        "color": "1565C0",
+        "id": "hakbu",
+        "label": "학부대학",
+      },
+    ],
+    "serviceSelector": "segmented",
+    "services": [
+      {
+        "endpoint": "/bus/schedule/data/campus-inja/smart",
+        "label": "인사캠 → 자과캠",
+        "serviceId": "campus-inja",
+      },
+      {
+        "endpoint": "/bus/schedule/data/campus-jain/smart",
+        "label": "자과캠 → 인사캠",
+        "serviceId": "campus-jain",
+      },
+    ],
+    "stops": [],
+  },
+  "screenType": "schedule",
+  "visibility": {
+    "type": "always",
+  },
+}
+`;
+
+exports[`bus config > campus-zh 1`] = `
+{
+  "card": {
+    "busTypeText": "成大",
+    "iconType": "shuttle",
+    "themeColor": "003626",
+  },
+  "id": "campus",
+  "label": "仁自班车",
+  "screen": {
+    "defaultServiceId": "campus-inja",
+    "features": [
+      {
+        "type": "info",
+        "url": "https://webview.skkuverse.com/bus/campus/info",
+      },
+    ],
+    "routeBadges": [
+      {
+        "color": "003626",
+        "id": "regular",
+        "label": "一般",
+      },
+      {
+        "color": "1565C0",
+        "id": "hakbu",
+        "label": "本科学院",
+      },
+    ],
+    "serviceSelector": "segmented",
+    "services": [
+      {
+        "endpoint": "/bus/schedule/data/campus-inja/smart",
+        "label": "人文校区 → 自然校区",
+        "serviceId": "campus-inja",
+        "stopSequences": {
+          "hakbu": [
+            {
+              "action": "board",
+              "label": "学生会馆巴士停车场",
+              "note": "学生会馆上车",
+              "stopId": "hssc-bus-lot",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "N中心前",
+              "note": "N中心前下车",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+            {
+              "action": "alight",
+              "label": "CNS中心前",
+              "note": "CNS中心下车",
+              "stopId": "nsc-cns",
+              "timing": "estimated",
+            },
+          ],
+          "regular": [
+            {
+              "action": "board",
+              "label": "学生会馆巴士停车场",
+              "note": "人文校区上车",
+              "stopId": "hssc-bus-lot",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "N中心前",
+              "note": "N中心前下车",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+            {
+              "action": "alight",
+              "label": "福利会馆前",
+              "note": "福利会馆下车",
+              "stopId": "nsc-welfare",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+      {
+        "endpoint": "/bus/schedule/data/campus-jain/smart",
+        "label": "自然校区 → 人文校区",
+        "serviceId": "campus-jain",
+        "stopSequences": {
+          "hakbu": [
+            {
+              "action": "board",
+              "label": "N中心前",
+              "note": "N中心前上车",
+              "stopId": "nsc-n-center",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "学生会馆巴士停车场",
+              "note": "学生会馆下车",
+              "stopId": "hssc-bus-lot",
+              "timing": "estimated",
+            },
+          ],
+          "regular": [
+            {
+              "action": "board",
+              "label": "N中心对面",
+              "note": "自然校区上车",
+              "stopId": "nsc-opposite",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "600周年纪念馆前",
+              "note": "人文校区下车",
+              "stopId": "hssc-600th",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+    ],
+    "stops": [
+      {
+        "coords": {
+          "lat": 37.587367,
+          "lng": 126.993643,
+        },
+        "detail": "600周年纪念馆对面",
+        "id": "hssc-bus-lot",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "学生会馆巴士停车场",
+      },
+      {
+        "coords": {
+          "lat": 37.292298,
+          "lng": 126.975057,
+        },
+        "detail": "N中心一侧人行道",
+        "id": "nsc-n-center",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "N中心前",
+      },
+      {
+        "coords": {
+          "lat": 37.293999,
+          "lng": 126.973183,
+        },
+        "detail": "学生会馆附近",
+        "id": "nsc-welfare",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "福利会馆前",
+      },
+      {
+        "coords": {
+          "lat": 37.294388,
+          "lng": 126.977671,
+        },
+        "detail": "CNS中心正门前人行横道",
+        "id": "nsc-cns",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "CNS中心前",
+      },
+      {
+        "coords": {
+          "lat": 37.292536,
+          "lng": 126.975077,
+        },
+        "detail": "环球广场一侧，路缘BUS STOP标志处",
+        "id": "nsc-opposite",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "N中心对面",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/nsc-opposite/original-3406c12b.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=1pS33oeIOFDwuxlq1Prstg&vrpanopan=84&vrpanotilt=12&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=1pS33oeIOFDwuxlq1Prstg&pan=84&tilt=12&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3D1pS33oeIOFDwuxlq1Prstg%26heading%3D84%26tilt%3D12%26fov%3D80&app=Y&appmarket=N",
+      },
+      {
+        "coords": {
+          "lat": 37.587258,
+          "lng": 126.993904,
+        },
+        "detail": "学生会馆巴士停车场对面",
+        "id": "hssc-600th",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "600周年纪念馆前",
+      },
+    ],
+  },
+  "screenType": "schedule",
+  "visibility": {
+    "type": "always",
+  },
+}
+`;
+
+exports[`bus config > commute-en 1`] = `
+{
+  "card": {
+    "busTypeText": "SKKU",
+    "iconType": "shuttle",
+    "themeColor": "003626",
+  },
+  "id": "commute",
+  "label": "NSC Commuter Shuttle Bus",
+  "screen": {
+    "defaultServiceId": "commute-jeongja",
+    "features": [
+      {
+        "type": "info",
+        "url": "https://webview.skkuverse.com/bus/commute/info",
+      },
+    ],
+    "routeBadges": [
+      {
+        "color": "003626",
+        "id": "up",
+        "label": "To campus",
+      },
+      {
+        "color": "1565C0",
+        "id": "down",
+        "label": "From campus",
+      },
+    ],
+    "serviceSelector": "chips",
+    "services": [
+      {
+        "endpoint": "/bus/schedule/data/commute-jeongja/smart",
+        "label": "Jeongja",
+        "refresh": {
+          "intervalSec": 60,
+          "targets": [
+            "traffic",
+          ],
+        },
+        "serviceId": "commute-jeongja",
+        "stopSequences": {
+          "down": [
+            {
+              "action": "board",
+              "label": "Across from N Center",
+              "note": "Board · NSC",
+              "stopId": "nsc-opposite",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "Jeongja Stn. Exit 2",
+              "note": "Get off · Jeongja Stn.",
+              "stopId": "jeongja-exit2",
+              "timing": "estimated",
+            },
+          ],
+          "up": [
+            {
+              "action": "board",
+              "label": "Jeongja Stn. Exit 3",
+              "note": "Board · Jeongja Stn.",
+              "stopId": "jeongja-exit3",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "detail": "Near N Center → CNS Center → near Industry-Academic Cooperation Center → near Student Center",
+              "label": "N Center",
+              "note": "Get off · NSC",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+      {
+        "endpoint": "/bus/schedule/data/commute-jamsil/smart",
+        "label": "Jamsil",
+        "refresh": {
+          "intervalSec": 60,
+          "targets": [
+            "traffic",
+          ],
+        },
+        "serviceId": "commute-jamsil",
+        "stopSequences": {
+          "down": [
+            {
+              "action": "board",
+              "label": "Across from N Center",
+              "note": "Board · NSC",
+              "stopId": "nsc-opposite",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "Jamsil Stn. Exit 5",
+              "note": "Get off · Jamsil Stn.",
+              "stopId": "jamsil-exit5",
+              "timing": "estimated",
+            },
+          ],
+          "up": [
+            {
+              "action": "board",
+              "label": "Jamsil Stn. Exit 4",
+              "note": "Board · Jamsil Stn.",
+              "stopId": "jamsil-exit4",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "detail": "Near N Center → CNS Center → near Industry-Academic Cooperation Center → near Student Center",
+              "label": "N Center",
+              "note": "Get off · NSC",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+      {
+        "endpoint": "/bus/schedule/data/commute-dogok/smart",
+        "label": "Dogok",
+        "refresh": {
+          "intervalSec": 60,
+          "targets": [
+            "traffic",
+          ],
+        },
+        "serviceId": "commute-dogok",
+        "stopSequences": {
+          "down": [
+            {
+              "action": "board",
+              "label": "Across from N Center",
+              "note": "Board · NSC",
+              "stopId": "nsc-opposite",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "Dogok Stn. Exit 4",
+              "note": "Get off · Dogok Stn.",
+              "stopId": "dogok-exit4",
+              "timing": "estimated",
+            },
+          ],
+          "up": [
+            {
+              "action": "board",
+              "label": "Dogok Stn. Exit 1",
+              "note": "Board · Dogok Stn.",
+              "stopId": "dogok-exit1",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "detail": "Near N Center → CNS Center → near Industry-Academic Cooperation Center → near Student Center",
+              "label": "N Center",
+              "note": "Get off · NSC",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+      {
+        "endpoint": "/bus/schedule/data/commute-gangnam-yangjae/smart",
+        "label": "Gangnam·Yangjae",
+        "refresh": {
+          "intervalSec": 60,
+          "targets": [
+            "traffic",
+          ],
+        },
+        "serviceId": "commute-gangnam-yangjae",
+        "stopSequences": {
+          "down": [
+            {
+              "action": "board",
+              "label": "Across from N Center",
+              "note": "Board · NSC",
+              "stopId": "nsc-opposite",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "Yangjae Stn. Exit 3",
+              "note": "Get off · Yangjae Stn.",
+              "stopId": "yangjae-exit3",
+              "timing": "estimated",
+            },
+            {
+              "action": "alight",
+              "label": "Median bus stop before Gangnam Station intersection",
+              "note": "Get off · Gangnam Stn.",
+              "stopId": "gangnam-median",
+              "timing": "estimated",
+            },
+          ],
+          "up": [
+            {
+              "action": "board",
+              "label": "Gangnam Stn. Exit 5",
+              "note": "Board · Gangnam Stn.",
+              "stopId": "gangnam-exit5",
+              "timing": "scheduled",
+            },
+            {
+              "action": "board",
+              "label": "Yangjae Stn. Exit 2",
+              "note": "Board · Yangjae Stn.",
+              "stopId": "yangjae-exit2",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "detail": "Near N Center → CNS Center → near Industry-Academic Cooperation Center → near Student Center",
+              "label": "N Center",
+              "note": "Get off · NSC",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+      {
+        "endpoint": "/bus/schedule/data/commute-gwanggyo/smart",
+        "label": "Gwanggyo Jungang",
+        "refresh": {
+          "intervalSec": 60,
+          "targets": [
+            "traffic",
+          ],
+        },
+        "serviceId": "commute-gwanggyo",
+        "stopSequences": {
+          "down": [
+            {
+              "action": "board",
+              "label": "Across from N Center",
+              "note": "Board · NSC",
+              "stopId": "nsc-opposite",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "Gwanggyo Jungang Stn. Exit 1",
+              "note": "Get off · Gwanggyo Jungang Stn.",
+              "stopId": "gwanggyo-exit1",
+              "timing": "estimated",
+            },
+          ],
+          "up": [
+            {
+              "action": "board",
+              "label": "Gwanggyo Jungang Stn. Exit 4",
+              "note": "Board · Gwanggyo Jungang Stn.",
+              "stopId": "gwanggyo-exit4",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "detail": "Near N Center → CNS Center → near Industry-Academic Cooperation Center → near Student Center",
+              "label": "N Center",
+              "note": "Get off · NSC",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+    ],
+    "stops": [
+      {
+        "coords": {
+          "lat": 37.365499,
+          "lng": 127.107906,
+        },
+        "detail": "In front of Paris Baguette",
+        "id": "jeongja-exit3",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.365922,
+                "lng": 127.107774,
+              },
+              "id": "exit3",
+              "kind": "subwayExit",
+              "label": "Exit 3",
+              "number": 3,
+            },
+          ],
+          "paths": [
+            {
+              "from": "exit3",
+              "kind": "walk",
+              "points": [
+                {
+                  "lat": 37.365922,
+                  "lng": 127.107774,
+                },
+                {
+                  "lat": 37.365882,
+                  "lng": 127.107844,
+                },
+                {
+                  "lat": 37.365712,
+                  "lng": 127.107844,
+                },
+                {
+                  "lat": 37.365699,
+                  "lng": 127.107876,
+                },
+                {
+                  "lat": 37.365581,
+                  "lng": 127.107876,
+                },
+                {
+                  "lat": 37.365499,
+                  "lng": 127.107906,
+                },
+              ],
+              "to": "stop",
+            },
+          ],
+        },
+        "name": "Jeongja Stn. Exit 3",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/jeongja-exit3/en-f6225593.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=4MWo62oDv4KAFMmR86SRaA&vrpanopan=-75&vrpanotilt=0&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=4MWo62oDv4KAFMmR86SRaA&pan=-75&tilt=0&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3D4MWo62oDv4KAFMmR86SRaA%26heading%3D-75%26tilt%3D0%26fov%3D80&app=Y&appmarket=N",
+        "subwayStation": {
+          "id": "jeongja",
+          "title": "Jeongja Station",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.292298,
+          "lng": 126.975057,
+        },
+        "detail": "On the N Center side of the road",
+        "id": "nsc-n-center",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "N Center",
+        "photoUrl": "https://media.skkuverse.com/bus/stops/nsc-n-center/original-53c0cde5.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=YntS5LxXHav0lPF1zQf9tA&vrpanopan=152&vrpanotilt=2&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=YntS5LxXHav0lPF1zQf9tA&pan=152&tilt=2&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3DYntS5LxXHav0lPF1zQf9tA%26heading%3D152%26tilt%3D2%26fov%3D80&app=Y&appmarket=N",
+      },
+      {
+        "coords": {
+          "lat": 37.292536,
+          "lng": 126.975077,
+        },
+        "detail": "Global Plaza side, at the BUS STOP mark on the curb",
+        "id": "nsc-opposite",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "Across from N Center",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/nsc-opposite/original-3406c12b.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=1pS33oeIOFDwuxlq1Prstg&vrpanopan=84&vrpanotilt=12&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=1pS33oeIOFDwuxlq1Prstg&pan=84&tilt=12&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3D1pS33oeIOFDwuxlq1Prstg%26heading%3D84%26tilt%3D12%26fov%3D80&app=Y&appmarket=N",
+      },
+      {
+        "coords": {
+          "lat": 37.366014,
+          "lng": 127.10836,
+        },
+        "id": "jeongja-exit2",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.366095,
+                "lng": 127.108414,
+              },
+              "id": "exit2",
+              "kind": "subwayExit",
+              "label": "Exit 2",
+              "number": 2,
+            },
+          ],
+          "paths": [],
+        },
+        "name": "Jeongja Stn. Exit 2",
+        "subwayStation": {
+          "id": "jeongja",
+          "title": "Jeongja Station",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.512278,
+          "lng": 127.097033,
+        },
+        "detail": "About 200 m, in front of Lotte Mart (Hi-Mart)",
+        "id": "jamsil-exit4",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.512743,
+                "lng": 127.099156,
+              },
+              "id": "exit4",
+              "kind": "subwayExit",
+              "label": "Exit 4",
+              "number": 4,
+            },
+          ],
+          "paths": [
+            {
+              "from": "exit4",
+              "kind": "walk",
+              "points": [
+                {
+                  "lat": 37.512743,
+                  "lng": 127.099156,
+                },
+                {
+                  "lat": 37.512704,
+                  "lng": 127.099055,
+                },
+                {
+                  "lat": 37.512281,
+                  "lng": 127.097237,
+                },
+                {
+                  "lat": 37.512278,
+                  "lng": 127.097033,
+                },
+              ],
+              "to": "stop",
+            },
+          ],
+        },
+        "name": "Jamsil Stn. Exit 4",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/jamsil-exit4/en-e842efe3.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=Ztgh1UEOQ2hXbzUpjiWOwA&vrpanopan=-172&vrpanotilt=0&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=Ztgh1UEOQ2hXbzUpjiWOwA&pan=-172&tilt=0&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3DZtgh1UEOQ2hXbzUpjiWOwA%26heading%3D-172%26tilt%3D0%26fov%3D80&app=Y&appmarket=N",
+        "subwayStation": {
+          "id": "jamsil",
+          "title": "Jamsil Station",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.513114,
+          "lng": 127.098842,
+        },
+        "id": "jamsil-exit5",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.513133,
+                "lng": 127.098907,
+              },
+              "id": "exit5",
+              "kind": "subwayExit",
+              "label": "Exit 5",
+              "number": 5,
+            },
+          ],
+          "paths": [],
+        },
+        "name": "Jamsil Stn. Exit 5",
+        "subwayStation": {
+          "id": "jamsil",
+          "title": "Jamsil Station",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.4907,
+          "lng": 127.054417,
+        },
+        "detail": "About 50 m, in front of the red-brick building",
+        "id": "dogok-exit1",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.490911,
+                "lng": 127.054844,
+              },
+              "id": "exit1",
+              "kind": "subwayExit",
+              "label": "Exit 1",
+              "number": 1,
+            },
+          ],
+          "paths": [
+            {
+              "from": "exit1",
+              "kind": "walk",
+              "points": [
+                {
+                  "lat": 37.490911,
+                  "lng": 127.054844,
+                },
+                {
+                  "lat": 37.490854,
+                  "lng": 127.05478,
+                },
+                {
+                  "lat": 37.4907,
+                  "lng": 127.054417,
+                },
+              ],
+              "to": "stop",
+            },
+          ],
+        },
+        "name": "Dogok Stn. Exit 1",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/dogok-exit1/en-07203bbc.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=MP3SWzWvq5ayB2qIfZrveA&vrpanopan=-66&vrpanotilt=8&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=MP3SWzWvq5ayB2qIfZrveA&pan=-66&tilt=8&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3DMP3SWzWvq5ayB2qIfZrveA%26heading%3D-66%26tilt%3D8%26fov%3D80&app=Y&appmarket=N",
+        "subwayStation": {
+          "id": "dogok",
+          "title": "Dogok Station",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.490607,
+          "lng": 127.055048,
+        },
+        "id": "dogok-exit4",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.49054,
+                "lng": 127.055081,
+              },
+              "id": "exit4",
+              "kind": "subwayExit",
+              "label": "Exit 4",
+              "number": 4,
+            },
+          ],
+          "paths": [],
+        },
+        "name": "Dogok Stn. Exit 4",
+        "subwayStation": {
+          "id": "dogok",
+          "title": "Dogok Station",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.494424,
+          "lng": 127.029091,
+        },
+        "detail": "In front of the Samsung Fire & Marine Seocho building",
+        "id": "gangnam-exit5",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.495333,
+                "lng": 127.02863,
+              },
+              "id": "exit5",
+              "kind": "subwayExit",
+              "label": "Exit 5",
+              "number": 5,
+            },
+          ],
+          "paths": [
+            {
+              "from": "exit5",
+              "kind": "walk",
+              "points": [
+                {
+                  "lat": 37.495333,
+                  "lng": 127.02863,
+                },
+                {
+                  "lat": 37.495215,
+                  "lng": 127.028675,
+                },
+                {
+                  "lat": 37.49449,
+                  "lng": 127.028998,
+                },
+                {
+                  "lat": 37.494424,
+                  "lng": 127.029091,
+                },
+              ],
+              "to": "stop",
+            },
+          ],
+        },
+        "name": "Gangnam Stn. Exit 5",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/gangnam-exit5/en-790cefe1.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=JMkZUkg-9kO4MiUe-GnGVg&vrpanopan=-95&vrpanotilt=10&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=JMkZUkg-9kO4MiUe-GnGVg&pan=-95&tilt=10&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3DJMkZUkg-9kO4MiUe-GnGVg%26heading%3D-95%26tilt%3D10%26fov%3D80&app=Y&appmarket=N",
+        "subwayStation": {
+          "id": "gangnam",
+          "title": "Gangnam Station",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.485406,
+          "lng": 127.033382,
+        },
+        "detail": "Across Gangnam-daero 37-gil, in front of Seocho Lenid",
+        "id": "yangjae-exit2",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.485018,
+                "lng": 127.033534,
+              },
+              "id": "exit2",
+              "kind": "subwayExit",
+              "label": "Exit 2",
+              "number": 2,
+            },
+          ],
+          "paths": [
+            {
+              "from": "exit2",
+              "kind": "walk",
+              "points": [
+                {
+                  "lat": 37.485018,
+                  "lng": 127.033534,
+                },
+                {
+                  "lat": 37.485172,
+                  "lng": 127.033487,
+                },
+                {
+                  "lat": 37.48531,
+                  "lng": 127.03341,
+                },
+                {
+                  "lat": 37.485372,
+                  "lng": 127.033378,
+                },
+                {
+                  "lat": 37.485406,
+                  "lng": 127.033382,
+                },
+              ],
+              "to": "stop",
+            },
+          ],
+        },
+        "name": "Yangjae Stn. Exit 2",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/yangjae-exit2/en-8015f79c.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=t3fVimfVujMkQbI7-J3YnQ&vrpanopan=-72&vrpanotilt=0&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=t3fVimfVujMkQbI7-J3YnQ&pan=-72&tilt=0&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3Dt3fVimfVujMkQbI7-J3YnQ%26heading%3D-72%26tilt%3D0%26fov%3D80&app=Y&appmarket=N",
+        "subwayStation": {
+          "id": "yangjae",
+          "title": "Yangjae Station",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.48499,
+          "lng": 127.034064,
+        },
+        "id": "yangjae-exit3",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.485008,
+                "lng": 127.03418,
+              },
+              "id": "exit3",
+              "kind": "subwayExit",
+              "label": "Exit 3",
+              "number": 3,
+            },
+          ],
+          "paths": [],
+        },
+        "name": "Yangjae Stn. Exit 3",
+        "subwayStation": {
+          "id": "yangjae",
+          "title": "Yangjae Station",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.495049,
+          "lng": 127.029076,
+        },
+        "id": "gangnam-median",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "Median bus stop before Gangnam Station intersection",
+        "subwayStation": {
+          "id": "gangnam",
+          "title": "Gangnam Station",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.287931,
+          "lng": 127.052631,
+        },
+        "detail": "About 50 m, at the Gyeonggi Library plaza entrance",
+        "id": "gwanggyo-exit4",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.288187,
+                "lng": 127.052357,
+              },
+              "id": "exit4",
+              "kind": "subwayExit",
+              "label": "Exit 4",
+              "number": 4,
+            },
+          ],
+          "paths": [
+            {
+              "from": "exit4",
+              "kind": "walk",
+              "points": [
+                {
+                  "lat": 37.288187,
+                  "lng": 127.052357,
+                },
+                {
+                  "lat": 37.288168,
+                  "lng": 127.0524,
+                },
+                {
+                  "lat": 37.287931,
+                  "lng": 127.052631,
+                },
+              ],
+              "to": "stop",
+            },
+          ],
+        },
+        "name": "Gwanggyo Jungang Stn. Exit 4",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/gwanggyo-exit4/en-2caa0d51.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=7ScvFBuRYj398Dtktxmesw&vrpanopan=70&vrpanotilt=5&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=7ScvFBuRYj398Dtktxmesw&pan=70&tilt=5&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3D7ScvFBuRYj398Dtktxmesw%26heading%3D70%26tilt%3D5%26fov%3D80&app=Y&appmarket=N",
+        "subwayStation": {
+          "id": "gwanggyo-jungang",
+          "title": "Gwanggyojungang Station",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.287978,
+          "lng": 127.052104,
+        },
+        "id": "gwanggyo-exit1",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.287918,
+                "lng": 127.052047,
+              },
+              "id": "exit1",
+              "kind": "subwayExit",
+              "label": "Exit 1",
+              "number": 1,
+            },
+          ],
+          "paths": [],
+        },
+        "name": "Gwanggyo Jungang Stn. Exit 1",
+        "subwayStation": {
+          "id": "gwanggyo-jungang",
+          "title": "Gwanggyojungang Station",
+        },
+      },
+    ],
+  },
+  "screenType": "schedule",
+  "visibility": {
+    "from": "2026-10-12",
+    "type": "dateRange",
+    "until": "2026-12-18",
+  },
+}
+`;
+
+exports[`bus config > commute-ko 1`] = `
+{
+  "card": {
+    "busTypeText": "성대",
+    "iconType": "shuttle",
+    "themeColor": "003626",
+  },
+  "id": "commute",
+  "label": "자과캠 통학 셔틀버스",
+  "screen": {
+    "defaultServiceId": "commute-jeongja",
+    "features": [
+      {
+        "type": "info",
+        "url": "https://webview.skkuverse.com/bus/commute/info",
+      },
+    ],
+    "routeBadges": [
+      {
+        "color": "003626",
+        "id": "up",
+        "label": "등교",
+      },
+      {
+        "color": "1565C0",
+        "id": "down",
+        "label": "하교",
+      },
+    ],
+    "serviceSelector": "chips",
+    "services": [
+      {
+        "endpoint": "/bus/schedule/data/commute-jeongja/smart",
+        "label": "정자",
+        "refresh": {
+          "intervalSec": 60,
+          "targets": [
+            "traffic",
+          ],
+        },
+        "serviceId": "commute-jeongja",
+        "stopSequences": {
+          "down": [
+            {
+              "action": "board",
+              "label": "N센터 맞은편",
+              "note": "자과캠 탑승",
+              "stopId": "nsc-opposite",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "정자역 2번 출구 앞",
+              "note": "정자역 하차",
+              "stopId": "jeongja-exit2",
+              "timing": "estimated",
+            },
+          ],
+          "up": [
+            {
+              "action": "board",
+              "label": "정자역 3번 출구",
+              "note": "정자역 탑승",
+              "stopId": "jeongja-exit3",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "detail": "N센터 인근 → CNS센터 → 산학협력센터 인근 → 학생회관 인근",
+              "label": "N센터 앞",
+              "note": "자과캠 하차",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+      {
+        "endpoint": "/bus/schedule/data/commute-jamsil/smart",
+        "label": "잠실",
+        "refresh": {
+          "intervalSec": 60,
+          "targets": [
+            "traffic",
+          ],
+        },
+        "serviceId": "commute-jamsil",
+        "stopSequences": {
+          "down": [
+            {
+              "action": "board",
+              "label": "N센터 맞은편",
+              "note": "자과캠 탑승",
+              "stopId": "nsc-opposite",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "잠실역 5번 출구 앞",
+              "note": "잠실역 하차",
+              "stopId": "jamsil-exit5",
+              "timing": "estimated",
+            },
+          ],
+          "up": [
+            {
+              "action": "board",
+              "label": "잠실역 4번 출구",
+              "note": "잠실역 탑승",
+              "stopId": "jamsil-exit4",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "detail": "N센터 인근 → CNS센터 → 산학협력센터 인근 → 학생회관 인근",
+              "label": "N센터 앞",
+              "note": "자과캠 하차",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+      {
+        "endpoint": "/bus/schedule/data/commute-dogok/smart",
+        "label": "도곡",
+        "refresh": {
+          "intervalSec": 60,
+          "targets": [
+            "traffic",
+          ],
+        },
+        "serviceId": "commute-dogok",
+        "stopSequences": {
+          "down": [
+            {
+              "action": "board",
+              "label": "N센터 맞은편",
+              "note": "자과캠 탑승",
+              "stopId": "nsc-opposite",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "도곡역 4번 출구 앞",
+              "note": "도곡역 하차",
+              "stopId": "dogok-exit4",
+              "timing": "estimated",
+            },
+          ],
+          "up": [
+            {
+              "action": "board",
+              "label": "도곡역 1번 출구",
+              "note": "도곡역 탑승",
+              "stopId": "dogok-exit1",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "detail": "N센터 인근 → CNS센터 → 산학협력센터 인근 → 학생회관 인근",
+              "label": "N센터 앞",
+              "note": "자과캠 하차",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+      {
+        "endpoint": "/bus/schedule/data/commute-gangnam-yangjae/smart",
+        "label": "강남·양재",
+        "refresh": {
+          "intervalSec": 60,
+          "targets": [
+            "traffic",
+          ],
+        },
+        "serviceId": "commute-gangnam-yangjae",
+        "stopSequences": {
+          "down": [
+            {
+              "action": "board",
+              "label": "N센터 맞은편",
+              "note": "자과캠 탑승",
+              "stopId": "nsc-opposite",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "양재역 3번 출구 앞",
+              "note": "양재역 하차",
+              "stopId": "yangjae-exit3",
+              "timing": "estimated",
+            },
+            {
+              "action": "alight",
+              "label": "강남역 사거리 전 중앙버스차로 정류장",
+              "note": "강남역 하차",
+              "stopId": "gangnam-median",
+              "timing": "estimated",
+            },
+          ],
+          "up": [
+            {
+              "action": "board",
+              "label": "강남역 5번 출구",
+              "note": "강남역 탑승",
+              "stopId": "gangnam-exit5",
+              "timing": "scheduled",
+            },
+            {
+              "action": "board",
+              "label": "양재역 2번 출구",
+              "note": "양재역 탑승",
+              "stopId": "yangjae-exit2",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "detail": "N센터 인근 → CNS센터 → 산학협력센터 인근 → 학생회관 인근",
+              "label": "N센터 앞",
+              "note": "자과캠 하차",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+      {
+        "endpoint": "/bus/schedule/data/commute-gwanggyo/smart",
+        "label": "광교중앙",
+        "refresh": {
+          "intervalSec": 60,
+          "targets": [
+            "traffic",
+          ],
+        },
+        "serviceId": "commute-gwanggyo",
+        "stopSequences": {
+          "down": [
+            {
+              "action": "board",
+              "label": "N센터 맞은편",
+              "note": "자과캠 탑승",
+              "stopId": "nsc-opposite",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "광교중앙역 1번 출구 앞",
+              "note": "광교중앙역 하차",
+              "stopId": "gwanggyo-exit1",
+              "timing": "estimated",
+            },
+          ],
+          "up": [
+            {
+              "action": "board",
+              "label": "광교중앙역 4번 출구",
+              "note": "광교중앙역 탑승",
+              "stopId": "gwanggyo-exit4",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "detail": "N센터 인근 → CNS센터 → 산학협력센터 인근 → 학생회관 인근",
+              "label": "N센터 앞",
+              "note": "자과캠 하차",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+    ],
+    "stops": [
+      {
+        "coords": {
+          "lat": 37.365499,
+          "lng": 127.107906,
+        },
+        "detail": "파리바게뜨 앞",
+        "id": "jeongja-exit3",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.365922,
+                "lng": 127.107774,
+              },
+              "id": "exit3",
+              "kind": "subwayExit",
+              "label": "3번 출구",
+              "number": 3,
+            },
+          ],
+          "paths": [
+            {
+              "from": "exit3",
+              "kind": "walk",
+              "points": [
+                {
+                  "lat": 37.365922,
+                  "lng": 127.107774,
+                },
+                {
+                  "lat": 37.365882,
+                  "lng": 127.107844,
+                },
+                {
+                  "lat": 37.365712,
+                  "lng": 127.107844,
+                },
+                {
+                  "lat": 37.365699,
+                  "lng": 127.107876,
+                },
+                {
+                  "lat": 37.365581,
+                  "lng": 127.107876,
+                },
+                {
+                  "lat": 37.365499,
+                  "lng": 127.107906,
+                },
+              ],
+              "to": "stop",
+            },
+          ],
+        },
+        "name": "정자역 3번 출구",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/jeongja-exit3/ko-f3580542.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=4MWo62oDv4KAFMmR86SRaA&vrpanopan=-75&vrpanotilt=0&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=4MWo62oDv4KAFMmR86SRaA&pan=-75&tilt=0&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3D4MWo62oDv4KAFMmR86SRaA%26heading%3D-75%26tilt%3D0%26fov%3D80&app=Y&appmarket=N",
+        "subwayStation": {
+          "id": "jeongja",
+          "title": "정자역",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.292298,
+          "lng": 126.975057,
+        },
+        "detail": "N센터 쪽 인도",
+        "id": "nsc-n-center",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "N센터 앞",
+        "photoUrl": "https://media.skkuverse.com/bus/stops/nsc-n-center/original-53c0cde5.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=YntS5LxXHav0lPF1zQf9tA&vrpanopan=152&vrpanotilt=2&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=YntS5LxXHav0lPF1zQf9tA&pan=152&tilt=2&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3DYntS5LxXHav0lPF1zQf9tA%26heading%3D152%26tilt%3D2%26fov%3D80&app=Y&appmarket=N",
+      },
+      {
+        "coords": {
+          "lat": 37.292536,
+          "lng": 126.975077,
+        },
+        "detail": "글로벌광장 쪽, 연석의 BUS STOP 표시",
+        "id": "nsc-opposite",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "N센터 맞은편",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/nsc-opposite/original-3406c12b.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=1pS33oeIOFDwuxlq1Prstg&vrpanopan=84&vrpanotilt=12&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=1pS33oeIOFDwuxlq1Prstg&pan=84&tilt=12&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3D1pS33oeIOFDwuxlq1Prstg%26heading%3D84%26tilt%3D12%26fov%3D80&app=Y&appmarket=N",
+      },
+      {
+        "coords": {
+          "lat": 37.366014,
+          "lng": 127.10836,
+        },
+        "id": "jeongja-exit2",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.366095,
+                "lng": 127.108414,
+              },
+              "id": "exit2",
+              "kind": "subwayExit",
+              "label": "2번 출구",
+              "number": 2,
+            },
+          ],
+          "paths": [],
+        },
+        "name": "정자역 2번 출구 앞",
+        "subwayStation": {
+          "id": "jeongja",
+          "title": "정자역",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.512278,
+          "lng": 127.097033,
+        },
+        "detail": "약 200 m, 롯데마트(하이마트) 앞",
+        "id": "jamsil-exit4",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.512743,
+                "lng": 127.099156,
+              },
+              "id": "exit4",
+              "kind": "subwayExit",
+              "label": "4번 출구",
+              "number": 4,
+            },
+          ],
+          "paths": [
+            {
+              "from": "exit4",
+              "kind": "walk",
+              "points": [
+                {
+                  "lat": 37.512743,
+                  "lng": 127.099156,
+                },
+                {
+                  "lat": 37.512704,
+                  "lng": 127.099055,
+                },
+                {
+                  "lat": 37.512281,
+                  "lng": 127.097237,
+                },
+                {
+                  "lat": 37.512278,
+                  "lng": 127.097033,
+                },
+              ],
+              "to": "stop",
+            },
+          ],
+        },
+        "name": "잠실역 4번 출구",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/jamsil-exit4/ko-77d838fe.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=Ztgh1UEOQ2hXbzUpjiWOwA&vrpanopan=-172&vrpanotilt=0&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=Ztgh1UEOQ2hXbzUpjiWOwA&pan=-172&tilt=0&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3DZtgh1UEOQ2hXbzUpjiWOwA%26heading%3D-172%26tilt%3D0%26fov%3D80&app=Y&appmarket=N",
+        "subwayStation": {
+          "id": "jamsil",
+          "title": "잠실역",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.513114,
+          "lng": 127.098842,
+        },
+        "id": "jamsil-exit5",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.513133,
+                "lng": 127.098907,
+              },
+              "id": "exit5",
+              "kind": "subwayExit",
+              "label": "5번 출구",
+              "number": 5,
+            },
+          ],
+          "paths": [],
+        },
+        "name": "잠실역 5번 출구 앞",
+        "subwayStation": {
+          "id": "jamsil",
+          "title": "잠실역",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.4907,
+          "lng": 127.054417,
+        },
+        "detail": "약 50 m, 붉은 벽돌 건물 앞",
+        "id": "dogok-exit1",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.490911,
+                "lng": 127.054844,
+              },
+              "id": "exit1",
+              "kind": "subwayExit",
+              "label": "1번 출구",
+              "number": 1,
+            },
+          ],
+          "paths": [
+            {
+              "from": "exit1",
+              "kind": "walk",
+              "points": [
+                {
+                  "lat": 37.490911,
+                  "lng": 127.054844,
+                },
+                {
+                  "lat": 37.490854,
+                  "lng": 127.05478,
+                },
+                {
+                  "lat": 37.4907,
+                  "lng": 127.054417,
+                },
+              ],
+              "to": "stop",
+            },
+          ],
+        },
+        "name": "도곡역 1번 출구",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/dogok-exit1/ko-89ecba02.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=MP3SWzWvq5ayB2qIfZrveA&vrpanopan=-66&vrpanotilt=8&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=MP3SWzWvq5ayB2qIfZrveA&pan=-66&tilt=8&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3DMP3SWzWvq5ayB2qIfZrveA%26heading%3D-66%26tilt%3D8%26fov%3D80&app=Y&appmarket=N",
+        "subwayStation": {
+          "id": "dogok",
+          "title": "도곡역",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.490607,
+          "lng": 127.055048,
+        },
+        "id": "dogok-exit4",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.49054,
+                "lng": 127.055081,
+              },
+              "id": "exit4",
+              "kind": "subwayExit",
+              "label": "4번 출구",
+              "number": 4,
+            },
+          ],
+          "paths": [],
+        },
+        "name": "도곡역 4번 출구 앞",
+        "subwayStation": {
+          "id": "dogok",
+          "title": "도곡역",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.494424,
+          "lng": 127.029091,
+        },
+        "detail": "삼성화재 서초사옥 앞",
+        "id": "gangnam-exit5",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.495333,
+                "lng": 127.02863,
+              },
+              "id": "exit5",
+              "kind": "subwayExit",
+              "label": "5번 출구",
+              "number": 5,
+            },
+          ],
+          "paths": [
+            {
+              "from": "exit5",
+              "kind": "walk",
+              "points": [
+                {
+                  "lat": 37.495333,
+                  "lng": 127.02863,
+                },
+                {
+                  "lat": 37.495215,
+                  "lng": 127.028675,
+                },
+                {
+                  "lat": 37.49449,
+                  "lng": 127.028998,
+                },
+                {
+                  "lat": 37.494424,
+                  "lng": 127.029091,
+                },
+              ],
+              "to": "stop",
+            },
+          ],
+        },
+        "name": "강남역 5번 출구",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/gangnam-exit5/ko-87520a78.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=JMkZUkg-9kO4MiUe-GnGVg&vrpanopan=-95&vrpanotilt=10&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=JMkZUkg-9kO4MiUe-GnGVg&pan=-95&tilt=10&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3DJMkZUkg-9kO4MiUe-GnGVg%26heading%3D-95%26tilt%3D10%26fov%3D80&app=Y&appmarket=N",
+        "subwayStation": {
+          "id": "gangnam",
+          "title": "강남역",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.485406,
+          "lng": 127.033382,
+        },
+        "detail": "강남대로37길 건너 서초르니드 앞",
+        "id": "yangjae-exit2",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.485018,
+                "lng": 127.033534,
+              },
+              "id": "exit2",
+              "kind": "subwayExit",
+              "label": "2번 출구",
+              "number": 2,
+            },
+          ],
+          "paths": [
+            {
+              "from": "exit2",
+              "kind": "walk",
+              "points": [
+                {
+                  "lat": 37.485018,
+                  "lng": 127.033534,
+                },
+                {
+                  "lat": 37.485172,
+                  "lng": 127.033487,
+                },
+                {
+                  "lat": 37.48531,
+                  "lng": 127.03341,
+                },
+                {
+                  "lat": 37.485372,
+                  "lng": 127.033378,
+                },
+                {
+                  "lat": 37.485406,
+                  "lng": 127.033382,
+                },
+              ],
+              "to": "stop",
+            },
+          ],
+        },
+        "name": "양재역 2번 출구",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/yangjae-exit2/ko-249a2124.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=t3fVimfVujMkQbI7-J3YnQ&vrpanopan=-72&vrpanotilt=0&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=t3fVimfVujMkQbI7-J3YnQ&pan=-72&tilt=0&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3Dt3fVimfVujMkQbI7-J3YnQ%26heading%3D-72%26tilt%3D0%26fov%3D80&app=Y&appmarket=N",
+        "subwayStation": {
+          "id": "yangjae",
+          "title": "양재역",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.48499,
+          "lng": 127.034064,
+        },
+        "id": "yangjae-exit3",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.485008,
+                "lng": 127.03418,
+              },
+              "id": "exit3",
+              "kind": "subwayExit",
+              "label": "3번 출구",
+              "number": 3,
+            },
+          ],
+          "paths": [],
+        },
+        "name": "양재역 3번 출구 앞",
+        "subwayStation": {
+          "id": "yangjae",
+          "title": "양재역",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.495049,
+          "lng": 127.029076,
+        },
+        "id": "gangnam-median",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "강남역 사거리 전 중앙버스차로 정류장",
+        "subwayStation": {
+          "id": "gangnam",
+          "title": "강남역",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.287931,
+          "lng": 127.052631,
+        },
+        "detail": "약 50 m, 경기도서관 광장 입구 앞",
+        "id": "gwanggyo-exit4",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.288187,
+                "lng": 127.052357,
+              },
+              "id": "exit4",
+              "kind": "subwayExit",
+              "label": "4번 출구",
+              "number": 4,
+            },
+          ],
+          "paths": [
+            {
+              "from": "exit4",
+              "kind": "walk",
+              "points": [
+                {
+                  "lat": 37.288187,
+                  "lng": 127.052357,
+                },
+                {
+                  "lat": 37.288168,
+                  "lng": 127.0524,
+                },
+                {
+                  "lat": 37.287931,
+                  "lng": 127.052631,
+                },
+              ],
+              "to": "stop",
+            },
+          ],
+        },
+        "name": "광교중앙역 4번 출구",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/gwanggyo-exit4/ko-2930e200.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=7ScvFBuRYj398Dtktxmesw&vrpanopan=70&vrpanotilt=5&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=7ScvFBuRYj398Dtktxmesw&pan=70&tilt=5&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3D7ScvFBuRYj398Dtktxmesw%26heading%3D70%26tilt%3D5%26fov%3D80&app=Y&appmarket=N",
+        "subwayStation": {
+          "id": "gwanggyo-jungang",
+          "title": "광교중앙역",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.287978,
+          "lng": 127.052104,
+        },
+        "id": "gwanggyo-exit1",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.287918,
+                "lng": 127.052047,
+              },
+              "id": "exit1",
+              "kind": "subwayExit",
+              "label": "1번 출구",
+              "number": 1,
+            },
+          ],
+          "paths": [],
+        },
+        "name": "광교중앙역 1번 출구 앞",
+        "subwayStation": {
+          "id": "gwanggyo-jungang",
+          "title": "광교중앙역",
+        },
+      },
+    ],
+  },
+  "screenType": "schedule",
+  "visibility": {
+    "from": "2026-10-12",
+    "type": "dateRange",
+    "until": "2026-12-18",
+  },
+}
+`;
+
+exports[`bus config > commute-zh 1`] = `
+{
+  "card": {
+    "busTypeText": "成大",
+    "iconType": "shuttle",
+    "themeColor": "003626",
+  },
+  "id": "commute",
+  "label": "自然校区通学班车",
+  "screen": {
+    "defaultServiceId": "commute-jeongja",
+    "features": [
+      {
+        "type": "info",
+        "url": "https://webview.skkuverse.com/bus/commute/info",
+      },
+    ],
+    "routeBadges": [
+      {
+        "color": "003626",
+        "id": "up",
+        "label": "上学",
+      },
+      {
+        "color": "1565C0",
+        "id": "down",
+        "label": "放学",
+      },
+    ],
+    "serviceSelector": "chips",
+    "services": [
+      {
+        "endpoint": "/bus/schedule/data/commute-jeongja/smart",
+        "label": "亭子",
+        "refresh": {
+          "intervalSec": 60,
+          "targets": [
+            "traffic",
+          ],
+        },
+        "serviceId": "commute-jeongja",
+        "stopSequences": {
+          "down": [
+            {
+              "action": "board",
+              "label": "N中心对面",
+              "note": "自然校区上车",
+              "stopId": "nsc-opposite",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "亭子站 2号出口",
+              "note": "亭子站下车",
+              "stopId": "jeongja-exit2",
+              "timing": "estimated",
+            },
+          ],
+          "up": [
+            {
+              "action": "board",
+              "label": "亭子站 3号出口",
+              "note": "亭子站上车",
+              "stopId": "jeongja-exit3",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "detail": "N中心附近 → CNS中心 → 产学合作中心附近 → 学生会馆附近",
+              "label": "N中心前",
+              "note": "自然校区下车",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+      {
+        "endpoint": "/bus/schedule/data/commute-jamsil/smart",
+        "label": "蚕室",
+        "refresh": {
+          "intervalSec": 60,
+          "targets": [
+            "traffic",
+          ],
+        },
+        "serviceId": "commute-jamsil",
+        "stopSequences": {
+          "down": [
+            {
+              "action": "board",
+              "label": "N中心对面",
+              "note": "自然校区上车",
+              "stopId": "nsc-opposite",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "蚕室站 5号出口",
+              "note": "蚕室站下车",
+              "stopId": "jamsil-exit5",
+              "timing": "estimated",
+            },
+          ],
+          "up": [
+            {
+              "action": "board",
+              "label": "蚕室站 4号出口",
+              "note": "蚕室站上车",
+              "stopId": "jamsil-exit4",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "detail": "N中心附近 → CNS中心 → 产学合作中心附近 → 学生会馆附近",
+              "label": "N中心前",
+              "note": "自然校区下车",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+      {
+        "endpoint": "/bus/schedule/data/commute-dogok/smart",
+        "label": "道谷",
+        "refresh": {
+          "intervalSec": 60,
+          "targets": [
+            "traffic",
+          ],
+        },
+        "serviceId": "commute-dogok",
+        "stopSequences": {
+          "down": [
+            {
+              "action": "board",
+              "label": "N中心对面",
+              "note": "自然校区上车",
+              "stopId": "nsc-opposite",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "道谷站 4号出口",
+              "note": "道谷站下车",
+              "stopId": "dogok-exit4",
+              "timing": "estimated",
+            },
+          ],
+          "up": [
+            {
+              "action": "board",
+              "label": "道谷站 1号出口",
+              "note": "道谷站上车",
+              "stopId": "dogok-exit1",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "detail": "N中心附近 → CNS中心 → 产学合作中心附近 → 学生会馆附近",
+              "label": "N中心前",
+              "note": "自然校区下车",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+      {
+        "endpoint": "/bus/schedule/data/commute-gangnam-yangjae/smart",
+        "label": "江南·良才",
+        "refresh": {
+          "intervalSec": 60,
+          "targets": [
+            "traffic",
+          ],
+        },
+        "serviceId": "commute-gangnam-yangjae",
+        "stopSequences": {
+          "down": [
+            {
+              "action": "board",
+              "label": "N中心对面",
+              "note": "自然校区上车",
+              "stopId": "nsc-opposite",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "良才站 3号出口",
+              "note": "良才站下车",
+              "stopId": "yangjae-exit3",
+              "timing": "estimated",
+            },
+            {
+              "action": "alight",
+              "label": "江南站十字路口前中央公交车站",
+              "note": "江南站下车",
+              "stopId": "gangnam-median",
+              "timing": "estimated",
+            },
+          ],
+          "up": [
+            {
+              "action": "board",
+              "label": "江南站 5号出口",
+              "note": "江南站上车",
+              "stopId": "gangnam-exit5",
+              "timing": "scheduled",
+            },
+            {
+              "action": "board",
+              "label": "良才站 2号出口",
+              "note": "良才站上车",
+              "stopId": "yangjae-exit2",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "detail": "N中心附近 → CNS中心 → 产学合作中心附近 → 学生会馆附近",
+              "label": "N中心前",
+              "note": "自然校区下车",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+      {
+        "endpoint": "/bus/schedule/data/commute-gwanggyo/smart",
+        "label": "光教中央",
+        "refresh": {
+          "intervalSec": 60,
+          "targets": [
+            "traffic",
+          ],
+        },
+        "serviceId": "commute-gwanggyo",
+        "stopSequences": {
+          "down": [
+            {
+              "action": "board",
+              "label": "N中心对面",
+              "note": "自然校区上车",
+              "stopId": "nsc-opposite",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "label": "光教中央站 1号出口",
+              "note": "光教中央站下车",
+              "stopId": "gwanggyo-exit1",
+              "timing": "estimated",
+            },
+          ],
+          "up": [
+            {
+              "action": "board",
+              "label": "光教中央站 4号出口",
+              "note": "光教中央站上车",
+              "stopId": "gwanggyo-exit4",
+              "timing": "scheduled",
+            },
+            {
+              "action": "alight",
+              "detail": "N中心附近 → CNS中心 → 产学合作中心附近 → 学生会馆附近",
+              "label": "N中心前",
+              "note": "自然校区下车",
+              "stopId": "nsc-n-center",
+              "timing": "estimated",
+            },
+          ],
+        },
+      },
+    ],
+    "stops": [
+      {
+        "coords": {
+          "lat": 37.365499,
+          "lng": 127.107906,
+        },
+        "detail": "巴黎贝甜门前",
+        "id": "jeongja-exit3",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.365922,
+                "lng": 127.107774,
+              },
+              "id": "exit3",
+              "kind": "subwayExit",
+              "label": "3号出口",
+              "number": 3,
+            },
+          ],
+          "paths": [
+            {
+              "from": "exit3",
+              "kind": "walk",
+              "points": [
+                {
+                  "lat": 37.365922,
+                  "lng": 127.107774,
+                },
+                {
+                  "lat": 37.365882,
+                  "lng": 127.107844,
+                },
+                {
+                  "lat": 37.365712,
+                  "lng": 127.107844,
+                },
+                {
+                  "lat": 37.365699,
+                  "lng": 127.107876,
+                },
+                {
+                  "lat": 37.365581,
+                  "lng": 127.107876,
+                },
+                {
+                  "lat": 37.365499,
+                  "lng": 127.107906,
+                },
+              ],
+              "to": "stop",
+            },
+          ],
+        },
+        "name": "亭子站 3号出口",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/jeongja-exit3/zh-b4096697.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=4MWo62oDv4KAFMmR86SRaA&vrpanopan=-75&vrpanotilt=0&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=4MWo62oDv4KAFMmR86SRaA&pan=-75&tilt=0&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3D4MWo62oDv4KAFMmR86SRaA%26heading%3D-75%26tilt%3D0%26fov%3D80&app=Y&appmarket=N",
+        "subwayStation": {
+          "id": "jeongja",
+          "title": "亭子站",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.292298,
+          "lng": 126.975057,
+        },
+        "detail": "N中心一侧人行道",
+        "id": "nsc-n-center",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "N中心前",
+        "photoUrl": "https://media.skkuverse.com/bus/stops/nsc-n-center/original-53c0cde5.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=YntS5LxXHav0lPF1zQf9tA&vrpanopan=152&vrpanotilt=2&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=YntS5LxXHav0lPF1zQf9tA&pan=152&tilt=2&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3DYntS5LxXHav0lPF1zQf9tA%26heading%3D152%26tilt%3D2%26fov%3D80&app=Y&appmarket=N",
+      },
+      {
+        "coords": {
+          "lat": 37.292536,
+          "lng": 126.975077,
+        },
+        "detail": "环球广场一侧，路缘BUS STOP标志处",
+        "id": "nsc-opposite",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "N中心对面",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/nsc-opposite/original-3406c12b.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=1pS33oeIOFDwuxlq1Prstg&vrpanopan=84&vrpanotilt=12&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=1pS33oeIOFDwuxlq1Prstg&pan=84&tilt=12&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3D1pS33oeIOFDwuxlq1Prstg%26heading%3D84%26tilt%3D12%26fov%3D80&app=Y&appmarket=N",
+      },
+      {
+        "coords": {
+          "lat": 37.366014,
+          "lng": 127.10836,
+        },
+        "id": "jeongja-exit2",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.366095,
+                "lng": 127.108414,
+              },
+              "id": "exit2",
+              "kind": "subwayExit",
+              "label": "2号出口",
+              "number": 2,
+            },
+          ],
+          "paths": [],
+        },
+        "name": "亭子站 2号出口",
+        "subwayStation": {
+          "id": "jeongja",
+          "title": "亭子站",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.512278,
+          "lng": 127.097033,
+        },
+        "detail": "约200米，乐天玛特（Hi-Mart）门前",
+        "id": "jamsil-exit4",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.512743,
+                "lng": 127.099156,
+              },
+              "id": "exit4",
+              "kind": "subwayExit",
+              "label": "4号出口",
+              "number": 4,
+            },
+          ],
+          "paths": [
+            {
+              "from": "exit4",
+              "kind": "walk",
+              "points": [
+                {
+                  "lat": 37.512743,
+                  "lng": 127.099156,
+                },
+                {
+                  "lat": 37.512704,
+                  "lng": 127.099055,
+                },
+                {
+                  "lat": 37.512281,
+                  "lng": 127.097237,
+                },
+                {
+                  "lat": 37.512278,
+                  "lng": 127.097033,
+                },
+              ],
+              "to": "stop",
+            },
+          ],
+        },
+        "name": "蚕室站 4号出口",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/jamsil-exit4/zh-66e4bebe.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=Ztgh1UEOQ2hXbzUpjiWOwA&vrpanopan=-172&vrpanotilt=0&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=Ztgh1UEOQ2hXbzUpjiWOwA&pan=-172&tilt=0&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3DZtgh1UEOQ2hXbzUpjiWOwA%26heading%3D-172%26tilt%3D0%26fov%3D80&app=Y&appmarket=N",
+        "subwayStation": {
+          "id": "jamsil",
+          "title": "蚕室站",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.513114,
+          "lng": 127.098842,
+        },
+        "id": "jamsil-exit5",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.513133,
+                "lng": 127.098907,
+              },
+              "id": "exit5",
+              "kind": "subwayExit",
+              "label": "5号出口",
+              "number": 5,
+            },
+          ],
+          "paths": [],
+        },
+        "name": "蚕室站 5号出口",
+        "subwayStation": {
+          "id": "jamsil",
+          "title": "蚕室站",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.4907,
+          "lng": 127.054417,
+        },
+        "detail": "约50米，红砖建筑门前",
+        "id": "dogok-exit1",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.490911,
+                "lng": 127.054844,
+              },
+              "id": "exit1",
+              "kind": "subwayExit",
+              "label": "1号出口",
+              "number": 1,
+            },
+          ],
+          "paths": [
+            {
+              "from": "exit1",
+              "kind": "walk",
+              "points": [
+                {
+                  "lat": 37.490911,
+                  "lng": 127.054844,
+                },
+                {
+                  "lat": 37.490854,
+                  "lng": 127.05478,
+                },
+                {
+                  "lat": 37.4907,
+                  "lng": 127.054417,
+                },
+              ],
+              "to": "stop",
+            },
+          ],
+        },
+        "name": "道谷站 1号出口",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/dogok-exit1/zh-6e331b49.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=MP3SWzWvq5ayB2qIfZrveA&vrpanopan=-66&vrpanotilt=8&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=MP3SWzWvq5ayB2qIfZrveA&pan=-66&tilt=8&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3DMP3SWzWvq5ayB2qIfZrveA%26heading%3D-66%26tilt%3D8%26fov%3D80&app=Y&appmarket=N",
+        "subwayStation": {
+          "id": "dogok",
+          "title": "道谷站",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.490607,
+          "lng": 127.055048,
+        },
+        "id": "dogok-exit4",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.49054,
+                "lng": 127.055081,
+              },
+              "id": "exit4",
+              "kind": "subwayExit",
+              "label": "4号出口",
+              "number": 4,
+            },
+          ],
+          "paths": [],
+        },
+        "name": "道谷站 4号出口",
+        "subwayStation": {
+          "id": "dogok",
+          "title": "道谷站",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.494424,
+          "lng": 127.029091,
+        },
+        "detail": "三星火灾瑞草大楼门前",
+        "id": "gangnam-exit5",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.495333,
+                "lng": 127.02863,
+              },
+              "id": "exit5",
+              "kind": "subwayExit",
+              "label": "5号出口",
+              "number": 5,
+            },
+          ],
+          "paths": [
+            {
+              "from": "exit5",
+              "kind": "walk",
+              "points": [
+                {
+                  "lat": 37.495333,
+                  "lng": 127.02863,
+                },
+                {
+                  "lat": 37.495215,
+                  "lng": 127.028675,
+                },
+                {
+                  "lat": 37.49449,
+                  "lng": 127.028998,
+                },
+                {
+                  "lat": 37.494424,
+                  "lng": 127.029091,
+                },
+              ],
+              "to": "stop",
+            },
+          ],
+        },
+        "name": "江南站 5号出口",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/gangnam-exit5/zh-688582db.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=JMkZUkg-9kO4MiUe-GnGVg&vrpanopan=-95&vrpanotilt=10&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=JMkZUkg-9kO4MiUe-GnGVg&pan=-95&tilt=10&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3DJMkZUkg-9kO4MiUe-GnGVg%26heading%3D-95%26tilt%3D10%26fov%3D80&app=Y&appmarket=N",
+        "subwayStation": {
+          "id": "gangnam",
+          "title": "江南站",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.485406,
+          "lng": 127.033382,
+        },
+        "detail": "过江南大路37街，瑞草Lenid门前",
+        "id": "yangjae-exit2",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.485018,
+                "lng": 127.033534,
+              },
+              "id": "exit2",
+              "kind": "subwayExit",
+              "label": "2号出口",
+              "number": 2,
+            },
+          ],
+          "paths": [
+            {
+              "from": "exit2",
+              "kind": "walk",
+              "points": [
+                {
+                  "lat": 37.485018,
+                  "lng": 127.033534,
+                },
+                {
+                  "lat": 37.485172,
+                  "lng": 127.033487,
+                },
+                {
+                  "lat": 37.48531,
+                  "lng": 127.03341,
+                },
+                {
+                  "lat": 37.485372,
+                  "lng": 127.033378,
+                },
+                {
+                  "lat": 37.485406,
+                  "lng": 127.033382,
+                },
+              ],
+              "to": "stop",
+            },
+          ],
+        },
+        "name": "良才站 2号出口",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/yangjae-exit2/zh-b3e9be96.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=t3fVimfVujMkQbI7-J3YnQ&vrpanopan=-72&vrpanotilt=0&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=t3fVimfVujMkQbI7-J3YnQ&pan=-72&tilt=0&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3Dt3fVimfVujMkQbI7-J3YnQ%26heading%3D-72%26tilt%3D0%26fov%3D80&app=Y&appmarket=N",
+        "subwayStation": {
+          "id": "yangjae",
+          "title": "良才站",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.48499,
+          "lng": 127.034064,
+        },
+        "id": "yangjae-exit3",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.485008,
+                "lng": 127.03418,
+              },
+              "id": "exit3",
+              "kind": "subwayExit",
+              "label": "3号出口",
+              "number": 3,
+            },
+          ],
+          "paths": [],
+        },
+        "name": "良才站 3号出口",
+        "subwayStation": {
+          "id": "yangjae",
+          "title": "良才站",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.495049,
+          "lng": 127.029076,
+        },
+        "id": "gangnam-median",
+        "map": {
+          "markers": [],
+          "paths": [],
+        },
+        "name": "江南站十字路口前中央公交车站",
+        "subwayStation": {
+          "id": "gangnam",
+          "title": "江南站",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.287931,
+          "lng": 127.052631,
+        },
+        "detail": "约50米，京畿道图书馆广场入口",
+        "id": "gwanggyo-exit4",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.288187,
+                "lng": 127.052357,
+              },
+              "id": "exit4",
+              "kind": "subwayExit",
+              "label": "4号出口",
+              "number": 4,
+            },
+          ],
+          "paths": [
+            {
+              "from": "exit4",
+              "kind": "walk",
+              "points": [
+                {
+                  "lat": 37.288187,
+                  "lng": 127.052357,
+                },
+                {
+                  "lat": 37.288168,
+                  "lng": 127.0524,
+                },
+                {
+                  "lat": 37.287931,
+                  "lng": 127.052631,
+                },
+              ],
+              "to": "stop",
+            },
+          ],
+        },
+        "name": "光教中央站 4号出口",
+        "photoUrl": "https://media.skkuverse.com/commute/stops/gwanggyo-exit4/zh-6f296ed3.jpg",
+        "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=7ScvFBuRYj398Dtktxmesw&vrpanopan=70&vrpanotilt=5&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=7ScvFBuRYj398Dtktxmesw&pan=70&tilt=5&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3D7ScvFBuRYj398Dtktxmesw%26heading%3D70%26tilt%3D5%26fov%3D80&app=Y&appmarket=N",
+        "subwayStation": {
+          "id": "gwanggyo-jungang",
+          "title": "光教中央站",
+        },
+      },
+      {
+        "coords": {
+          "lat": 37.287978,
+          "lng": 127.052104,
+        },
+        "id": "gwanggyo-exit1",
+        "map": {
+          "markers": [
+            {
+              "coords": {
+                "lat": 37.287918,
+                "lng": 127.052047,
+              },
+              "id": "exit1",
+              "kind": "subwayExit",
+              "label": "1号出口",
+              "number": 1,
+            },
+          ],
+          "paths": [],
+        },
+        "name": "光教中央站 1号出口",
+        "subwayStation": {
+          "id": "gwanggyo-jungang",
+          "title": "光教中央站",
+        },
+      },
+    ],
+  },
+  "screenType": "schedule",
+  "visibility": {
+    "from": "2026-10-12",
+    "type": "dateRange",
+    "until": "2026-12-18",
+  },
+}
+`;
+
+exports[`bus config > realtime-hssc 1`] = `
+{
+  "card": {
+    "busTypeText": "SKKU",
+    "iconType": "shuttle",
+    "themeColor": "003626",
+  },
+  "id": "hssc",
+  "label": "HSSC Shuttle Bus",
+  "screen": {
+    "directions": [],
+    "features": [
+      {
+        "type": "info",
+        "url": "https://webview.skkuverse.com/bus/hssc/info",
+      },
+    ],
+    "hasLowFloor": false,
+    "hasPlates": false,
+    "isLoop": true,
+    "lastStationIndex": 10,
+    "liveEndpoint": "/bus/live/hssc",
+    "refreshInterval": 10,
+    "stations": [
+      {
+        "index": 4,
+        "isAlightOnly": false,
+        "isFirstStation": false,
+        "isLastStation": false,
+        "isPassThrough": false,
+        "isRotationStation": false,
+        "name": "혜화동우체국",
+        "stopId": "hssc-hyehwa-post-office",
+        "subtitle": "Hyehwa Postoffice [Drop-off Only]",
+        "transferLines": [],
+      },
+      {
+        "index": 5,
+        "isAlightOnly": false,
+        "isFirstStation": false,
+        "isLastStation": false,
+        "isPassThrough": false,
+        "isRotationStation": false,
+        "name": "혜화동로터리",
+        "subtitle": "Hyehwa Rotary [Non-stop]",
+        "transferLines": [],
+      },
+      {
+        "index": 6,
+        "isAlightOnly": false,
+        "isFirstStation": false,
+        "isLastStation": false,
+        "isPassThrough": false,
+        "isRotationStation": false,
+        "name": "혜화역 1번출구",
+        "stopId": "hssc-hyehwa-exit1",
+        "subtitle": "Hyehwa Station (Shuttle Bus Stop)",
+        "transferLines": [
+          {
+            "color": "00A5DE",
+            "line": "4",
+          },
+        ],
+      },
+    ],
+  },
+  "screenType": "realtime",
+  "visibility": {
+    "type": "always",
+  },
+}
+`;
+
+exports[`bus config > realtime-hssc-alight-only 1`] = `
+{
+  "card": {
+    "busTypeText": "SKKU",
+    "iconType": "shuttle",
+    "themeColor": "003626",
+  },
+  "id": "hssc",
+  "label": "HSSC Shuttle Bus",
+  "screen": {
+    "directions": [
+      {
+        "fromIndex": 0,
+        "id": "fromCampus",
+        "label": "From campus",
+        "toIndex": 5,
+      },
+      {
+        "fromIndex": 6,
+        "id": "toCampus",
+        "label": "To campus",
+        "toIndex": 10,
+      },
+    ],
+    "features": [
+      {
+        "type": "info",
+        "url": "https://webview.skkuverse.com/bus/hssc/info",
+      },
+    ],
+    "hasLowFloor": false,
+    "hasPlates": false,
+    "isLoop": true,
+    "lastStationIndex": 10,
+    "liveEndpoint": "/bus/live/hssc",
+    "refreshInterval": 10,
+    "stations": [
+      {
+        "directionId": "fromCampus",
+        "index": 3,
+        "isAlightOnly": true,
+        "isFirstStation": false,
+        "isLastStation": false,
+        "isPassThrough": false,
+        "isRotationStation": false,
+        "name": "올림픽기념국민생활관",
+        "stopId": "hssc-olympic-hall",
+        "transferLines": [],
+      },
+      {
+        "directionId": "fromCampus",
+        "index": 4,
+        "isAlightOnly": true,
+        "isFirstStation": false,
+        "isLastStation": false,
+        "isPassThrough": false,
+        "isRotationStation": false,
+        "name": "혜화동우체국",
+        "stopId": "hssc-hyehwa-post-office",
+        "transferLines": [],
+      },
+      {
+        "directionId": "fromCampus",
+        "index": 5,
+        "isAlightOnly": false,
+        "isFirstStation": false,
+        "isLastStation": false,
+        "isPassThrough": true,
+        "isRotationStation": false,
+        "name": "혜화동로터리",
+        "transferLines": [],
+      },
+    ],
+  },
+  "screenType": "realtime",
+  "visibility": {
+    "type": "always",
+  },
+}
+`;
+
+exports[`bus config > realtime-jongro07 1`] = `
+{
+  "card": {
+    "busTypeText": "마을",
+    "iconType": "village",
+    "themeColor": "4CAF50",
+  },
+  "id": "jongro07",
+  "label": "종로 07",
+  "screen": {
+    "directions": [],
+    "features": [],
+    "hasLowFloor": false,
+    "hasPlates": true,
+    "isLoop": false,
+    "lastStationIndex": 21,
+    "liveEndpoint": "/bus/live/jongro07",
+    "refreshInterval": 25,
+    "stations": [
+      {
+        "index": 0,
+        "isAlightOnly": false,
+        "isFirstStation": true,
+        "isLastStation": false,
+        "isPassThrough": false,
+        "isRotationStation": false,
+        "name": "성균관대운동장",
+        "stationNumber": "01617",
+        "stopId": "seoul-01617",
+        "transferLines": [],
+      },
+      {
+        "index": 1,
+        "isAlightOnly": false,
+        "isFirstStation": false,
+        "isLastStation": false,
+        "isPassThrough": false,
+        "isRotationStation": false,
+        "name": "학생회관",
+        "stationNumber": "01618",
+        "stopId": "seoul-01618",
+        "transferLines": [],
+      },
+    ],
+  },
+  "screenType": "realtime",
+  "visibility": {
+    "type": "always",
+  },
+}
+`;
+
+exports[`bus config > realtime-jongro07-directions 1`] = `
+{
+  "card": {
+    "busTypeText": "마을",
+    "iconType": "village",
+    "themeColor": "4CAF50",
+  },
+  "id": "jongro07",
+  "label": "종로 07",
+  "screen": {
+    "directions": [
+      {
+        "fromIndex": 0,
+        "id": "100900043",
+        "label": "이화사거리 방면",
+        "toIndex": 12,
+      },
+      {
+        "fromIndex": 13,
+        "id": "100900220",
+        "label": "성균관대운동장 방면",
+        "toIndex": 21,
+      },
+    ],
+    "features": [],
+    "hasLowFloor": true,
+    "hasPlates": true,
+    "isLoop": false,
+    "lastStationIndex": 21,
+    "liveEndpoint": "/bus/live/jongro07",
+    "refreshInterval": 25,
+    "stations": [
+      {
+        "directionId": "100900043",
+        "index": 11,
+        "isAlightOnly": false,
+        "isFirstStation": false,
+        "isLastStation": false,
+        "isPassThrough": false,
+        "isRotationStation": false,
+        "name": "혜화역3번출구.서울대병원입구",
+        "stationNumber": "01221",
+        "stopId": "seoul-01221",
+        "transferLines": [
+          {
+            "color": "00A5DE",
+            "line": "4",
+          },
+        ],
+      },
+      {
+        "directionId": "100900043",
+        "index": 12,
+        "isAlightOnly": false,
+        "isFirstStation": false,
+        "isLastStation": false,
+        "isPassThrough": false,
+        "isRotationStation": true,
+        "name": "방송통신대앞",
+        "stationNumber": "01877",
+        "stopId": "seoul-01877",
+        "transferLines": [
+          {
+            "color": "00A5DE",
+            "line": "4",
+          },
+        ],
+      },
+      {
+        "directionId": "100900220",
+        "index": 13,
+        "isAlightOnly": false,
+        "isFirstStation": false,
+        "isLastStation": false,
+        "isPassThrough": false,
+        "isRotationStation": false,
+        "name": "이화사거리",
+        "stationNumber": "01886",
+        "stopId": "seoul-01886",
+        "transferLines": [],
+      },
+      {
+        "directionId": "100900220",
+        "index": 14,
+        "isAlightOnly": false,
+        "isFirstStation": false,
+        "isLastStation": false,
+        "isPassThrough": false,
+        "isRotationStation": false,
+        "name": "방송통신대.이화장",
+        "stationNumber": "01219",
+        "stopId": "seoul-01219",
+        "transferLines": [],
+      },
+    ],
+  },
+  "screenType": "realtime",
+  "visibility": {
+    "type": "always",
+  },
+}
+`;
+
+exports[`bus stops > hssc shuttle and poles 1`] = `
+[
+  {
+    "campus": null,
+    "coords": null,
+    "id": "hssc-hyehwa-exit1",
+    "name": {
+      "en": "Hyehwa Station (Shuttle Bus Stop)",
+      "ko": "혜화역 1번출구",
+      "zh": "Hyehwa Station (Shuttle Bus Stop)",
+    },
+    "routes": [
+      {
+        "action": "board",
+        "groupId": "hssc",
+        "kind": "live",
+        "label": {
+          "en": "HSSC Shuttle Bus",
+          "ko": "인사캠 셔틀버스",
+          "zh": "人文校区班车",
+        },
+        "stationIndex": 6,
+        "towards": {
+          "en": "SKKU Junction",
+          "ko": "성균관대입구사거리",
+          "zh": "SKKU Junction",
+        },
+      },
+    ],
+  },
+  {
+    "campus": null,
+    "coords": {
+      "lat": 37.587367,
+      "lng": 126.993643,
+    },
+    "id": "hssc-bus-lot",
+    "name": {
+      "en": "Student Union bus parking lot",
+      "ko": "학생회관 버스 주차장",
+      "zh": "学生会馆巴士停车场",
+    },
+    "routes": [
+      {
+        "action": "board",
+        "groupId": "campus",
+        "kind": "timetable",
+        "label": {
+          "en": "HSSC → NSC",
+          "ko": "인사캠 → 자과캠",
+          "zh": "人文校区 → 自然校区",
+        },
+        "routeType": "regular",
+        "serviceId": "campus-inja",
+      },
+      {
+        "action": "board",
+        "groupId": "campus",
+        "kind": "timetable",
+        "label": {
+          "en": "HSSC → NSC",
+          "ko": "인사캠 → 자과캠",
+          "zh": "人文校区 → 自然校区",
+        },
+        "routeType": "hakbu",
+        "serviceId": "campus-inja",
+      },
+    ],
+  },
+  {
+    "campus": null,
+    "coords": {
+      "lat": 37.365499,
+      "lng": 127.107906,
+    },
+    "id": "jeongja-exit3",
+    "name": {
+      "en": "Jeongja Stn. Exit 3",
+      "ko": "정자역 3번 출구",
+      "zh": "亭子站 3号出口",
+    },
+    "routes": [
+      {
+        "action": "board",
+        "groupId": "commute",
+        "kind": "timetable",
+        "label": {
+          "en": "Jeongja",
+          "ko": "정자",
+          "zh": "亭子",
+        },
+        "routeType": "up",
+        "serviceId": "commute-jeongja",
+      },
+    ],
+  },
+  {
+    "campus": "hssc",
+    "coords": {
+      "lat": 37.5884638684,
+      "lng": 126.9900035953,
+    },
+    "id": "seoul-01881",
+    "name": {
+      "en": "성균관대학교",
+      "ko": "성균관대학교",
+      "zh": "성균관대학교",
+    },
+    "routes": [
+      {
+        "action": "board",
+        "groupId": "jongro02",
+        "kind": "live",
+        "label": {
+          "en": "Jongro 02",
+          "ko": "종로 02",
+          "zh": "钟路 02",
+        },
+        "stationIndex": 0,
+        "towards": {
+          "en": "서울성곽.성대후문",
+          "ko": "서울성곽.성대후문",
+          "zh": "서울성곽.성대후문",
+        },
+      },
+    ],
+  },
+  {
+    "campus": "hssc",
+    "coords": {
+      "lat": 37.5834729904,
+      "lng": 127.0017632862,
+    },
+    "id": "seoul-01592",
+    "name": {
+      "en": "혜화역1번출구",
+      "ko": "혜화역1번출구",
+      "zh": "혜화역1번출구",
+    },
+    "routes": [
+      {
+        "action": "board",
+        "groupId": "jongro07",
+        "kind": "live",
+        "label": {
+          "en": "Jongro 07",
+          "ko": "종로 07",
+          "zh": "钟路 07",
+        },
+        "stationIndex": 16,
+        "towards": {
+          "en": "혜화동로터리",
+          "ko": "혜화동로터리",
+          "zh": "혜화동로터리",
+        },
+      },
+      {
+        "action": "board",
+        "groupId": "jongro08",
+        "kind": "live",
+        "label": {
+          "en": "Jongro 08",
+          "ko": "종로 08",
+          "zh": "钟路 08",
+        },
+        "stationIndex": 22,
+        "towards": {
+          "en": "혜화동로터리",
+          "ko": "혜화동로터리",
+          "zh": "혜화동로터리",
+        },
+      },
+    ],
+  },
+]
+`;
+
+exports[`live group > hssc-layover 1`] = `
+{
+  "groupId": "hssc",
+  "operation": "running",
+  "serverNowMs": 1792458000000,
+  "stations": [
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 0,
+          "vehicleId": "32150",
+        },
+        {
+          "expectedArrivalAtMs": 1792458020000,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "enRoute",
+          "stopsAway": 1,
+          "vehicleId": "32149",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 0,
+    },
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 1,
+          "vehicleId": "32150",
+        },
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 2,
+          "vehicleId": "32149",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 1,
+    },
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 2,
+          "vehicleId": "32150",
+        },
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 3,
+          "vehicleId": "32149",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 2,
+    },
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 3,
+          "vehicleId": "32150",
+        },
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 4,
+          "vehicleId": "32149",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 3,
+    },
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 4,
+          "vehicleId": "32150",
+        },
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 5,
+          "vehicleId": "32149",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 4,
+    },
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 5,
+          "vehicleId": "32150",
+        },
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 6,
+          "vehicleId": "32149",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 6,
+    },
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 6,
+          "vehicleId": "32150",
+        },
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 7,
+          "vehicleId": "32149",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 8,
+    },
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 7,
+          "vehicleId": "32150",
+        },
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 8,
+          "vehicleId": "32149",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 9,
+    },
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 8,
+          "vehicleId": "32150",
+        },
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 9,
+          "vehicleId": "32149",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 10,
+    },
+  ],
+  "updatedAtMs": 1792457995000,
+  "vehicles": [
+    {
+      "crowding": null,
+      "id": "32150",
+      "isLowFloor": null,
+      "plateNumber": null,
+      "position": {
+        "checkedAtMs": 1792457995000,
+        "nextStationAtMs": null,
+        "positionAtMs": 1792457520000,
+        "progress": null,
+        "sectionMeters": null,
+        "stationIndex": 0,
+        "status": "waitingToDepart",
+      },
+      "trajectory": null,
+    },
+    {
+      "crowding": null,
+      "id": "32149",
+      "isLowFloor": null,
+      "plateNumber": null,
+      "position": {
+        "checkedAtMs": 1792457995000,
+        "nextStationAtMs": 1792458020000,
+        "positionAtMs": 1792457990000,
+        "progress": null,
+        "sectionMeters": null,
+        "stationIndex": 10,
+        "status": "inTransit",
+      },
+      "trajectory": [
+        {
+          "atMs": 1792457990000,
+          "s": 10,
+        },
+        {
+          "atMs": 1792458020000,
+          "s": 11,
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`live group > hssc-no-data 1`] = `
+{
+  "groupId": "hssc",
+  "operation": "noData",
+  "serverNowMs": 1792458000000,
+  "stations": [],
+  "updatedAtMs": null,
+  "vehicles": [],
+}
+`;
+
+exports[`live group > hssc-running 1`] = `
+{
+  "groupId": "hssc",
+  "operation": "running",
+  "serverNowMs": 1792458000000,
+  "stations": [
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": 1792458343000,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "enRoute",
+          "stopsAway": 4,
+          "vehicleId": "32149",
+        },
+        {
+          "expectedArrivalAtMs": 1792458898000,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "enRoute",
+          "stopsAway": 7,
+          "vehicleId": "32150",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 0,
+    },
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 5,
+          "vehicleId": "32149",
+        },
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 8,
+          "vehicleId": "32150",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 1,
+    },
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "arriving",
+          "stopsAway": 0,
+          "vehicleId": "32150",
+        },
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 6,
+          "vehicleId": "32149",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 2,
+    },
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": 1792458115000,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "enRoute",
+          "stopsAway": 1,
+          "vehicleId": "32150",
+        },
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 7,
+          "vehicleId": "32149",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 3,
+    },
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": 1792458233000,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "enRoute",
+          "stopsAway": 2,
+          "vehicleId": "32150",
+        },
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 8,
+          "vehicleId": "32149",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 4,
+    },
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": 1792458371000,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "enRoute",
+          "stopsAway": 3,
+          "vehicleId": "32150",
+        },
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 9,
+          "vehicleId": "32149",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 6,
+    },
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": 1792458102000,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "enRoute",
+          "stopsAway": 1,
+          "vehicleId": "32149",
+        },
+        {
+          "expectedArrivalAtMs": 1792458657000,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "enRoute",
+          "stopsAway": 4,
+          "vehicleId": "32150",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 8,
+    },
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": 1792458193000,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "enRoute",
+          "stopsAway": 2,
+          "vehicleId": "32149",
+        },
+        {
+          "expectedArrivalAtMs": 1792458748000,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "enRoute",
+          "stopsAway": 5,
+          "vehicleId": "32150",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 9,
+    },
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": 1792458280000,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "enRoute",
+          "stopsAway": 3,
+          "vehicleId": "32149",
+        },
+        {
+          "expectedArrivalAtMs": 1792458835000,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "enRoute",
+          "stopsAway": 6,
+          "vehicleId": "32150",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 10,
+    },
+  ],
+  "updatedAtMs": 1792457995000,
+  "vehicles": [
+    {
+      "crowding": null,
+      "id": "32149",
+      "isLowFloor": null,
+      "plateNumber": null,
+      "position": {
+        "checkedAtMs": 1792457995000,
+        "nextStationAtMs": 1792458020000,
+        "positionAtMs": 1792457990000,
+        "progress": null,
+        "sectionMeters": null,
+        "stationIndex": 6,
+        "status": "inTransit",
+      },
+      "trajectory": [
+        {
+          "atMs": 1792457990000,
+          "s": 6,
+        },
+        {
+          "atMs": 1792458020000,
+          "s": 7,
+        },
+        {
+          "atMs": 1792458032000,
+          "s": 7,
+        },
+        {
+          "atMs": 1792458102000,
+          "s": 8,
+        },
+        {
+          "atMs": 1792458165000,
+          "s": 8,
+        },
+        {
+          "atMs": 1792458193000,
+          "s": 9,
+        },
+        {
+          "atMs": 1792458223000,
+          "s": 9,
+        },
+        {
+          "atMs": 1792458280000,
+          "s": 10,
+        },
+        {
+          "atMs": 1792458313000,
+          "s": 10,
+        },
+        {
+          "atMs": 1792458343000,
+          "s": 11,
+        },
+      ],
+    },
+    {
+      "crowding": null,
+      "id": "32150",
+      "isLowFloor": null,
+      "plateNumber": null,
+      "position": {
+        "checkedAtMs": 1792457995000,
+        "nextStationAtMs": 1792458115000,
+        "positionAtMs": 1792457980000,
+        "progress": null,
+        "sectionMeters": null,
+        "stationIndex": 2,
+        "status": "atStop",
+      },
+      "trajectory": [
+        {
+          "atMs": 1792457980000,
+          "s": 2,
+        },
+        {
+          "atMs": 1792458004000,
+          "s": 2,
+        },
+        {
+          "atMs": 1792458115000,
+          "s": 3,
+        },
+        {
+          "atMs": 1792458139000,
+          "s": 3,
+        },
+        {
+          "atMs": 1792458233000,
+          "s": 4,
+        },
+        {
+          "atMs": 1792458254000,
+          "s": 4,
+        },
+        {
+          "atMs": 1792458278000,
+          "s": 5,
+        },
+        {
+          "atMs": 1792458290000,
+          "s": 5,
+        },
+        {
+          "atMs": 1792458371000,
+          "s": 6,
+        },
+        {
+          "atMs": 1792458545000,
+          "s": 6,
+        },
+        {
+          "atMs": 1792458575000,
+          "s": 7,
+        },
+        {
+          "atMs": 1792458587000,
+          "s": 7,
+        },
+        {
+          "atMs": 1792458657000,
+          "s": 8,
+        },
+        {
+          "atMs": 1792458720000,
+          "s": 8,
+        },
+        {
+          "atMs": 1792458748000,
+          "s": 9,
+        },
+        {
+          "atMs": 1792458778000,
+          "s": 9,
+        },
+        {
+          "atMs": 1792458835000,
+          "s": 10,
+        },
+        {
+          "atMs": 1792458868000,
+          "s": 10,
+        },
+        {
+          "atMs": 1792458898000,
+          "s": 11,
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`live group > jongro07 1`] = `
+{
+  "groupId": "jongro07",
+  "operation": "running",
+  "serverNowMs": 1792458000000,
+  "stations": [
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": 1792458120000,
+          "isLastRun": false,
+          "providerText": "3분후[1번째 전]",
+          "status": "enRoute",
+          "stopsAway": 1,
+          "vehicleId": "100000103",
+        },
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": "출발대기",
+          "status": "waitingToDepart",
+          "stopsAway": null,
+          "vehicleId": null,
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 0,
+    },
+    {
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": 1792458240000,
+          "isLastRun": false,
+          "providerText": "5분후[2번째 전]",
+          "status": "enRoute",
+          "stopsAway": 2,
+          "vehicleId": "100000103",
+        },
+      ],
+      "operation": "running",
+      "stationIndex": 1,
+    },
+  ],
+  "updatedAtMs": 1792458000000,
+  "vehicles": [
+    {
+      "crowding": "relaxed",
+      "id": "100000103",
+      "isLowFloor": null,
+      "plateNumber": "서울74사5537",
+      "position": {
+        "checkedAtMs": 1792458000000,
+        "nextStationAtMs": null,
+        "positionAtMs": 1792457970000,
+        "progress": 0.5,
+        "sectionMeters": 300,
+        "stationIndex": 5,
+        "status": "inTransit",
+      },
+      "trajectory": [
+        {
+          "atMs": 1792457970000,
+          "s": 5.5,
+        },
+        {
+          "atMs": 1792458008000,
+          "s": 6,
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`smart schedule > commute 강남·양재 1`] = `
+{
+  "days": [
+    {
+      "date": "2026-10-05",
+      "dayOfWeek": 1,
+      "display": "schedule",
+      "notices": [
+        {
+          "source": "service",
+          "style": "info",
+          "text": "시범 운행 · 무료 · 킹고M QR 탑승",
+        },
+        {
+          "source": "service",
+          "style": "info",
+          "text": "등교 강남역 → 양재역(5분 뒤) → 자과캠
+하교 자과캠 → 양재역 → 강남역",
+        },
+      ],
+      "schedule": [
+        {
+          "busCount": 1,
+          "crowding": "unknown",
+          "index": 1,
+          "notes": "양재 07:45",
+          "routeType": "up",
+          "stopTimes": [
+            "07:40",
+            "07:45",
+            "08:45",
+          ],
+          "time": "07:40",
+        },
+        {
+          "busCount": 1,
+          "crowding": "unknown",
+          "index": 2,
+          "notes": "양재 09:00",
+          "routeType": "up",
+          "stopTimes": [
+            "08:55",
+            "09:00",
+            "10:15",
+          ],
+          "time": "08:55",
+        },
+        {
+          "busCount": 1,
+          "crowding": "unknown",
+          "index": 3,
+          "notes": "양재 10:30",
+          "routeType": "up",
+          "stopTimes": [
+            "10:25",
+            "10:30",
+            "11:45",
+          ],
+          "time": "10:25",
+        },
+        {
+          "busCount": 1,
+          "crowding": "unknown",
+          "index": 4,
+          "notes": "양재 12:00",
+          "routeType": "up",
+          "stopTimes": [
+            "11:55",
+            "12:00",
+            "13:15",
+          ],
+          "time": "11:55",
+        },
+        {
+          "busCount": 1,
+          "crowding": "unknown",
+          "index": 5,
+          "notes": "양재 먼저 하차",
+          "routeType": "down",
+          "stopTimes": [
+            "17:00",
+            null,
+            "18:20",
+          ],
+          "time": "17:00",
+        },
+        {
+          "busCount": 1,
+          "crowding": "unknown",
+          "index": 6,
+          "notes": "양재 먼저 하차",
+          "routeType": "down",
+          "stopTimes": [
+            "18:00",
+            null,
+            "19:20",
+          ],
+          "time": "18:00",
+        },
+        {
+          "busCount": 1,
+          "crowding": "unknown",
+          "index": 7,
+          "notes": "양재 먼저 하차",
+          "routeType": "down",
+          "stopTimes": [
+            "19:15",
+            null,
+            "21:05",
+          ],
+          "time": "19:15",
+        },
+        {
+          "busCount": 1,
+          "crowding": "unknown",
+          "index": 8,
+          "notes": "양재 먼저 하차",
+          "routeType": "down",
+          "stopTimes": [
+            "20:15",
+            null,
+            "22:05",
+          ],
+          "time": "20:15",
+        },
+      ],
+    },
+  ],
+  "from": "2026-10-05",
+  "selectedDate": "2026-10-08",
+  "serviceId": "commute-gangnam-yangjae",
+  "status": "active",
+}
+`;
+
+exports[`stop arrivals > hssc-bus-lot 1`] = `
+{
+  "routes": [
+    {
+      "action": "board",
+      "groupId": "campus",
+      "kind": "timetable",
+      "label": "인사캠 → 자과캠",
+      "operation": "running",
+      "routeType": "regular",
+      "runs": [
+        {
+          "atMs": 1792474200000,
+          "isEstimate": false,
+          "isLastRun": false,
+          "runDepartureAtMs": 1792474200000,
+        },
+        {
+          "atMs": 1792476000000,
+          "isEstimate": false,
+          "isLastRun": false,
+          "runDepartureAtMs": 1792476000000,
+        },
+        {
+          "atMs": 1792477800000,
+          "isEstimate": false,
+          "isLastRun": false,
+          "runDepartureAtMs": 1792477800000,
+        },
+      ],
+      "serviceId": "campus-inja",
+    },
+    {
+      "action": "board",
+      "groupId": "campus",
+      "kind": "timetable",
+      "label": "인사캠 → 자과캠",
+      "operation": "running",
+      "routeType": "hakbu",
+      "runs": [
+        {
+          "atMs": 1792728000000,
+          "isEstimate": false,
+          "isLastRun": true,
+          "runDepartureAtMs": 1792728000000,
+        },
+        {
+          "atMs": 1793332800000,
+          "isEstimate": false,
+          "isLastRun": true,
+          "runDepartureAtMs": 1793332800000,
+        },
+      ],
+      "serviceId": "campus-inja",
+    },
+    {
+      "action": "board",
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": 1792473100000,
+          "isLastRun": false,
+          "providerText": "2분후[1번째 전]",
+          "status": "enRoute",
+          "stopsAway": 1,
+          "vehicleId": "100000201",
+        },
+      ],
+      "direction": {
+        "id": "100900043",
+        "label": "이화사거리 방면",
+      },
+      "groupId": "jongro07",
+      "kind": "live",
+      "label": "종로 07",
+      "operation": "running",
+      "stationIndex": 1,
+      "towards": "비천당",
+      "updatedAtMs": 1792472995000,
+      "vehicles": [
+        {
+          "crowding": "relaxed",
+          "id": "100000201",
+          "isLowFloor": true,
+          "plateNumber": "서울74사2701",
+          "position": {
+            "checkedAtMs": 1792472995000,
+            "nextStationAtMs": 1792473100000,
+            "positionAtMs": 1792472970000,
+            "progress": 0.5,
+            "sectionMeters": 300,
+            "stationIndex": 0,
+            "status": "inTransit",
+          },
+          "trajectory": [
+            {
+              "atMs": 1792472970000,
+              "s": 0.5,
+            },
+            {
+              "atMs": 1792473100000,
+              "s": 1,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  "serverNowMs": 1792458000000,
+  "stop": {
+    "coords": {
+      "lat": 37.587367,
+      "lng": 126.993643,
+    },
+    "id": "hssc-bus-lot",
+    "name": "학생회관 버스 주차장",
+  },
+}
+`;
+
+exports[`stop arrivals > hssc-olympic-hall 1`] = `
+{
+  "routes": [
+    {
+      "action": "alight",
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": null,
+          "isLastRun": false,
+          "providerText": null,
+          "status": "waitingToDepart",
+          "stopsAway": 7,
+          "vehicleId": "32149",
+        },
+      ],
+      "direction": {
+        "id": "fromCampus",
+        "label": "하교",
+      },
+      "groupId": "hssc",
+      "kind": "live",
+      "label": "인사캠 셔틀버스",
+      "operation": "running",
+      "stationIndex": 3,
+      "towards": "혜화동우체국",
+      "updatedAtMs": 1792458000000,
+      "vehicles": [
+        {
+          "crowding": null,
+          "id": "32149",
+          "isLowFloor": null,
+          "plateNumber": null,
+          "position": {
+            "checkedAtMs": 1792458000000,
+            "nextStationAtMs": 1792473040000,
+            "positionAtMs": 1792472970000,
+            "progress": null,
+            "sectionMeters": null,
+            "stationIndex": 7,
+            "status": "inTransit",
+          },
+          "trajectory": [
+            {
+              "atMs": 1792472970000,
+              "s": 7,
+            },
+            {
+              "atMs": 1792473040000,
+              "s": 8,
+            },
+            {
+              "atMs": 1792473103000,
+              "s": 8,
+            },
+            {
+              "atMs": 1792473131000,
+              "s": 9,
+            },
+            {
+              "atMs": 1792473161000,
+              "s": 9,
+            },
+            {
+              "atMs": 1792473218000,
+              "s": 10,
+            },
+            {
+              "atMs": 1792473251000,
+              "s": 10,
+            },
+            {
+              "atMs": 1792473281000,
+              "s": 11,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  "serverNowMs": 1792458000000,
+  "stop": {
+    "coords": null,
+    "id": "hssc-olympic-hall",
+    "name": "올림픽기념국민생활관",
+  },
+}
+`;
+
+exports[`stop arrivals > seoul-01592 1`] = `
+{
+  "routes": [
+    {
+      "action": "board",
+      "arrivals": [
+        {
+          "expectedArrivalAtMs": 1792473230000,
+          "isLastRun": false,
+          "providerText": "4분10초후[2번째 전]",
+          "status": "enRoute",
+          "stopsAway": 3,
+          "vehicleId": "100000203",
+        },
+      ],
+      "direction": {
+        "id": "100900220",
+        "label": "성균관대운동장 방면",
+      },
+      "groupId": "jongro07",
+      "kind": "live",
+      "label": "종로 07",
+      "operation": "running",
+      "stationIndex": 16,
+      "towards": "혜화동로터리",
+      "updatedAtMs": 1792472995000,
+      "vehicles": [
+        {
+          "crowding": "relaxed",
+          "id": "100000203",
+          "isLowFloor": false,
+          "plateNumber": "서울74사2703",
+          "position": {
+            "checkedAtMs": 1792472995000,
+            "nextStationAtMs": null,
+            "positionAtMs": 1792472970000,
+            "progress": 0.5,
+            "sectionMeters": 300,
+            "stationIndex": 14,
+            "status": "inTransit",
+          },
+          "trajectory": [
+            {
+              "atMs": 1792472970000,
+              "s": 14.5,
+            },
+            {
+              "atMs": 1792473008000,
+              "s": 15,
+            },
+            {
+              "atMs": 1792473230000,
+              "s": 16,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      "action": "board",
+      "arrivals": [],
+      "direction": {
+        "id": "100900040",
+        "label": "명륜3가 방면",
+      },
+      "groupId": "jongro08",
+      "kind": "live",
+      "label": "종로 08",
+      "operation": "noData",
+      "stationIndex": 22,
+      "towards": "혜화동로터리",
+      "updatedAtMs": null,
+      "vehicles": [],
+    },
+  ],
+  "serverNowMs": 1792458000000,
+  "stop": {
+    "coords": {
+      "lat": 37.5834729904,
+      "lng": 127.0017632862,
+    },
+    "id": "seoul-01592",
+    "name": "혜화역1번출구",
+  },
+}
+`;
+
+exports[`subway arrivals > hyehwa 1`] = `
+{
+  "coords": {
+    "lat": 37.582336,
+    "lng": 127.001844,
+  },
+  "lines": [
+    {
+      "directions": [
+        {
+          "direction": "up",
+          "name": "불암산·진접 방면",
+          "nextStationName": "한성대입구",
+          "trains": [
+            {
+              "arrivalAt": 1792204950000,
+              "basis": "provider",
+              "headsign": "불암산",
+              "isExpress": false,
+              "isFirstRun": false,
+              "isLastRun": false,
+              "onTrack": true,
+              "status": "enRoute",
+              "stopsAway": 2,
+              "trainNo": "4548",
+            },
+          ],
+        },
+        {
+          "direction": "down",
+          "name": "오이도·안산 방면",
+          "nextStationName": "동대문",
+          "trains": [
+            {
+              "arrivalAt": 1792205730000,
+              "basis": "estimate",
+              "headsign": "오이도",
+              "isExpress": false,
+              "isFirstRun": false,
+              "isLastRun": false,
+              "onTrack": true,
+              "status": "unknown",
+              "stopsAway": null,
+              "trainNo": "4565",
+            },
+          ],
+        },
+      ],
+      "line": {
+        "code": "4",
+        "color": "00A5DE",
+        "marker": {
+          "color": "007FAB",
+          "text": "4",
+        },
+        "name": "4호선",
+      },
+    },
+  ],
+  "stationId": "hyehwa",
+  "stationName": "혜화",
+}
+`;
+
+exports[`subway arrivals > jeongja 1`] = `
+{
+  "coords": {
+    "lat": 37.366546,
+    "lng": 127.108237,
+  },
+  "lines": [
+    {
+      "directions": [
+        {
+          "direction": "up",
+          "name": "신사 방면",
+          "nextStationName": "판교",
+          "trains": [
+            {
+              "arrivalAt": 1792310879000,
+              "basis": "estimate",
+              "headsign": "신사",
+              "isExpress": false,
+              "isFirstRun": false,
+              "isLastRun": false,
+              "onTrack": true,
+              "status": "enRoute",
+              "stopsAway": 2,
+              "trainNo": "1172",
+            },
+            {
+              "arrivalAt": 1792311419000,
+              "basis": "estimate",
+              "headsign": "신사",
+              "isExpress": false,
+              "isFirstRun": false,
+              "isLastRun": false,
+              "onTrack": true,
+              "status": "unknown",
+              "stopsAway": null,
+              "trainNo": "1174",
+            },
+            {
+              "arrivalAt": 1792311684000,
+              "basis": "estimate",
+              "headsign": "신사",
+              "isExpress": false,
+              "isFirstRun": false,
+              "isLastRun": false,
+              "onTrack": true,
+              "status": "unknown",
+              "stopsAway": null,
+              "trainNo": "1176",
+            },
+          ],
+        },
+        {
+          "direction": "down",
+          "name": "광교 방면",
+          "nextStationName": "미금",
+          "trains": [
+            {
+              "arrivalAt": 1792310509000,
+              "basis": "estimate",
+              "headsign": "광교",
+              "isExpress": false,
+              "isFirstRun": false,
+              "isLastRun": false,
+              "onTrack": true,
+              "status": "arriving",
+              "stopsAway": 0,
+              "trainNo": "1163",
+            },
+            {
+              "arrivalAt": 1792311127000,
+              "basis": "estimate",
+              "headsign": "광교",
+              "isExpress": false,
+              "isFirstRun": false,
+              "isLastRun": false,
+              "onTrack": true,
+              "status": "enRoute",
+              "stopsAway": 2,
+              "trainNo": "1165",
+            },
+            {
+              "arrivalAt": 1792311539000,
+              "basis": "estimate",
+              "headsign": "광교",
+              "isExpress": false,
+              "isFirstRun": false,
+              "isLastRun": false,
+              "onTrack": true,
+              "status": "unknown",
+              "stopsAway": null,
+              "trainNo": "1167",
+            },
+          ],
+        },
+      ],
+      "line": {
+        "code": "D1",
+        "color": "D4003B",
+        "marker": {
+          "color": "D4003B",
+          "text": "신",
+        },
+        "name": "신분당선",
+      },
+    },
+    {
+      "directions": [
+        {
+          "direction": "up",
+          "name": "청량리 방면",
+          "nextStationName": "수내",
+          "trains": [
+            {
+              "arrivalAt": 1792310740000,
+              "basis": "estimate",
+              "headsign": "왕십리",
+              "isExpress": false,
+              "isFirstRun": false,
+              "isLastRun": false,
+              "onTrack": true,
+              "status": "enRoute",
+              "stopsAway": 1,
+              "trainNo": "6136",
+            },
+            {
+              "arrivalAt": 1792311390000,
+              "basis": "timetable",
+              "headsign": "왕십리",
+              "isExpress": false,
+              "isFirstRun": false,
+              "isLastRun": false,
+              "onTrack": true,
+              "status": "enRoute",
+              "stopsAway": 3,
+              "trainNo": "6138",
+            },
+            {
+              "arrivalAt": 1792311970000,
+              "basis": "estimate",
+              "headsign": "왕십리",
+              "isExpress": false,
+              "isFirstRun": false,
+              "isLastRun": false,
+              "onTrack": true,
+              "status": "unknown",
+              "stopsAway": null,
+              "trainNo": "6544",
+            },
+          ],
+        },
+        {
+          "direction": "down",
+          "name": "인천 방면",
+          "nextStationName": "미금",
+          "trains": [
+            {
+              "arrivalAt": 1792310939000,
+              "basis": "estimate",
+              "headsign": "죽전",
+              "isExpress": false,
+              "isFirstRun": false,
+              "isLastRun": false,
+              "onTrack": true,
+              "status": "enRoute",
+              "stopsAway": 3,
+              "trainNo": "6117",
+            },
+            {
+              "arrivalAt": 1792311269000,
+              "basis": "estimate",
+              "headsign": "인천",
+              "isExpress": false,
+              "isFirstRun": false,
+              "isLastRun": false,
+              "onTrack": true,
+              "status": "unknown",
+              "stopsAway": null,
+              "trainNo": "6549",
+            },
+            {
+              "arrivalAt": 1792311545000,
+              "basis": "estimate",
+              "headsign": "죽전",
+              "isExpress": false,
+              "isFirstRun": false,
+              "isLastRun": false,
+              "onTrack": true,
+              "status": "unknown",
+              "stopsAway": null,
+              "trainNo": "6119",
+            },
+          ],
+        },
+      ],
+      "line": {
+        "code": "K1",
+        "color": "F5A200",
+        "marker": {
+          "color": "A26B00",
+          "text": "수",
+        },
+        "name": "수인분당선",
+      },
+    },
+  ],
+  "stationId": "jeongja",
+  "stationName": "정자",
+}
+`;
+
+exports[`subway arrivals > meta with the server clock 1`] = `
+{
+  "serverNowMs": 1792150862000,
+}
+`;
+
+exports[`subway arrivals > sungkyunkwan 1`] = `
+{
+  "coords": {
+    "lat": 37.300349,
+    "lng": 126.97075,
+  },
+  "lines": [
+    {
+      "directions": [
+        {
+          "direction": "up",
+          "name": "서울 방면",
+          "nextStationName": "의왕",
+          "trains": [
+            {
+              "arrivalAt": 1792205077000,
+              "basis": "estimate",
+              "headsign": "광운대",
+              "isExpress": false,
+              "isFirstRun": false,
+              "isLastRun": false,
+              "onTrack": true,
+              "status": "enRoute",
+              "stopsAway": 2,
+              "trainNo": "0444",
+            },
+          ],
+        },
+        {
+          "direction": "down",
+          "name": "천안·서동탄 방면",
+          "nextStationName": "화서",
+          "trains": [
+            {
+              "arrivalAt": 1792204718000,
+              "basis": "estimate",
+              "headsign": "천안",
+              "isExpress": true,
+              "isFirstRun": false,
+              "isLastRun": false,
+              "onTrack": true,
+              "status": "arriving",
+              "stopsAway": 0,
+              "trainNo": "1915",
+            },
+          ],
+        },
+      ],
+      "line": {
+        "code": "1",
+        "color": "0052A4",
+        "marker": {
+          "color": "0052A4",
+          "text": "1",
+        },
+        "name": "1호선",
+      },
+    },
+  ],
+  "stationId": "sungkyunkwan",
+  "stationName": "성균관대",
+}
+`;
+
+exports[`subway stations > all stations 1`] = `
+[
+  {
+    "campus": "nsc",
+    "coords": {
+      "lat": 37.300349,
+      "lng": 126.97075,
+    },
+    "id": "sungkyunkwan",
+    "lines": [
+      {
+        "code": "1",
+        "color": "0052A4",
+        "marker": {
+          "color": "0052A4",
+          "text": "1",
+        },
+        "name": "1호선",
+      },
+    ],
+    "title": "성균관대역",
+  },
+  {
+    "campus": "hssc",
+    "coords": {
+      "lat": 37.582336,
+      "lng": 127.001844,
+    },
+    "id": "hyehwa",
+    "lines": [
+      {
+        "code": "4",
+        "color": "00A5DE",
+        "marker": {
+          "color": "007FAB",
+          "text": "4",
+        },
+        "name": "4호선",
+      },
+    ],
+    "title": "혜화역",
+  },
+  {
+    "campus": "nsc",
+    "coords": {
+      "lat": 37.366546,
+      "lng": 127.108237,
+    },
+    "id": "jeongja",
+    "lines": [
+      {
+        "code": "D1",
+        "color": "D4003B",
+        "marker": {
+          "color": "D4003B",
+          "text": "신",
+        },
+        "name": "신분당선",
+      },
+      {
+        "code": "K1",
+        "color": "F5A200",
+        "marker": {
+          "color": "A26B00",
+          "text": "수",
+        },
+        "name": "수인분당선",
+      },
+    ],
+    "title": "정자역",
+  },
+  {
+    "campus": "nsc",
+    "coords": {
+      "lat": 37.513977,
+      "lng": 127.102249,
+    },
+    "id": "jamsil",
+    "lines": [
+      {
+        "code": "2",
+        "color": "00A84D",
+        "marker": {
+          "color": "00893F",
+          "text": "2",
+        },
+        "name": "2호선",
+      },
+      {
+        "code": "8",
+        "color": "E6186C",
+        "marker": {
+          "color": "E4186B",
+          "text": "8",
+        },
+        "name": "8호선",
+      },
+    ],
+    "title": "잠실역",
+  },
+  {
+    "campus": "nsc",
+    "coords": {
+      "lat": 37.491073,
+      "lng": 127.055319,
+    },
+    "id": "dogok",
+    "lines": [
+      {
+        "code": "3",
+        "color": "EF7C1C",
+        "marker": {
+          "color": "BB5C0D",
+          "text": "3",
+        },
+        "name": "3호선",
+      },
+      {
+        "code": "K1",
+        "color": "F5A200",
+        "marker": {
+          "color": "A26B00",
+          "text": "수",
+        },
+        "name": "수인분당선",
+      },
+    ],
+    "title": "도곡역",
+  },
+  {
+    "campus": "nsc",
+    "coords": {
+      "lat": 37.497414,
+      "lng": 127.028008,
+    },
+    "id": "gangnam",
+    "lines": [
+      {
+        "code": "2",
+        "color": "00A84D",
+        "marker": {
+          "color": "00893F",
+          "text": "2",
+        },
+        "name": "2호선",
+      },
+      {
+        "code": "D1",
+        "color": "D4003B",
+        "marker": {
+          "color": "D4003B",
+          "text": "신",
+        },
+        "name": "신분당선",
+      },
+    ],
+    "title": "강남역",
+  },
+  {
+    "campus": "nsc",
+    "coords": {
+      "lat": 37.484143,
+      "lng": 127.034278,
+    },
+    "id": "yangjae",
+    "lines": [
+      {
+        "code": "3",
+        "color": "EF7C1C",
+        "marker": {
+          "color": "BB5C0D",
+          "text": "3",
+        },
+        "name": "3호선",
+      },
+      {
+        "code": "D1",
+        "color": "D4003B",
+        "marker": {
+          "color": "D4003B",
+          "text": "신",
+        },
+        "name": "신분당선",
+      },
+    ],
+    "title": "양재역",
+  },
+  {
+    "campus": "nsc",
+    "coords": {
+      "lat": 37.288617,
+      "lng": 127.051478,
+    },
+    "id": "gwanggyo-jungang",
+    "lines": [
+      {
+        "code": "D1",
+        "color": "D4003B",
+        "marker": {
+          "color": "D4003B",
+          "text": "신",
+        },
+        "name": "신분당선",
+      },
+    ],
+    "title": "광교중앙역",
+  },
+  {
+    "campus": null,
+    "coords": {
+      "lat": 37.476746,
+      "lng": 126.981597,
+    },
+    "id": "sadang",
+    "lines": [
+      {
+        "code": "2",
+        "color": "00A84D",
+        "marker": {
+          "color": "00893F",
+          "text": "2",
+        },
+        "name": "2호선",
+      },
+      {
+        "code": "4",
+        "color": "00A5DE",
+        "marker": {
+          "color": "007FAB",
+          "text": "4",
+        },
+        "name": "4호선",
+      },
+    ],
+    "title": "사당역",
+  },
+  {
+    "campus": null,
+    "coords": {
+      "lat": 37.372215,
+      "lng": 126.943423,
+    },
+    "id": "geumjeong",
+    "lines": [
+      {
+        "code": "1",
+        "color": "0052A4",
+        "marker": {
+          "color": "0052A4",
+          "text": "1",
+        },
+        "name": "1호선",
+      },
+      {
+        "code": "4",
+        "color": "00A5DE",
+        "marker": {
+          "color": "007FAB",
+          "text": "4",
+        },
+        "name": "4호선",
+      },
+    ],
+    "title": "금정역",
+  },
+  {
+    "campus": null,
+    "coords": {
+      "lat": 37.570926,
+      "lng": 127.001849,
+    },
+    "id": "jongno-5-ga",
+    "lines": [
+      {
+        "code": "1",
+        "color": "0052A4",
+        "marker": {
+          "color": "0052A4",
+          "text": "1",
+        },
+        "name": "1호선",
+      },
+    ],
+    "title": "종로5가역",
+  },
+]
+`;
+
+exports[`transit layout > campus-tagged-ko 1`] = `
+{
+  "sections": [
+    {
+      "campus": null,
+      "id": "campus",
+      "items": [
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/bus/schedule?groupId=campus",
+          },
+          "groupId": "campus",
+          "icon": {
+            "color": "003626",
+            "text": "성대",
+            "type": "shuttle",
+          },
+          "id": "bus:campus",
+          "kind": "bus",
+          "subtitle": "인사캠 ↔ 자과캠",
+          "title": "인자셔틀",
+        },
+      ],
+      "title": null,
+      "type": "item_list",
+    },
+    {
+      "campus": "hssc",
+      "id": "hssc",
+      "items": [
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/subway?station=hyehwa",
+          },
+          "id": "subway:hyehwa",
+          "kind": "subway",
+          "lines": [
+            {
+              "code": "4",
+              "color": "00A5DE",
+              "marker": {
+                "color": "007FAB",
+                "text": "4",
+              },
+              "name": "4호선",
+            },
+          ],
+          "stationId": "hyehwa",
+          "subtitle": null,
+          "title": "혜화역",
+        },
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/bus/realtime?groupId=hssc",
+          },
+          "groupId": "hssc",
+          "icon": {
+            "color": "003626",
+            "text": "성대",
+            "type": "shuttle",
+          },
+          "id": "bus:hssc",
+          "kind": "bus",
+          "subtitle": "정차소(인문.농구장) ↔ 600주년 기념관",
+          "title": "인사캠 셔틀버스",
+        },
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/bus/realtime?groupId=jongro02",
+          },
+          "groupId": "jongro02",
+          "icon": {
+            "color": "4CAF50",
+            "text": "마을",
+            "type": "village",
+          },
+          "id": "bus:jongro02",
+          "kind": "bus",
+          "subtitle": "성균관대학교 ↔ 종각역.YMCA",
+          "title": "종로 02",
+        },
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/bus/realtime?groupId=jongro07",
+          },
+          "groupId": "jongro07",
+          "icon": {
+            "color": "4CAF50",
+            "text": "마을",
+            "type": "village",
+          },
+          "id": "bus:jongro07",
+          "kind": "bus",
+          "subtitle": "성균관대운동장 ↔ 600주년기념관",
+          "title": "종로 07",
+        },
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/bus/realtime?groupId=jongro08",
+          },
+          "groupId": "jongro08",
+          "icon": {
+            "color": "4CAF50",
+            "text": "마을",
+            "type": "village",
+          },
+          "id": "bus:jongro08",
+          "kind": "bus",
+          "subtitle": "명륜3가 ↔ 종로5가",
+          "title": "종로 08",
+        },
+      ],
+      "title": "인사캠",
+      "type": "item_list",
+    },
+    {
+      "campus": "nsc",
+      "id": "nsc",
+      "items": [
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/subway?station=sungkyunkwan",
+          },
+          "id": "subway:sungkyunkwan",
+          "kind": "subway",
+          "lines": [
+            {
+              "code": "1",
+              "color": "0052A4",
+              "marker": {
+                "color": "0052A4",
+                "text": "1",
+              },
+              "name": "1호선",
+            },
+          ],
+          "stationId": "sungkyunkwan",
+          "subtitle": null,
+          "title": "성균관대역",
+        },
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/bus/schedule?groupId=commute",
+          },
+          "groupId": "commute",
+          "icon": {
+            "color": "003626",
+            "text": "성대",
+            "type": "shuttle",
+          },
+          "id": "bus:commute",
+          "kind": "bus",
+          "subtitle": "역 ↔ 자과캠 시범 운행",
+          "title": "자과캠 통학 셔틀버스",
+        },
+        {
+          "icon": {
+            "color": "8B95A1",
+            "text": "환승",
+            "type": "subway",
+          },
+          "id": "group:commute-stations",
+          "initialState": "collapsed",
+          "items": [
+            {
+              "action": {
+                "actionType": "route",
+                "actionValue": "/subway?station=jeongja",
+              },
+              "id": "subway:jeongja",
+              "kind": "subway",
+              "lines": [
+                {
+                  "code": "D1",
+                  "color": "D4003B",
+                  "marker": {
+                    "color": "D4003B",
+                    "text": "신",
+                  },
+                  "name": "신분당선",
+                },
+                {
+                  "code": "K1",
+                  "color": "F5A200",
+                  "marker": {
+                    "color": "A26B00",
+                    "text": "수",
+                  },
+                  "name": "수인분당선",
+                },
+              ],
+              "stationId": "jeongja",
+              "subtitle": null,
+              "title": "정자역",
+            },
+            {
+              "action": {
+                "actionType": "route",
+                "actionValue": "/subway?station=jamsil",
+              },
+              "id": "subway:jamsil",
+              "kind": "subway",
+              "lines": [
+                {
+                  "code": "2",
+                  "color": "00A84D",
+                  "marker": {
+                    "color": "00893F",
+                    "text": "2",
+                  },
+                  "name": "2호선",
+                },
+                {
+                  "code": "8",
+                  "color": "E6186C",
+                  "marker": {
+                    "color": "E4186B",
+                    "text": "8",
+                  },
+                  "name": "8호선",
+                },
+              ],
+              "stationId": "jamsil",
+              "subtitle": null,
+              "title": "잠실역",
+            },
+            {
+              "action": {
+                "actionType": "route",
+                "actionValue": "/subway?station=dogok",
+              },
+              "id": "subway:dogok",
+              "kind": "subway",
+              "lines": [
+                {
+                  "code": "3",
+                  "color": "EF7C1C",
+                  "marker": {
+                    "color": "BB5C0D",
+                    "text": "3",
+                  },
+                  "name": "3호선",
+                },
+                {
+                  "code": "K1",
+                  "color": "F5A200",
+                  "marker": {
+                    "color": "A26B00",
+                    "text": "수",
+                  },
+                  "name": "수인분당선",
+                },
+              ],
+              "stationId": "dogok",
+              "subtitle": null,
+              "title": "도곡역",
+            },
+            {
+              "action": {
+                "actionType": "route",
+                "actionValue": "/subway?station=gangnam",
+              },
+              "id": "subway:gangnam",
+              "kind": "subway",
+              "lines": [
+                {
+                  "code": "2",
+                  "color": "00A84D",
+                  "marker": {
+                    "color": "00893F",
+                    "text": "2",
+                  },
+                  "name": "2호선",
+                },
+                {
+                  "code": "D1",
+                  "color": "D4003B",
+                  "marker": {
+                    "color": "D4003B",
+                    "text": "신",
+                  },
+                  "name": "신분당선",
+                },
+              ],
+              "stationId": "gangnam",
+              "subtitle": null,
+              "title": "강남역",
+            },
+            {
+              "action": {
+                "actionType": "route",
+                "actionValue": "/subway?station=yangjae",
+              },
+              "id": "subway:yangjae",
+              "kind": "subway",
+              "lines": [
+                {
+                  "code": "3",
+                  "color": "EF7C1C",
+                  "marker": {
+                    "color": "BB5C0D",
+                    "text": "3",
+                  },
+                  "name": "3호선",
+                },
+                {
+                  "code": "D1",
+                  "color": "D4003B",
+                  "marker": {
+                    "color": "D4003B",
+                    "text": "신",
+                  },
+                  "name": "신분당선",
+                },
+              ],
+              "stationId": "yangjae",
+              "subtitle": null,
+              "title": "양재역",
+            },
+            {
+              "action": {
+                "actionType": "route",
+                "actionValue": "/subway?station=gwanggyo-jungang",
+              },
+              "id": "subway:gwanggyo-jungang",
+              "kind": "subway",
+              "lines": [
+                {
+                  "code": "D1",
+                  "color": "D4003B",
+                  "marker": {
+                    "color": "D4003B",
+                    "text": "신",
+                  },
+                  "name": "신분당선",
+                },
+              ],
+              "stationId": "gwanggyo-jungang",
+              "subtitle": null,
+              "title": "광교중앙역",
+            },
+          ],
+          "kind": "group",
+          "subtitle": "정자 · 잠실 · 도곡 · 강남 · 양재 · 광교중앙",
+          "title": "통학버스 정류장 지하철",
+        },
+      ],
+      "title": "자과캠",
+      "type": "item_list",
+    },
+  ],
+  "version": 1,
+}
+`;
+
+exports[`transit layout > launch-en 1`] = `
+{
+  "sections": [
+    {
+      "campus": null,
+      "id": "campus",
+      "items": [
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/bus/schedule?groupId=campus",
+          },
+          "groupId": "campus",
+          "icon": {
+            "color": "003626",
+            "text": "SKKU",
+            "type": "shuttle",
+          },
+          "id": "bus:campus",
+          "kind": "bus",
+          "subtitle": "HSSC ↔ NSC",
+          "title": "INJA Shuttle",
+        },
+      ],
+      "title": null,
+      "type": "item_list",
+    },
+    {
+      "campus": null,
+      "id": "hssc",
+      "items": [
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/subway?station=hyehwa",
+          },
+          "id": "subway:hyehwa",
+          "kind": "subway",
+          "lines": [
+            {
+              "code": "4",
+              "color": "00A5DE",
+              "marker": {
+                "color": "007FAB",
+                "text": "4",
+              },
+              "name": "Line 4",
+            },
+          ],
+          "stationId": "hyehwa",
+          "subtitle": null,
+          "title": "Hyehwa Station",
+        },
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/bus/realtime?groupId=hssc",
+          },
+          "groupId": "hssc",
+          "icon": {
+            "color": "003626",
+            "text": "SKKU",
+            "type": "shuttle",
+          },
+          "id": "bus:hssc",
+          "kind": "bus",
+          "subtitle": "Bus Stop (Humanities) ↔ 600th Anniversary Hall",
+          "title": "HSSC Shuttle Bus",
+        },
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/bus/realtime?groupId=jongro02",
+          },
+          "groupId": "jongro02",
+          "icon": {
+            "color": "4CAF50",
+            "text": "Village",
+            "type": "village",
+          },
+          "id": "bus:jongro02",
+          "kind": "bus",
+          "subtitle": "SKKU ↔ Jonggak Stn. YMCA",
+          "title": "Jongro 02",
+        },
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/bus/realtime?groupId=jongro07",
+          },
+          "groupId": "jongro07",
+          "icon": {
+            "color": "4CAF50",
+            "text": "Village",
+            "type": "village",
+          },
+          "id": "bus:jongro07",
+          "kind": "bus",
+          "subtitle": "SKKU Sports Ground ↔ 600th Anniversary Hall",
+          "title": "Jongro 07",
+        },
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/bus/realtime?groupId=jongro08",
+          },
+          "groupId": "jongro08",
+          "icon": {
+            "color": "4CAF50",
+            "text": "Village",
+            "type": "village",
+          },
+          "id": "bus:jongro08",
+          "kind": "bus",
+          "subtitle": "Myeongnyun 3-ga ↔ Jongno 5-ga",
+          "title": "Jongro 08",
+        },
+      ],
+      "title": "HSSC",
+      "type": "item_list",
+    },
+    {
+      "campus": null,
+      "id": "nsc",
+      "items": [
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/subway?station=sungkyunkwan",
+          },
+          "id": "subway:sungkyunkwan",
+          "kind": "subway",
+          "lines": [
+            {
+              "code": "1",
+              "color": "0052A4",
+              "marker": {
+                "color": "0052A4",
+                "text": "1",
+              },
+              "name": "Line 1",
+            },
+          ],
+          "stationId": "sungkyunkwan",
+          "subtitle": null,
+          "title": "Sungkyunkwan Univ. Station",
+        },
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/bus/schedule?groupId=commute",
+          },
+          "groupId": "commute",
+          "icon": {
+            "color": "003626",
+            "text": "SKKU",
+            "type": "shuttle",
+          },
+          "id": "bus:commute",
+          "kind": "bus",
+          "subtitle": "Stations ↔ NSC pilot",
+          "title": "NSC Commuter Shuttle Bus",
+        },
+        {
+          "icon": {
+            "color": "8B95A1",
+            "text": "Transfer",
+            "type": "subway",
+          },
+          "id": "group:commute-stations",
+          "initialState": "collapsed",
+          "items": [
+            {
+              "action": {
+                "actionType": "route",
+                "actionValue": "/subway?station=jeongja",
+              },
+              "id": "subway:jeongja",
+              "kind": "subway",
+              "lines": [
+                {
+                  "code": "D1",
+                  "color": "D4003B",
+                  "marker": {
+                    "color": "D4003B",
+                    "text": "신",
+                  },
+                  "name": "Shinbundang Line",
+                },
+                {
+                  "code": "K1",
+                  "color": "F5A200",
+                  "marker": {
+                    "color": "A26B00",
+                    "text": "수",
+                  },
+                  "name": "Suin–Bundang Line",
+                },
+              ],
+              "stationId": "jeongja",
+              "subtitle": null,
+              "title": "Jeongja Station",
+            },
+            {
+              "action": {
+                "actionType": "route",
+                "actionValue": "/subway?station=jamsil",
+              },
+              "id": "subway:jamsil",
+              "kind": "subway",
+              "lines": [
+                {
+                  "code": "2",
+                  "color": "00A84D",
+                  "marker": {
+                    "color": "00893F",
+                    "text": "2",
+                  },
+                  "name": "Line 2",
+                },
+                {
+                  "code": "8",
+                  "color": "E6186C",
+                  "marker": {
+                    "color": "E4186B",
+                    "text": "8",
+                  },
+                  "name": "Line 8",
+                },
+              ],
+              "stationId": "jamsil",
+              "subtitle": null,
+              "title": "Jamsil Station",
+            },
+            {
+              "action": {
+                "actionType": "route",
+                "actionValue": "/subway?station=dogok",
+              },
+              "id": "subway:dogok",
+              "kind": "subway",
+              "lines": [
+                {
+                  "code": "3",
+                  "color": "EF7C1C",
+                  "marker": {
+                    "color": "BB5C0D",
+                    "text": "3",
+                  },
+                  "name": "Line 3",
+                },
+                {
+                  "code": "K1",
+                  "color": "F5A200",
+                  "marker": {
+                    "color": "A26B00",
+                    "text": "수",
+                  },
+                  "name": "Suin–Bundang Line",
+                },
+              ],
+              "stationId": "dogok",
+              "subtitle": null,
+              "title": "Dogok Station",
+            },
+            {
+              "action": {
+                "actionType": "route",
+                "actionValue": "/subway?station=gangnam",
+              },
+              "id": "subway:gangnam",
+              "kind": "subway",
+              "lines": [
+                {
+                  "code": "2",
+                  "color": "00A84D",
+                  "marker": {
+                    "color": "00893F",
+                    "text": "2",
+                  },
+                  "name": "Line 2",
+                },
+                {
+                  "code": "D1",
+                  "color": "D4003B",
+                  "marker": {
+                    "color": "D4003B",
+                    "text": "신",
+                  },
+                  "name": "Shinbundang Line",
+                },
+              ],
+              "stationId": "gangnam",
+              "subtitle": null,
+              "title": "Gangnam Station",
+            },
+            {
+              "action": {
+                "actionType": "route",
+                "actionValue": "/subway?station=yangjae",
+              },
+              "id": "subway:yangjae",
+              "kind": "subway",
+              "lines": [
+                {
+                  "code": "3",
+                  "color": "EF7C1C",
+                  "marker": {
+                    "color": "BB5C0D",
+                    "text": "3",
+                  },
+                  "name": "Line 3",
+                },
+                {
+                  "code": "D1",
+                  "color": "D4003B",
+                  "marker": {
+                    "color": "D4003B",
+                    "text": "신",
+                  },
+                  "name": "Shinbundang Line",
+                },
+              ],
+              "stationId": "yangjae",
+              "subtitle": null,
+              "title": "Yangjae Station",
+            },
+            {
+              "action": {
+                "actionType": "route",
+                "actionValue": "/subway?station=gwanggyo-jungang",
+              },
+              "id": "subway:gwanggyo-jungang",
+              "kind": "subway",
+              "lines": [
+                {
+                  "code": "D1",
+                  "color": "D4003B",
+                  "marker": {
+                    "color": "D4003B",
+                    "text": "신",
+                  },
+                  "name": "Shinbundang Line",
+                },
+              ],
+              "stationId": "gwanggyo-jungang",
+              "subtitle": null,
+              "title": "Gwanggyojungang Station",
+            },
+          ],
+          "kind": "group",
+          "subtitle": "Jeongja · Jamsil · Dogok · Gangnam · Yangjae · Gwanggyojungang",
+          "title": "Subway at shuttle stops",
+        },
+      ],
+      "title": "NSC",
+      "type": "item_list",
+    },
+  ],
+  "version": 1,
+}
+`;
+
+exports[`transit layout > launch-ko 1`] = `
+{
+  "sections": [
+    {
+      "campus": null,
+      "id": "campus",
+      "items": [
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/bus/schedule?groupId=campus",
+          },
+          "groupId": "campus",
+          "icon": {
+            "color": "003626",
+            "text": "성대",
+            "type": "shuttle",
+          },
+          "id": "bus:campus",
+          "kind": "bus",
+          "subtitle": "인사캠 ↔ 자과캠",
+          "title": "인자셔틀",
+        },
+      ],
+      "title": null,
+      "type": "item_list",
+    },
+    {
+      "campus": null,
+      "id": "hssc",
+      "items": [
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/subway?station=hyehwa",
+          },
+          "id": "subway:hyehwa",
+          "kind": "subway",
+          "lines": [
+            {
+              "code": "4",
+              "color": "00A5DE",
+              "marker": {
+                "color": "007FAB",
+                "text": "4",
+              },
+              "name": "4호선",
+            },
+          ],
+          "stationId": "hyehwa",
+          "subtitle": null,
+          "title": "혜화역",
+        },
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/bus/realtime?groupId=hssc",
+          },
+          "groupId": "hssc",
+          "icon": {
+            "color": "003626",
+            "text": "성대",
+            "type": "shuttle",
+          },
+          "id": "bus:hssc",
+          "kind": "bus",
+          "subtitle": "정차소(인문.농구장) ↔ 600주년 기념관",
+          "title": "인사캠 셔틀버스",
+        },
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/bus/realtime?groupId=jongro02",
+          },
+          "groupId": "jongro02",
+          "icon": {
+            "color": "4CAF50",
+            "text": "마을",
+            "type": "village",
+          },
+          "id": "bus:jongro02",
+          "kind": "bus",
+          "subtitle": "성균관대학교 ↔ 종각역.YMCA",
+          "title": "종로 02",
+        },
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/bus/realtime?groupId=jongro07",
+          },
+          "groupId": "jongro07",
+          "icon": {
+            "color": "4CAF50",
+            "text": "마을",
+            "type": "village",
+          },
+          "id": "bus:jongro07",
+          "kind": "bus",
+          "subtitle": "성균관대운동장 ↔ 600주년기념관",
+          "title": "종로 07",
+        },
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/bus/realtime?groupId=jongro08",
+          },
+          "groupId": "jongro08",
+          "icon": {
+            "color": "4CAF50",
+            "text": "마을",
+            "type": "village",
+          },
+          "id": "bus:jongro08",
+          "kind": "bus",
+          "subtitle": "명륜3가 ↔ 종로5가",
+          "title": "종로 08",
+        },
+      ],
+      "title": "인사캠",
+      "type": "item_list",
+    },
+    {
+      "campus": null,
+      "id": "nsc",
+      "items": [
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/subway?station=sungkyunkwan",
+          },
+          "id": "subway:sungkyunkwan",
+          "kind": "subway",
+          "lines": [
+            {
+              "code": "1",
+              "color": "0052A4",
+              "marker": {
+                "color": "0052A4",
+                "text": "1",
+              },
+              "name": "1호선",
+            },
+          ],
+          "stationId": "sungkyunkwan",
+          "subtitle": null,
+          "title": "성균관대역",
+        },
+        {
+          "action": {
+            "actionType": "route",
+            "actionValue": "/bus/schedule?groupId=commute",
+          },
+          "groupId": "commute",
+          "icon": {
+            "color": "003626",
+            "text": "성대",
+            "type": "shuttle",
+          },
+          "id": "bus:commute",
+          "kind": "bus",
+          "subtitle": "역 ↔ 자과캠 시범 운행",
+          "title": "자과캠 통학 셔틀버스",
+        },
+        {
+          "icon": {
+            "color": "8B95A1",
+            "text": "환승",
+            "type": "subway",
+          },
+          "id": "group:commute-stations",
+          "initialState": "collapsed",
+          "items": [
+            {
+              "action": {
+                "actionType": "route",
+                "actionValue": "/subway?station=jeongja",
+              },
+              "id": "subway:jeongja",
+              "kind": "subway",
+              "lines": [
+                {
+                  "code": "D1",
+                  "color": "D4003B",
+                  "marker": {
+                    "color": "D4003B",
+                    "text": "신",
+                  },
+                  "name": "신분당선",
+                },
+                {
+                  "code": "K1",
+                  "color": "F5A200",
+                  "marker": {
+                    "color": "A26B00",
+                    "text": "수",
+                  },
+                  "name": "수인분당선",
+                },
+              ],
+              "stationId": "jeongja",
+              "subtitle": null,
+              "title": "정자역",
+            },
+            {
+              "action": {
+                "actionType": "route",
+                "actionValue": "/subway?station=jamsil",
+              },
+              "id": "subway:jamsil",
+              "kind": "subway",
+              "lines": [
+                {
+                  "code": "2",
+                  "color": "00A84D",
+                  "marker": {
+                    "color": "00893F",
+                    "text": "2",
+                  },
+                  "name": "2호선",
+                },
+                {
+                  "code": "8",
+                  "color": "E6186C",
+                  "marker": {
+                    "color": "E4186B",
+                    "text": "8",
+                  },
+                  "name": "8호선",
+                },
+              ],
+              "stationId": "jamsil",
+              "subtitle": null,
+              "title": "잠실역",
+            },
+            {
+              "action": {
+                "actionType": "route",
+                "actionValue": "/subway?station=dogok",
+              },
+              "id": "subway:dogok",
+              "kind": "subway",
+              "lines": [
+                {
+                  "code": "3",
+                  "color": "EF7C1C",
+                  "marker": {
+                    "color": "BB5C0D",
+                    "text": "3",
+                  },
+                  "name": "3호선",
+                },
+                {
+                  "code": "K1",
+                  "color": "F5A200",
+                  "marker": {
+                    "color": "A26B00",
+                    "text": "수",
+                  },
+                  "name": "수인분당선",
+                },
+              ],
+              "stationId": "dogok",
+              "subtitle": null,
+              "title": "도곡역",
+            },
+            {
+              "action": {
+                "actionType": "route",
+                "actionValue": "/subway?station=gangnam",
+              },
+              "id": "subway:gangnam",
+              "kind": "subway",
+              "lines": [
+                {
+                  "code": "2",
+                  "color": "00A84D",
+                  "marker": {
+                    "color": "00893F",
+                    "text": "2",
+                  },
+                  "name": "2호선",
+                },
+                {
+                  "code": "D1",
+                  "color": "D4003B",
+                  "marker": {
+                    "color": "D4003B",
+                    "text": "신",
+                  },
+                  "name": "신분당선",
+                },
+              ],
+              "stationId": "gangnam",
+              "subtitle": null,
+              "title": "강남역",
+            },
+            {
+              "action": {
+                "actionType": "route",
+                "actionValue": "/subway?station=yangjae",
+              },
+              "id": "subway:yangjae",
+              "kind": "subway",
+              "lines": [
+                {
+                  "code": "3",
+                  "color": "EF7C1C",
+                  "marker": {
+                    "color": "BB5C0D",
+                    "text": "3",
+                  },
+                  "name": "3호선",
+                },
+                {
+                  "code": "D1",
+                  "color": "D4003B",
+                  "marker": {
+                    "color": "D4003B",
+                    "text": "신",
+                  },
+                  "name": "신분당선",
+                },
+              ],
+              "stationId": "yangjae",
+              "subtitle": null,
+              "title": "양재역",
+            },
+            {
+              "action": {
+                "actionType": "route",
+                "actionValue": "/subway?station=gwanggyo-jungang",
+              },
+              "id": "subway:gwanggyo-jungang",
+              "kind": "subway",
+              "lines": [
+                {
+                  "code": "D1",
+                  "color": "D4003B",
+                  "marker": {
+                    "color": "D4003B",
+                    "text": "신",
+                  },
+                  "name": "신분당선",
+                },
+              ],
+              "stationId": "gwanggyo-jungang",
+              "subtitle": null,
+              "title": "광교중앙역",
+            },
+          ],
+          "kind": "group",
+          "subtitle": "정자 · 잠실 · 도곡 · 강남 · 양재 · 광교중앙",
+          "title": "통학버스 정류장 지하철",
+        },
+      ],
+      "title": "자과캠",
+      "type": "item_list",
+    },
+  ],
+  "version": 1,
+}
+`;

@@ -1,0 +1,2 @@
+# The OTA client key is public by design: it ships in every app binary.
+apps/mobile/config/constants.js:generic-api-key:133

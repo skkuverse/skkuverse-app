@@ -1,0 +1,65 @@
+skkuverse-app
+Copyright 2024-2026 spencer0124
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+The license covers the code and documentation written for this project. It
+does not cover the third-party material and brand assets described below.
+
+Third-party code
+----------------
+
+The design system in packages/sds is ported from Toss's
+@toss/tds-react-native, version 2.0.2. Versions 1.0.0 to 2.0.4 of that
+package were published under the GNU General Public License, version 3.
+Toss applied the Apache License, Version 2.0 from version 2.0.5. This
+project uses the ported code under the Apache License, Version 2.0 that
+Toss published with that version.
+
+The files were modified. packages/sds/NOTICE states what changed.
+
+Third-party fonts and artwork
+-----------------------------
+
+The fonts and icons below are not licensed under the Apache License. Each
+stays under its owner's terms.
+
+apps/mobile/assets/fonts/TossFaceFontMac.ttf is Tossface 1.6.1, the emoji
+font by the Toss team (Viva Republica), unmodified from
+https://github.com/toss/tossface. Tossface is the work of the Toss team.
+Its copyright guide and license are in
+apps/mobile/assets/fonts/TossFace-LICENSE.txt and at
+https://toss.im/tossface/copyright.
+
+The bus and subway icons apps/mobile/assets/icons/toss_*.svg are drawn
+from Tossface emoji artwork (U+1F68D and U+1F686), the work of the Toss
+team, under the same terms.
+
+apps/mobile/assets/fonts/WantedSans-*.otf are Wanted Sans 1.0.3,
+Copyright 2024 The Wanted Sans Project Authors
+(https://github.com/wanteddev/wanted-sans). They are licensed under the
+SIL Open Font License, Version 1.1, whose text is in
+apps/mobile/assets/fonts/WantedSans-OFL.txt.
+
+apps/mobile/assets/fonts/IBMPlexSansKR-*.ttf are IBM Plex Sans KR,
+Copyright 2017 IBM Corp. with Reserved Font Name "Plex". They are licensed
+under the SIL Open Font License, Version 1.1, whose text is in
+apps/mobile/assets/fonts/IBMPlexSansKR-OFL.txt.
+
+Data from third-party sites
+---------------------------
+
+Test fixtures (files under any __fixtures__/ folder) hold trimmed copies of
+responses and content from Sungkyunkwan University (SKKU), such as notices,
+campus map buildings and places, shuttle timetables and cafeteria menus,
+and of public transit services. They are captured so that the tests run
+offline. That content belongs to its sources and stays under their terms.
+Its presence here grants no license to it, and the Apache License does not
+apply to it.
+
+Brand assets
+------------
+
+The SKKUverse name, logo, app icon and illustrations (including the files
+under apps/mobile/assets/ other than the third-party fonts and artwork
+above) are not licensed under the Apache License. You may not use them to
+suggest that a fork or derived work is the official app.

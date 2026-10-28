@@ -1,0 +1,217 @@
+{
+    "meta": {
+        "lang": "en"
+    },
+    "data": {
+        "id": "campus",
+        "screenType": "schedule",
+        "label": "INJA Shuttle",
+        "visibility": {
+            "type": "always"
+        },
+        "card": {
+            "themeColor": "003626",
+            "iconType": "shuttle",
+            "busTypeText": "SKKU",
+            "subtitle": "HSSC ↔ NSC"
+        },
+        "screen": {
+            "defaultServiceId": "campus-inja",
+            "services": [
+                {
+                    "serviceId": "campus-inja",
+                    "label": "HSSC → NSC",
+                    "endpoint": "/bus/schedule/data/campus-inja/smart",
+                    "stopSequences": {
+                        "regular": [
+                            {
+                                "label": "Student Union bus parking lot",
+                                "action": "board",
+                                "timing": "scheduled",
+                                "stopId": "hssc-bus-lot",
+                                "note": "Board · HSSC"
+                            },
+                            {
+                                "label": "N Center",
+                                "action": "alight",
+                                "timing": "estimated",
+                                "stopId": "nsc-n-center",
+                                "note": "Get off · N Center"
+                            },
+                            {
+                                "label": "Welfare Hall",
+                                "action": "alight",
+                                "timing": "estimated",
+                                "stopId": "nsc-welfare",
+                                "note": "Get off · Welfare Hall"
+                            }
+                        ],
+                        "hakbu": [
+                            {
+                                "label": "Student Union bus parking lot",
+                                "action": "board",
+                                "timing": "scheduled",
+                                "stopId": "hssc-bus-lot",
+                                "note": "Board · Student Union"
+                            },
+                            {
+                                "label": "N Center",
+                                "action": "alight",
+                                "timing": "estimated",
+                                "stopId": "nsc-n-center",
+                                "note": "Get off · N Center"
+                            },
+                            {
+                                "label": "CNS Center",
+                                "action": "alight",
+                                "timing": "estimated",
+                                "stopId": "nsc-cns",
+                                "note": "Get off · CNS Center"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "serviceId": "campus-jain",
+                    "label": "NSC → HSSC",
+                    "endpoint": "/bus/schedule/data/campus-jain/smart",
+                    "stopSequences": {
+                        "regular": [
+                            {
+                                "label": "Across from N Center",
+                                "action": "board",
+                                "timing": "scheduled",
+                                "stopId": "nsc-opposite",
+                                "note": "Board · NSC"
+                            },
+                            {
+                                "label": "600th Anniversary Hall",
+                                "action": "alight",
+                                "timing": "estimated",
+                                "stopId": "hssc-600th",
+                                "note": "Get off · HSSC"
+                            }
+                        ],
+                        "hakbu": [
+                            {
+                                "label": "N Center",
+                                "action": "board",
+                                "timing": "scheduled",
+                                "stopId": "nsc-n-center",
+                                "note": "Board · N Center"
+                            },
+                            {
+                                "label": "Student Union bus parking lot",
+                                "action": "alight",
+                                "timing": "estimated",
+                                "stopId": "hssc-bus-lot",
+                                "note": "Get off · Student Union"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "heroCard": null,
+            "routeBadges": [
+                {
+                    "id": "regular",
+                    "label": "Regular",
+                    "color": "003626"
+                },
+                {
+                    "id": "hakbu",
+                    "label": "Undergraduate",
+                    "color": "1565C0"
+                }
+            ],
+            "stops": [
+                {
+                    "id": "hssc-bus-lot",
+                    "name": "Student Union bus parking lot",
+                    "detail": "Across from the 600th Anniversary Hall",
+                    "coords": {
+                        "lat": 37.587367,
+                        "lng": 126.993643
+                    },
+                    "map": {
+                        "markers": [],
+                        "paths": []
+                    }
+                },
+                {
+                    "id": "nsc-n-center",
+                    "name": "N Center",
+                    "detail": "On the N Center side of the road",
+                    "coords": {
+                        "lat": 37.292298,
+                        "lng": 126.975057
+                    },
+                    "map": {
+                        "markers": [],
+                        "paths": []
+                    }
+                },
+                {
+                    "id": "nsc-welfare",
+                    "name": "Welfare Hall",
+                    "detail": "Near the Student Union",
+                    "coords": {
+                        "lat": 37.293999,
+                        "lng": 126.973183
+                    },
+                    "map": {
+                        "markers": [],
+                        "paths": []
+                    }
+                },
+                {
+                    "id": "nsc-cns",
+                    "name": "CNS Center",
+                    "detail": "At the crosswalk by the CNS Center main entrance",
+                    "coords": {
+                        "lat": 37.294388,
+                        "lng": 126.977671
+                    },
+                    "map": {
+                        "markers": [],
+                        "paths": []
+                    }
+                },
+                {
+                    "id": "nsc-opposite",
+                    "name": "Across from N Center",
+                    "detail": "Global Plaza side, at the BUS STOP mark on the curb",
+                    "coords": {
+                        "lat": 37.292536,
+                        "lng": 126.975077
+                    },
+                    "photoUrl": "https://media.skkuverse.com/commute/stops/nsc-opposite/original-3406c12b.jpg",
+                    "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=1pS33oeIOFDwuxlq1Prstg&vrpanopan=84&vrpanotilt=12&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=1pS33oeIOFDwuxlq1Prstg&pan=84&tilt=12&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3D1pS33oeIOFDwuxlq1Prstg%26heading%3D84%26tilt%3D12%26fov%3D80&app=Y&appmarket=N",
+                    "map": {
+                        "markers": [],
+                        "paths": []
+                    }
+                },
+                {
+                    "id": "hssc-600th",
+                    "name": "600th Anniversary Hall",
+                    "detail": "Across the road from the Student Union bus parking lot",
+                    "coords": {
+                        "lat": 37.587258,
+                        "lng": 126.993904
+                    },
+                    "map": {
+                        "markers": [],
+                        "paths": []
+                    }
+                }
+            ],
+            "features": [
+                {
+                    "type": "info",
+                    "url": "https://webview.skkuverse.com/bus/campus/info"
+                }
+            ]
+        }
+    }
+}

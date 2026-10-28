@@ -1,0 +1,43 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`parseAppConfig — the published fixture > reads the production response whole 1`] = `
+{
+  "android": {
+    "minOsVersion": null,
+    "minVersion": "3.5.0",
+    "updateUrl": "https://play.google.com/store/apps/details?id=com.zoyoong.skkubus",
+  },
+  "games": {
+    "origins": {},
+  },
+  "ios": {
+    "minOsVersion": null,
+    "minVersion": "3.5.0",
+    "updateUrl": "https://apps.apple.com/app/id6446813434",
+  },
+  "miniapps": {
+    "origins": {
+      "https://booth-box.mini.skkuverse.com": "booth-box",
+      "https://eskara.miniapp.skkuverse.com": "eskara-2026",
+      "https://inja.mini.skkuverse.com": "inja",
+      "https://mukja.mini.skkuverse.com": "mukja",
+      "https://playlist.mini.skkuverse.com": "playlist",
+      "https://timetable.mini.skkuverse.com": "timetable",
+    },
+  },
+  "web": {
+    "origin": "https://skkuverse.com",
+  },
+  "webview": {
+    "bridgeOrigins": [
+      "https://webview.skkuverse.com",
+      "https://eskara.miniapp.skkuverse.com",
+      "https://mukja.mini.skkuverse.com",
+      "https://playlist.mini.skkuverse.com",
+      "https://booth-box.mini.skkuverse.com",
+      "https://inja.mini.skkuverse.com",
+      "https://timetable.mini.skkuverse.com",
+    ],
+  },
+}
+`;

@@ -1,0 +1,217 @@
+{
+    "meta": {
+        "lang": "ko"
+    },
+    "data": {
+        "id": "campus",
+        "screenType": "schedule",
+        "label": "인자셔틀",
+        "visibility": {
+            "type": "always"
+        },
+        "card": {
+            "themeColor": "003626",
+            "iconType": "shuttle",
+            "busTypeText": "성대",
+            "subtitle": "인사캠 ↔ 자과캠"
+        },
+        "screen": {
+            "defaultServiceId": "campus-inja",
+            "services": [
+                {
+                    "serviceId": "campus-inja",
+                    "label": "인사캠 → 자과캠",
+                    "endpoint": "/bus/schedule/data/campus-inja/smart",
+                    "stopSequences": {
+                        "regular": [
+                            {
+                                "label": "학생회관 버스 주차장",
+                                "action": "board",
+                                "timing": "scheduled",
+                                "stopId": "hssc-bus-lot",
+                                "note": "인사캠 탑승"
+                            },
+                            {
+                                "label": "N센터 앞",
+                                "action": "alight",
+                                "timing": "estimated",
+                                "stopId": "nsc-n-center",
+                                "note": "N센터 앞 하차"
+                            },
+                            {
+                                "label": "복지회관 앞",
+                                "action": "alight",
+                                "timing": "estimated",
+                                "stopId": "nsc-welfare",
+                                "note": "복지회관 하차"
+                            }
+                        ],
+                        "hakbu": [
+                            {
+                                "label": "학생회관 버스 주차장",
+                                "action": "board",
+                                "timing": "scheduled",
+                                "stopId": "hssc-bus-lot",
+                                "note": "학생회관 탑승"
+                            },
+                            {
+                                "label": "N센터 앞",
+                                "action": "alight",
+                                "timing": "estimated",
+                                "stopId": "nsc-n-center",
+                                "note": "N센터 앞 하차"
+                            },
+                            {
+                                "label": "CNS센터 앞",
+                                "action": "alight",
+                                "timing": "estimated",
+                                "stopId": "nsc-cns",
+                                "note": "CNS센터 하차"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "serviceId": "campus-jain",
+                    "label": "자과캠 → 인사캠",
+                    "endpoint": "/bus/schedule/data/campus-jain/smart",
+                    "stopSequences": {
+                        "regular": [
+                            {
+                                "label": "N센터 건너편",
+                                "action": "board",
+                                "timing": "scheduled",
+                                "stopId": "nsc-opposite",
+                                "note": "자과캠 탑승"
+                            },
+                            {
+                                "label": "600주년기념관 앞",
+                                "action": "alight",
+                                "timing": "estimated",
+                                "stopId": "hssc-600th",
+                                "note": "인사캠 하차"
+                            }
+                        ],
+                        "hakbu": [
+                            {
+                                "label": "N센터 앞",
+                                "action": "board",
+                                "timing": "scheduled",
+                                "stopId": "nsc-n-center",
+                                "note": "N센터 앞 탑승"
+                            },
+                            {
+                                "label": "학생회관 버스 주차장",
+                                "action": "alight",
+                                "timing": "estimated",
+                                "stopId": "hssc-bus-lot",
+                                "note": "학생회관 하차"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "heroCard": null,
+            "routeBadges": [
+                {
+                    "id": "regular",
+                    "label": "일반",
+                    "color": "003626"
+                },
+                {
+                    "id": "hakbu",
+                    "label": "학부대학",
+                    "color": "1565C0"
+                }
+            ],
+            "stops": [
+                {
+                    "id": "hssc-bus-lot",
+                    "name": "학생회관 버스 주차장",
+                    "detail": "600주년기념관 맞은편",
+                    "coords": {
+                        "lat": 37.587367,
+                        "lng": 126.993643
+                    },
+                    "map": {
+                        "markers": [],
+                        "paths": []
+                    }
+                },
+                {
+                    "id": "nsc-n-center",
+                    "name": "N센터 앞",
+                    "detail": "N센터 쪽 인도",
+                    "coords": {
+                        "lat": 37.292298,
+                        "lng": 126.975057
+                    },
+                    "map": {
+                        "markers": [],
+                        "paths": []
+                    }
+                },
+                {
+                    "id": "nsc-welfare",
+                    "name": "복지회관 앞",
+                    "detail": "학생회관 인근",
+                    "coords": {
+                        "lat": 37.293999,
+                        "lng": 126.973183
+                    },
+                    "map": {
+                        "markers": [],
+                        "paths": []
+                    }
+                },
+                {
+                    "id": "nsc-cns",
+                    "name": "CNS센터 앞",
+                    "detail": "CNS센터 정문 앞 횡단보도",
+                    "coords": {
+                        "lat": 37.294388,
+                        "lng": 126.977671
+                    },
+                    "map": {
+                        "markers": [],
+                        "paths": []
+                    }
+                },
+                {
+                    "id": "nsc-opposite",
+                    "name": "N센터 건너편",
+                    "detail": "글로벌광장 쪽, 연석의 BUS STOP 표시",
+                    "coords": {
+                        "lat": 37.292536,
+                        "lng": 126.975077
+                    },
+                    "photoUrl": "https://media.skkuverse.com/commute/stops/nsc-opposite/original-3406c12b.jpg",
+                    "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=1pS33oeIOFDwuxlq1Prstg&vrpanopan=84&vrpanotilt=12&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=1pS33oeIOFDwuxlq1Prstg&pan=84&tilt=12&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3D1pS33oeIOFDwuxlq1Prstg%26heading%3D84%26tilt%3D12%26fov%3D80&app=Y&appmarket=N",
+                    "map": {
+                        "markers": [],
+                        "paths": []
+                    }
+                },
+                {
+                    "id": "hssc-600th",
+                    "name": "600주년기념관 앞",
+                    "detail": "학생회관 버스 주차장 건너편",
+                    "coords": {
+                        "lat": 37.587258,
+                        "lng": 126.993904
+                    },
+                    "map": {
+                        "markers": [],
+                        "paths": []
+                    }
+                }
+            ],
+            "features": [
+                {
+                    "type": "info",
+                    "url": "https://webview.skkuverse.com/bus/campus/info"
+                }
+            ]
+        }
+    }
+}

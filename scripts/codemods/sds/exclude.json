@@ -1,0 +1,12 @@
+{
+  "files": [
+    {
+      "path": "apps/mobile/src/features/home/HomeScreen.tsx",
+      "reason": "work in progress outside the migration; migrates after it lands"
+    },
+    {
+      "path": "apps/mobile/src/features/home/home.constants.ts",
+      "reason": "work in progress outside the migration; migrates after it lands"
+    }
+  ]
+}

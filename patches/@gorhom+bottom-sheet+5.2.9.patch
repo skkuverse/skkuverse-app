@@ -1,0 +1,257 @@
+diff --git a/node_modules/@gorhom/bottom-sheet/src/components/bottomSheet/BottomSheet.tsx b/node_modules/@gorhom/bottom-sheet/src/components/bottomSheet/BottomSheet.tsx
+index de803e6..ffc6d5b 100644
+--- a/node_modules/@gorhom/bottom-sheet/src/components/bottomSheet/BottomSheet.tsx
++++ b/node_modules/@gorhom/bottom-sheet/src/components/bottomSheet/BottomSheet.tsx
+@@ -609,6 +609,21 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
+         }
+ 
+         if (position === animatedPosition.get()) {
++          // PATCH(skkuverse): a sheet already resting on a detent's position
++          // settles there. A drag past the lowest detent is clamped onto it,
++          // and its release lands here with nothing to animate, so without
++          // this `animatedCurrentIndex` kept the detent the drag started at
++          // and `onChange` never reported the one the sheet rests at.
++          const { detents } = animatedDetentsState.get();
++          const restingIndex = detents?.indexOf(position) ?? -1;
++          if (
++            restingIndex !== -1 &&
++            restingIndex !== animatedCurrentIndex.get() &&
++            animatedAnimationState.get().status !== ANIMATION_STATUS.RUNNING
++          ) {
++            animatedCurrentIndex.set(restingIndex);
++            runOnJS(handleOnChange)(restingIndex, position);
++          }
+           return;
+         }
+ 
+@@ -699,6 +714,8 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
+       },
+       [
+         handleOnAnimate,
++        handleOnChange,
++        animatedCurrentIndex,
+         stopAnimation,
+         animateToPositionCompleted,
+         keyboardBehavior,
+@@ -1076,6 +1093,70 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
+     //#endregion
+ 
+     //#region public methods
++    // PATCH(skkuverse): the index becomes a position on the UI thread, in the
++    // same worklet that animates to it. Upstream reads the detents here on the
++    // JS thread and animates on the UI thread later; when the snap points
++    // change in between, the sheet animates to a position the new detents do
++    // not have, `animateToPosition` files it under index -1, and it rests
++    // there (a map sheet popped from a line's page back to a root whose top
++    // is `max` stayed at the page's top, floating above the tab bar).
++    // Resolved here, the snap targets the detents gorhom holds when it runs,
++    // and a later snap point change retargets it by index
++    // (`evaluatePosition`), as it does any running snap.
++    const snapToIndexOnUI = useCallback(
++      function snapToIndexOnUI(
++        index: number,
++        animationConfigs?: WithSpringConfig | WithTimingConfig
++      ) {
++        'worklet';
++        const { detents } = animatedDetentsState.get();
++        if (
++          detents === undefined ||
++          detents.length === 0 ||
++          index > detents.length - 1
++        ) {
++          return;
++        }
++
++        const targetPosition = detents[index];
++
++        /**
++         * exit method if :
++         * - layout is not calculated.
++         * - already animating to next position.
++         * - sheet is forced closing.
++         */
++        const { nextPosition, nextIndex, isForcedClosing } =
++          animatedAnimationState.get();
++        if (
++          !isLayoutCalculated.value ||
++          index === nextIndex ||
++          targetPosition === nextPosition ||
++          isForcedClosing
++        ) {
++          return;
++        }
++
++        /**
++         * reset temporary position boolean.
++         */
++        isInTemporaryPosition.value = false;
++
++        animateToPosition(
++          targetPosition,
++          ANIMATION_SOURCE.USER,
++          0,
++          animationConfigs
++        );
++      },
++      [
++        animateToPosition,
++        animatedAnimationState,
++        animatedDetentsState,
++        isInTemporaryPosition,
++        isLayoutCalculated,
++      ]
++    );
+     const handleSnapToIndex = useStableCallback(function handleSnapToIndex(
+       index: number,
+       animationConfigs?: WithSpringConfig | WithTimingConfig
+@@ -1092,8 +1173,10 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
+         return;
+       }
+ 
++      // PATCH(skkuverse): only the lower bound here; the detents read on this
++      // thread can be the ones a snap point change is replacing.
+       invariant(
+-        index >= -1 && index <= detents.length - 1,
++        index >= -1,
+         `'index' was provided but out of the provided snap points range! expected value to be between -1, ${
+           detents.length - 1
+         }`
+@@ -1109,36 +1192,7 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
+         });
+       }
+ 
+-      const targetPosition = detents[index];
+-
+-      /**
+-       * exit method if :
+-       * - layout is not calculated.
+-       * - already animating to next position.
+-       * - sheet is forced closing.
+-       */
+-      const { nextPosition, nextIndex, isForcedClosing } =
+-        animatedAnimationState.get();
+-      if (
+-        !isLayoutCalculated.value ||
+-        index === nextIndex ||
+-        targetPosition === nextPosition ||
+-        isForcedClosing
+-      ) {
+-        return;
+-      }
+-
+-      /**
+-       * reset temporary position boolean.
+-       */
+-      isInTemporaryPosition.value = false;
+-
+-      runOnUI(animateToPosition)(
+-        targetPosition,
+-        ANIMATION_SOURCE.USER,
+-        0,
+-        animationConfigs
+-      );
++      runOnUI(snapToIndexOnUI)(index, animationConfigs);
+     });
+     const handleSnapToPosition = useCallback(
+       function handleSnapToPosition(
+diff --git a/node_modules/@gorhom/bottom-sheet/src/hooks/useGestureEventsHandlersDefault.tsx b/node_modules/@gorhom/bottom-sheet/src/hooks/useGestureEventsHandlersDefault.tsx
+index be5994e..e9dd2fb 100644
+--- a/node_modules/@gorhom/bottom-sheet/src/hooks/useGestureEventsHandlersDefault.tsx
++++ b/node_modules/@gorhom/bottom-sheet/src/hooks/useGestureEventsHandlersDefault.tsx
+@@ -394,13 +394,9 @@ export const useGestureEventsHandlersDefault: GestureEventsHandlersHookType =
+           snapPoints
+         );
+ 
+-        /**
+-         * if destination point is the same as the current position,
+-         * then no need to perform animation.
+-         */
+-        if (destinationPoint === animatedPosition.value) {
+-          return;
+-        }
++        // PATCH(skkuverse): no early return when the destination is where the
++        // sheet already is (a drag clamped onto the lowest detent):
++        // `animateToPosition` settles the index there instead of animating.
+ 
+         /**
+          * prevents snapping from top to middle / bottom with repeated interrupted scrolls
+diff --git a/node_modules/@gorhom/bottom-sheet/src/hooks/useScrollEventsHandlersDefault.ts b/node_modules/@gorhom/bottom-sheet/src/hooks/useScrollEventsHandlersDefault.ts
+index 7b84480..c3cfd11 100644
+--- a/node_modules/@gorhom/bottom-sheet/src/hooks/useScrollEventsHandlersDefault.ts
++++ b/node_modules/@gorhom/bottom-sheet/src/hooks/useScrollEventsHandlersDefault.ts
+@@ -11,6 +11,15 @@ import { useBottomSheetInternal } from './useBottomSheetInternal';
+ export type ScrollEventContextType = {
+   initialContentOffsetY: number;
+   shouldLockInitialPosition: boolean;
++  /**
++   * PATCH(skkuverse): set while this handler's own `scrollTo` is on the stack.
++   * On Fabric `scrollTo` dispatches synchronously and echoes a scroll event
++   * back into these handlers on the same stack, with an offset that need not
++   * equal `lockPosition`, so the lock branch re-entered itself until the native
++   * stack overflowed (a fatal worklet error in release). Upstream:
++   * gorhom/react-native-bottom-sheet#2737.
++   */
++  isLocking?: boolean;
+ };
+ 
+ export const useScrollEventsHandlersDefault: ScrollEventsHandlersHookType = (
+@@ -55,8 +64,17 @@ export const useScrollEventsHandlersDefault: ScrollEventsHandlersHookType = (
+           const lockPosition = context.shouldLockInitialPosition
+             ? (context.initialContentOffsetY ?? 0)
+             : 0;
+-          // @ts-expect-error
+-          scrollTo(scrollableRef, 0, lockPosition, false);
++          // PATCH(skkuverse): drop the synchronous echo of our own scrollTo.
++          if (context.isLocking) {
++            return;
++          }
++          context.isLocking = true;
++          try {
++            // @ts-expect-error
++            scrollTo(scrollableRef, 0, lockPosition, false);
++          } finally {
++            context.isLocking = false;
++          }
+           scrollableContentOffsetY.value = lockPosition;
+           return;
+         }
+@@ -104,8 +122,17 @@ export const useScrollEventsHandlersDefault: ScrollEventsHandlersHookType = (
+           const lockPosition = context.shouldLockInitialPosition
+             ? (context.initialContentOffsetY ?? 0)
+             : 0;
+-          // @ts-expect-error
+-          scrollTo(scrollableRef, 0, lockPosition, false);
++          // PATCH(skkuverse): drop the synchronous echo of our own scrollTo.
++          if (context.isLocking) {
++            return;
++          }
++          context.isLocking = true;
++          try {
++            // @ts-expect-error
++            scrollTo(scrollableRef, 0, lockPosition, false);
++          } finally {
++            context.isLocking = false;
++          }
+           scrollableContentOffsetY.value = lockPosition;
+           return;
+         }
+@@ -134,8 +161,17 @@ export const useScrollEventsHandlersDefault: ScrollEventsHandlersHookType = (
+           const lockPosition = context.shouldLockInitialPosition
+             ? (context.initialContentOffsetY ?? 0)
+             : 0;
+-          // @ts-expect-error
+-          scrollTo(scrollableRef, 0, lockPosition, false);
++          // PATCH(skkuverse): drop the synchronous echo of our own scrollTo.
++          if (context.isLocking) {
++            return;
++          }
++          context.isLocking = true;
++          try {
++            // @ts-expect-error
++            scrollTo(scrollableRef, 0, lockPosition, false);
++          } finally {
++            context.isLocking = false;
++          }
+           scrollableContentOffsetY.value = 0;
+           return;
+         }

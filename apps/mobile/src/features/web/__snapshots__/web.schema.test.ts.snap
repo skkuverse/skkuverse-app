@@ -1,0 +1,109 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`the published fixtures > miniapp-detail.eskara-2026 reads whole 1`] = `
+{
+  "id": "eskara-2026",
+  "relatedLinks": [],
+  "shell": {
+    "background": "#FFFFFF",
+    "bar": "bottom",
+    "header": "opaque",
+    "statusBar": "dark",
+  },
+  "startUrl": "https://eskara.miniapp.skkuverse.com/eskara",
+  "verified": true,
+  "version": 1,
+}
+`;
+
+exports[`the published fixtures > miniapp-detail.hssc reads whole 1`] = `
+{
+  "id": "hssc",
+  "relatedLinks": [],
+  "shell": {
+    "background": "#FFFFFF",
+    "bar": "bottom",
+    "header": "opaque",
+    "statusBar": "dark",
+  },
+  "startUrl": "https://student.skku.edu/student/notice2.do",
+  "verified": true,
+  "version": 1,
+}
+`;
+
+exports[`the published fixtures > miniapp-feed.production-ko reads whole 1`] = `
+[
+  {
+    "actionType": "miniapp",
+    "actionValue": "eskara-2026/eskara/lineup",
+    "body": "강렬한 퍼포먼스와 압도적인 에너지!
+ADP와 함께 무대를 뜨겁게 즐겨보세요!",
+    "id": "b9d6677f-7842-4594-b197-a36e8e3a8347",
+    "sentAt": "2026-10-02T11:37:39.571Z",
+    "title": "[아티스트] ALLDAY PROJECT 공연 시작 🔥",
+  },
+  {
+    "actionType": "route",
+    "actionValue": "/mini-app?id=timetable&source=push",
+    "body": "쿵야즈와 함께하는 특별한 이벤트!
+귀여움 가득한 순간을 함께 즐겨보세요",
+    "id": "c7b2cc41-46f7-4c91-b6d8-15d255913fd1",
+    "sentAt": "2026-10-02T11:19:25.221Z",
+    "title": "[안내] 쿵야즈 이벤트 진행 🌱",
+  },
+]
+`;
+
+exports[`the published fixtures > miniapp-index.production-ko reads whole 1`] = `
+{
+  "miniApps": [
+    {
+      "hidden": true,
+      "homeLogo": {
+        "emoji": "📖",
+        "kind": "emoji",
+      },
+      "id": "eskara-2026",
+      "name": "축제 가이드",
+      "order": 4,
+      "shellLogo": {
+        "kind": "remote",
+        "uri": "https://media.skkuverse.com/miniapps/eskara-2026/logo-03a86934.jpg",
+      },
+      "shortName": undefined,
+    },
+    {
+      "hidden": true,
+      "homeLogo": {
+        "emoji": "😋",
+        "kind": "emoji",
+      },
+      "id": "mukja",
+      "name": "음식 룰렛",
+      "order": 8,
+      "shellLogo": {
+        "emoji": "😋",
+        "kind": "emoji",
+      },
+      "shortName": undefined,
+    },
+    {
+      "hidden": true,
+      "homeLogo": {
+        "kind": "remote",
+        "uri": "https://skkuverse.com/miniapps/hssc.png",
+      },
+      "id": "hssc",
+      "name": "인사캠 총학생회",
+      "order": 10,
+      "shellLogo": {
+        "kind": "remote",
+        "uri": "https://skkuverse.com/miniapps/hssc.png",
+      },
+      "shortName": "인사캠 총학",
+    },
+  ],
+  "version": 1,
+}
+`;

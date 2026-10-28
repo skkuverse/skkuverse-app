@@ -1,0 +1,363 @@
+{
+  "$comment": "The screens the SDS migration batches compare (scripts/codemods/sds/shots.mjs). Each runs on the one simulator named here, signed in with a Google account that has finished onboarding.",
+  "bundleId": "com.example.skkumap",
+  "pointWidth": 402,
+  "settle": 1.5,
+  "simulator": "iPhone 17 Pro",
+  "omitted": [
+    {
+      "screen": "onboarding",
+      "why": "the wizard and the notices gate show only to an anonymous or never-onboarded user, and reaching that state on the signed-in simulator means signing out, which a capture cannot undo (Google sign-in is manual). A batch that touches src/features/notices/onboarding or src/features/tour checks it by hand."
+    }
+  ],
+  "screens": [
+    {
+      "name": "home",
+      "steps": [
+        {
+          "relaunch": true,
+          "wait": 15
+        },
+        {
+          "tap": "홈",
+          "type": "RadioButton",
+          "wait": 8,
+          "until": "명예의 전당"
+        }
+      ],
+      "masks": [
+        {
+          "x": 280,
+          "y": 60,
+          "w": 110,
+          "h": 50,
+          "why": "glass header buttons over the scrolled content"
+        },
+        {
+          "x": 16,
+          "y": 130,
+          "w": 370,
+          "h": 168,
+          "why": "the banner types its headline in"
+        },
+        {
+          "x": 16,
+          "y": 545,
+          "w": 370,
+          "h": 245,
+          "why": "the Hall of Fame card pages between games and shows live ranks"
+        },
+        {
+          "x": 0,
+          "y": 786,
+          "w": 402,
+          "h": 88,
+          "why": "the native Liquid Glass tab bar re-samples what lies behind it"
+        }
+      ]
+    },
+    {
+      "name": "notices",
+      "from": "home",
+      "steps": [
+        {
+          "tap": "공지",
+          "type": "RadioButton",
+          "wait": 5,
+          "until": "학과"
+        }
+      ],
+      "masks": [
+        {
+          "x": 0,
+          "y": 786,
+          "w": 402,
+          "h": 88,
+          "why": "the native Liquid Glass tab bar re-samples what lies behind it"
+        }
+      ]
+    },
+    {
+      "name": "campus",
+      "from": "notices",
+      "steps": [
+        {
+          "tap": "지도",
+          "type": "RadioButton",
+          "wait": 8
+        }
+      ],
+      "masks": [
+        {
+          "x": 0,
+          "y": 786,
+          "w": 402,
+          "h": 88,
+          "why": "the native Liquid Glass tab bar re-samples what lies behind it"
+        },
+        {
+          "x": 0,
+          "y": 656,
+          "w": 402,
+          "h": 12,
+          "why": "the collapsed sheet's glass top edge over the map"
+        }
+      ],
+      "tolerance": {
+        "channel": 16,
+        "why": "Liquid Glass and translucent layers re-sample what moves behind them by a few levels per channel"
+      }
+    },
+    {
+      "name": "campus-sheet",
+      "from": "campus",
+      "steps": [
+        {
+          "swipe": [
+            201,
+            672,
+            201,
+            250
+          ],
+          "wait": 3
+        }
+      ],
+      "masks": [
+        {
+          "x": 0,
+          "y": 786,
+          "w": 402,
+          "h": 88,
+          "why": "the native Liquid Glass tab bar re-samples what lies behind it"
+        }
+      ],
+      "tolerance": {
+        "channel": 16,
+        "why": "Liquid Glass and translucent layers re-sample what moves behind them by a few levels per channel"
+      }
+    },
+    {
+      "name": "transit",
+      "steps": [
+        {
+          "relaunch": true,
+          "wait": 15
+        },
+        {
+          "tap": "이동",
+          "type": "RadioButton",
+          "wait": 3,
+          "until": "인자셔틀, 성대, 인사캠 ↔ 자과캠"
+        }
+      ],
+      "masks": [
+        {
+          "x": 0,
+          "y": 786,
+          "w": 402,
+          "h": 88,
+          "why": "the native Liquid Glass tab bar re-samples what lies behind it"
+        }
+      ]
+    },
+    {
+      "name": "bus-schedule",
+      "from": "transit",
+      "steps": [
+        {
+          "tap": "인자셔틀, 성대, 인사캠 ↔ 자과캠",
+          "wait": 6,
+          "until": "시간표"
+        }
+      ],
+      "masks": [
+        {
+          "x": 0,
+          "y": 768,
+          "w": 402,
+          "h": 76,
+          "why": "the test ad banner and its toast"
+        }
+      ]
+    },
+    {
+      "name": "bus-realtime",
+      "steps": [
+        {
+          "relaunch": true,
+          "wait": 15
+        },
+        {
+          "tap": "이동",
+          "type": "RadioButton",
+          "wait": 3,
+          "until": "인자셔틀, 성대, 인사캠 ↔ 자과캠"
+        },
+        {
+          "tap": "종로 02, 마을, 성균관대학교 ↔ 종각역.YMCA",
+          "wait": 6,
+          "until": "성균관대학교"
+        }
+      ],
+      "masks": [
+        {
+          "x": 0,
+          "y": 118,
+          "w": 402,
+          "h": 22,
+          "why": "the live \"as of\" time and bus count"
+        },
+        {
+          "x": 0,
+          "y": 145,
+          "w": 402,
+          "h": 625,
+          "why": "live bus positions and arrival badges along the route"
+        },
+        {
+          "x": 0,
+          "y": 768,
+          "w": 402,
+          "h": 76,
+          "why": "the test ad banner and its toast"
+        }
+      ]
+    },
+    {
+      "name": "notice-detail",
+      "steps": [
+        {
+          "relaunch": true,
+          "wait": 15
+        },
+        {
+          "open": "skkuverse://notices/cse-undergrad/226611",
+          "wait": 6
+        }
+      ]
+    },
+    {
+      "name": "settings",
+      "steps": [
+        {
+          "relaunch": true,
+          "wait": 15
+        },
+        {
+          "tap": "홈",
+          "type": "RadioButton",
+          "wait": 3,
+          "until": "명예의 전당"
+        },
+        {
+          "tap": "설정",
+          "type": "Button",
+          "wait": 3
+        }
+      ]
+    },
+    {
+      "name": "search",
+      "steps": [
+        {
+          "relaunch": true,
+          "wait": 15
+        },
+        {
+          "open": "skkuverse://search",
+          "wait": 5
+        }
+      ],
+      "masks": [
+        {
+          "x": 56,
+          "y": 68,
+          "w": 8,
+          "h": 34,
+          "why": "the search field's caret blinks"
+        }
+      ]
+    },
+    {
+      "name": "game-result",
+      "steps": [
+        {
+          "relaunch": true,
+          "wait": 15
+        },
+        {
+          "tap": "홈",
+          "type": "RadioButton",
+          "wait": 3,
+          "until": "명예의 전당"
+        },
+        {
+          "tap": "🏄, 초록의 파도",
+          "wait": 6
+        },
+        {
+          "tapAt": [
+            200,
+            640
+          ],
+          "wait": 14
+        }
+      ],
+      "masks": [
+        {
+          "x": 0,
+          "y": 60,
+          "w": 402,
+          "h": 76,
+          "why": "glass buttons over the animated game page"
+        },
+        {
+          "x": 30,
+          "y": 136,
+          "w": 340,
+          "h": 32,
+          "why": "the headline names the obstacle the run ended on"
+        },
+        {
+          "x": 16,
+          "y": 300,
+          "w": 370,
+          "h": 450,
+          "why": "the live board"
+        },
+        {
+          "x": 0,
+          "y": 136,
+          "w": 18,
+          "h": 660,
+          "why": "the game page keeps animating around the cards"
+        },
+        {
+          "x": 384,
+          "y": 136,
+          "w": 18,
+          "h": 660,
+          "why": "the game page keeps animating around the cards"
+        },
+        {
+          "x": 0,
+          "y": 795,
+          "w": 402,
+          "h": 79,
+          "why": "the game page keeps animating around the cards"
+        },
+        {
+          "x": 16,
+          "y": 276,
+          "w": 24,
+          "h": 24,
+          "why": "the score card's rounded corner over the animated game page"
+        }
+      ],
+      "tolerance": {
+        "channel": 16,
+        "why": "Liquid Glass and translucent layers re-sample what moves behind them by a few levels per channel"
+      }
+    }
+  ]
+}

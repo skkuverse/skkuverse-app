@@ -1,0 +1,52 @@
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+# hot-updater OTA builds (ota/build-ota.mjs)
+dist-ota/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+# The hot-updater bundle-signing public key. Its private key exists only in Cloud KMS.
+!keys/hot-updater-public.pem
+credentials.json
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+
+app-example
+
+# build artifacts
+*.ipa
+*.aab
+
+# generated native folders
+/ios
+/android

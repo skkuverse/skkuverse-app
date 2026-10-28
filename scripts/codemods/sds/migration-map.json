@@ -1,0 +1,1196 @@
+{
+  "$comment": [
+    "The SDS migration mapping: each old value and what replaces it, per use. Codemods, lint autofix suggestions and agents read it, so a mapping is decided once, here.",
+    "colors[].by is keyed by the use a value is put to, as the scanner reads it from the receiving key: fg (text, icons, tints), bg (a fill), bgPressed (a fill in a pressed state), stroke (a border), line (the fill of a View one pixel thin), placeholder (placeholderTextColor). A use not listed falls back: line to stroke, bgPressed to bg, placeholder to fg; mixed or unknown uses have no mapping and stay manual.",
+    "next: the replacement (a role fg.*/bg.*/stroke.*, a palette static value, an SdsSpacing/SdsRadius token, a type step t1..t13, or a Txt fontWeight), or null when nothing replaces it yet (reason says why). byContext: the replacement depends on what the site draws, named by context; a codemod leaves those to a person.",
+    "exact: the light value is identical (CIEDE2000 under 0.5; for byContext, every candidate is), so a K batch can move it with no visual change. needsVerification: the site changes on screen or needs a human choice, so it ships in a V or H batch with screenshots.",
+    "decision: the inventory decision (05-sds-migration-inventory.md section 5.1, approved 2026-10-10) that set this mapping.",
+    "scripts/codemods/sds/migration-map.test.mjs checks every next against the token files."
+  ],
+  "decisions": {
+    "D-grey500-text": "grey500 text and icons move to fg.neutralSubtle: a step darker, and contrast rises",
+    "D-grey400-text": "grey400 text and icons move to fg.placeholder: a step darker",
+    "D-grey800-text": "grey800 text moves to fg.neutral",
+    "D-white-label": "white text takes the on*Solid role of the fill beneath; over a photo or video it stays static white",
+    "D-brand-fill": "a brand fill moves to bg.brandSolid",
+    "D-grey-fill": "a screen or section ground is bg.layerBasement; a control such as a button or chip is bg.neutralWeak",
+    "off-scale-type": "10px text folds to t1 (11px); no step is added"
+  },
+  "colors": [
+    {
+      "previous": "SdsColors.grey900",
+      "by": {
+        "fg": {
+          "next": "fg.neutral",
+          "exact": true,
+          "needsVerification": false
+        },
+        "bg": {
+          "next": "bg.neutralSolid",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no role fills grey[1000]; neutralSolid is grey[800], a step lighter"
+        },
+        "stroke": {
+          "next": "stroke.neutralContrast",
+          "exact": true,
+          "needsVerification": false
+        },
+        "line": {
+          "next": "stroke.neutralContrast",
+          "exact": true,
+          "needsVerification": false
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.grey800",
+      "by": {
+        "fg": {
+          "next": "fg.neutral",
+          "exact": false,
+          "needsVerification": true,
+          "decision": "D-grey800-text",
+          "reason": "no role draws text in grey[900]; decided for fg.neutral, a step darker"
+        },
+        "bg": {
+          "next": "bg.neutralSolid",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "grey[900] to grey[800]"
+        },
+        "stroke": {
+          "next": "stroke.neutralSolid",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "grey[900] to grey[800]"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.grey700",
+      "by": {
+        "fg": {
+          "next": "fg.neutralMuted",
+          "exact": true,
+          "needsVerification": false
+        },
+        "bg": {
+          "next": "bg.neutralSolid",
+          "exact": true,
+          "needsVerification": false
+        },
+        "bgPressed": {
+          "next": "bg.neutralSolid",
+          "exact": true,
+          "needsVerification": false
+        },
+        "stroke": {
+          "next": "stroke.neutralSolid",
+          "exact": true,
+          "needsVerification": false
+        },
+        "line": {
+          "next": "stroke.neutralSolid",
+          "exact": true,
+          "needsVerification": false
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.grey600",
+      "by": {
+        "fg": {
+          "next": "fg.neutralSubtle",
+          "exact": true,
+          "needsVerification": false
+        },
+        "bg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no role fills grey[700]"
+        },
+        "stroke": {
+          "next": "stroke.neutralSolid",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "grey[700] to grey[800]"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.grey500",
+      "by": {
+        "fg": {
+          "next": "fg.neutralSubtle",
+          "exact": false,
+          "needsVerification": true,
+          "decision": "D-grey500-text",
+          "reason": "decided by meaning: tertiary text, a step darker than the placeholder value it had"
+        },
+        "placeholder": {
+          "next": "fg.placeholder",
+          "exact": true,
+          "needsVerification": false
+        },
+        "bg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no role fills grey[600]"
+        },
+        "stroke": {
+          "next": "stroke.neutralWeak",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "grey[600] to grey[400], lighter"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.grey400",
+      "by": {
+        "fg": {
+          "next": "fg.placeholder",
+          "exact": false,
+          "needsVerification": true,
+          "decision": "D-grey400-text",
+          "reason": "decided for fg.placeholder, a step darker; fg.disabled only where the control is disabled"
+        },
+        "placeholder": {
+          "next": "fg.placeholder",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "grey[500] to grey[600], darker"
+        },
+        "bg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no role fills grey[500] (a disabled dot, a track, a handle)"
+        },
+        "stroke": {
+          "next": "stroke.neutralWeak",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "grey[500] to grey[400], lighter"
+        },
+        "line": {
+          "next": "stroke.neutralWeak",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "grey[500] to grey[400]"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.grey300",
+      "by": {
+        "fg": {
+          "next": "fg.disabled",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no role draws text or icons in grey[400]; fg.disabled is darker"
+        },
+        "bg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no role fills grey[400] (a handle, a disabled fill)"
+        },
+        "line": {
+          "next": "stroke.neutralWeak",
+          "exact": true,
+          "needsVerification": false
+        },
+        "stroke": {
+          "next": "stroke.neutralWeak",
+          "exact": true,
+          "needsVerification": false
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.grey200",
+      "by": {
+        "fg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no role draws text in grey[300]"
+        },
+        "bg": {
+          "next": "bg.neutralWeak",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no resting fill in grey[300]; neutralWeak is grey[200], lighter"
+        },
+        "bgPressed": {
+          "next": "bg.neutralWeakPressed",
+          "exact": true,
+          "needsVerification": false
+        },
+        "line": {
+          "next": "stroke.neutralMuted",
+          "exact": false,
+          "needsVerification": true
+        },
+        "stroke": {
+          "next": "stroke.neutralMuted",
+          "exact": false,
+          "needsVerification": true
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.grey100",
+      "by": {
+        "fg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no role draws text in grey[200]"
+        },
+        "bg": {
+          "next": null,
+          "byContext": {
+            "surface": "bg.layerBasement",
+            "control": "bg.neutralWeak"
+          },
+          "exact": true,
+          "needsVerification": true,
+          "decision": "D-grey-fill",
+          "reason": "the same light value either way; a screen or section ground is layerBasement, a control (button, chip, input, card) is neutralWeak, and the two part in dark"
+        },
+        "bgPressed": {
+          "next": "bg.layerDefaultPressed",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "grey[200] to grey[100]"
+        },
+        "line": {
+          "next": "stroke.neutralSubtle",
+          "exact": false,
+          "needsVerification": true
+        },
+        "stroke": {
+          "next": "stroke.neutralSubtle",
+          "exact": false,
+          "needsVerification": true
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.greyBackground",
+      "by": {
+        "fg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no text role"
+        },
+        "bg": {
+          "next": null,
+          "byContext": {
+            "surface": "bg.layerBasement",
+            "control": "bg.neutralWeak"
+          },
+          "exact": true,
+          "needsVerification": true,
+          "decision": "D-grey-fill",
+          "reason": "the same light value either way; a screen or section ground is layerBasement, a control (button, chip, input, card) is neutralWeak, and the two part in dark"
+        },
+        "line": {
+          "next": "stroke.neutralSubtle",
+          "exact": false,
+          "needsVerification": true
+        },
+        "stroke": {
+          "next": "stroke.neutralSubtle",
+          "exact": false,
+          "needsVerification": true
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.grey50",
+      "by": {
+        "fg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no role draws text in grey[100]"
+        },
+        "bg": {
+          "next": "bg.neutralMuted",
+          "exact": true,
+          "needsVerification": false
+        },
+        "bgPressed": {
+          "next": "bg.layerDefaultPressed",
+          "exact": true,
+          "needsVerification": false
+        },
+        "line": {
+          "next": "stroke.neutralSubtle",
+          "exact": false,
+          "needsVerification": true
+        },
+        "stroke": {
+          "next": "stroke.neutralSubtle",
+          "exact": false,
+          "needsVerification": true
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.background",
+      "by": {
+        "fg": {
+          "next": null,
+          "byContext": {
+            "onBrandSolid": "fg.onBrandSolid",
+            "onNeutralSolid": "fg.onNeutralSolid",
+            "onCriticalSolid": "fg.onCriticalSolid",
+            "onInformativeSolid": "fg.onInformativeSolid",
+            "onPositiveSolid": "fg.onPositiveSolid",
+            "overMedia": "SdsPalette.static.white"
+          },
+          "exact": true,
+          "needsVerification": true,
+          "decision": "D-white-label",
+          "reason": "white text or icons take the on*Solid role of the fill beneath; over a photo or video they stay static white"
+        },
+        "bg": {
+          "next": null,
+          "byContext": {
+            "surface": "bg.layerDefault",
+            "floating": "bg.layerFloating"
+          },
+          "exact": true,
+          "needsVerification": true
+        },
+        "stroke": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "a ring in the surface color is not a line; read the bg role of the surface it cuts out"
+        },
+        "line": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "a line in the surface color; read the bg role of the surface"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.layeredBackground",
+      "by": {
+        "bg": {
+          "next": "bg.layerFloating",
+          "exact": true,
+          "needsVerification": false
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.floatedBackground",
+      "by": {
+        "bg": {
+          "next": "bg.layerFloating",
+          "exact": true,
+          "needsVerification": false
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.brand",
+      "by": {
+        "fg": {
+          "next": "fg.brand",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "pine[700] to pine[800], darker: 4.5:1 on white (ADR 0011)"
+        },
+        "bg": {
+          "next": "bg.brandSolid",
+          "exact": false,
+          "needsVerification": true,
+          "decision": "D-brand-fill",
+          "reason": "the mid green fill becomes the deep green CTA"
+        },
+        "bgPressed": {
+          "next": "bg.brandSolidPressed",
+          "exact": false,
+          "needsVerification": true,
+          "decision": "D-brand-fill",
+          "reason": "follows the fill"
+        },
+        "stroke": {
+          "next": "stroke.brandSolid",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "pine[700] to pine[900], darker"
+        },
+        "line": {
+          "next": "stroke.brandSolid",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "pine[700] to pine[900]"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.brandLight",
+      "by": {
+        "fg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no role draws text in pine[100]"
+        },
+        "bg": {
+          "next": "bg.brandWeak",
+          "exact": true,
+          "needsVerification": false
+        },
+        "bgPressed": {
+          "next": "bg.brandWeakPressed",
+          "exact": false,
+          "needsVerification": true
+        },
+        "stroke": {
+          "next": "stroke.brandWeak",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "pine[100] to pine[300], darker"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.brandDark",
+      "by": {
+        "fg": {
+          "next": "fg.brandContrast",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "pine[1000] to pine[900]"
+        },
+        "bg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no role (ADR 0011): an always-dark surface takes a dark-only subtree"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.blue500",
+      "by": {
+        "fg": {
+          "next": "fg.informative",
+          "exact": true,
+          "needsVerification": false
+        },
+        "bg": {
+          "next": "bg.informativeSolid",
+          "exact": true,
+          "needsVerification": false
+        },
+        "bgPressed": {
+          "next": "bg.informativeSolidPressed",
+          "exact": false,
+          "needsVerification": true
+        },
+        "stroke": {
+          "next": "stroke.informativeSolid",
+          "exact": true,
+          "needsVerification": false
+        },
+        "line": {
+          "next": "stroke.informativeSolid",
+          "exact": true,
+          "needsVerification": false
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.blue600",
+      "by": {
+        "fg": {
+          "next": "fg.informativeContrast",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "blue[800] to blue[900]"
+        },
+        "bg": {
+          "next": "bg.informativeSolidPressed",
+          "exact": true,
+          "needsVerification": false
+        },
+        "stroke": {
+          "next": "stroke.informativeSolid",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "blue[800] to blue[700]"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.blue700",
+      "by": {
+        "fg": {
+          "next": "fg.informativeContrast",
+          "exact": true,
+          "needsVerification": false
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.blue400",
+      "by": {
+        "fg": {
+          "next": "fg.informative",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "blue[600] to blue[700]"
+        },
+        "bg": {
+          "next": "bg.informativeSolid",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "blue[600] to blue[700]"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.blue200",
+      "by": {
+        "fg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no role in blue[500]"
+        },
+        "bg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no role in blue[500]"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.blue50",
+      "by": {
+        "fg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no text role"
+        },
+        "bg": {
+          "next": "bg.informativeWeak",
+          "exact": true,
+          "needsVerification": false
+        },
+        "bgPressed": {
+          "next": "bg.informativeWeakPressed",
+          "exact": false,
+          "needsVerification": true
+        },
+        "stroke": {
+          "next": "stroke.informativeWeak",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "blue[100] to blue[300]"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.red500",
+      "by": {
+        "fg": {
+          "next": "fg.critical",
+          "exact": true,
+          "needsVerification": false
+        },
+        "bg": {
+          "next": "bg.criticalSolid",
+          "exact": true,
+          "needsVerification": false
+        },
+        "stroke": {
+          "next": "stroke.criticalSolid",
+          "exact": true,
+          "needsVerification": false
+        },
+        "line": {
+          "next": "stroke.criticalSolid",
+          "exact": true,
+          "needsVerification": false
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.red50",
+      "by": {
+        "bg": {
+          "next": "bg.criticalWeak",
+          "exact": true,
+          "needsVerification": false
+        },
+        "stroke": {
+          "next": "stroke.criticalWeak",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "red[100] to red[300]"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.green500",
+      "by": {
+        "fg": {
+          "next": "fg.positive",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "green[600] to green[700]"
+        },
+        "bg": {
+          "next": "bg.positiveSolid",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "green[600] to green[700]"
+        },
+        "stroke": {
+          "next": "stroke.positiveSolid",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "green[600] to green[700]"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.green50",
+      "by": {
+        "bg": {
+          "next": "bg.positiveWeak",
+          "exact": true,
+          "needsVerification": false
+        },
+        "stroke": {
+          "next": "stroke.positiveWeak",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "green[100] to green[300]"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.orange500",
+      "by": {
+        "fg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no orange role: the palette orange[500], or fg.warning with a hue change"
+        },
+        "bg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no orange role"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.orange50",
+      "by": {
+        "bg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no orange role: the palette orange[100], or bg.warningWeak with a hue change"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.yellow50",
+      "by": {
+        "bg": {
+          "next": "bg.warningWeak",
+          "exact": true,
+          "needsVerification": false
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.yellow400",
+      "by": {
+        "bg": {
+          "next": "bg.warningSolid",
+          "exact": true,
+          "needsVerification": false
+        },
+        "fg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no role draws text in this yellow"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.yellow500",
+      "by": {
+        "bg": {
+          "next": "bg.warningSolidPressed",
+          "exact": true,
+          "needsVerification": false
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.yellow800",
+      "by": {
+        "fg": {
+          "next": "fg.warning",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "yellow[500] to yellow[700]"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.yellow900",
+      "by": {
+        "fg": {
+          "next": "fg.warning",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "yellow[600] to yellow[700]"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.teal50",
+      "by": {
+        "bg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no teal role: read the palette"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.teal500",
+      "by": {
+        "fg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no teal role: read the palette"
+        },
+        "bg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no teal role"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.purple500",
+      "by": {
+        "fg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no purple role: read the palette"
+        },
+        "bg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "no purple role"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.highlight",
+      "by": {
+        "bg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "a highlighter mark: bg.warningWeakPressed has the value but not the meaning"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.scrim",
+      "by": {
+        "bg": {
+          "next": "bg.overlay",
+          "exact": true,
+          "needsVerification": false
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.scrimGlass",
+      "by": {
+        "bg": {
+          "next": "bg.overlayMuted",
+          "exact": true,
+          "needsVerification": false
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.greyOpacity50",
+      "by": {
+        "bg": {
+          "next": "bg.transparentPressed",
+          "exact": false,
+          "needsVerification": true
+        },
+        "stroke": {
+          "next": "stroke.neutralSubtle",
+          "exact": false,
+          "needsVerification": true
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.greyOpacity200",
+      "by": {
+        "bg": {
+          "next": "bg.transparentSelected",
+          "exact": false,
+          "needsVerification": true
+        },
+        "stroke": {
+          "next": "stroke.neutralMuted",
+          "exact": false,
+          "needsVerification": true
+        },
+        "line": {
+          "next": "stroke.neutralMuted",
+          "exact": false,
+          "needsVerification": true
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.greyOpacity500",
+      "by": {
+        "bg": {
+          "next": "bg.overlay",
+          "exact": false,
+          "needsVerification": true,
+          "reason": "alpha 46% to 50%"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.greyOpacity800",
+      "by": {
+        "bg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "a dark translucent surface (video, toast): no role"
+        }
+      }
+    },
+    {
+      "previous": "SdsColors.greyOpacity900",
+      "by": {
+        "bg": {
+          "next": null,
+          "exact": false,
+          "needsVerification": true,
+          "reason": "a dark translucent surface: no role"
+        }
+      }
+    }
+  ],
+  "spacing": {
+    "2": {
+      "next": "SdsSpacing.x0_5",
+      "exact": true,
+      "needsVerification": false
+    },
+    "4": {
+      "next": "SdsSpacing.x1",
+      "exact": true,
+      "needsVerification": false
+    },
+    "6": {
+      "next": "SdsSpacing.x1_5",
+      "exact": true,
+      "needsVerification": false
+    },
+    "8": {
+      "next": "SdsSpacing.x2",
+      "exact": true,
+      "needsVerification": false
+    },
+    "10": {
+      "next": "SdsSpacing.x2_5",
+      "exact": true,
+      "needsVerification": false
+    },
+    "12": {
+      "next": "SdsSpacing.x3",
+      "exact": true,
+      "needsVerification": false
+    },
+    "14": {
+      "next": "SdsSpacing.x3_5",
+      "exact": true,
+      "needsVerification": false
+    },
+    "16": {
+      "next": "SdsSpacing.x4",
+      "exact": true,
+      "needsVerification": false
+    },
+    "18": {
+      "next": "SdsSpacing.x4_5",
+      "exact": true,
+      "needsVerification": false
+    },
+    "20": {
+      "next": "SdsSpacing.x5",
+      "exact": true,
+      "needsVerification": false
+    },
+    "24": {
+      "next": "SdsSpacing.x6",
+      "exact": true,
+      "needsVerification": false
+    },
+    "28": {
+      "next": "SdsSpacing.x7",
+      "exact": true,
+      "needsVerification": false
+    },
+    "32": {
+      "next": "SdsSpacing.x8",
+      "exact": true,
+      "needsVerification": false
+    },
+    "36": {
+      "next": "SdsSpacing.x9",
+      "exact": true,
+      "needsVerification": false
+    },
+    "40": {
+      "next": "SdsSpacing.x10",
+      "exact": true,
+      "needsVerification": false
+    },
+    "48": {
+      "next": "SdsSpacing.x12",
+      "exact": true,
+      "needsVerification": false
+    },
+    "52": {
+      "next": "SdsSpacing.x13",
+      "exact": true,
+      "needsVerification": false
+    },
+    "56": {
+      "next": "SdsSpacing.x14",
+      "exact": true,
+      "needsVerification": false
+    },
+    "64": {
+      "next": "SdsSpacing.x16",
+      "exact": true,
+      "needsVerification": false
+    }
+  },
+  "radius": {
+    "2": {
+      "next": "SdsRadius.r0_5",
+      "exact": true,
+      "needsVerification": false
+    },
+    "4": {
+      "next": "SdsRadius.r1",
+      "exact": true,
+      "needsVerification": false
+    },
+    "6": {
+      "next": "SdsRadius.r1_5",
+      "exact": true,
+      "needsVerification": false
+    },
+    "8": {
+      "next": "SdsRadius.r2",
+      "exact": true,
+      "needsVerification": false
+    },
+    "10": {
+      "next": "SdsRadius.r2_5",
+      "exact": true,
+      "needsVerification": false
+    },
+    "12": {
+      "next": "SdsRadius.r3",
+      "exact": true,
+      "needsVerification": false
+    },
+    "14": {
+      "next": "SdsRadius.r3_5",
+      "exact": true,
+      "needsVerification": false
+    },
+    "16": {
+      "next": "SdsRadius.r4",
+      "exact": true,
+      "needsVerification": false
+    },
+    "20": {
+      "next": "SdsRadius.r5",
+      "exact": true,
+      "needsVerification": false
+    },
+    "24": {
+      "next": "SdsRadius.r6",
+      "exact": true,
+      "needsVerification": false
+    },
+    "pill": {
+      "next": "SdsRadius.full",
+      "exact": true,
+      "needsVerification": false,
+      "reason": "a radius of 999 or more, or half of a literal height (or of a square's width) in the same object: React Native clamps both to the same shape"
+    }
+  },
+  "fontSize": {
+    "10": {
+      "next": "t1",
+      "exact": false,
+      "needsVerification": true,
+      "decision": "off-scale-type",
+      "reason": "decided: 10px folds to t1 (11px); no step is added"
+    },
+    "11": {
+      "next": "t1",
+      "exact": true,
+      "needsVerification": false
+    },
+    "12": {
+      "next": "t2",
+      "exact": true,
+      "needsVerification": false
+    },
+    "13": {
+      "next": "t3",
+      "exact": true,
+      "needsVerification": false
+    },
+    "14": {
+      "next": "t4",
+      "exact": true,
+      "needsVerification": false
+    },
+    "15": {
+      "next": "t5",
+      "exact": true,
+      "needsVerification": false
+    },
+    "16": {
+      "next": "t6",
+      "exact": true,
+      "needsVerification": false
+    },
+    "17": {
+      "next": "t7",
+      "exact": true,
+      "needsVerification": false
+    },
+    "18": {
+      "next": "t8",
+      "exact": true,
+      "needsVerification": false
+    },
+    "20": {
+      "next": "t9",
+      "exact": true,
+      "needsVerification": false
+    },
+    "22": {
+      "next": "t10",
+      "exact": true,
+      "needsVerification": false
+    },
+    "26": {
+      "next": "t11",
+      "exact": true,
+      "needsVerification": false
+    },
+    "28": {
+      "next": "t12",
+      "exact": true,
+      "needsVerification": false
+    },
+    "30": {
+      "next": "t13",
+      "exact": true,
+      "needsVerification": false
+    }
+  },
+  "fontWeight": {
+    "400": {
+      "next": "regular",
+      "exact": true,
+      "needsVerification": false
+    },
+    "500": {
+      "next": "medium",
+      "exact": true,
+      "needsVerification": false
+    },
+    "600": {
+      "next": "semibold",
+      "exact": true,
+      "needsVerification": false
+    },
+    "700": {
+      "next": "bold",
+      "exact": true,
+      "needsVerification": false
+    },
+    "800": {
+      "next": "bold",
+      "exact": false,
+      "needsVerification": true,
+      "reason": "WantedSans ships no 800 file; it already drew as bold"
+    },
+    "900": {
+      "next": "bold",
+      "exact": false,
+      "needsVerification": true,
+      "reason": "WantedSans ships no 900 file; it already drew as bold"
+    },
+    "normal": {
+      "next": "regular",
+      "exact": true,
+      "needsVerification": false
+    },
+    "bold": {
+      "next": "bold",
+      "exact": true,
+      "needsVerification": false
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "_about": "Synthetic, reshaped by ADR 0019 before any consumer: GET /bus/stops/seoul-01592/arrivals at 14:10 KST on Tuesday 2026-10-20, Accept-Language ko, over the stores of __tests__/nest/bus/bus-stop-arrivals.routes.test.ts (a pole 종로07 and 종로08 share, 종로07 with one arrival and its tracked bus, a general one by its position row's busType); untrimmed. Each live entry's action (board, alight at a drop-off-only HSSC stop) is added by hand after towards, as the server serves it since 2026-10-23. Each live entry's direction (right after towards) is added by hand, as the server serves it since 2026-10-23 (ADR 0019, D16). Reshaped by hand 2026-10-25 to ADR 0022's call, as the server serves it since (server dev 8f3c67c2): each arrival takes isLastRun in place of isLastBus and gains runId, headsign, isFirstRun and isExpress, their values copied from the server's own reshaped fixture of the same name, in the call's key order; each vehicle loses isLastBus. No other value changed.",
+  "data": {
+    "stop": {
+      "id": "seoul-01592",
+      "name": "혜화역1번출구",
+      "coords": {
+        "lat": 37.5834729904,
+        "lng": 127.0017632862
+      },
+      "arsIds": [
+        "01592"
+      ]
+    },
+    "routes": [
+      {
+        "kind": "live",
+        "groupId": "jongro07",
+        "label": "종로 07",
+        "stationIndex": 16,
+        "towards": "혜화동로터리",
+        "direction": {
+          "id": "100900220",
+          "label": "성균관대운동장 방면"
+        },
+        "action": "board",
+        "stationsVersion": "0346768f2b776f45",
+        "updatedAt": "2026-10-20T14:09:55+09:00",
+        "operation": "running",
+        "vehicles": [
+          {
+            "id": "100000203",
+            "plateNumber": "서울74사2703",
+            "occupancy": {
+              "level": "relaxed",
+              "passengerCount": 9
+            },
+            "isLowFloor": false,
+            "position": {
+              "stationIndex": 14,
+              "status": "inTransit",
+              "progress": 0.5,
+              "sectionMeters": 300,
+              "coords": {
+                "lat": 37.587,
+                "lng": 126.998
+              },
+              "nextStationAt": null,
+              "positionAt": "2026-10-20T14:09:30+09:00",
+              "checkedAt": "2026-10-20T14:09:55+09:00"
+            },
+            "trajectory": [
+              {
+                "at": "2026-10-20T14:09:30+09:00",
+                "s": 14.5
+              },
+              {
+                "at": "2026-10-20T14:10:08+09:00",
+                "s": 15
+              },
+              {
+                "at": "2026-10-20T14:13:50+09:00",
+                "s": 16
+              }
+            ]
+          }
+        ],
+        "arrivals": [
+          {
+            "status": "enRoute",
+            "expectedArrivalAt": "2026-10-20T14:13:50+09:00",
+            "expectedDepartureAt": null,
+            "scheduledArrivalAt": null,
+            "scheduledDepartureAt": null,
+            "basis": "provider",
+            "stopsAway": 3,
+            "runId": null,
+            "vehicleId": "100000203",
+            "headsign": "성균관대운동장 방면",
+            "isFirstRun": null,
+            "isLastRun": false,
+            "isExpress": null,
+            "providerText": "4분10초후[2번째 전]"
+          }
+        ]
+      },
+      {
+        "kind": "live",
+        "groupId": "jongro08",
+        "label": "종로 08",
+        "stationIndex": 22,
+        "towards": "혜화동로터리",
+        "direction": {
+          "id": "100900040",
+          "label": "명륜3가 방면"
+        },
+        "action": "board",
+        "stationsVersion": "52e82cc449046288",
+        "updatedAt": null,
+        "operation": "noData",
+        "vehicles": [],
+        "arrivals": []
+      }
+    ]
+  }
+}

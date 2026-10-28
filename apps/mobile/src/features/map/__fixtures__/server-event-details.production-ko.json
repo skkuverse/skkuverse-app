@@ -1,0 +1,6 @@
+{
+  "_about": "Copied 2026-10-20 from skkuverse-server contracts/produced/fixtures/map-event-details.eventPlaceDetails/production-ko.json, untrimmed. Its own note: GET /map/overlays/event/details captured from production 2026-10-11 (stage 8a snapshot, Accept-Language ko); whole data (no festival live)",
+  "data": {
+    "details": {}
+  }
+}

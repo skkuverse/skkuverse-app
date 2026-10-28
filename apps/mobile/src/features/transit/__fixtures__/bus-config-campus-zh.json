@@ -1,0 +1,217 @@
+{
+    "meta": {
+        "lang": "zh"
+    },
+    "data": {
+        "id": "campus",
+        "screenType": "schedule",
+        "label": "仁自班车",
+        "visibility": {
+            "type": "always"
+        },
+        "card": {
+            "themeColor": "003626",
+            "iconType": "shuttle",
+            "busTypeText": "成大",
+            "subtitle": "人文校区 ↔ 自然校区"
+        },
+        "screen": {
+            "defaultServiceId": "campus-inja",
+            "services": [
+                {
+                    "serviceId": "campus-inja",
+                    "label": "人文校区 → 自然校区",
+                    "endpoint": "/bus/schedule/data/campus-inja/smart",
+                    "stopSequences": {
+                        "regular": [
+                            {
+                                "label": "学生会馆巴士停车场",
+                                "action": "board",
+                                "timing": "scheduled",
+                                "stopId": "hssc-bus-lot",
+                                "note": "人文校区上车"
+                            },
+                            {
+                                "label": "N中心前",
+                                "action": "alight",
+                                "timing": "estimated",
+                                "stopId": "nsc-n-center",
+                                "note": "N中心前下车"
+                            },
+                            {
+                                "label": "福利会馆前",
+                                "action": "alight",
+                                "timing": "estimated",
+                                "stopId": "nsc-welfare",
+                                "note": "福利会馆下车"
+                            }
+                        ],
+                        "hakbu": [
+                            {
+                                "label": "学生会馆巴士停车场",
+                                "action": "board",
+                                "timing": "scheduled",
+                                "stopId": "hssc-bus-lot",
+                                "note": "学生会馆上车"
+                            },
+                            {
+                                "label": "N中心前",
+                                "action": "alight",
+                                "timing": "estimated",
+                                "stopId": "nsc-n-center",
+                                "note": "N中心前下车"
+                            },
+                            {
+                                "label": "CNS中心前",
+                                "action": "alight",
+                                "timing": "estimated",
+                                "stopId": "nsc-cns",
+                                "note": "CNS中心下车"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "serviceId": "campus-jain",
+                    "label": "自然校区 → 人文校区",
+                    "endpoint": "/bus/schedule/data/campus-jain/smart",
+                    "stopSequences": {
+                        "regular": [
+                            {
+                                "label": "N中心对面",
+                                "action": "board",
+                                "timing": "scheduled",
+                                "stopId": "nsc-opposite",
+                                "note": "自然校区上车"
+                            },
+                            {
+                                "label": "600周年纪念馆前",
+                                "action": "alight",
+                                "timing": "estimated",
+                                "stopId": "hssc-600th",
+                                "note": "人文校区下车"
+                            }
+                        ],
+                        "hakbu": [
+                            {
+                                "label": "N中心前",
+                                "action": "board",
+                                "timing": "scheduled",
+                                "stopId": "nsc-n-center",
+                                "note": "N中心前上车"
+                            },
+                            {
+                                "label": "学生会馆巴士停车场",
+                                "action": "alight",
+                                "timing": "estimated",
+                                "stopId": "hssc-bus-lot",
+                                "note": "学生会馆下车"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "heroCard": null,
+            "routeBadges": [
+                {
+                    "id": "regular",
+                    "label": "一般",
+                    "color": "003626"
+                },
+                {
+                    "id": "hakbu",
+                    "label": "本科学院",
+                    "color": "1565C0"
+                }
+            ],
+            "stops": [
+                {
+                    "id": "hssc-bus-lot",
+                    "name": "学生会馆巴士停车场",
+                    "detail": "600周年纪念馆对面",
+                    "coords": {
+                        "lat": 37.587367,
+                        "lng": 126.993643
+                    },
+                    "map": {
+                        "markers": [],
+                        "paths": []
+                    }
+                },
+                {
+                    "id": "nsc-n-center",
+                    "name": "N中心前",
+                    "detail": "N中心一侧人行道",
+                    "coords": {
+                        "lat": 37.292298,
+                        "lng": 126.975057
+                    },
+                    "map": {
+                        "markers": [],
+                        "paths": []
+                    }
+                },
+                {
+                    "id": "nsc-welfare",
+                    "name": "福利会馆前",
+                    "detail": "学生会馆附近",
+                    "coords": {
+                        "lat": 37.293999,
+                        "lng": 126.973183
+                    },
+                    "map": {
+                        "markers": [],
+                        "paths": []
+                    }
+                },
+                {
+                    "id": "nsc-cns",
+                    "name": "CNS中心前",
+                    "detail": "CNS中心正门前人行横道",
+                    "coords": {
+                        "lat": 37.294388,
+                        "lng": 126.977671
+                    },
+                    "map": {
+                        "markers": [],
+                        "paths": []
+                    }
+                },
+                {
+                    "id": "nsc-opposite",
+                    "name": "N中心对面",
+                    "detail": "环球广场一侧，路缘BUS STOP标志处",
+                    "coords": {
+                        "lat": 37.292536,
+                        "lng": 126.975077
+                    },
+                    "photoUrl": "https://media.skkuverse.com/commute/stops/nsc-opposite/original-3406c12b.jpg",
+                    "streetViewUrl": "https://inapp.map.naver.com/launchApp/panorama/street?street=on&vrpanoid=1pS33oeIOFDwuxlq1Prstg&vrpanopan=84&vrpanotilt=12&vrpanofov=80&appTargetPage=panorama%2Fstreet&id=1pS33oeIOFDwuxlq1Prstg&pan=84&tilt=12&fov=80&fallbackUrl=https%3A%2F%2Fviewer.map.naver.com%2Fpanorama%2F%3Fid%3D1pS33oeIOFDwuxlq1Prstg%26heading%3D84%26tilt%3D12%26fov%3D80&app=Y&appmarket=N",
+                    "map": {
+                        "markers": [],
+                        "paths": []
+                    }
+                },
+                {
+                    "id": "hssc-600th",
+                    "name": "600周年纪念馆前",
+                    "detail": "学生会馆巴士停车场对面",
+                    "coords": {
+                        "lat": 37.587258,
+                        "lng": 126.993904
+                    },
+                    "map": {
+                        "markers": [],
+                        "paths": []
+                    }
+                }
+            ],
+            "features": [
+                {
+                    "type": "info",
+                    "url": "https://webview.skkuverse.com/bus/campus/info"
+                }
+            ]
+        }
+    }
+}

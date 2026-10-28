@@ -1,0 +1,30 @@
+{
+  "name": "@skkuverse/shared",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@skkuverse/miniapp": "^0.4.1",
+    "axios-retry": "^4.5.0",
+    "cli-truncate": "^2.1.0",
+    "string-width": "^4.2.3",
+    "wrap-ansi": "^7.0.0",
+    "zod": "4.6.5"
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": ">=5.0.0",
+    "axios": "^1.20.0",
+    "expo-constants": "*",
+    "expo-localization": "*",
+    "react-native-mmkv": ">=4.0.0",
+    "zustand": ">=5.0.0"
+  },
+  "devDependencies": {
+    "@types/wrap-ansi": "^3.0.0",
+    "vitest": "^4.1.4"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "fetchedFrom": "https://api.skkuverse.com",
+  "routes": [
+    {
+      "id": "jongro02",
+      "minLat": 37.570149,
+      "maxLat": 37.5892898906,
+      "minLng": 126.982924,
+      "maxLng": 126.9907855338
+    },
+    {
+      "id": "jongro07",
+      "minLat": 37.5761790477,
+      "maxLat": 37.589934,
+      "minLng": 126.9921543446,
+      "maxLng": 127.002271375
+    },
+    {
+      "id": "jongro08",
+      "minLat": 37.570659,
+      "maxLat": 37.591251,
+      "minLng": 126.99279,
+      "maxLng": 127.002271375
+    },
+    {
+      "id": "hssc",
+      "minLat": 37.583069,
+      "maxLat": 37.589996,
+      "minLng": 126.992323,
+      "maxLng": 127.001789
+    }
+  ]
+}
