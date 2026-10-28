@@ -34,6 +34,8 @@ const flag = z.boolean().catch(false);
 const textOrNull = optionalText.transform((value) => value ?? null);
 const count = z.number().int().nonnegative().catch(0);
 const httpUrlOrNull = z.string().regex(/^https?:\/\/\S+$/i).nullable().catch(null);
+// WHY: a notice's link may be an address to write to, which the OS hands to the mail app.
+const linkUrlOrNull = z.string().regex(/^(?:https?:\/\/|mailto:)\S+$/i).nullable().catch(null);
 
 const rowTokenSchema = z
   .object({ text, tone: openEnum(NOTICE_LIST_ROW_TONES) })
@@ -133,7 +135,7 @@ const originalSchema = z
       tolerantArray(z.object({ role: text, name: text, url: httpUrlOrNull }), 'notices.screen.original.attachments'),
     ),
     links: listOrEmpty.pipe(
-      tolerantArray(z.object({ role: text, domain: text, url: httpUrlOrNull }), 'notices.screen.original.links'),
+      tolerantArray(z.object({ role: text, domain: text, url: linkUrlOrNull }), 'notices.screen.original.links'),
     ),
   })
   .transform((original): NoticeScreenOriginal => original)
