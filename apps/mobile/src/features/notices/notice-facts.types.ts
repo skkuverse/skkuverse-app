@@ -48,7 +48,7 @@ export type NoticeAction =
   | { kind: 'email'; address: string; subject: string | null }
   | { kind: 'link'; url: string };
 
-export const NOTICE_SCREEN_LINE_SOURCES = ['body', 'poster', 'attachment'] as const;
+export const NOTICE_SCREEN_LINE_SOURCES = ['body', 'title', 'poster'] as const;
 export type NoticeScreenLineSource = (typeof NOTICE_SCREEN_LINE_SOURCES)[number];
 
 export interface NoticeScreenLine {
@@ -93,6 +93,7 @@ export type NoticeScreenCollapse = (typeof NOTICE_SCREEN_COLLAPSES)[number];
 export interface NoticeScreenOriginalAttachment {
   role: string;
   name: string;
+  url: string | null;
 }
 
 export interface NoticeScreenOriginalLink {

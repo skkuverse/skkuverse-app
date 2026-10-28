@@ -28,7 +28,7 @@ interface Props {
   onPreview: (attachment: NoticeAttachment) => void;
   onDownload: (attachment: NoticeAttachment) => void;
   /** WHY: a file the notice names by its role reads as that role, with its file name under it. */
-  roleByName?: ReadonlyMap<string, string>;
+  roleByUrl?: ReadonlyMap<string, string>;
 }
 
 /** WHY: the whole row previews and only download is a separate icon, so two text buttons stop outshouting the file name. */
@@ -37,7 +37,7 @@ export function NoticeAttachments({
   sourceUrl,
   onPreview,
   onDownload,
-  roleByName,
+  roleByUrl,
 }: Props) {
   const styles = useStyles();
   if (attachments.length === 0) return null;
@@ -48,7 +48,7 @@ export function NoticeAttachments({
         <AttachmentRow
           key={a.url}
           attachment={a}
-          role={roleByName?.get(a.name) ?? null}
+          role={roleByUrl?.get(a.url) ?? null}
           sourceUrl={sourceUrl}
           onPreview={onPreview}
           onDownload={onDownload}

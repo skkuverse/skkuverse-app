@@ -79,25 +79,42 @@ describe('toActionUrls', () => {
 });
 
 describe('toOriginalAttachments', () => {
-  it('names a file by its exact name, and keeps a role with no such file apart', () => {
-    // Arrange
-    const files = [
-      { name: '신청서.hwp', url: 'https://skku.edu/a' },
-      { name: '안내문.pdf', url: 'https://skku.edu/b' },
-    ];
+  const files = [
+    { name: '안내문.pdf', url: 'https://skku.edu/b' },
+    { name: '신청서.hwp', url: 'https://skku.edu/a' },
+    { name: '기타.zip', url: 'https://skku.edu/c' },
+  ];
 
+  it('opens a role at its own url, listing role files first and every other file after', () => {
     // Act
-    const attachments = toOriginalAttachments(
-      [
-        { role: '신청서', name: '신청서.hwp' },
-        { role: '포스터', name: '포스터.png' },
-      ],
-      files,
-    );
+    const attachments = toOriginalAttachments([{ role: '신청서', name: '신청서.hwp', url: 'https://skku.edu/a' }], files);
 
     // Assert
-    expect([...attachments.roleByName]).toStrictEqual([['신청서.hwp', '신청서']]);
+    expect(attachments.files).toStrictEqual([
+      { name: '신청서.hwp', url: 'https://skku.edu/a' },
+      { name: '안내문.pdf', url: 'https://skku.edu/b' },
+      { name: '기타.zip', url: 'https://skku.edu/c' },
+    ]);
+    expect([...attachments.roleByUrl]).toStrictEqual([['https://skku.edu/a', '신청서']]);
+    expect(attachments.unmatched).toStrictEqual([]);
+  });
+
+  it('opens a role the server sent no url for by its exact file name', () => {
+    // Act
+    const attachments = toOriginalAttachments([{ role: '안내문', name: '안내문.pdf', url: null }], files);
+
+    // Assert
+    expect([...attachments.roleByUrl]).toStrictEqual([['https://skku.edu/b', '안내문']]);
+    expect(attachments.files.map((file) => file.name)).toStrictEqual(['안내문.pdf', '신청서.hwp', '기타.zip']);
+  });
+
+  it('keeps a role with no url and no such file apart', () => {
+    // Act
+    const attachments = toOriginalAttachments([{ role: '포스터', name: '포스터.png', url: null }], files);
+
+    // Assert
     expect(attachments.unmatched).toStrictEqual([{ role: '포스터', name: '포스터.png' }]);
+    expect(attachments.files).toStrictEqual(files);
   });
 });
 
@@ -135,6 +152,22 @@ describe('toQuoteFocus', () => {
 
     // Assert
     expect(focus.kind === 'found' ? focus.line : focus).toBe(line);
+  });
+
+  it('finds the live quote whose body has a full-width tilde (U+FF5E) where the quote has an ASCII one', () => {
+    // Arrange
+    const live = '• 근무 기간  \n• TA: 2026. 12. 21.(월)\uFF5E2027. 1. 8.(금)  \n• OA: 2026. 12. 17.(목)';
+
+    // Act
+    const focus = toQuoteFocus(live, '2026. 12. 21.(월)~2027. 1. 8.(금)');
+
+    // Assert
+    expect(focus).toStrictEqual({
+      kind: 'found',
+      before: '• 근무 기간  ',
+      line: '• TA: 2026. 12. 21.(월)\uFF5E2027. 1. 8.(금)  ',
+      after: '• OA: 2026. 12. 17.(목)',
+    });
   });
 
   it('takes the first line that holds the quote', () => {

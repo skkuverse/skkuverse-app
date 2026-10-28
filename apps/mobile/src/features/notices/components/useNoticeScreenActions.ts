@@ -54,7 +54,8 @@ export function useNoticeScreenActions({ sourceId, articleNo, onCopy, openQuote 
   const onLinePress = useCallback(
     (line: NoticeScreenLine) => {
       logNoticesContentSelect({ content_type: 'detail_line_quote', item_id: itemId });
-      openQuote(line.quote);
+      // WHY: a quote from the title is not in the body, so the body opens at its top rather than as not found.
+      openQuote(line.source === 'title' ? null : line.quote);
     },
     [itemId, openQuote],
   );

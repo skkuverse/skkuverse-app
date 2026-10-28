@@ -8,8 +8,8 @@ export interface NoticeOriginalLinks {
 }
 
 /**
- * WHY: until the server sends each link's url, a role finds its url among the notice's own links by domain,
- * each url used once; one with no match shows its role and domain, unlinked.
+ * WHY: a link with no url (the live server sends none yet) finds one among the notice's own links by domain, each
+ * url used once; delete the domain join once every served link has its url. One with no match shows unlinked.
  */
 export function toOriginalLinks(
   links: readonly NoticeScreenOriginalLink[],
@@ -32,19 +32,33 @@ export function toOriginalLinks(
 }
 
 export interface NoticeOriginalAttachments {
-  roleByName: ReadonlyMap<string, string>;
-  unmatched: NoticeScreenOriginalAttachment[];
+  files: NoticeAttachment[];
+  roleByUrl: ReadonlyMap<string, string>;
+  unmatched: Omit<NoticeScreenOriginalAttachment, 'url'>[];
 }
 
+/**
+ * WHY: a role with no url (the live server sends none yet) finds its file by exact name; delete the name join once
+ * every served attachment has its url. The role's files come first, then every other file the notice carries.
+ */
 export function toOriginalAttachments(
   roles: readonly NoticeScreenOriginalAttachment[],
   attachments: readonly NoticeAttachment[],
 ): NoticeOriginalAttachments {
-  const names = new Set(attachments.map((attachment) => attachment.name));
-  return {
-    roleByName: new Map(roles.filter(({ name }) => names.has(name)).map(({ role, name }) => [name, role])),
-    unmatched: roles.filter(({ name }) => !names.has(name)),
-  };
+  const roleFiles: NoticeAttachment[] = [];
+  const roleByUrl = new Map<string, string>();
+  const unmatched: NoticeOriginalAttachments['unmatched'] = [];
+  for (const { role, name, url } of roles) {
+    const match = url ?? attachments.find((attachment) => attachment.name === name)?.url;
+    if (match === undefined || roleByUrl.has(match)) {
+      unmatched.push({ role, name });
+      continue;
+    }
+    roleByUrl.set(match, role);
+    roleFiles.push({ name, url: match });
+  }
+  const rest = attachments.filter((attachment) => !roleByUrl.has(attachment.url));
+  return { files: [...roleFiles, ...rest], roleByUrl, unmatched };
 }
 
 export function toActionUrls(screen: NoticeScreen): string[] {

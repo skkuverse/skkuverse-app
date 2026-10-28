@@ -71,6 +71,7 @@ const lineSchema = z
     text,
     sub: textOrNull,
     source: openEnum(NOTICE_SCREEN_LINE_SOURCES),
+    // WHY: the live server sends `fromPoster` and no `source`; delete the flag once every served line has a source.
     fromPoster: flag,
     actions: lineActionsSchema,
     quote: textOrNull,
@@ -129,7 +130,7 @@ const originalSchema = z
   .object({
     posterCount: count,
     attachments: listOrEmpty.pipe(
-      tolerantArray(z.object({ role: text, name: text }), 'notices.screen.original.attachments'),
+      tolerantArray(z.object({ role: text, name: text, url: httpUrlOrNull }), 'notices.screen.original.attachments'),
     ),
     links: listOrEmpty.pipe(
       tolerantArray(z.object({ role: text, domain: text, url: httpUrlOrNull }), 'notices.screen.original.links'),

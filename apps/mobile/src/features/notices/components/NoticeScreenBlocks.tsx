@@ -26,8 +26,8 @@ interface Props {
 
 const SOURCE_BADGE: Record<NoticeScreenLineSource, TranslationKey | null> = {
   body: null,
+  title: null,
   poster: 'notices.screen.fromPoster',
-  attachment: 'notices.screen.fromAttachment',
 };
 
 const ACTION_ICON: Record<NoticeActionKind, typeof MapPinIcon> = {

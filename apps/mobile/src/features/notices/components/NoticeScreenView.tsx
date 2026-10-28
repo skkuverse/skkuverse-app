@@ -152,8 +152,8 @@ export function NoticeScreenView({
           </View>
         ))}
         <NoticeAttachments
-          attachments={notice.attachments}
-          roleByName={attachments.roleByName}
+          attachments={attachments.files}
+          roleByUrl={attachments.roleByUrl}
           sourceUrl={notice.sourceUrl}
           onPreview={onAttachmentPreview}
           onDownload={onAttachmentDownload}

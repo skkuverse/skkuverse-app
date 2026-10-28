@@ -277,12 +277,24 @@ describe('the fields the server adds next', () => {
   it('opens a campus building with its space', () => {
     // Act
     const screen = screenWith({
-      blocks: [block({ lines: [line({ actions: [{ kind: 'map', target: 'skku_building:248', space: '21517' }] })] })],
+      blocks: [
+        block({
+          lines: [
+            line({
+              actions: [
+                { kind: 'map', target: 'skku_building:248', space: '21517' },
+                { kind: 'map', target: 'skku_building:31', space: null },
+              ],
+            }),
+          ],
+        }),
+      ],
     });
 
     // Assert
     expect(screen?.blocks[0]?.lines[0]?.actions).toStrictEqual([
       { kind: 'map', place: { kind: 'skku_building', placeId: '248' }, space: '21517' },
+      { kind: 'map', place: { kind: 'skku_building', placeId: '31' }, space: null },
     ]);
   });
 
@@ -299,24 +311,42 @@ describe('the fields the server adds next', () => {
   it('carries an e-mail subject on a line and on the bar', () => {
     // Act
     const screen = screenWith({
-      blocks: [block({ lines: [line({ actions: [{ kind: 'email', target: 'a@skku.edu', subject: '[지원] 이름' }] })] })],
+      blocks: [
+        block({
+          lines: [
+            line({
+              actions: [
+                { kind: 'email', target: 'a@skku.edu', subject: '[지원] 이름' },
+                { kind: 'email', target: 'b@skku.edu', subject: null },
+              ],
+            }),
+          ],
+        }),
+      ],
       action: { label: '메일로 지원', kind: 'email', target: 'a@skku.edu', subject: '[지원] 이름' },
     });
 
     // Assert
-    expect(screen?.blocks[0]?.lines[0]?.actions).toStrictEqual([{ kind: 'email', address: 'a@skku.edu', subject: '[지원] 이름' }]);
+    expect(screen?.blocks[0]?.lines[0]?.actions).toStrictEqual([
+      { kind: 'email', address: 'a@skku.edu', subject: '[지원] 이름' },
+      { kind: 'email', address: 'b@skku.edu', subject: null },
+    ]);
     expect(screen?.action).toStrictEqual({
       label: '메일로 지원',
       action: { kind: 'email', address: 'a@skku.edu', subject: '[지원] 이름' },
     });
   });
 
-  it('reads a link url on the original, and only an http one', () => {
+  it('reads an attachment and a link url on the original, and only an http one', () => {
     // Act
     const screen = screenWith({
       original: {
         posterCount: 0,
-        attachments: [{ role: '신청서', name: 'form.hwp' }],
+        attachments: [
+          { role: '신청서', name: 'form.hwp', url: 'https://skku.edu/form.hwp' },
+          { role: '안내문', name: 'guide.pdf', url: null },
+          { role: '포스터', name: 'poster.png' },
+        ],
         links: [
           { role: '신청', domain: 'forms.gle', url: 'https://forms.gle/x' },
           { role: '안내', domain: 'skku.edu', url: 'ftp://skku.edu/x' },
@@ -327,7 +357,11 @@ describe('the fields the server adds next', () => {
     // Assert
     expect(screen?.original).toStrictEqual({
       posterCount: 0,
-      attachments: [{ role: '신청서', name: 'form.hwp' }],
+      attachments: [
+        { role: '신청서', name: 'form.hwp', url: 'https://skku.edu/form.hwp' },
+        { role: '안내문', name: 'guide.pdf', url: null },
+        { role: '포스터', name: 'poster.png', url: null },
+      ],
       links: [
         { role: '신청', domain: 'forms.gle', url: 'https://forms.gle/x' },
         { role: '안내', domain: 'skku.edu', url: null },
@@ -336,11 +370,12 @@ describe('the fields the server adds next', () => {
   });
 
   it.each([
-    ['a poster line by the flag', { fromPoster: true }, 'poster'],
-    ['a body line by the flag', { fromPoster: false }, 'body'],
-    ['an attachment line by its source', { source: 'attachment', fromPoster: false }, 'attachment'],
+    ['a poster line by the live flag', { fromPoster: true }, 'poster'],
+    ['a body line by the live flag', { fromPoster: false }, 'body'],
+    ['a poster line by its source', { source: 'poster', fromPoster: undefined }, 'poster'],
+    ['a title line by its source', { source: 'title', fromPoster: undefined }, 'title'],
     ['the source over the flag', { source: 'body', fromPoster: true }, 'body'],
-    ['an unknown source by the flag', { source: 'video', fromPoster: true }, 'poster'],
+    ['an unknown source by the flag', { source: 'attachment', fromPoster: true }, 'poster'],
   ])('reads %s', (_name, raw, source) => {
     // Act
     const screen = screenWith({ blocks: [block({ lines: [line(raw)] })] });
