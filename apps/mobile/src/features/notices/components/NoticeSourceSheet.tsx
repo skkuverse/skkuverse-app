@@ -46,9 +46,18 @@ export const NoticeSourceSheet = forwardRef<SheetRef, Props>(
       highlight.current = { focus, y: event.nativeEvent.layout.y };
       scrollToQuote(event.nativeEvent.layout.y);
     };
-    useEffect(() => {
+    const scrollToKnownQuote = useCallback(() => {
       if (highlight.current?.focus === focus) scrollToQuote(highlight.current.y);
-    }, [quoteTapId, focus, scrollToQuote]);
+    }, [focus, scrollToQuote]);
+    useEffect(scrollToKnownQuote, [quoteTapId, scrollToKnownQuote]);
+    // QUIRK(gorhom-bottom-sheet): the scrollable is held at the top until the sheet reaches its detent, so a
+    // scroll made while it presents is undone; scroll again once it settles.
+    const onSheetChange = useCallback(
+      (index: number) => {
+        if (index >= 0) scrollToKnownQuote();
+      },
+      [scrollToKnownQuote],
+    );
 
     const footer = useMemo(
       () => (
@@ -100,6 +109,7 @@ export const NoticeSourceSheet = forwardRef<SheetRef, Props>(
         ref={ref}
         position={{ kind: 'stuck', detent: 'large' }}
         footer={footer}
+        onChange={onSheetChange}
       >
         <Sheet.ScrollView
           ref={scrollRef}
