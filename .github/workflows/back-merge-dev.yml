@@ -16,7 +16,7 @@ on:
   push:
     branches: [main]
 
-# Elevated only here. The repo default stays read,
+# The only `contents: write` in the repo. The default stays read,
 # so declaring it is what grants it — an omitted block means a read-only token
 # and a push that fails at the remote.
 permissions:
