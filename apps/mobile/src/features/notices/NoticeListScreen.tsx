@@ -5,6 +5,7 @@ import { useT } from '@skkuverse/shared';
 import { NoticeListPanel } from './NoticeListPanel';
 import { createThemedStyles } from '@skkuverse/sds';
 import { useNoticeTabs } from './useNoticeTabs';
+import { toSourceName } from './notices.rules';
 
 interface Props {
   sourceId: string;
@@ -15,17 +16,7 @@ export function NoticeListScreen({ sourceId }: Props) {
   const { t } = useT();
   const { data: tabsConfig } = useNoticeTabs();
 
-  const sourceName = useMemo(() => {
-    if (!tabsConfig) return null;
-    for (const tab of tabsConfig.tabs) {
-      if (tab.tabMode === 'fixed' && tab.fixed?.sourceId === sourceId) return tab.fixed.name;
-      if (tab.tabMode === 'picker' && tab.picker) {
-        const source = tab.picker.sources.find((s) => s.id === sourceId);
-        if (source) return source.name;
-      }
-    }
-    return null;
-  }, [tabsConfig, sourceId]);
+  const sourceName = useMemo(() => toSourceName(tabsConfig, sourceId), [tabsConfig, sourceId]);
 
   return (
     <View style={styles.container}>
