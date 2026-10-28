@@ -9,7 +9,7 @@ audience: internal
 
 # Analytics
 
-> How the app logs to Firebase Analytics (GA4) and Crashlytics, where each piece is set, and the rules a new or changed event follows. Read it before you add an event or change what one sends.
+> How the app logs to Firebase Analytics (GA4) and Crashlytics, and where each piece is set. It also holds the rules a new or changed event follows. Read it before you add an event or change what one sends.
 
 ## What is sent
 
@@ -49,7 +49,7 @@ so that sources and dwell times compare across features:
 
 | Event | For |
 | --- | --- |
-| `view_open` / `view_close` | A sheet, modal or hosted page. `useViewTracking(view, itemId, source)` sends the pair: the open when `itemId` turns non-null, the close with `dwell_ms` when it changes, turns null or unmounts |
+| `view_open` / `view_close` | A sheet, modal or hosted page. `useViewTracking(view, itemId, source)` sends the open when `itemId` turns non-null. It sends the close with `dwell_ms` when `itemId` changes or turns null, and on unmount |
 | `item_action` | A deliberate action inside a view, such as opening a link or sharing |
 | `link_open` | An entry from a deep link or a notification tap |
 
@@ -58,10 +58,10 @@ A new view, action or source is one member on `ViewName`, `ItemAction` or `Entry
 
 - **Names are `object_action` in snake_case**, a closed set within GA4's event-name quota, never
   built from strings.
-- **Log ids, not labels.** A label is translated and renamed; an id joins across both.
+- **Log ids, not labels.** A label is translated and renamed, while an id joins across both.
 - **A closed set is a literal union**, never `string`.
 - **Never log** an email, a nickname, an `emailPrefix`, free text the user typed about themselves,
-  or the device's location. The map camera is not the user's location; the GPS fix is.
+  or the device's location. The GPS fix is the user's location, and the map camera is not.
 
 A `source` that has to cross a route, such as into a mini app's shell or the Hall of Fame, travels
 as a route param and is read back with `asEntrySource`, which turns anything unknown into `other`.

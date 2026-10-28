@@ -36,7 +36,6 @@ export const SCREEN_NAMES: Readonly<Record<string, string>> = {
   '/video-player': 'video_player',
   '/sds-states': 'dev_sds_states',
   '/auth-faults': 'dev_auth_faults',
-  '/notice-sketch': 'dev_notice_sketch',
 };
 
 const IDENTITY_PARAMS: Readonly<Record<string, string>> = {

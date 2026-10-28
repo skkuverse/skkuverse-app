@@ -32,6 +32,7 @@ describe('the notice schemas over the server fixtures', () => {
             "hasContent": false,
             "id": "6acee22b9cb01d9a98e90cc0",
             "isEdited": false,
+            "row": null,
             "sourceId": "skku-notice06",
             "sourceUrl": "https://www.skku.edu/skku/campus/skk_comm/notice06.do?mode=view&articleNo=140562&article.offset=0&articleLimit=10",
             "summary": {
@@ -60,6 +61,7 @@ describe('the notice schemas over the server fixtures', () => {
             "hasContent": false,
             "id": "6acf2f809cb01d9a98eb3c7b",
             "isEdited": false,
+            "row": null,
             "sourceId": "skku-notice06",
             "sourceUrl": "https://www.skku.edu/skku/campus/skk_comm/notice06.do?mode=view&articleNo=140575&article.offset=0&articleLimit=10",
             "summary": {
@@ -217,6 +219,7 @@ describe('the notice schemas over the server fixtures', () => {
         },
         "id": "6acc38239cb01d9a98e2a2b9",
         "lastModified": null,
+        "screen": null,
         "sourceId": "skku-notice02",
         "sourceUrl": "https://www.skku.edu/skku/campus/skk_comm/notice02.do?mode=view&articleNo=140482&article.offset=0&articleLimit=10",
         "summary": {

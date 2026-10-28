@@ -20,10 +20,10 @@ Accepted on 2026-10-10. `Chip`, `Callout` (with `ActionableCallout` and `Dismiss
 [ADR 0011](0011-adopt-seed-color-token-structure.md) to [ADR 0014](0014-give-press-feedback-by-surface-color-and-distance.md) moved SDS's tokens and press feedback onto SEED Design (daangn/seed-design). The component APIs were still TDS's, and inconsistent with each other.
 
 - **One axis, several names.** The Button's meaning is `type` and its fill `style`, a name React Native reserves for `StyleProp`. The Loader calls its meaning `type` with other values, IconButton calls its fill `variant` with other values, Border uses `type` for a visual kind, and Rating uses `variant` for a layout.
-- **Sizes have no shared scale.** The Button's sizes are `tiny`, `medium`, `large` and `big`; the Badge's `tiny` to `large`; ProgressBar's `size` is a weight.
+- **Sizes have no shared scale.** The Button's sizes are `tiny`, `medium`, `large` and `big`. The Badge's sizes run from `tiny` to `large`, and ProgressBar's `size` is a weight.
 - **Colors are free strings.** Badge, ListHeader, ProgressBar and IconButton take `color?: string`, so any hex reaches them.
 - **The app builds the same things by hand.** The SEED migration inventory finds chips, banners and error or empty states drawn by hand many times over, each its own way. SDS had no chip and no callout, and its `Result` and `ErrorPage` were unused.
-- **SEED has a written convention for all of this.** Across its component specs, `size` is the most common axis, then `tone`, then `variant`; `type` names a kind of content only. Its API guide splits a component into parts when they behave differently, rather than adding a mode prop, and its style props take a token name per property.
+- **SEED has a written convention for all of this.** Across its component specs, `size` is the most common axis, then `tone`, then `variant`. `type` names a kind of content only. Its API guide splits a component into parts when they behave differently instead of adding a mode prop. Its style props take a token name per property.
 
 ## Decision
 
@@ -54,12 +54,12 @@ When the parts of a component behave differently, they are separate parts over o
 
 - **A compound component is a namespace** (`Chip.*`). A component whose parts the caller never rearranges takes flat props instead (`title`, `description`, `primaryActionProps`), as SEED's snippets do.
 - **State names are SEED's**: `value` / `defaultValue` / `onValueChange`, `checked` / `defaultChecked` / `onCheckedChange`, `open` / `defaultOpen` / `onDismiss`. A change is reported in both the controlled and the uncontrolled mode (`useControllableState`).
-- **Each part announces its behaviour.** A button is `button`; a toggle is `togglebutton` and a radio item `radio`, both reporting `checked`, the state React Native pairs with those roles (on Android they are checkable, and a `selected` state would be read as not checked); the group is `radiogroup`.
+- **Each part announces its behaviour.** A button's role is `button`. A toggle takes `togglebutton` and a radio item takes `radio`, and both report `checked`, the state React Native pairs with those roles (on Android they are checkable, and a `selected` state would be read as not checked). The group is `radiogroup`.
 - **No `asChild`.** React Native has no DOM slot to hand the element to, and SEED's Lynx build leaves it out for the same reason.
 
 ### 3. A color is a role name, never a string
 
-A new component has no free color prop. Its colors come from its `tone` and `variant`, and where a color must be named it is a role: `PressableBgToken` for a surface, `FgColorName` for text, `StrokeColorName` for a line. SEED's escape hatch, `(string & {})`, is not adopted: a component that needs a color the roles lack is a missing role, not a missing string.
+A new component has no free color prop. Its colors come from its `tone` and `variant`, and where a color must be named it is a role: `PressableBgToken` for a surface, `FgColorName` for text, `StrokeColorName` for a line. SEED's escape hatch, `(string & {})`, is not adopted. When a component needs a color the roles lack, the missing role is added.
 
 ### 4. What the three components take from SEED
 
@@ -77,10 +77,10 @@ This section first planned a release of `@deprecated` aliases. [ADR 0019](0019-c
 
 ## Consequences
 
-- **The app's hand-built chips, banners and result states have a target.** Each moved one place as proof (a link pill, the notification settings hint, the leaderboard's empty and error states); the rest move in the bulk migration.
+- **The app's hand-built chips, banners and result states have a target.** Each moved one place as proof (a link pill, the notification settings hint, the leaderboard's empty and error states). The rest move in the bulk migration.
 - **Some places will change on screen when they move.** A callout is larger and darker than most hand-built banners, and SEED's selected chip is a solid fill where the app often used a weak tint (`outlineWeak` with `tone="brand"` is the nearest).
 - **One vocabulary across SDS.** Since the cleanup (ADR 0019), no component selects a look by `type`, and `ResultSection` exposes only a `tone` for its primary action, never the Button's own props.
-- **A part that is never selected cannot take a selection color.** `Chip.Button` has no `tone`. A removable chip that shows a selected fill is a `Chip.Toggle`, or a new part, not a Button with a color.
+- **A part that is never selected cannot take a selection color.** `Chip.Button` has no `tone`. A removable chip that shows a selected fill is a `Chip.Toggle` or a new part, since `Chip.Button` takes no selection color.
 
 ## Related
 

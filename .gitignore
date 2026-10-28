@@ -75,7 +75,6 @@ firestore-export/
 .github/workflows/*
 !.github/workflows/ci.yml
 !.github/workflows/claude.yml
-!.github/workflows/contracts-sync.yml
 !.github/workflows/back-merge-dev.yml
 
 # Claude Code local state (per-machine: scheduled-task locks, settings).

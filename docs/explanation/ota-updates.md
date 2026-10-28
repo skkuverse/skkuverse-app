@@ -9,7 +9,7 @@ audience: internal
 
 # OTA Updates
 
-> How the app replaces its JS bundle without a store release: what cannot travel over the air, which channel a build listens on, and how the client checks, downloads and applies an update. The maintainers publish updates from outside this repository.
+> How the app replaces its JS bundle without a store release, and what cannot travel over the air. It also covers which channel a build listens on and how the client checks, downloads and applies an update. The maintainers publish updates from outside this repository.
 
 ## What cannot travel over the air
 

@@ -9,7 +9,7 @@ audience: internal
 
 # Android Build
 
-> How the version code and the native crash symbols move in a local Android release build (EAS Build `--local`), and the failures that build meets in this repository. A contributor runs the app with `yarn android` instead; the maintainers make store releases from outside this repository.
+> How the version code and the native crash symbols move in a local Android release build (EAS Build `--local`), and the failures that build meets in this repository. A contributor runs the app with `yarn android` instead. The maintainers make store releases from outside this repository.
 
 The build produces an Android App Bundle and signs it with the maintainers' local credentials,
 which a contributor does not have. The machine set-up is the one in

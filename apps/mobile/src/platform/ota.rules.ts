@@ -25,6 +25,7 @@ export const PRERELEASE_GATES = [
   'buildingCounts',
   'directionsChips',
   'noticeSearchOverview',
+  'noticeFacts',
 ] as const;
 
 export type PrereleaseGate = (typeof PRERELEASE_GATES)[number];

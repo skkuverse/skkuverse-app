@@ -12,7 +12,7 @@ audience: internal
 ## Status
 
 Accepted — 2026-08-27. **Amended 2026-08-30**: the snapshot tier this ADR reasons about was deleted
-server-side, so the premise in Context no longer holds — there is no `immutable, max-age=1y` payload
+server-side, so the premise in Context no longer holds. There is no `immutable, max-age=1y` payload
 and no `status` field on the wire. **The decision is unchanged and now applies more widely.**
 Openness is derived on the device from `hours[]` on the ordinary marker wire
 (`apps/mobile/src/features/map/opening-hours.rules.ts`), the clock is still uncorrected, and the reason is still the

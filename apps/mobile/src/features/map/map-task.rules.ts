@@ -270,6 +270,7 @@ const LINK_ARRIVAL: Readonly<Record<EntrySource, LinkArrival>> = {
   schedule_boarding: 'onTop',
   schedule_transfer: 'onTop',
   route_detail: 'onTop',
+  notice: 'onTop',
   return: 'onTop',
   'promo:transit_top': 'onTop',
   'promo:miniapp_games': 'onTop',

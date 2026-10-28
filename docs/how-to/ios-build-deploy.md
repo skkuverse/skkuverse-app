@@ -9,7 +9,7 @@ audience: internal
 
 # iOS Build
 
-> How the build number moves in a local iOS release build (EAS Build `--local`), and the failures that build meets in this repository. A contributor runs the app with `yarn ios` instead; the maintainers make store releases from outside this repository.
+> How the build number moves in a local iOS release build (EAS Build `--local`), and the failures that build meets in this repository. A contributor runs the app with `yarn ios` instead. The maintainers make store releases from outside this repository.
 
 The rules a release build depends on are in the Build section of the root `CLAUDE.md`:
 `.easignore`, the API host and the two monorepo settings. This page holds only what that section

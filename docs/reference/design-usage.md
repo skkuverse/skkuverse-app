@@ -71,7 +71,7 @@ Roles and their names are [ADR 0011](../decisions/0011-adopt-seed-color-token-st
 - <a id="color-09"></a>**COLOR-09** · Pick the variant by emphasis: `-weak` for low emphasis (banners, callouts, selected rows), `-solid` for high emphasis (the action, a strong badge).
 - <a id="color-10"></a>**COLOR-10** · Put `fg.on{Role}Solid` on a `bg.{role}Solid` fill, read from one table. Enforced by the component recipes' role tables and the pair contrast in `packages/shared/src/tokens/__tests__/semanticColors.test.ts`.
 - <a id="color-11"></a>**COLOR-11** · On a `bg.{role}Weak` surface, write text in `fg.{role}Contrast`. At body size a status color is always its `-Contrast` step. Plain `fg.{role}` is for icons and large or bold text, which WCAG 2.x holds to the lower threshold (A11Y-01). The pairs are enforced by `semanticColors.test.ts`. The usage is review.
-- <a id="color-12"></a>**COLOR-12** · Stack surfaces by layer: `bg.layerBasement` is the deepest ground, `bg.layerDefault` the surface for page content (lists, cards, fields, the header), `bg.layerFloating` the temporary modal layer (sheets, dialogs, menus). Content on a sheet paints no layer fill of its own: the sheet is the layer, and on a glass sheet a second copy is an opaque block on the glass. SDS `Pressable` drops a layer `bg` there by itself; a hand-drawn panel reads `useSurface()`.
+- <a id="color-12"></a>**COLOR-12** · Stack surfaces by layer: `bg.layerBasement` is the deepest ground, `bg.layerDefault` the surface for page content (lists, cards, fields, the header), `bg.layerFloating` the temporary modal layer (sheets, dialogs, menus). Content on a sheet paints no layer fill of its own: the sheet is the layer, and on a glass sheet a second copy is an opaque block on the glass. SDS `Pressable` drops a layer `bg` there by itself. A hand-drawn panel reads `useSurface()`.
 - <a id="color-13"></a>**COLOR-13** · Use a layer role only as a container's background, never on text or an icon. Enforced by [`sds/role-placement`](../../packages/sds/SDS.md#lint-rules).
 - <a id="color-14"></a>**COLOR-14** · Use `bg.layerBasement` for the screen background behind layers, and `bg.neutralWeak` for a grey fill that keeps its tone at any elevation (controls, chips, inputs).
 - <a id="color-15"></a>**COLOR-15** · Set an area apart on `bg.layerDefault` with `bg.neutralMuted`, and an area on a grey ground with `bg.neutralSubtle`.
@@ -199,7 +199,7 @@ The component APIs follow [ADR 0015](../decisions/0015-name-component-apis-in-se
 - <a id="tab-04"></a>**TAB-04** · Keep a fixed-width `Tab` under four items. From four up, set `fluid`. Not enforced yet.
 - <a id="tab-05"></a>**TAB-05** · For two levels of tabs, give each level a different style.
 - <a id="tab-06"></a>**TAB-06** · Show a tab's dot (`redBean`) only for new content, clear it once seen, and never on several tabs at once.
-- <a id="tab-07"></a>**TAB-07** · Keep a fixed set of tabs fixed: strike one through with `disabled` when it has nothing to show or its content is over, rather than removing it, so the row reads the same every day.
+- <a id="tab-07"></a>**TAB-07** · Keep a fixed set of tabs fixed. When a tab has nothing to show or its content is over, strike it through with `disabled` instead of removing it. The row then reads the same every day.
 
 ### Checkbox, Radio, Switch
 

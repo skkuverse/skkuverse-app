@@ -85,6 +85,7 @@ const ENTRY_SOURCES = [
   'schedule_boarding',
   'schedule_transfer',
   'route_detail',
+  'notice',
   'promo:transit_top',
   'promo:miniapp_games',
   'return',

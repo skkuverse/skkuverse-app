@@ -158,6 +158,13 @@ export type NoticesContentType =
   | 'detail_attachment_download'
   | 'detail_markdown_link'
   | 'detail_markdown_contact'
+  | 'detail_line_map'
+  | 'detail_line_search'
+  | 'detail_line_call'
+  | 'detail_line_email'
+  | 'detail_line_link'
+  | 'detail_line_quote'
+  | 'detail_cta'
   | 'onboarding_landing_cta'
   | 'onboarding_landing_signin';
 
@@ -322,6 +329,7 @@ export interface LogNoticeViewInputs {
   articleNo: number;
   tabKey?: string;
   hasSummary: boolean;
+  hasScreen: boolean;
   summaryType?: NoticeSummaryType;
 }
 

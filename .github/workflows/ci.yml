@@ -12,6 +12,11 @@ on:
   push:
     branches: [main]
 
+# Every job only reads the checkout. The umbrella clone authenticates with its
+# own deploy key, never with the GITHUB_TOKEN.
+permissions:
+  contents: read
+
 # A newer push to a pull request supersedes the run in progress, since only
 # the tip's result is ever read. Never cancel on main — a push there is the
 # record of what shipped.

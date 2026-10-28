@@ -41,6 +41,17 @@ describe('readMetaTags', () => {
     expect(title).toBe('Tom & Jerry\'s "Day"');
   });
 
+  it('decodes an escaped entity once, so it reads as the entity', () => {
+    // Arrange: a page whose text shows the markup `&lt;b&gt;`, `&quot;` and `&nbsp;`.
+    const html = '<meta property="og:title" content="Write &amp;lt;b&amp;gt;, &amp;quot; and &amp;nbsp;">';
+
+    // Act
+    const title = readMetaTags(html).get('og:title');
+
+    // Assert
+    expect(title).toBe('Write &lt;b&gt;, &quot; and &nbsp;');
+  });
+
   it('skips an unterminated tag', () => {
     // Act
     const meta = readMetaTags('<meta property="og:title" content="Cut');

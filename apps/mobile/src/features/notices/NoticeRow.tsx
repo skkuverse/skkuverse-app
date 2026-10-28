@@ -1,13 +1,13 @@
 import { Fragment } from 'react';
-import { Text, View, type TextStyle } from 'react-native';
-import { useT, wantedSans, SdsRadius, SdsSpacing } from '@skkuverse/shared';
+import { View } from 'react-native';
+import { useT, SdsRadius, SdsSpacing } from '@skkuverse/shared';
 import { ListRow, Txt, createThemedStyles, useSemanticColors } from '@skkuverse/sds';
 import type { FgColorName } from '@skkuverse/shared';
 import { EyeIcon } from 'phosphor-react-native';
 import { readNow } from '@/platform/clock';
 import { formatDeadlineBadge } from './deadline.rules';
 import { formatListDate } from './notice-date.rules';
-import { highlightMatches } from './highlight.rules';
+import { HighlightedText } from './components/HighlightedText';
 import type { NoticeListItem } from './notices.types';
 
 interface Props {
@@ -15,20 +15,6 @@ interface Props {
   onPress: (item: NoticeListItem) => void;
   showDepartment?: boolean;
   highlightQuery?: string;
-}
-
-function renderTitleWithHighlight(title: string, query: string | undefined, highlightStyle: TextStyle) {
-  if (!query) return title;
-  return highlightMatches(title, query).map((seg, i) =>
-    seg.matched ? (
-      // eslint-disable-next-line sds/no-rn-text -- a span inside the title's Txt inherits its step; Txt has no inherit mode yet
-      <Text key={i} style={highlightStyle}>
-        {seg.text}
-      </Text>
-    ) : (
-      seg.text
-    ),
-  );
 }
 
 /**
@@ -106,9 +92,14 @@ export function NoticeRow({
             </View>
           ) : null}
           {/* WHY: the title is capped at one line so every row's first line starts at the same y. */}
-          <Txt typography="t4" fontWeight="bold" color="neutral" numberOfLines={1}>
-            {renderTitleWithHighlight(item.title, highlightQuery, styles.highlightedSegment)}
-          </Txt>
+          <HighlightedText
+            typography="t4"
+            fontWeight="bold"
+            color="neutral"
+            numberOfLines={1}
+            text={item.title}
+            query={highlightQuery}
+          />
           {/* QUIRK(ios): `standard` (0xFFFF) includes HangulWordPriority. QUIRK(android): `balanced` is
               Android only; iOS has no balanced wrapping, which is a platform ceiling, not a bug here. */}
           {summaryText.length > 0 ? (
@@ -216,12 +207,6 @@ const useStyles = createThemedStyles(({ color }) => ({
     height: 10,
     backgroundColor: color.stroke.neutralWeak,
     marginHorizontal: SdsSpacing.x2_5,
-  },
-  // QUIRK(android): each WantedSans weight is its own file, so the family is set here; inheriting the
-  // title's file and raising the weight finds no `_bold` variant and falls back to the system font.
-  highlightedSegment: {
-    color: color.fg.informative,
-    ...wantedSans('700'),
   },
 }));
 

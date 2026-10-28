@@ -1,3 +1,5 @@
+import type { NoticeTabsConfig } from './notices.types';
+
 export function showsOnboardingLanding({
   isAnonymous,
   onboardingCompleted,
@@ -6,4 +8,16 @@ export function showsOnboardingLanding({
   onboardingCompleted: boolean;
 }): boolean {
   return isAnonymous || !onboardingCompleted;
+}
+
+export function toSourceName(config: NoticeTabsConfig | undefined, sourceId: string): string | null {
+  if (!config) return null;
+  for (const tab of config.tabs) {
+    if (tab.tabMode === 'fixed' && tab.fixed?.sourceId === sourceId) return tab.fixed.name;
+    if (tab.tabMode === 'picker' && tab.picker) {
+      const source = tab.picker.sources.find((s) => s.id === sourceId);
+      if (source) return source.name;
+    }
+  }
+  return null;
 }

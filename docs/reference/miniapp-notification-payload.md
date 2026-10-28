@@ -10,7 +10,7 @@ audience: internal
 # Mini App Notification Payload
 
 > The wire contract for mini-app push as a device reads it: the FCM `data` map, the Android channel,
-> what a tap opens, and the subscription intent. The sender ships apart from the app, so the app's
+> what a tap opens, and the subscription intent. The sender is deployed apart from the app, so the app's
 > reading has to be right before its binary or OTA goes out. The architecture is
 > [ADR 0006](../decisions/0006-miniapp-webview-push-architecture.md), decisions 6 to 8.
 
@@ -40,7 +40,7 @@ channel, FCM files the notification under its fallback channel, with no heads-up
 ## What a tap opens
 
 `resolveNotificationTap` in `apps/mobile/src/bootstrap/notifications/notification-tap.rules.ts` is
-the one implementation, the same for a quit-state launch, a warm tap and an Android foreground tap.
+the only code that resolves a tap, the same for a quit-state launch, a warm tap and an Android foreground tap.
 
 - **`route`, `webview` and `external`** run through `handleSduiAction`, as a sheet button does. A
   `route` is exactly one of `ALLOWED_PATHS` (`bootstrap/deep-links/deep-links.rules.ts`) or the
@@ -72,4 +72,4 @@ It is no picker key, since those mirror notice categories that another repositor
 - An app with no `miniapp` case shows the banner, and the tap does nothing. Add a tap case before any
   sender can use it. A build that predates `actionType: 'miniapp'`, or a target naming another mini
   app, opens the sender instead.
-- Changing `actionType` is a payload change, not a release.
+- Changing `actionType` changes the payload alone and needs no app release.

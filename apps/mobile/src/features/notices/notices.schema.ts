@@ -1,7 +1,8 @@
 // CONTRACT(skkuverse-server): skkuverse-server/src/notices/ writes these shapes; only a field the screen
 // cannot render without is required, and every other field keeps its default.
 import { z } from 'zod';
-import { openEnum, openUnionArray, parsedBy, text, tolerantArray } from '@skkuverse/shared';
+import { openEnum, openUnionArray, text, tolerantArray } from '@skkuverse/shared';
+import { listOrEmpty, noticeListRowSchema, noticeScreenSchema, nullOr } from './notice-facts.schema';
 import type { NoticeAttachment, NoticeDetail, NoticeDetailSummary, NoticeEditInfo, NoticeEndAt, NoticeListItem, NoticeListItemSummary, NoticeLocation, NoticePage, NoticePeriod, NoticeStartAt, NoticeSummaryDetails, NoticeTab, NoticeTabsConfig, PickerTabConfig, TabSource } from './notices.types';
 
 const str = (fallback = '') => z.string().catch(fallback);
@@ -9,17 +10,10 @@ const nullableStr = z.string().nullable().catch(null);
 const num = (fallback: number) => z.number().catch(fallback);
 const bool = (fallback: boolean) => z.boolean().catch(fallback);
 
-// WHY: a missing or non-list field reads as an empty list, as the hand parser read it.
-const listOrEmpty = parsedBy((raw) => (Array.isArray(raw) ? raw : []));
-
 const summaryType = openEnum(['action_required', 'event', 'informational'] as const, 'informational');
 
 function anyObject<S extends z.ZodObject>(shape: S) {
   return shape.catch(() => shape.parse({}));
-}
-
-function nullOr<S extends z.ZodType>(objectSchema: S) {
-  return z.union([z.null(), z.undefined()]).transform(() => null).or(objectSchema);
 }
 
 const startAtSchema = anyObject(z.object({ date: nullableStr, time: nullableStr })).transform(
@@ -54,6 +48,7 @@ const listItemSchema = z
     hasAttachments: bool(false),
     editCount: num(0),
     summary: listItemSummarySchema,
+    row: noticeListRowSchema,
   })
   .transform(
     ({ contentHash, editCount, ...item }): NoticeListItem => ({
@@ -142,6 +137,7 @@ export const noticeDetailSchema = z
     crawledAt: str(),
     editInfo: editInfoSchema,
     summary: detailSummarySchema,
+    screen: noticeScreenSchema,
   })
   .transform((detail): NoticeDetail => detail);
 

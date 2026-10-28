@@ -45,7 +45,7 @@ An alias doubles the surface and needs a second sweep, and here it serves no out
 
 - **An SDS color prop takes a role name** (`FgColorName`, `BgColorName`). `Badge` and `Gradient`, which also draw colors no role names, take an `SdsColor` the caller vouches for with `asSdsColor()`. `sds/no-free-color-prop` is deleted.
 - **`Txt` `style` refuses the type keys** (size, line height, spacing, family, weight). A recipe's text slot reaches `Txt` through the internal `txtSlot()`, and a display figure larger than the type scale's top step is React Native's `Text` behind a reasoned disable until the umbrella's scale adds a display step. `sds/no-txt-style-override` is deleted.
-- **`Txt` `color` takes a foreground role name,** and a data color reaches text through `style.color`, not an escape prop, where lint still rejects a literal.
+- **`Txt` `color` takes a foreground role name,** and a data color reaches text through `style.color` instead of an escape prop. Lint still rejects a literal there.
 
 ### 3. Dead weight leaves the public API
 

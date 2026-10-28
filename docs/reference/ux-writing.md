@@ -298,7 +298,7 @@ Each language in `SUPPORTED_LANGUAGES` formats these its own way.
 ### Realtime arrivals
 
 A stop's arrival on a realtime line, from `formatArrivalText` in
-`apps/mobile/src/features/transit/arrival.rules.ts`. The two counts are joined with ` · `, as
+`apps/mobile/src/features/transit/arrival.rules.ts`. The minute count and the stop count are joined with ` · `, as
 `건물 5곳 · 공간 20곳` is, and neither takes 후 or 전. <!-- conventions:allow-korean: UX copy example -->
 
 | Situation | Copy |

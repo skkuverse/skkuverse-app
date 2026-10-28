@@ -2,7 +2,7 @@
 
 > The React Native app behind [skkuverse](https://skkuverse.com), a campus companion for Sungkyunkwan University students.
 
-## What it does
+## Features
 
 - Live positions of the campus shuttle and city buses, and the shuttle timetables
 - Department notices with AI summaries, per-source subscriptions and push notifications

@@ -9,7 +9,7 @@ audience: internal
 
 # 0018. Separate cards by surface or stroke, and keep shadows for floating elements
 
-> Why a card in the app casts no shadow, what sets it apart from its ground instead, and which elements still cast one. Read this before you give a card, a tile or a panel a shadow, or add a shadow token.
+> Why a card in the app casts no shadow, what sets it apart from its ground instead, and which elements still cast one. Read this before you add a shadow token or give a shadow to a card, a tile or a panel.
 
 ## Status
 
@@ -17,7 +17,7 @@ Accepted on 2026-10-11. The cards that cast `SdsShadows.card` moved off it, and 
 
 ## Context
 
-ELEV-04 in [design-usage.md](../reference/design-usage.md#elev-04) already said that a card separates by surface or stroke. Three kinds of card still cast the `card` shadow, which was too faint to separate anything:
+ELEV-04 in [design-usage.md](../reference/design-usage.md#elev-04) already said that a card separates by surface or stroke. These kinds of card still cast the `card` shadow, which was too faint to separate anything:
 
 - **The news cards on home** (`ExternalActivitiesSection`), white tiles on the home ground.
 - **The onboarding gate card on home** (`HomeOnboardingGateCard`), also white on the home ground.
@@ -26,7 +26,7 @@ ELEV-04 in [design-usage.md](../reference/design-usage.md#elev-04) already said 
 The shadow did no work on any of them:
 
 - **It was nearly invisible in light mode.** A 4% black blur three points wide reads as a smudge at best. What told each card apart was the white surface on the grey ground, or the border.
-- **It disappears in dark mode.** A black shadow on a near-black ground draws nothing. A card that relies on one has no edge once dark mode ships.
+- **It disappears in dark mode.** A black shadow on a near-black ground draws nothing. A card that relies on one has no edge once the app offers dark mode.
 - **SEED uses elevation for things that float.** In SEED, a shadow says "this sits above the page". That holds for a floating button, a popover or a sheet, and it never holds for a card in the flow of a list.
 
 The user decided the rule on 2026-10-11, together with subtle item dividers (DIV-01): card shadows go, and shadows stay only on floating elements.

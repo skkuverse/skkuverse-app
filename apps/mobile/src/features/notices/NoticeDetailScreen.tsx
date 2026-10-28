@@ -6,7 +6,7 @@ import {
   SdsRadius,
   SdsSpacing,
 } from '@skkuverse/shared';
-import { Toast, Txt, useSemanticColors, createThemedStyles } from '@skkuverse/sds';
+import { Button, FixedBottomCTA, Toast, Txt, useSemanticColors, createThemedStyles } from '@skkuverse/sds';
 import { InlineBanner } from '@/features/ads/InlineBanner';
 import { AdUnitIds } from '@/platform/ads';
 import { ReviewPromptHost } from '@/features/feedback/ReviewPromptHost';
@@ -17,6 +17,7 @@ import { DeletedNoticeTombstone } from './DeletedNoticeTombstone';
 import { NoticeAttachments } from './components/NoticeAttachments';
 import { NoticeContentRefs } from './components/NoticeContentRefs';
 import { NoticeBodyDivider } from './components/NoticeBodyDivider';
+import { NoticeScreenView } from './components/NoticeScreenView';
 import { NoticeSiblingNav } from './components/NoticeSiblingNav';
 import { NoticeSourceSheet } from './components/NoticeSourceSheet';
 import { useNoticeDetailHeaderOptions } from './components/useNoticeDetailHeaderOptions';
@@ -26,15 +27,17 @@ import { useNoticeDetailScreen } from './useNoticeDetailScreen';
 interface Props {
   sourceId: string;
   articleNo: number;
+  source?: string;
 }
 
-export function NoticeDetailScreen({ sourceId, articleNo }: Props) {
+export function NoticeDetailScreen({ sourceId, articleNo, source }: Props) {
   const styles = useStyles();
   const { t, tpl } = useT();
   const color = useSemanticColors();
   const { sourceSheetRef, ...vm } = useNoticeDetailScreen({
     sourceId,
     articleNo,
+    source,
     reviewIcon: <BookmarkSimpleIcon size={32} color={color.fg.brandContrast} weight="fill" />,
   });
   const headerOptions = useNoticeDetailHeaderOptions({
@@ -43,6 +46,8 @@ export function NoticeDetailScreen({ sourceId, articleNo }: Props) {
     onSave: vm.onSave,
     onShare: vm.onShare,
   });
+
+  const barAction = vm.status === 'ready' ? (vm.screen?.action ?? null) : null;
 
   // WHY: one Stack.Screen at a stable position, so the loading, error and success branches never
   // unregister and re-register the header.
@@ -65,57 +70,76 @@ export function NoticeDetailScreen({ sourceId, articleNo }: Props) {
             {vm.notice.title}
           </Txt>
 
-          <View style={styles.metaRow}>
-            <Txt typography="t5" color="neutralSubtle">
-              {formatDisplayDate(vm.notice.date)}
-            </Txt>
-            {vm.notice.author ? (
-              <>
-                <Dot />
-                <Txt typography="t5" color="neutralSubtle">
-                  {vm.notice.author}
-                </Txt>
-              </>
-            ) : null}
-            {vm.notice.views > 0 ? (
-              <>
-                <Dot />
-                <Txt typography="t5" color="neutralSubtle">
-                  {tpl('notices.views', vm.notice.views)}
-                </Txt>
-              </>
-            ) : null}
-          </View>
-
-          {vm.notice.summary ? (
-            <SummaryCard
-              summary={vm.notice.summary}
-              sourceId={sourceId}
-              articleNo={articleNo}
-            />
-          ) : null}
-
-          <NoticeContentRefs
-            images={vm.contentRefs.images}
-            links={vm.contentRefs.links}
-            emails={vm.contentRefs.emails}
-            phones={vm.contentRefs.phones}
-            sourceUrl={vm.notice.sourceUrl}
-            onImagePress={vm.openSourceSheet}
-            onCopyContact={vm.onCopy}
-          />
-
-          <NoticeAttachments
-            attachments={vm.notice.attachments}
-            sourceUrl={vm.notice.sourceUrl}
-            onPreview={vm.onAttachmentPreview}
-            onDownload={vm.onAttachmentDownload}
-          />
-
-          {vm.notice.contentMarkdown ? (
-            <NoticeBodyDivider onPress={vm.openSourceSheet} />
+          {vm.screen ? (
+            <View style={styles.screen}>
+              <NoticeScreenView
+                notice={vm.notice}
+                screen={vm.screen}
+                boardName={vm.boardName}
+                contentRefs={vm.contentRefs}
+                onLinePress={vm.onLinePress}
+                onLineAction={vm.onLineAction}
+                openSourceSheet={vm.openSourceSheet}
+                onAttachmentPreview={vm.onAttachmentPreview}
+                onAttachmentDownload={vm.onAttachmentDownload}
+                onCopy={vm.onCopy}
+              />
+            </View>
           ) : (
-            <View style={styles.sectionBreak} />
+            <>
+              <View style={styles.metaRow}>
+                <Txt typography="t5" color="neutralSubtle">
+                  {formatDisplayDate(vm.notice.date)}
+                </Txt>
+                {vm.notice.author ? (
+                  <>
+                    <Dot />
+                    <Txt typography="t5" color="neutralSubtle">
+                      {vm.notice.author}
+                    </Txt>
+                  </>
+                ) : null}
+                {vm.notice.views > 0 ? (
+                  <>
+                    <Dot />
+                    <Txt typography="t5" color="neutralSubtle">
+                      {tpl('notices.views', vm.notice.views)}
+                    </Txt>
+                  </>
+                ) : null}
+              </View>
+
+              {vm.notice.summary ? (
+                <SummaryCard
+                  summary={vm.notice.summary}
+                  sourceId={sourceId}
+                  articleNo={articleNo}
+                />
+              ) : null}
+
+              <NoticeContentRefs
+                images={vm.contentRefs.images}
+                links={vm.contentRefs.links}
+                emails={vm.contentRefs.emails}
+                phones={vm.contentRefs.phones}
+                sourceUrl={vm.notice.sourceUrl}
+                onImagePress={vm.openSourceSheet}
+                onCopyContact={vm.onCopy}
+              />
+
+              <NoticeAttachments
+                attachments={vm.notice.attachments}
+                sourceUrl={vm.notice.sourceUrl}
+                onPreview={vm.onAttachmentPreview}
+                onDownload={vm.onAttachmentDownload}
+              />
+
+              {vm.notice.contentMarkdown ? (
+                <NoticeBodyDivider onPress={vm.openSourceSheet} />
+              ) : (
+                <View style={styles.sectionBreak} />
+              )}
+            </>
           )}
 
           {/* WHY: the ad sits after the content and before the sibling nav, which every reader passes on the
@@ -125,9 +149,18 @@ export function NoticeDetailScreen({ sourceId, articleNo }: Props) {
           <NoticeSiblingNav sourceId={sourceId} articleNo={articleNo} />
         </ScrollView>
       )}
+      {barAction ? (
+        <FixedBottomCTA>
+          <Button tone="brand" size="large" display="block" onPress={() => vm.onBarAction(barAction.action)}>
+            {barAction.label}
+          </Button>
+        </FixedBottomCTA>
+      ) : null}
       <NoticeSourceSheet
         ref={sourceSheetRef}
         markdown={vm.sourceMarkdown}
+        quote={vm.sheetQuote.quote}
+        quoteTapId={vm.sheetQuote.tapId}
         sourceUrl={vm.sourceUrl}
         onCopyText={vm.onCopy}
         onOpenOriginal={vm.openOriginal}
@@ -162,6 +195,10 @@ const useStyles = createThemedStyles(({ color }) => ({
   },
   title: {
     marginTop: SdsSpacing.x1_5,
+  },
+  screen: {
+    marginTop: SdsSpacing.x1,
+    marginBottom: SdsSpacing.x6,
   },
   metaRow: {
     flexDirection: 'row',

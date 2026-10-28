@@ -36,7 +36,7 @@ The in-app browser, the `skkuverse://m/<slug>` deep link with its pending consum
 
 Promote the existing in-app browser to the mini-app host rather than build a new screen. That screen
 was also the viewer for arbitrary links, so notice bodies and SDUI `external` targets opened in a
-mini-app shell with a bookmark button and "add to home screen". Promotion therefore meant separation:
+mini-app shell with a bookmark button and "add to home screen". So promotion meant separation:
 
 - `app/mini-app.tsx` hosts registered mini apps alone. Only the slug travels in the route.
 - `app/webview.tsx` opens every other URL with minimal chrome.
@@ -75,7 +75,7 @@ The shell speaks `@skkuverse/miniapp/protocol`, never `@skkuverse/bridge`, under
 
 - **Grant from the posting document's origin, per message.** A message is granted only when its
   origin is in `webview.bridgeOrigins` and `miniapps.origins` maps it to the shell's mini-app id. A
-  sibling mini app's page, or a page on another origin the mini app navigated to, gets nothing.
+  sibling mini app's page, or a page the mini app loaded from another origin, gets nothing.
 - **Scope by capability.** A grant holds the mini-app methods (`NOTIFY_METHODS`) and never a
   `game.*` method. A notification outside the grant is dropped, and a request from an origin with
   no grant is answered `denied`.
@@ -109,7 +109,7 @@ Push for a mini app starts on skkuverse's servers. The app receives it and route
 ### 8. Extend tap routing
 
 `navigateFromNotification` in `apps/mobile/src/bootstrap/notifications/notifications.service.ts`
-has a `miniapp` case. It navigates home and sets `pendingMiniAppLink`, so the existing
+has a `miniapp` case. It routes to home and sets `pendingMiniAppLink`, so the existing
 `PendingMiniAppLinkConsumer` opens the mini app unchanged. The payload it reads is
 [miniapp-notification-payload](../reference/miniapp-notification-payload.md).
 
@@ -143,12 +143,12 @@ the action union, decided by `resolveWebAction` in `apps/mobile/src/features/web
 
 | From a page | Value | Why |
 | --- | --- | --- |
-| `map` | `[<kind>:]<placeId>`, the `?place=` grammar | An id the app resolves itself |
-| `miniapp` | `<id>[/path]`, held to that mini app's origin by the shell | An id the app resolves itself |
-| `route`, `webview`, `external` | refused | Each names a destination: any screen, debug screens and `/webview?url=` included, or any URL |
+| `map` | `[<kind>:]<placeId>`, the `?place=` grammar | An id, and the app picks the destination |
+| `miniapp` | `<id>[/path]`, held to that mini app's origin by the shell | An id, and the app picks the destination |
+| `route`, `webview`, `external` | refused | Each names a destination, which can be any screen (debug screens and `/webview?url=` included) or any URL |
 
-Four checks can each refuse on their own: the origin gate, the payload shape in `parseWebMessage`,
-the type allowlist, and each type's anchored value grammar. `/webview` injects
+The origin gate, the payload shape in `parseWebMessage`, the type allowlist and each type's
+anchored value grammar can each refuse a message on their own. `/webview` injects
 `window.skkuverse.bridge.actions`, which advertises and never grants, so a page shows an action button
 only on a host that performs it. The shell's `map.openPlace` and `miniapp.open` use `resolveWebAction`.
 
@@ -156,17 +156,17 @@ only on a host that performs it. The shell's `map.openPlace` and `miniapp.open` 
 
 These rules keep a mini-app contract alive across app versions.
 
-- **The product is the contract, not the code.** Three contract surfaces are each versioned and
+- **The product is the contract, not the code.** The contract surfaces are each versioned and
   additive only:
   1. The registry schema (`apps/mobile/src/features/web/web.schema.ts`, the payload's `version`)
   2. The mini-app SDK message set (decisions 4 and 5)
   3. The push payload and topic naming (decisions 6 and 7)
-- **A host-hosted SDK** (decision 3) shims old app versions, so evolving the contract waits on no app
+- **A host-hosted SDK** (decision 3) shims old app versions, so a change to the contract waits on no app
   release.
 - **Capability negotiation** (decision 5) lets a mini app built for a newer SDK degrade on an older app.
 - **The danger zone is anything bound to the app version.** Bridge handlers and tap routing are JS
   and mostly reachable by OTA, but users who never receive the OTA are the risk. Put the channel and
-  the handshake into the binary early, and ship the `miniapp` tap case before any club can send. On
+  the handshake into the binary early, and release the `miniapp` tap case before any club can send. On
   an app without it the OS still shows the banner, the tap does nothing, and nothing crashes.
 
 ## Consequences
@@ -174,7 +174,7 @@ These rules keep a mini-app contract alive across app versions.
 - (+) Maximum reuse. The renderer, deep links, the pending consumer, the push pipeline and the
   registry are connected rather than rebuilt.
 - (+) A remote registry means onboarding without an app release.
-- (−) One more cross-repo contract: the push `data` map the app routes on, set out in
+- (−) The push `data` map the app routes on is one more cross-repo contract, set out in
   [miniapp-notification-payload](../reference/miniapp-notification-payload.md).
 - (−) The origin gate and the capability set need review and upkeep once phase 2 is self-serve.
 

@@ -26,7 +26,7 @@ change pushed past their record were split first, so the switch raised no count.
 
 ## Context
 
-ADR 0020's lint rules and architecture tests check a file's shape: its name, its folder, what it
+ADR 0020's lint rules and architecture tests check a file's shape, which is its name, its folder and what it
 imports. None checks its size, and the map review of 2026-10-24 found what that leaves open:
 
 - **A god hook grew unnoticed.** `useMapHost.ts` reached 842 lines of code and about 20 concerns.
@@ -65,8 +65,8 @@ budget were recorded when the rule was switched on, as ADR 0016 prescribes, so t
 count of steps per file:
 
 - **A small fix passes.** A file grows freely until it starts its next step.
-- **Growth by a step fails.** The message says what to move out: a concern into a private hook in
-  `components/`, a section into a component, a decision into a `.rules` file.
+- **Growth by a step fails.** The message names what to move out, such as a concern into a private hook
+  in `components/`, a section into a component or a decision into a `.rules` file.
 - **A file that shrinks by a step lowers its count** with `yarn lint:prune`, as every recorded rule
   does. It cannot grow back past the lower count.
 - **A new file starts within its budget.** The ratchet takes no new entry for a rule that is on.

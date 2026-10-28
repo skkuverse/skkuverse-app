@@ -87,4 +87,4 @@ Device registration lives in `apps/mobile/src/features/notifications/device/devi
   in `apps/mobile/src/features/auth/auth.service.ts`: `unregisterDevice` first, then the sign-in,
   then `await initializeFirestoreNotifications`, which writes the device document under the new
   uid before the caller moves on. A new sign-in path follows the same order. The unregister is
-  skipped only on a device that provably has no document; a null token alone is not that proof.
+  skipped only on a device that provably has no document. A null token alone is not that proof.

@@ -68,7 +68,7 @@ function trimTrailingPunctuation(url: string): string {
   return url.slice(0, end);
 }
 
-function toDomain(url: string): string {
+export function toDomain(url: string): string {
   // WHY: `new URL()` throws on a malformed URL, and extracted text is untrusted.
   try {
     return new URL(url).hostname.replace(/^www\./, '');

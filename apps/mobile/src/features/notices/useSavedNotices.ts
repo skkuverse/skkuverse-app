@@ -49,5 +49,6 @@ function bookmarkToListItem(entry: BookmarkEntry): NoticeListItem {
           endAt: null,
         }
       : null,
+    row: null,
   };
 }

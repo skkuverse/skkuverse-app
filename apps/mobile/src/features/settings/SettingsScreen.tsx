@@ -91,15 +91,6 @@ export function SettingsScreen() {
                 onPress={() => router.push('/auth-faults' as never)}
               />
             )}
-            {__DEV__ && (
-              <BadgeNavRow
-                badge="📰"
-                tossface
-                title="Notice rows sketch (dev only)"
-                subtitle="ADR 0009 rows and detail screen over mock data"
-                onPress={() => router.push('/notice-sketch' as never)}
-              />
-            )}
           </>
         )}
       </ScrollView>

@@ -15,7 +15,7 @@ audience: internal
 ## Start-up order
 
 - **Until JS configures a provider, there is none.** On iOS a token request before `setupAppCheck`
-  configures one fails with `provider-not-ready`; on Android nothing is installed. Since
+  configures one fails with `provider-not-ready`. On Android nothing is installed. Since
   `initializeAppCheck` returns before the native configure finishes, the first probe is what waits.
 - **Every Auth call is preceded by a probe.** `probeAppCheck` asks for the cached-or-fetched token,
   never a forced one, and answers within `PROBE_TIMEOUT_MS`, or `bounded` while the exchange still
