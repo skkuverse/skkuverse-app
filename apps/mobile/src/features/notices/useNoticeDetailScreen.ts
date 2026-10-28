@@ -6,12 +6,16 @@ import * as WebBrowser from 'expo-web-browser';
 import { useT } from '@skkuverse/shared';
 import { useSemanticColors, type SheetRef } from '@skkuverse/sds';
 import { logNoticeView, logNoticesContentSelect } from '@/platform/analytics';
+import { isPageReturn } from '@/platform/analytics.rules';
 import { openExternalUrl, openInAppBrowser, shareContent } from '@/platform/handoff';
 import { isGateOpen } from '@/platform/ota';
 import { useReviewPrompt } from '@/features/feedback/useReviewPrompt';
 import { THREE_DAYS_MS } from '@/features/feedback/feedback.constants';
 import { useBookmark } from './useBookmark';
 import { useNoticeDetail } from './useNoticeDetail';
+import { useNoticeTabs } from './useNoticeTabs';
+import { useNoticeScreenActions } from './components/useNoticeScreenActions';
+import { toSourceName } from './notices.rules';
 import { extractContentRefs } from './content-refs.rules';
 import { buildAttachmentUrl, canPreview } from './attachment.rules';
 import { decideNoticeDetailState } from './notice-detail.rules';
@@ -27,14 +31,17 @@ const inAppBrowserOptions: WebBrowser.WebBrowserOpenOptions = {
 interface UseNoticeDetailScreenInputs {
   sourceId: string;
   articleNo: number;
+  /** WHY: a notice pushed back by closing a place it opened is the same visit, so it logs no second view. */
+  source: string | undefined;
   reviewIcon: ReactNode;
 }
 
-export function useNoticeDetailScreen({ sourceId, articleNo, reviewIcon }: UseNoticeDetailScreenInputs) {
+export function useNoticeDetailScreen({ sourceId, articleNo, source, reviewIcon }: UseNoticeDetailScreenInputs) {
   const { t } = useT();
   const color = useSemanticColors();
   const router = useRouter();
   const { data, isLoading, isError, error, refetch } = useNoticeDetail(sourceId, articleNo);
+  const { data: tabsConfig } = useNoticeTabs();
   const [toastText, setToastText] = useState<string | null>(null);
   const [isRemoving, setIsRemoving] = useState(false);
 
@@ -58,6 +65,7 @@ export function useNoticeDetailScreen({ sourceId, articleNo, reviewIcon }: UseNo
 
   const state = decideNoticeDetailState({ isLoading, isError, error, data, bookmark: bookmarkEntry });
   const screen = data && isGateOpen('noticeFacts') ? data.screen : null;
+  const boardName = data ? (toSourceName(tabsConfig, data.sourceId) ?? data.department) : null;
 
   const onRemoveBookmark = useCallback(() => {
     setIsRemoving(true);
@@ -81,7 +89,7 @@ export function useNoticeDetailScreen({ sourceId, articleNo, reviewIcon }: UseNo
 
   // WHY: keyed on (id, summary type), so a background refetch does not log a second view.
   useEffect(() => {
-    if (!data) return;
+    if (!data || isPageReturn(source)) return;
     logNoticeView({
       sourceId,
       articleNo,
@@ -127,6 +135,13 @@ export function useNoticeDetailScreen({ sourceId, articleNo, reviewIcon }: UseNo
   const closeSourceSheet = useCallback(() => {
     sourceSheetRef.current?.dismiss?.();
   }, []);
+
+  const screenActions = useNoticeScreenActions({
+    sourceId,
+    articleNo,
+    onCopy,
+    openQuote: () => sourceSheetRef.current?.present?.(),
+  });
 
   // WHY: the external browser, not the in-app shell: this opens from inside the source sheet, and a
   // router.push from there lands behind the sheet, so nothing seems to happen.
@@ -213,6 +228,9 @@ export function useNoticeDetailScreen({ sourceId, articleNo, reviewIcon }: UseNo
 
   return {
     ...state,
+    ...screenActions,
+    screen,
+    boardName,
     saved,
     isRemoving,
     contentRefs,

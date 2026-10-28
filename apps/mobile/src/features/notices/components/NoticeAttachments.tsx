@@ -27,6 +27,8 @@ interface Props {
   sourceUrl: string;
   onPreview: (attachment: NoticeAttachment) => void;
   onDownload: (attachment: NoticeAttachment) => void;
+  /** WHY: a file the notice names by its role reads as that role, with its file name under it. */
+  roleByName?: ReadonlyMap<string, string>;
 }
 
 /** WHY: the whole row previews and only download is a separate icon, so two text buttons stop outshouting the file name. */
@@ -35,6 +37,7 @@ export function NoticeAttachments({
   sourceUrl,
   onPreview,
   onDownload,
+  roleByName,
 }: Props) {
   const styles = useStyles();
   if (attachments.length === 0) return null;
@@ -45,6 +48,7 @@ export function NoticeAttachments({
         <AttachmentRow
           key={a.url}
           attachment={a}
+          role={roleByName?.get(a.name) ?? null}
           sourceUrl={sourceUrl}
           onPreview={onPreview}
           onDownload={onDownload}
@@ -56,11 +60,13 @@ export function NoticeAttachments({
 
 function AttachmentRow({
   attachment,
+  role,
   sourceUrl,
   onPreview,
   onDownload,
 }: {
   attachment: NoticeAttachment;
+  role: string | null;
   sourceUrl: string;
   onPreview: (a: NoticeAttachment) => void;
   onDownload: (a: NoticeAttachment) => void;
@@ -112,9 +118,13 @@ function AttachmentRow({
           numberOfLines={2}
           lineBreakStrategyIOS="hangul-word"
         >
-          {attachment.name}
+          {role ?? attachment.name}
         </Txt>
-        {extLabel ? (
+        {role !== null ? (
+          <Txt typography="t3" color="neutralSubtle" numberOfLines={1}>
+            {attachment.name}
+          </Txt>
+        ) : extLabel ? (
           <Txt typography="t3" color="neutralSubtle">
             {extLabel}
           </Txt>
