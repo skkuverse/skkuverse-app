@@ -52,6 +52,8 @@ npx expo prebuild --clean  # after a native change, then yarn ios or yarn androi
 - **The gate branch unmounts the header and the bottom accessory** (`headerShown: false`, the accessory prop `undefined`); hiding or covering them does not work.
 - **The first-launch intro is not the notices wizard.** The tour (`src/features/tour/`) is a branch of `apps/mobile/src/bootstrap/InitGate.tsx`, not a route, shown once to anyone not signed in with Google; `seen.intro` never unlocks the notices tab, and the wizard's `skipLogin` is frozen at mount, never recomputed from the live `isAnonymous`. Their reasons are comments in `InitGate.tsx` and `features/notices/onboarding/useOnboarding.ts`.
 
+- **The server's rows and detail screen ([umbrella ADR 0009](https://github.com/spencer0124/skkuverse/blob/main/docs/decisions/0009-notice-list-rows.md)) render behind the `noticeFacts` gate.** A list item's `row` and a detail's `screen` parse in `notice-facts.schema.ts`, and a null one, or a closed gate, keeps today's row or detail for that notice. Their strings are the server's, rendered as sent. An action target opens only through its kind's allowlist (`toNoticeAction`, `notice-action.rules.ts`), where a map target must parse as a `skku_building` `parseMapPlaceRef`, so a target this build cannot open drops silently.
+
 ### In-app games (`src/features/games/`)
 
 - **Adding a game, the release order across repos and the hosted page's trust: `docs/explanation/in-app-games.md`; the decision is ADR 0021, which superseded ADR 0009.** A game is a skkuverse-mini static site on its own `<id>.game.skkuverse.com` origin, hosted by the screen at `/games/[id]`.
