@@ -18,7 +18,7 @@ audience: internal
 **A card is glass while it floats and opaque once it attaches.** `large` attaches, and in a `stops`
 position only a `page` top does. Whether the sheet can be dragged decides only whether that change
 is animated: "glass on draggable sheets" would make two sheets of one height differ for a reason the
-user cannot see. `surface="glass"` is opt-in; it pays over a live map and is noise over a list.
+user cannot see. `surface="glass"` is opt-in. It pays over a live map and is noise over a list.
 
 A card that keeps one shape uses gorhom's `detached` mode, which makes the body's box the visible
 card. `detached` is static, so only a glass sheet that floats low and attaches at the top computes
@@ -48,8 +48,8 @@ reasoned. A new glass surface under a Reanimated parent needs the same look.
 ## The glass rounds itself
 
 `expo-glass-effect` maps `borderRadius` and each per-corner radius onto UIKit's
-`cornerConfiguration`. Never shape glass with a rounded `overflow: 'hidden'` parent: the clip cuts a
-square effect, slicing the specular edge line at four points, and its mask takes the shadow too.
+`cornerConfiguration`. Never shape glass with a rounded `overflow: 'hidden'` parent. The clip cuts a
+square effect and slices the specular edge line at four points. Its mask takes the shadow too.
 
 ## What may sit on the card
 
@@ -60,9 +60,9 @@ detent below the top is glass over a moving map:
   so a `bg.layerDefault` or `bg.layerFloating` on it is an opaque white block on the glass
   ([COLOR-12](../reference/design-usage.md#color-12), `useSurface()` in [SDS.md](../../packages/sds/SDS.md)).
 - **Content is not branched on the detent.** A branch needs a wrapper with an animated opacity,
-  which must never become an ancestor of a `GlassView`; a block legible on glass is cheaper.
+  which must never become an ancestor of a `GlassView`. A block legible on glass is cheaper.
 - **No block, nor `Sheet`'s content wrapper, carries a horizontal gutter.** The card's inset
-  animates, so a baked-in gutter is measured from a moving edge; the caller pads the column once.
+  animates, so a baked-in gutter is measured from a moving edge. The caller pads the column once.
 - **No `WebView`.** It paints an opaque background, a solid rectangle in a translucent card;
   long-form content goes behind a `webview` or `miniapp` action that opens a full screen.
 

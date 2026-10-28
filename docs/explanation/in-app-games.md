@@ -10,7 +10,7 @@ audience: internal
 # In-App Games
 
 > What a first-party mini game needs from each repository before a player can open it, the order
-> those changes ship in, and the trust the game screen gives a hosted page. Read it before adding a
+> those changes are released in, and the trust the game screen gives a hosted page. Read it before adding a
 > game or a `game.*` method. The rules worth knowing mid-session are the "In-app games" section of
 > [CLAUDE.md](../../CLAUDE.md); the decision is
 > [ADR 0021](../decisions/0021-host-games-and-check-their-scores-on-the-server.md).
@@ -38,7 +38,7 @@ That map is server-owned, so a new game origin grants nothing until skkuverse-se
 no mini-app list ever holds one (ADR 0021 decision 2).
 
 - **Every message is granted by its own origin.** The posting document's origin is judged on each
-  message, since the page can have navigated since it opened. Only a parsed `game.*` notification
+  message, since the page can have loaded another page since it opened. Only a parsed `game.*` notification
   passes. Anything else is dropped without a word, and a request is answered `unsupported`.
 - **The page side re-checks the origin.** `hostDeliverScript` does nothing unless
   `location.origin` is still the game's, and the bootstrap installs only in the top window on it.
@@ -80,18 +80,18 @@ A new game is hosted from its first day.
 3. **The backend, for a ranked game.** A maintainer's step outside this repository.
 4. **The registry, in skkuverse-server.** Add the origin to `GAME_ID_BY_FIRST_PARTY_ORIGIN` and
    list the game in the `games` dataset. A `{ "kind": "game", "id": "<id>" }` tile in a
-   `home-layout.json` grid places it on home; a game no grid places gets the app's own grid.
+   `home-layout.json` grid places it on home. A game no grid places gets the app's own grid.
 
 ## Release order
 
 Each step is inert for installed builds until the app bundle that uses it is published, so the
 order runs from the backend outward:
 
-1. **The backend.** A new callable ships before any OTA that calls it. A scoring change is a new
-   scoring version, and it ships before the page that names it is published.
+1. **The backend.** A new callable is deployed before any OTA that calls it. A scoring change is a
+   new scoring version, and it is deployed before the page that names it is published.
 2. **The page, then its listing.** Deploy the page with `pnpm ship <id>` in skkuverse-mini, then
    list it with its origin. A listed game opens on the next registry read in every build that has
-   its config and speaks its `minHostProtocol`; a build without its config ignores the entry.
+   its config and speaks its `minHostProtocol`. A build without its config ignores the entry.
 3. **The app bundle that carries its config.** An OTA that lands before the listing hides the
    game: no tile, and a link opens home ([ota-updates.md](ota-updates.md)).
 

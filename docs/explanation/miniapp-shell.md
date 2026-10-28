@@ -34,7 +34,7 @@ a sibling mini app's page gets nothing in another app's shell. `/webview` runs t
 `GET /app/config`, and the gate fails closed. A grant is all or nothing, since the curated phase has
 one trust level, and it holds the mini-app methods alone (`NOTIFY_METHODS`), never a `game.*` method.
 A reply goes out through `hostDeliverScript`, which compares `location.origin` with the origin the
-reply was computed for, so a page that navigated away receives nothing.
+reply was computed for, so a page that has since left that origin receives nothing.
 
 For a mini app whose origin `miniapps.origins` lists, a top-frame http(s) navigation to another origin
 leaves the shell for the system browser (`decideMiniAppNavigation` in `navigation.rules.ts`), as the
@@ -122,4 +122,4 @@ not receive it sees the box ask for it, and a fresh entry makes the box glow.
 ## Related
 
 - [ADR 0006](../decisions/0006-miniapp-webview-push-architecture.md): why the two screens are apart
-- The mini-app repository's protocol reference: the messages, the manifest, the viewport and the host object
+- The mini-app repository's protocol reference, for the messages, the manifest, the viewport and the host object
