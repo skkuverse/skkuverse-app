@@ -28,6 +28,8 @@ export function SummaryCard({ summary, sourceId, articleNo }: Props) {
 
   // WHY: once per (notice, summary type), so a refetch with an unchanged classification logs nothing.
   useEffect(() => {
+    // WHY: a summary the server derived from facts carries no model and is not an AI view.
+    if (summary.model === null) return;
     logAiSummaryView({
       sourceId,
       articleNo,
