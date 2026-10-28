@@ -17,7 +17,7 @@ Accepted on 2026-10-11. The token exists, and the screen-edge 20s moved onto it 
 
 ## Context
 
-[ADR 0013](0013-name-spacing-and-radius-after-seed.md) §4 left semantic spacing out, for three reasons: the gutter was not one value, nothing would read a token, and SEED's name would mislead.
+[ADR 0013](0013-name-spacing-and-radius-after-seed.md) §4 left semantic spacing out because the gutter was not one value and nothing would read a token. SEED's name would also mislead.
 
 - **The migration gives it readers.** The K2 batch of the SDS migration moves every spacing literal onto a token. A screen-edge inset written as `SdsSpacing.x5` says how far, and nothing says it is the gutter. SPACE-02 in [design-usage.md](../reference/design-usage.md#space-02) asks for one gutter on every screen, and only a name makes that checkable in review.
 - **20 is the gutter the app draws most.** The tab lists, notice detail, settings, the bus screens and the bottom CTA inset by 20. Some full-width screens use 16, such as the search field, the building sheet and the campus sheet column. Prompt sheets and dialogs use 24.

@@ -9,7 +9,7 @@ audience: internal
 
 # 0014. Give press feedback by the surface color and a distance-based scale, never opacity
 
-> Why a press in SDS turns the surface to its `-pressed` token and shrinks the element by a fixed distance, why React Native's `Pressable` triggers it, and why component styles are now recipes. Read this before you give anything a pressed state or write a component's styles.
+> Why a press in SDS turns the surface to its `-pressed` token and shrinks the element by a fixed distance, and why React Native's `Pressable` triggers it. It also says why component styles are now recipes. Read this before you give anything a pressed state or write a component's styles.
 
 ## Status
 
@@ -33,7 +33,7 @@ Accepted on 2026-10-10. `Pressable`, `usePressFeedback` and `createRecipe` are i
 | Color | The surface turns from its role to the `-pressed` pair (`bg.brandSolid` → `bg.brandSolidPressed`). Text and icons keep their color, and nothing fades |
 | Color input | A role name only. `PressableBgToken` admits only roles with a `-pressed` pair, so `bg: 'disabled'` is a type error. A static color (the light Button) gives no color feedback |
 | Scale | `scale = (basis − 2) / basis` with `basis = max(height, width / 4, 24)`: every element sinks by 2pt of its basis. A fixed 0.98 would move a wide button nine times further than a chip |
-| Constants | The three numbers are code constants in `packages/sds/src/core/pressFeedback.ts`, not tokens. SEED keeps them out of its tokens on purpose: they shape every pressable, and a token can be redeclared per element |
+| Constants | The scale's three numbers are code constants in `packages/sds/src/core/pressFeedback.ts`, not tokens. SEED keeps them out of its tokens on purpose: they shape every pressable, and a token can be redeclared per element |
 | Timing | Color and scale share one progress, over `SdsDuration.fast` (SEED's d3) on `SdsCurves.pressed` (SEED's `pressed-scale` curve, added for this) |
 | Disabled, loading | No feedback, and a press in progress is released, as Lynx's `usePressTap` does |
 | Reduce motion | The scale stays at 1 and the color still changes. The setting is read live through `AccessibilityInfo`: Reanimated's own flag is set once at launch, and its default `ReduceMotion.System` would snap the color as well, so the timing passes `ReduceMotion.Never` and the policy keeps the scale at 1 |
@@ -69,7 +69,7 @@ After SEED's slot recipes, with states as boolean variants as in its Lynx preset
 
 The Button moved onto `buttonRecipe` and `usePressFeedback` with its props unchanged.
 
-- **The resting look is the same.** `buttonRecipe.test.mts` pins every size, display and disabled state to the numbers the old Button drew, and a simulator capture of a weak Button matched the earlier capture pixel for pixel at rest and after release. `type="light"` changed afterwards: TDS draws it for a dark ground, with a dark label on its fill and a white veil for its weak variant, where the port had a white label on both.
+- **The resting look is the same.** `buttonRecipe.test.mts` pins every size, display and disabled state to the numbers the old Button drew, and a simulator capture of a weak Button matched the earlier capture pixel for pixel at rest and after release. `type="light"` changed afterwards. TDS draws it for a dark ground, with a dark label on its fill and a white veil for its weak variant. The port had a white label on both.
 - **The press is SEED's.** Every tone presses to its `-pressed` surface and shrinks by distance, at every display. A full-width button keeps its surface and shrinks its content. The light button has no role in either variant, so it only shrinks.
 - **The tone table is one place.** `BUTTON_ROLES` in `components/button/buttonRecipe.ts` names each tone's surface and label roles. The recipe draws from it and the press reads the same surface name.
 

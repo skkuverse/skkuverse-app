@@ -24,7 +24,7 @@ sheet heights. The text below reads as amended. The tab bar that makes one share
 
 The server serves one page per bus stop (`GET /bus/stops/:stopId/arrivals`) and links each station
 of a realtime line to it (`stopId` on `/bus/config`). The app has to decide where that page and the
-line screens live. Two reference apps answer it in opposite ways:
+line screens live. Naver Map and Kakao Bus, the reference apps, answer it in opposite ways:
 
 | | Line screen | Stop screen |
 | --- | --- | --- |
@@ -51,9 +51,9 @@ the locate button does.
 
 > [!NOTE]
 > Paused (owner, 2026-10-24): location-based behavior waits until the basics are finished, to be
-> polished in one go. Under the shared shell the cold start always opens on the selected campus:
-> no start at the user, no silent campus switch (decision 5), and no ADR 0008 suggestion card. One
-> switch turns it back on; the code and its tests stay. The locate button keeps working, and the
+> polished in one go. Under the shared shell the cold start always opens on the selected campus. It
+> does not start at the user, switch the campus silently (decision 5) or show the ADR 0008
+> suggestion card. One switch turns it back on, and the code and its tests stay. The locate button keeps working, and the
 > native-tabs shell keeps its card. No location call may raise Android's system "turn on location"
 > dialog.
 
@@ -61,15 +61,15 @@ What the two tabs share is decided by what an element is about:
 
 | Kind | About | Shared |
 | --- | --- | --- |
-| World | The campus itself: the base map, the camera, the campus selection, the user's location, buildings and campus areas, the map controls (locate, layers, campus) | Yes |
-| Task | What the user is doing in this tab: the sheet and its stack, the open line, the focused stop, the selected pin, the ADR 0008 suggestion card | No, per tab |
+| World | The campus itself. That covers the base map, the camera, the campus selection, the user's location, buildings and campus areas, and the map controls (locate, layers, campus) | Yes |
+| Task | What the user is doing in this tab. That covers the sheet and its stack, the open line, the focused stop, the selected pin and the ADR 0008 suggestion card | No, per tab |
 | Lens | How the world is filtered: chips and layers | By who turned it on |
 
 A lens the user turns on (a layer from the layers control) is shared: it is their chosen view of
-the world. A lens a task turns on (the open line's route and stops, the focus on a stop) belongs to
-that tab and goes away with the task. The transit tab's own shuttle routes and stops show in the
-transit tab only; the map tab gets them only from the layers control. While a task's sheet is open
-its lens wins: a line's route shows even if the user switched that layer off, and closing the sheet
+the world. One that a task turns on (the open line's route and stops, the focus on a stop) belongs
+to that tab and goes away with the task. The transit tab's own shuttle routes and stops show in the
+transit tab only. The map tab gets them only from the layers control. A task's lens wins while its
+sheet is open: a line's route shows even if the user switched that layer off, and closing the sheet
 returns the user's setting.
 
 **Chips run where their result shows.**
@@ -88,21 +88,21 @@ returns the user's setting.
 - A chip is only ever on in the map tab, so no per-tab chip state is kept.
 - A chip that leaves the app (web view, external link, mini app) is marked ↗, and one that switches
   tab or opens an in-app page is marked `›`. The app derives the mark from the action and
-  `opensIn`; the server sends no icon.
+  `opensIn`. The server sends no icon.
 - The billboard carries "shuttle routes" (the route-line layers, run in the map tab); festival and
   meals chips join it when they exist. The building-map, lost-and-found and contact chips stay
   map-tab only.
 - The shuttle routes chip uses an action kind installed builds do not know, so they drop it rather
   than show it in their map tab. It cannot be a `focus` chip: that needs a `chipGroupId` on the
   route layers, and installed builds treat any grouped layer as festival content and hide the
-  Jongno route toggles. The route layers keep `chipGroupId: null`, and `tabs` and `opensIn` ship in
-  the same build, so no build runs a cross-tab chip in the wrong tab.
+  Jongno route toggles. The route layers keep `chipGroupId: null`, and `tabs` and `opensIn` are released
+  in the same build, so no build runs a cross-tab chip in the wrong tab.
 
-Three rules keep the shared map readable:
+These rules keep the shared map readable:
 
 1. **An open task comes first.** While a line or a stop is open, shared places are dimmed or
    thinned so the route and its stops stay legible. Layers the user turned on are not dimmed.
-2. **A sheet keeps its own camera within its stack; a tab switch never moves the camera.** Each
+2. **A sheet keeps its own camera within its stack, and a tab switch never moves the camera.** Each
    sheet remembers the camera it last framed, and popping back to it (✕) restores that camera
    without animation. Switching tabs moves only the sheet (decision 3): the shared camera is what
    carries a place from one tab into the other. A sheet left open in the other tab can then sit
@@ -114,7 +114,7 @@ Three rules keep the shared map readable:
    ago. Restoring anyway made the GPS fix after a locate read as a sheet move, so the campus never
    switched.
 3. **A pin opens where the user is.** Tapping a building pin in the transit tab pushes the building
-   sheet onto the transit tab's sheet stack; the tab does not switch.
+   sheet onto the transit tab's sheet stack. The tab does not switch.
 
 Search is world: one search in both tabs, finding stops, stations, buildings and places. A result
 opens in the current tab's sheet stack, like a pin.
@@ -123,8 +123,8 @@ The top of the map is two rows. The first is the campus selector, both campuses 
 it one pill that groups two icon buttons, search and layers, as iOS groups toolbar buttons. Each
 icon is its own button with its own accessibility label and a 44 pt target, and the pill follows
 the glass rule of ADR 0023 decision 2. The second row is the chips. A full-width search field was
-dropped: with location-based behavior paused, the selector is the only way to reach the other
-campus, so it keeps its full width. Search opens a search screen whose placeholder names what it
+dropped. With location-based behavior paused, the selector alone can switch to the other campus,
+so it keeps its full width. Search opens a search screen whose placeholder names what it
 finds. Revisit when location tailoring returns, using the search button's tap rate.
 
 The first row always says what the map is showing, so it changes with the kind of state:
@@ -162,18 +162,18 @@ is the map.
 
 ### 3. A line sheet opens on one fixed default screen
 
-Tapping a realtime line swaps the sheet to its station list, always on the same default screen:
-the camera jumps without animation to fit the whole route, and the list opens at its first station.
+Tapping a realtime line swaps the sheet to its station list, always on the same default screen.
+The camera jumps without animation to fit the whole route, and the list opens at its first station.
 The route fits, and a stop centres, in the visible map: the map minus the sheet at its opening
 detent, the top controls and the tab bar. That padding is set once, when the sheet opens, through
-the map SDK's content padding; it does not follow sheet drags.
+the map SDK's content padding. It does not follow sheet drags.
 
 Both directions are one continuous list, the first direction and then the second, with the route
 line unbroken to the end. The direction tabs are a pinned scroll-spy: they switch as the list
 scrolls into the other direction, and tapping one scrolls to it. Nothing in a line sheet depends on
 the user's location, and opening a line never asks for location permission. Tailoring by location
 (framing and centring the stop nearest the user) and nearby stops come later, as their own
-decisions. The map draws the route line and the stops, **not** the buses: bus positions stay in
+decisions. The map draws the route line and the stops but not the buses: bus positions stay in
 the list, and the sheet says so in one short line so an empty route does not read as broken.
 
 The transit tab's root sheet opens expanded, its top just below the chip row, so the cards fill the
@@ -219,11 +219,11 @@ added when the server serves it, never inferred in the app.
 
 ### 4. A stop is one pole, and its sheet renders entries by kind
 
-A stop page is one pole with its direction label; two curbs are never merged into one place. The
+A stop page is one pole with its direction label, and two curbs are never merged into one place. The
 stop sheet renders one row per `routes` entry by `kind` (`live`, `timetable`, an open enum) and
 skips a kind it does not know. A stop such as the HSSC bus lot already mixes both kinds.
 
-Stops are places: the same sheet opens from a line's station list, a map pin, search and a deep
+Stops are places. The same sheet opens from a line's station list, a map pin, search and a deep
 link. The map tab lists no places; its first feature is the campus-to-campus directions PoC
 (owner, 2026-10-24). Wherever it opens, a stop sheet draws the routes that serve that stop as its
 own lens, so a stop found by search in the map tab still shows which side of the road it is on.
@@ -234,11 +234,11 @@ shows minutes; an hour or more shows the clock time (arriving at 05:32, or the f
 ### 5. One campus selection for both tabs
 
 The transit tab gains the campus selector, and both tabs read the one selection the map tab keeps.
-In the transit tab it filters the sections: a section tagged with a campus shows only while that
-campus is selected, and an untagged section (the inter-campus shuttle) always shows, so the list is
-all + Humanities or all + Natural Sciences. This replaces an earlier "order, never hide" rule. Its
+In the transit tab it filters the sections. A section tagged with a campus shows only while that
+campus is selected, and an untagged section (the inter-campus shuttle) always shows. The list is
+then all + Humanities or all + Natural Sciences. This replaces an earlier "order, never hide" rule. Its
 risk is a card vanishing after the selection changed out of sight (a locate press in the map tab
-switches it silently, per ADR 0008); the selector sits at the top of the transit tab, so the campus
+switches it silently, per ADR 0008); the selector is at the top of the transit tab, so the campus
 the list follows is always on screen and one tap away. A camera move caused by opening a line, a
 stop or a place never changes the selection, even for a place on the other campus opened from a
 deep link or a search.
@@ -254,8 +254,8 @@ so it raises no card. Its "silenced for the session" state moves out of the hook
 selection, so both tabs agree. And the selection follows the user once, at a cold start: when
 decision 1's rule starts the camera at a user inside a campus, the selection switches to that
 campus silently, as a locate press does, so the map and the filtered list agree from the first
-frame. During use only the user changes it. While location-based behavior is paused, neither the
-cold-start switch nor the card runs under the shared shell.
+frame. During use only the user changes it. Neither the cold-start switch nor the card runs under
+the shared shell while location-based behavior is paused.
 
 ### 6. Timetable shuttles keep their screen
 
@@ -277,7 +277,7 @@ Home cards and deep links that should land with something open extend the existi
 rather than adding a new one: `/map?place=[kind:]<id>&chip=<chipId>`, with the kinds `bus_stop:`
 and `subway_station:` beside the existing ones, and `/transit?line=<groupId>` for a line. The same
 `[kind:]id` is the stable id the "saved" list keeps. An installed build drops a place kind it does
-not know and lands on the tab.
+not know and opens the tab.
 
 A push cannot use those shapes, because an installed build's notification handler drops a route it
 does not list and falls back to the sending mini app. A push keeps its route (`/campus`) and
@@ -286,7 +286,8 @@ festival four pushes went to plain `/campus` and landed users on a map with the 
 these keys are the fix.
 
 A place opened from a page (taxi pooling's meeting point) opens in the tab its link names, and
-without one in the place's home tab: a stop or station in transit, a building in the map. A page
+without one in the place's home tab. A stop or station's home tab is transit, and a building's is
+the map. A page
 that names itself as the place's origin (a campus route, a timetable) gets the place on the map tab
 under it instead, so going back to the page does not switch tab. A page opened from home or notices
 has no map tab under it: its place opens in the place's home tab, and the tab switches once on the
@@ -313,8 +314,8 @@ task because every tab is a map; ours sits beside home and notices, which are no
 still tells the tabs apart.
 
 The cost is that the transit tab shows a map too. What each tab shows on opening answers that, not
-the name: the transit tab opens on its shuttle cards and transit chips, the map tab on the buildings
-around where decision 1's rule starts the camera, with its place chips. If the transit-to-map
+the name. The transit tab opens on its shuttle cards and transit chips. The map tab opens on the
+buildings around where decision 1's rule starts the camera, with its place chips. If the transit-to-map
 switch rate or the map tab's open-and-leave rate says otherwise, the label is an OTA away.
 
 ## Consequences
@@ -323,9 +324,9 @@ switch rate or the map tab's open-and-leave rate says otherwise, the label is an
 
 The app reads `GET /bus/stops` (every stop with its coordinates, campus and routes; the line sheet
 joins `/bus/config` `station.stopId` to it), the route lines on `/map/overlays/transit`, and the
-fields the decisions above name. Each ships on skkuverse-server before the app OTA that reads it,
+fields the decisions above name. Each is deployed on skkuverse-server before the app OTA that reads it,
 and data that shows a chip with `tabs: ["transit"]` waits until most installs read `tabs`. A subway
-station's `coords` is nullable, so the subway screen never fails for want of it, and one list of the
+station's `coords` is nullable, so the subway screen never fails when it is missing, and one list of the
 stations with coords serves the map pins (one request, not eight).
 
 ### Costs
@@ -346,15 +347,15 @@ so the cost to the quick check stays visible.
 
 ### Alternatives considered
 
-- **List first, map on a button (Kakao Bus).** Fastest glance, no map cost. Rejected: it keeps
+- **List first, map on a button (Kakao Bus).** It gives the fastest glance at no map cost. Rejected: it keeps
   transit and the map apart, against the map tab's direction, and a full-height sheet already gives
   the list view.
-- **The map tab hosts every sheet; a transit card switches tabs.** The first version of this ADR.
+- **The map tab hosts every sheet, and a transit card switches tabs.** The first version of this ADR.
   Rejected: the back gesture has to cross tabs, opening a line overwrites what the map tab was
   showing, and the camera move fights ADR 0008.
 - **The line in the transit tab, the stop in the map tab.** Rejected: the stop opens on a different
   map, so the route line and its direction vanish exactly where the user needs them.
-- **Two map instances with a synced camera.** The fallback if ADR 0023's single map fails its
+- **A second map instance with a synced camera.** The fallback if ADR 0023's single map fails its
   prototype: the same experience at twice the map memory.
 - **No map at all.** A session under a minute may be a success. Still the strongest objection; the
   full-height measurement above is how it gets tested.

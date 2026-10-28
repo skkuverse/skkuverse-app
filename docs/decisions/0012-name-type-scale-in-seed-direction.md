@@ -13,7 +13,7 @@ audience: internal
 
 ## Status
 
-Accepted on 2026-10-10. The rename landed in one change with no aliases, and nothing on screen moved.
+Accepted on 2026-10-10. The rename was one change with no aliases, and nothing on screen moved.
 
 ## Context
 
@@ -21,7 +21,7 @@ SDS inherited two typography vocabularies from TDS, and they ran in the opposite
 
 - **`Txt`'s `typography` prop** took `t1`–`t7`, where `t1` was the largest (30px), plus TDS's sub-steps `st1`–`st13` between them. A size could have two names (`t3` and `st6` were both 22px), and five sub-steps had no caller at all.
 - **`SdsTypo`**, the style objects a StyleSheet spreads, had `t1`–`t7` with a weight baked in, plus `sub5`–`sub13`. Nothing in its names said which weight a style carried.
-- **SEED numbers the other way.** Its `t1` is the smallest (11px) and the number rises with the size, and a text style is named `t{n}{Regular|Medium|Bold}`.
+- **SEED numbers the other way.** Its `t1` is the smallest (11px) and the number rises with the size, and a text style's name takes the form `t{n}{Regular|Medium|Bold}`.
 
 A name that means a different size in each system compiles everywhere. Moving toward SEED one call site at a time would have mixed the two directions in one file with no error to show it.
 
@@ -69,7 +69,7 @@ What remained was numbered from the smallest up. The table holds the values at t
 
 - **`Txt` takes the step and a weight on its own.** `<Txt typography="t7" fontWeight="bold">` keeps the `fontWeight` prop it always had, the split SEED's React `Text` makes between `fontSize` and `fontWeight`.
 - **`SdsTypo` names carry the weight.** A style is `t{n}{Regular|Medium|SemiBold|Bold}`. SEED has no 600, but SDS's smallest style uses it, so that one style is `t1SemiBold`.
-- **`SdsTypo` holds only the pairs the app reads**, each built from the scale (`t1SemiBold`, `t2Regular`, `t3Regular`, `t5Regular`, `t6Regular`, `t7Regular`, `t9Bold`, `t10Bold`, `t11Bold`, `t13Bold`). The two old styles whose sizes left the scale (`sub5`, `sub8`) had no reader and were removed. A weight it lacks is spread as `...wantedSans('<weight>')` after the step's style, the rule `eslint.config.js` already enforces.
+- **`SdsTypo` holds only the pairs the app reads**, each built from the scale (`t1SemiBold`, `t2Regular`, `t3Regular`, `t5Regular`, `t6Regular`, `t7Regular`, `t9Bold`, `t10Bold`, `t11Bold`, `t13Bold`). The old styles whose sizes left the scale, `sub5` and `sub8`, had no reader and were removed. A weight it lacks is spread as `...wantedSans('<weight>')` after the step's style, the rule `eslint.config.js` already enforces.
 
 ### 4. One change, no aliases
 
@@ -86,7 +86,7 @@ No name crosses a process boundary. The server and the SDUI payloads send no typ
   - The vendored copy already predates the file's runtime `react-native` import, so a freshness pull cannot take it byte for byte.
   - This change renames the `SdsTypo` keys on top of that. The mini-app repository reads `CssTypo.t3`, `t5` and `t6` by the old names.
   - Both repos also keep an ungated hand copy of the old `packages/sds/src/foundation/typography.ts` in `packages/ui`.
-  - Bringing them across is a contract change in the umbrella, not an edit here.
+  - Bringing them across is a contract change in the umbrella, outside this repository.
 
 ## Related
 

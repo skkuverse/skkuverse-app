@@ -16,9 +16,9 @@ audience: internal
 
 ## Status
 
-Accepted on 2026-10-27, by owner decision. It amends [ADR 0020](0020-app-architecture.md) D8 in
-three ways: the rule now covers every file in scope rather than migrated ones, a JSDoc on an export
-needs a tag like any other comment, and a checker exists. It ports the server's rule,
+Accepted on 2026-10-27, by owner decision. It amends [ADR 0020](0020-app-architecture.md) D8. The
+rule now covers every file in scope rather than migrated ones, and a JSDoc on an export needs a tag
+like any other comment. This ADR also adds a checker. It ports the server's rule,
 skkuverse-server `docs/decisions/0010-server-architecture.md` D10, with no exception the server
 does not have.
 
@@ -30,9 +30,9 @@ the committed sources.
 
 ADR 0020 D8 set the same tags in 2026-10, but nothing checked them, and it exempted JSDoc. On
 2026-10-27 about a quarter of the non-blank lines in the app's non-test sources were comments,
-against 15 % on the server after its rule. An agent reads a comment as true, while a name, a
-constant or a type is checked by the compiler. A comment that restates the code is the copy that
-goes stale.
+against 15 % on the server after its rule. An agent reads a comment as true, while the compiler
+checks a name, a constant or a type. So a comment that restates the code is the copy that goes
+stale.
 
 The server's rule was proven over its own tree before this port: it holds every comment in `src/`
 to a tag, and found pointers to files that no longer existed and claims about code that no longer
@@ -99,7 +99,7 @@ before it meets the tree:
 
 | Rule | Checks |
 | --- | --- |
-| `comment-tags` | D1: the tag, the `CONTRACT` repository and path, the `SEE:` path |
+| `comment-tags` | D1: the tag and what it cites (the `CONTRACT` repository and path, or the `SEE:` path) |
 | `comment-blocks` | D2: at most three lines |
 | `history-comments` | D2: no history phrase, such as "used to" or "previously" |
 | `section-comments` | D2: no divider; JSX's `{/* --- X --- */}` counts, since JSX has no line comment |

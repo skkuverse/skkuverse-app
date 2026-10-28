@@ -43,7 +43,7 @@ between a client that talks to the database directly and one that goes through a
   turns crawler output into a client contract such as `GET /notices/tabs`, and absorbs
   schema changes before they reach the app.
 - (−) A new user-data field or collection needs a change to the server-side rules and
-  functions kept outside this repository, and that change ships before the app change that
+  functions kept outside this repository, and that change is deployed before the app change that
   writes it.
 - (−) Splitting the data across two stores creates a contract mirror wherever the two meet,
   such as the server sending a notice to an FCM topic and then querying Firestore devices.

@@ -10,12 +10,12 @@ audience: internal
 # Replace Native Tabs With a Custom Tab Bar, Glass on iOS 26 Only
 
 > Why the app drops NativeTabs for one custom tab bar on every platform, how one map sits under two
-> tabs, where glass is used, and what the switch must prove before it ships. Read this before
+> tabs, where glass is used, and what the switch must prove before its release. Read this before
 > touching `app/(tabs)/` or the SDS glass surfaces.
 
 ## Status
 
-Accepted, 2026-10-23. The switch ships only after the checks in decision 5 pass.
+Accepted, 2026-10-23. The switch is released only after the checks in decision 5 pass.
 
 ## Context
 
@@ -27,7 +27,7 @@ to share one map. With NativeTabs (iOS 26+) that is practically impossible:
 - iOS NativeTabs cannot prevent a tab press (`canPreventDefault: false`), so the transit item cannot
   be turned into a mode switch inside the map tab.
 
-Two map instances with a synced camera would work, at twice the map memory. A custom tab bar
+A second map instance with a synced camera would work, at twice the map memory. A custom tab bar
 removes the constraint instead.
 
 ## Decision
@@ -45,11 +45,11 @@ expo-router's headless tabs (`expo-router/ui`: `TabList`, `TabTrigger`, `TabSlot
 
 > [!NOTE]
 > 2026-10-24: the owner first chose `expo-glass-tabs` (JavaScript only, MIT) as the tab bar, to
-> adopt as it ships, and later the same day had it vendored and reworked after Instagram's bar. It
+> adopt as published, and later the same day had it vendored and reworked after Instagram's bar. It
 > lives in `apps/mobile/src/bootstrap/glass-tabs/` (its README names the upstream commit and every
 > local change); the npm dependency is gone, so decision 4 holds with nothing new in the binary.
-> The bar is icon-only, each tab with its accessibility label, and it shrinks uniformly on scroll,
-> swells on press, stretches its lens with drag speed, and derives its geometry from the device.
+> The bar is icon-only, each tab with its accessibility label. It shrinks uniformly on scroll and
+> swells on press. Its lens stretches with drag speed, and its geometry comes from the device.
 > The icons are Phosphor, regular when idle and fill when selected, the same in both shells:
 > `SquaresFour` (mini apps), `MegaphoneSimple` (notices), `MapTrifold` (map; a pin read as one
 > place, not a map) and `Bus` (transit, drawn at an optical 0.86 because its glyph is about a third
@@ -63,18 +63,18 @@ area reaches the map, while the sheet, the chips and the floating tab bar take t
 
 - **iOS 26+**: native Liquid Glass through `expo-glass-effect` on the tab bar, the sheet and the SDS
   glass surfaces, as the SDS already does behind `GLASS_AVAILABLE`.
-- **iOS < 26 and Android**: the current white surfaces, no blur.
+- **iOS < 26 and Android**: the current white surfaces without blur.
 - **Reduce Transparency on iOS 26**: the white surfaces.
 
 The tab bar follows the same rule (2026-10-24, after a same-day trial of the library's own blur on
-every platform): light glass on the SDS roles on iOS 26+, and a white capsule with a shadow below
-iOS 26, on Android and under Reduce Transparency. It has no dark blur.
+every platform): light glass on the SDS roles on iOS 26+. Below iOS 26, on Android and under Reduce
+Transparency it is a white capsule with a shadow. It has no dark blur.
 
 No surface emulates glass. On Android the Naver map draws into a `SurfaceView`, which blur libraries
 cannot sample, so emulated glass over the map would show a flat panel there and a blur elsewhere.
 That is less consistent than plain surfaces.
 
-### 3. What the switch drops and re-implements
+### 3. What the switch drops and rebuilds
 
 - **Shrinking on scroll:** first dropped for later, then brought in by the owner (2026-10-24, an
   Instagram-style reference): the bar shrinks on scroll down and returns on scroll up. Only the
@@ -106,8 +106,8 @@ The step 1 prototype (iOS 26.5 and iOS 18.6 simulators, 2026-10-23) found two co
 which touches never reach the map, both traced with UIKit hit-testing:
 
 - `TabSlot` renders with `detachInactiveScreens={false}`. The default native screen container wraps
-  a `UINavigationController` whose plain UIKit views take every touch, out of reach of
-  `pointerEvents`. Box-none goes in `TabSlot`'s `style`; it ignores a `pointerEvents` prop.
+  a `UINavigationController` whose plain UIKit views take every touch, and `pointerEvents`
+  does not reach them. Box-none goes in `TabSlot`'s `style`; it ignores a `pointerEvents` prop.
 - The map and transit tabs have no nested Stack: their `_layout.tsx` is a `<Slot/>`. A nested
   Stack's screen takes the touch and its theme paints over the map. A full page opened from either
   tab (a timetable shuttle, taxi pooling) pushes on the root Stack.
@@ -115,7 +115,7 @@ which touches never reach the map, both traced with UIKit hit-testing:
 Hidden tabs stay mounted and nothing freezes them; freezing a hidden tab, if wanted, is ours to add.
 Not exercised: pinch and double-tap (the simulator tool has no multi-touch), and Android.
 
-### 4. It ships as an OTA to 3.6.2
+### 4. It goes out as an OTA to 3.6.2
 
 The switch is JavaScript only. On 2026-10-23 the 3.6.2 OTA branch and `dev` had identical
 `package.json`, `yarn.lock` and `runtimeVersion`, and every module it needs (`expo-router/ui`,
@@ -139,7 +139,7 @@ if the release misbehaves in a way the automatic rollback does not catch.
 > shared map still holds back from a store build are the gates in `PRERELEASE_GATES`
 > (`apps/mobile/src/platform/ota.rules.ts`).
 
-### 5. Proved before it ships
+### 5. Proved before release
 
 - During development: touches reach the map through the box-none tab content, with the real sheet
   and markers, on an iOS 26+ simulator only. No older iOS simulator and no Android emulator is used;
@@ -157,7 +157,7 @@ choice; it lets the restructuring start, and the real-sheet check comes with ste
 - A broken navigation shell breaks the whole app, and it goes out over the air: the test-bundle run
   in decision 5 is not optional. The OTA's automatic rollback covers only a crash before the first
   render; a native crash after the map mounts, an error an error boundary catches, or a screen that
-  takes no touches is not rolled back. Because the shell and the map work ship in one OTA, the
+  takes no touches is not rolled back. Because the shell and the map work go out in one OTA, the
   `/app/config` flag in decision 4 is the way back, not disabling the bundle; it must be tested in
   both positions before release. (2026-10-25: the flag is removed, see the update to decision 4. Both
   shells are still reachable through the local override until the native tabs retire.)
@@ -169,7 +169,7 @@ choice; it lets the restructuring start, and the real-sheet check comes with ste
   tab through `/map/config` `tabs`. Transit imports the map at run time, and the map names transit
   only through `import type`, which the feature-cycle check does not count. See
   [shared-map.md](../explanation/shared-map.md#the-map-and-transit-boundary).)
-- The iOS 26 chain-root rule for tab bar minimize (`docs/explanation/ios-26-native-tabs-minimize.md`
+- The iOS 26 chain-root rule for `minimize-on-scroll` (`docs/explanation/ios-26-native-tabs-minimize.md`
   and its CLAUDE.md section) and the native tab icon pipeline retire with NativeTabs.
 - The `GLASS_AVAILABLE` branches stay: they are now the one switch between glass and white surfaces.
 - The map keeps its memory while home or notices is in front. Pausing it there is a measurement for
