@@ -7,6 +7,7 @@ import { useT } from '@skkuverse/shared';
 import { useSemanticColors, type SheetRef } from '@skkuverse/sds';
 import { logNoticeView, logNoticesContentSelect } from '@/platform/analytics';
 import { openExternalUrl, openInAppBrowser, shareContent } from '@/platform/handoff';
+import { isGateOpen } from '@/platform/ota';
 import { useReviewPrompt } from '@/features/feedback/useReviewPrompt';
 import { THREE_DAYS_MS } from '@/features/feedback/feedback.constants';
 import { useBookmark } from './useBookmark';
@@ -56,6 +57,7 @@ export function useNoticeDetailScreen({ sourceId, articleNo, reviewIcon }: UseNo
   });
 
   const state = decideNoticeDetailState({ isLoading, isError, error, data, bookmark: bookmarkEntry });
+  const screen = data && isGateOpen('noticeFacts') ? data.screen : null;
 
   const onRemoveBookmark = useCallback(() => {
     setIsRemoving(true);
@@ -84,6 +86,7 @@ export function useNoticeDetailScreen({ sourceId, articleNo, reviewIcon }: UseNo
       sourceId,
       articleNo,
       hasSummary: data.summary != null,
+      hasScreen: screen !== null,
       summaryType: data.summary?.type,
     });
   }, [sourceId, articleNo, data?.summary?.type]); // eslint-disable-line react-hooks/exhaustive-deps -- one view per notice and summary type, not per refetch (comment above)

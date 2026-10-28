@@ -256,6 +256,7 @@ export function logNoticeView(params: LogNoticeViewInputs) {
     source_id: params.sourceId,
     article_no: params.articleNo,
     has_summary: params.hasSummary ? 'true' : 'false',
+    has_screen: params.hasScreen ? 'true' : 'false',
     ...(params.tabKey && { tab_key: params.tabKey }),
     ...(params.summaryType && { summary_type: params.summaryType }),
   });
