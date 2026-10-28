@@ -46,7 +46,7 @@ A universal link reaches the app only when the app claims the path and the domai
 - The Android `pathPrefix` is `/p/` with its trailing slash, for the reason beside it in
   `app.config.ts`. A change to `intentFilters` needs a prebuild and a rebuild, never an OTA.
 - The iOS simulator enforces the AASA (`https://skkuverse.com/privacy` opens Safari), so where a
-  universal link lands there is what the AASA says.
+  universal link opens there is what the AASA says.
 
 ## Cold start and warm start
 
@@ -65,8 +65,8 @@ cannot reach an internal route; the redirect home happens after the intercept in
 
 ## The authority fold: `skkuverse:` is a non-special scheme
 
-The WHATWG URL special schemes are http, https, ws, wss, ftp and file. In any other scheme the first
-segment after `//` is an authority, not a path:
+The WHATWG URL special schemes are http, https, ws, wss, ftp and file. In any other scheme the parser
+reads the first segment after `//` as an authority, so it becomes the hostname:
 
 ```text
 skkuverse://map?place=x   →  hostname "map", pathname ""
