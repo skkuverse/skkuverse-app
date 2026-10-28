@@ -26,7 +26,7 @@ ELEV-04 in [design-usage.md](../reference/design-usage.md#elev-04) already said 
 The shadow did no work on any of them:
 
 - **It was nearly invisible in light mode.** A 4% black blur three points wide reads as a smudge at best. What told each card apart was the white surface on the grey ground, or the border.
-- **It disappears in dark mode.** A black shadow on a near-black ground draws nothing. A card that relies on one has no edge once dark mode is switched on.
+- **It disappears in dark mode.** A black shadow on a near-black ground draws nothing. A card that relies on one has no edge once the app offers dark mode.
 - **SEED uses elevation for things that float.** In SEED, a shadow says "this sits above the page". That holds for a floating button, a popover or a sheet, and it never holds for a card in the flow of a list.
 
 The user decided the rule on 2026-10-11, together with subtle item dividers (DIV-01): card shadows go, and shadows stay only on floating elements.
