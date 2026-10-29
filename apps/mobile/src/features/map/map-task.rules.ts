@@ -300,7 +300,12 @@ export function toSheetRequest(
     case 'skku_building':
       // WHY: `/building/:id` takes a number, while the grammar allows any `[a-z0-9-]+`.
       return Number.isFinite(Number(link.placeId))
-        ? { kind: 'skku_building', placeId: link.placeId, highlightSpaceCd: null, source: placeRequestSource(link.source) }
+        ? {
+            kind: 'skku_building',
+            placeId: link.placeId,
+            highlightSpaceCd: link.highlightSpaceCd ?? null,
+            source: placeRequestSource(link.source),
+          }
         : null;
     default:
       return views[link.kind]?.fromPlace?.({ placeId: link.placeId, source: link.source ?? 'deeplink' }) ?? null;

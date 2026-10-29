@@ -118,6 +118,7 @@ export const useMapNavStore = create<MapNavState>((set, get) => ({
 type PendingMapPlaceLink = {
   kind: PlaceKind | null;
   placeId: string;
+  highlightSpaceCd?: string;
   source?: EntrySource;
   tab: MapTabId;
   origin?: PageOrigin;

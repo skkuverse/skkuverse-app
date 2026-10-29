@@ -337,7 +337,7 @@ describe('the fields the server adds next', () => {
     });
   });
 
-  it('reads an attachment and a link url on the original, and only an http one', () => {
+  it('reads an attachment and a link url on the original, an http one or a link a mailto', () => {
     // Act
     const screen = screenWith({
       original: {
@@ -350,6 +350,7 @@ describe('the fields the server adds next', () => {
         links: [
           { role: '신청', domain: 'forms.gle', url: 'https://forms.gle/x' },
           { role: '안내', domain: 'skku.edu', url: 'ftp://skku.edu/x' },
+          { role: '문의', domain: 'skku.edu', url: 'mailto:wise@skku.edu' },
         ],
       },
     });
@@ -365,6 +366,7 @@ describe('the fields the server adds next', () => {
       links: [
         { role: '신청', domain: 'forms.gle', url: 'https://forms.gle/x' },
         { role: '안내', domain: 'skku.edu', url: null },
+        { role: '문의', domain: 'skku.edu', url: 'mailto:wise@skku.edu' },
       ],
     });
   });

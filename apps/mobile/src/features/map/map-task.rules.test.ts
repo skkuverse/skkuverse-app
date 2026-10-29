@@ -569,6 +569,10 @@ describe('toSheetRequest: a place link to the sheet it opens', () => {
       { kind: 'skku_building', placeId: '31', source: 'place_sheet' },
       { kind: 'skku_building', placeId: '31', highlightSpaceCd: null, source: 'place_sheet' },
     ],
+    [
+      { kind: 'skku_building', placeId: '31', highlightSpaceCd: '33B101', source: 'place_sheet' },
+      { kind: 'skku_building', placeId: '31', highlightSpaceCd: '33B101', source: 'place_sheet' },
+    ],
     [{ kind: 'bus_stop', placeId: '01-123' }, { kind: 'bus_stop', stopId: '01-123', source: 'deeplink' }],
     [
       { kind: 'bus_stop', placeId: '01-123', source: 'search' },
