@@ -78,7 +78,7 @@
     "react-native-webview": "13.16.1",
     "react-native-worklets": "0.10.4",
     "react-native-youtube-iframe": "2.3.0",
-    "zod": "4.6.5",
+    "zod": "4.6.6",
     "zustand": "^5.0.15"
   },
   "devDependencies": {
@@ -89,7 +89,7 @@
     "eslint-config-expo": "~57.0.2",
     "hot-updater": "1.0.0-rc.31",
     "typescript": "~6.0.3",
-    "vitest": "4.1.4"
+    "vitest": "5.0.5"
   },
   "expo": {
     "install": {
