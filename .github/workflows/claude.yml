@@ -26,6 +26,10 @@ env:
   CLAUDE_READ_ONLY_LOCK: >-
     --permission-mode default
     --disallowedTools "Edit,Write,MultiEdit,NotebookEdit,Bash(git add:*),Bash(git commit:*),Bash(git rm:*),Bash(git push:*),Bash(*git-push.sh*),mcp__github_file_ops__commit_files,mcp__github_file_ops__delete_files"
+  # QUIRK(claude-code): CLAUDE_CODE_SUBPROCESS_ENV_SCRUB turns the action's acceptEdits back into default mode,
+  # where a file edit runs only under an allow rule. An Edit rule covers Write too; `./**` stops at the workspace.
+  CLAUDE_EDIT_TOOLS: >-
+    --allowedTools "Edit(./**)"
 
 jobs:
   # WHY: the repository is public and the jobs below hold CLAUDE_CODE_OAUTH_TOKEN, so nothing starts unless a
@@ -80,6 +84,17 @@ jobs:
         with:
           fetch-depth: 0
 
+      # QUIRK(claude-code): under CLAUDE_CODE_SUBPROCESS_ENV_SCRUB a Bash command runs in bubblewrap or not at all,
+      # and that sandbox needs socat beside bubblewrap and a user namespace, which Ubuntu's AppArmor can refuse.
+      - name: Install the subprocess sandbox
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends bubblewrap socat
+          if [ -f /proc/sys/kernel/apparmor_restrict_unprivileged_userns ]; then
+            sysctl kernel.apparmor_restrict_unprivileged_userns
+            sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+          fi
+
       - name: Run Claude Code
         uses: anthropics/claude-code-action@925afb53776cf1a2b738c6bdbed37b4d4000ef13 # v1.0.262
         with:
@@ -110,6 +125,15 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install the subprocess sandbox
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends bubblewrap socat
+          if [ -f /proc/sys/kernel/apparmor_restrict_unprivileged_userns ]; then
+            sysctl kernel.apparmor_restrict_unprivileged_userns
+            sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+          fi
+
       - name: Run Claude Code
         uses: anthropics/claude-code-action@925afb53776cf1a2b738c6bdbed37b4d4000ef13 # v1.0.262
         with:
@@ -117,3 +141,4 @@ jobs:
           claude_args: |
             ${{ env.CLAUDE_READ_TOOLS }}
             ${{ env.CLAUDE_GIT_LOCK }}
+            ${{ env.CLAUDE_EDIT_TOOLS }}
