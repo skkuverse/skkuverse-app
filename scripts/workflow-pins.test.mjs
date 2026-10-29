@@ -6,7 +6,7 @@
 //     moved upstream cannot change what runs, and a reader still sees which
 //     release it is;
 //   - `.github/dependabot.yml` updates the `github-actions` ecosystem only,
-//     monthly, as one grouped pull request into `dev`.
+//     monthly, seven days after a release, as one grouped pull request into `dev`.
 //
 // Patterns rather than a YAML parser: the repo avoids the dependency.
 import { test } from 'node:test';
@@ -61,11 +61,12 @@ test('.github/workflows pins every external action to a commit SHA with its vers
   assert.deepEqual(unpinned, []);
 });
 
-test('.github/dependabot.yml updates the github-actions pins only, monthly, in one grouped pull request into dev', () => {
+test('.github/dependabot.yml updates the github-actions pins only, monthly, seven days after a release, in one grouped pull request into dev', () => {
   const config = readFileSync(join(root, '.github/dependabot.yml'), 'utf8');
   const ecosystems = [...config.matchAll(/^\s*- package-ecosystem: (\S+)$/gm)].map((m) => m[1]);
   assert.deepEqual(ecosystems, ['github-actions']);
   assert.match(config, /^ {4}schedule:\n {6}interval: monthly$/m);
+  assert.match(config, /^ {4}cooldown:\n {6}default-days: 7$/m);
   assert.match(config, /^ {4}target-branch: dev$/m);
   assert.match(config, /^ {4}groups:\n {6}github-actions:\n {8}patterns:\n {10}- "\*"$/m);
 });
