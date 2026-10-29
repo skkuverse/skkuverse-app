@@ -1,3 +1,4 @@
+import { uuid } from 'expo-modules-core';
 import { createMMKV } from 'react-native-mmkv';
 
 // WHY: this id, not the FCM token, keys `devices/{deviceId}` in Firestore: the OS may refresh a token at
@@ -8,15 +9,6 @@ const mmkv = createMMKV({ id: 'skkubus-device' });
 
 let cached: string | null = null;
 
-/** WHY: an identifier, not a secret, so `Math.random` suffices. */
-function generateUUID(): string {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-    const r = (Math.random() * 16) | 0;
-    const v = c === 'x' ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
-}
-
 export function getOrCreateDeviceId(): string {
   if (cached) return cached;
 
@@ -26,7 +18,9 @@ export function getOrCreateDeviceId(): string {
     return existing;
   }
 
-  const id = generateUUID();
+  // WHY: no one else should be able to guess this id, so it comes from the OS's secure generator, never
+  // `Math.random`. The native UUID ships in every build, so an OTA update can carry it.
+  const id = uuid.v4();
   mmkv.set(DEVICE_ID_KEY, id);
   cached = id;
   return id;
